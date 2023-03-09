@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+
+
+        
+    
+        
+    
+
+        <html lang="he" dir="rtl">
+<head>
+    <title>תורת הקבוצות II, הקבוצות הבנויות</title>
+    <link rel="icon" href="me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="דף מסגרת למשפטים על הקבוצות הבנויות">
+
+    
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+</style>
+
+    
+        
+        
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+    
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "כרמי מרימוביץ"
+							src="../../me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						בית הספר למדעי המחשב
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						המכללה האקדמית תל-אביב
+					</h3>
+					<h4  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+			           עולם הקבוצות הבנויות
+					</h4>
+				</div>
+			</div>
+		</div>
+		
+	</header>
+<body style="font-family: Arial, non-serif;">
+
+
+        
+        
+
+      
+
+
+
+<div>
+    
+      <p style="font-size: x-small; direction: rtl">
+      <a href="../../index.html">מאמר<a> >>> <a href="../index.html">מבנים ברי-האחדה ופונקציות סקולם<a> >>> תת-מודלים אלמנטריים מפונקציות סקולם
+      </p>
+      
+    <h1>תת-מודלים אלמנטריים מפונקציות סקולם</h1>
+<p><strong>טענה</strong>
+אם
+$h$
+פונקציית סקולם-$\Sigma_n$
+יפה עבור
+$M$
+מבנה-$L$
+אזי
+$h''(\omega \times \set{x}) \prec_{\Sigma_n} M$
+לכל
+$x \in M$.</p>
+<p><strong>הוכחה</strong>
+נקבע
+$X = h'' \omega \times \set{x}$.
+יהי
+$A$
+יחס $\Sigma_n$
+ונניח שיש
+$y\in M$
+ו-$y_0, \dotsc, y_{n-1} \in X$
+כך שמתקיים
+$M \models A(y, y_1, \dotsc, y_{n-1})$.
+עלינו להראות שיש
+$y \in X$
+כך שמתקיים
+$M \models A(y, y_0, \dotsc, y_{n-1})$.</p>
+<p>נניח
+$h \in \Sigma_n^M(\set{p})$.
+לכל
+$j &lt; n$
+יש $i_j$
+כך שמתקיים
+$y_j = h(i_j, x)$
+כלומר
+$A \in \Sigma^M_n(\langle p, x \rangle)$.
+לכן יש $i$
+כך שמתקיים
+$M \models A(h(i, x))$.
+כיון
+ש-$h(i, x) \in X$
+סיימנו.
+$\square$</p>
+<p><strong>למה</strong>
+תהי
+$h$
+פונקציית סקולם-$\Sigma_n$
+עבור $M$
+מבנה-$L$.
+תהי
+$X \subseteq M$
+קבוצה סגורה תחת זוגות סדורים.
+אזי
+$h''\omega \times X \prec_{\Sigma_n} M$.</p>
+<p><strong>הוכחה</strong>
+נקבע
+$Y = h''\omega \times X$.
+יהי
+$A \in \Sigma_n^M(y_0, \dotsc, y_{n-1})$
+יחס כך שקיים
+$y \in M$
+כך שמתקיים
+$M \models A(y)$.
+עלינו להראות שקיים
+$y \in Y$
+כך שמתקיים
+$M \models A(y)$.</p>
+<p>נניח
+$h \in \Sigma_n^M(\set{p})$.
+לכל
+$j &lt; n$
+יש
+$i_j$
+ו-$x_j$
+כך שמתקיים
+$y_j = h(i_j, x_j)$
+כלומר
+$A \in \Sigma^M_n(\langle p, x_0, \dotsc, x_{n-1} \rangle)$.
+לכן יש $i$<br>
+כך שמתקיים
+$M \models A(h(i, \langle x_0, \dotsc, x_{n-1} \rangle))$.
+כיון
+ש-$h(i, \langle x_0, \dotsc, x_{n-1} \rangle) \in Y$
+סיימנו.
+$\square$</p>
+
+    
+    
+    
+     <ol>  </ol> 
+</div>
+
+        <footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">Carmi Merimovich</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+			Things
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+

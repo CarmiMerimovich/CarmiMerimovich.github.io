@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+
+
+        
+    
+
+        <html lang="he`" dir="ltr">
+<head>
+    <title>Carmi Merimovich, Personal page</title>
+    <link rel="icon" href="me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Carmi Merimovich, Personal Page">
+
+    
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+    
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="../me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Carmi Merimovich
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Personal Page
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        <a href="affiliation.html">Affiliation</a>
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+
+					</h3>
+                </div>
+			</div>
+		</div>
+		
+	</header>
+<body style="font-family: Arial, non-serif;">
+
+
+        
+        
+
+      
+
+
+
+<div>
+    
+    <h1>אנליזה ואלגברה לינארית</h1>
+<p>נקרא $P_n$
+לקבוצת הפולינומים מדרגה קטנה מ-$n$.
+אם $p,q\in P_n$
+אזי הפולינום $p+q$ יוגדר להיות
+$$
+(p+q)(x) = (a_0 + b_0) + (a_1 + b_1)x + \dotsb + (a_{n-1}+ b_{n-1})x^{n-1}
+$$
+כאשר
+$$
+p(x) = a_0 + a_1 x + \dotsb + a_{n-1} x^{n-1}
+$$
+ו-
+$$
+q(x) = b_0 + b_1 x + \dotsb + b_{n-1} x^{n-1}.
+$$
+באופן דומה כאשר $p$ פולינום כמו למעלה
+ו-$c$ ממשי
+נגדיר את הפולינום $cp$ על-ידי
+$$
+(cp)(x) = (ca_0) + (ca_1) x + \dotsb + (ca_{n-1}) x^{n-1}.
+$$
+ידוע, וממש לא קשה להוכיח, שהקבוצה $P_n$
+עם שתי הפעולות שהוגדרו למעלה היא מרחב לינארי.
+כדי לחסוך אותיות נקרא גם למרחב הלינארי
+$P_n$.</p>
+<p>אם ניקח את הבסיס הטבעי של $P_n$,
+$$ {1, x, \dotsc, x^{n-1}}$$
+אזי ניתן לייצג את הפולינום
+$$ a_0 + a_1 x + \dotsb + a_{n-1} x^{n-1}$$
+על-ידי הווקטור
+$$
+\begin{pmatrix}
+a_0  \\
+\vdots \\
+a_{n-1}.
+\end{pmatrix}.
+$$
+אנחנו יודעים שניתן לייצג כל אופרטור לינארי
+$$ T : P_n \to P_n$$
+על-יד מטריצה בגודל
+$$n \times n.$$
+פעולה שבדרך כלל לא מזכירים בקורסי אלגברה לינארית היא הגזירה.
+ידוע לנו שהיא לינארית ולכן יש מטריצה המייצגת אותה.
+לכל
+$$0 &lt; k &lt; n$$
+מתקיים
+$(x^k)' = k x^{k-1}$.
+ולכן מטריצה
+$$
+D_n = (d_n^{i,j})
+$$
+המייצגת את פעולת הגזירה על פולינומים ב-$P_n$
+תקיים
+$$
+d_n^{i,j} = \begin{cases}
+i &amp; i = j + 1, \\
+0 &amp; i \neq j + 1,
+\end{cases}
+$$
+לכל
+$$i&lt;n, j &lt; n-1.$$
+בצורה מפורשת קצת יותר המטריצה תראה באופן הבא:
+$$D_n =
+\begin{pmatrix}
+0 &amp; 1 &amp; 0 &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; \dots &amp; 0\\
+0 &amp; 0 &amp; 2 &amp; 0 &amp; \dots &amp; \dots &amp; \dots &amp; \vdots &amp; \vdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; 0 &amp;  k &amp; 0 &amp; \vdots &amp; \vdots &amp; \vdots \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp;  \vdots &amp; \vdots \\
+\vdots &amp; \vdots &amp;\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; 0 &amp; n-1 \\
+0 &amp; \dots &amp; \vdots &amp; \vdots &amp; \dots &amp; \dots &amp; &amp; \dots &amp; \dots  &amp; 0
+\end{pmatrix}.
+$$
+המשמעות של המטריצה היא כזו.
+נניח ש-$p$ ו-$q$ הם פולינומים
+כך ש-
+$$
+p' = q.
+$$
+אם
+$$
+p = a_0 + a_1 x + \dotsc + a_{n-1} x^{n-1}
+$$
+ואם
+$$
+q = b_0 + b_1 x + \dotsc + b_{n-1} x^{n-1}
+$$
+אזי
+$$
+D_n   \begin{pmatrix}
+a_0 \\
+\vdots \\
+a_{n-1}
+\end{pmatrix} =
+\begin{pmatrix}
+b_0 \\
+\vdots \\
+b_{n-1}
+\end{pmatrix}.
+$$
+המגבלה של התעסקות עם פולינומים מדרגה קטנה מ-$n$
+מסויים מציקה והיינו רוצים להתעסק עם כל הפולינומים כיחידה אחת.</p>
+<p>מצד אחד ברור שצריך מרחב ממימד אינסופי כדי להכיל את כל הפולינומים.
+מצד שני ברור שהמרחב הטבעי המתאים לכך
+$R^{\infty}$
+מכיל ווקטורים שאינם פולינומים.
+אבל, אפשר להתרכז באותם ווקטורים שכן מייצגים פולינומים.
+עבור ווקטור ב-$R^{\infty}$
+נגדיר את התומך כקבוצת ה-$n$ עבורם
+במקום ה-$n$ יש ערך שונה מאפס.
+כלומר לכל ווקטור
+$$
+a \in R^{\infty}
+$$
+התומך יהיה
+$$
+\text{supp} (a) = \{n \}\{ a_n \neq 0 \}.
+$$
+נקבע את $P_{\infty}$ להיות
+אוסף הווקטורים מ-$R^{\infty}$
+בעלי תומך סופי:
+$$
+P_{\infty} = \{ a \in R^{\infty} \} \{\exists n\,\text{supp}(a) \subseteq n\}.
+$$
+מה קורה  עם הגזירה?
+די ברור איך להגדיר &quot;מטריצה&quot;
+שיש לה אינסוף שורות ועמודות שתייצג את פעולת הגזירה על פולינות כלשהו.
+נגדיר
+$$
+d_{i,j} = \begin{cases}
+i &amp; i = j + 1, \\
+0 &amp; i \neq j + 1.
+\end{cases}
+$$
+כמובן שיש פה בעיה עקרונית.
+ברור שכפל מטריצה כזו בווקטור יוצר טור.
+וכידוע טורים יכולים לא להתכנס.
+אבל פה, ניצלנו בלי להסתבן.
+כיון שהווקטורים הם בעלי תומך סופי יש לנו רק מספר סופי של אברים שונים מאפס
+בכל טור.</p>
+<p>ובכך השגנו את יעדנו.
+אבל, אם נסתכל במטריצה, נראה שכל שורה בה היא בעלת תומך סופי!
+משמע הכפלת מטריצה כזו בכל ווקטור שהוא מ-$R^{\infty}$
+נותנת תוצאה מספרית.</p>
+<p>והשאלה המאוד מעניינת היא, האם יש לכל הסיפור הזה משמעות?
+האם אנחנו יכולים לדבר על הנגזרת של ווקטור כלשהו?
+האם יש לווקטור כלשהו משמעות?</p>
+
+    
+    
+    
+     <ol>  </ol> 
+</div>
+
+        <footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">Carmi Merimovich</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+			Things
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+

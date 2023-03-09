@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+
+
+        
+    
+        
+    
+
+        <html lang="he`" dir="rtl">
+<head>
+    <title>תקצירי הרצאות הארכיטקטורת מחשבים קיץ 2021/2</title>
+    <link rel="icon" href="me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=">תקצירי הרצאות בארכיטקטורת מחשבים סמסטר ב' 2022/3">
+
+    
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+    
+        
+        
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+    
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="../../../me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						בית-הספר למדעי המחשב
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						המכללה האקדמית תל-אביב
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        תקצירי הרצאות בארכיטקטורת מחשבים סמסטר ב' 2022/3
+					</h3>
+                </div>
+			</div>
+		</div>
+		
+	</header>
+<body style="font-family: Arial, non-serif;">
+
+
+        
+        
+
+      
+
+
+
+<div>
+    
+      <p style="font-size: x-small; direction: rtl">
+      <a href="../../index.html"><a> >>> <a href="../index.html">2022-08-17<a> >>> פונקציה כללית
+      </p>
+      
+    <h1>פונקציה כללית</h1>
+<p>נסמן את הכתובת שמגיעה מהמעבד
+ב-va
+ואת הכתובת שמוציא
+ה-mmu
+ב-pa.
+נסמן את התרגום שעושה
+ה-mmu
+על-ידי
+<strong>pa=f(va)</strong>.</p>
+<p>כמובן שתוכניות שונות שרצות במקביל תצטרכנה פונקציה
+f
+שונה.
+וה-mmu
+צריך לספק מנגנון כללי מספיק כדי שמערכות ההפעלה תוכלנה לעבוד בגמישות
+מספקת.
+הדרך הכללית ביותר לממש פונקציה היא בעזרת ווקטור.
+כלומר ה-mmu
+ישתמש ב-va
+כאינדקס לווקטור אותו תבנה מערכת ההפעלה.</p>
+<p>לדוגמא, נניח מעבד בו רוחב כתובת וירטואלית הוא 16-ביטים
+ורוחב כתובת פיזית 18-ביטים.
+אזי ילכל תוכנית מערכת ההפעלה תבנה ווקטור באורך
+2<sup>16</sup>
+כשבכל תא בווקטור יש מקום לפחות ל-18 ביטים.
+למעשה נצטרך עוד כמה ביטים בשביל דגלים.
+הדגל הכי חשוב נקרא
+Valid.
+הרי לא כל תוכנית תתפוס את כל
+2<sup>16</sup>
+הכתובות...</p>
+<p>כיון שהשימוש בווקטור הזה נפוץ ביותר, הגישה חייבת להיות יעילה.
+גישה לאיבר כלשהו של ווקטור צורכת בעיקרון הכפלה שזו פעולה יקרה.
+אפשר להפוך אותה להזזה עבור כפל בחזרות של 2.
+<strong>ולכן</strong>
+במקרה שלנו סביר שמתכנני החומרה יקחו 4 בתים כגודל כניסה בווקטור.</p>
+<p>שיטה זו מאפשרת למערכת ההפעלה להטעין כל בית של התוכנית לכל בית בזכרון
+הראשי!
+מאוד מאוד גמיש.
+הבעיה היא בכמות הזכרון שהווקטור הנ&quot;ל, שנקרא
+<strong>טבלת התרגום</strong>
+צורך.</p>
+<p>בדוגמא שלנו מדובר
+‎2<sup>16</sup>×4B = 2<sup>18</sup>B = 256KB.
+כלומר, כל תוכנית יכולה להשתמש בעד
+64KB
+זכרון, אבל כדי לתמוך בזכרון פיזי לא רציף תהיה לנו תקורה של
+256KB.
+זה כמובן לא סביר בעליל.</p>
+<p>ולכן עלנו למצוא שיטה שיש לה את היתרון של שיטת טבלת התירגום,
+אך ללא התקורה העצומה.</p>
+
+    
+    
+    
+     <ol>  </ol> 
+</div>
+
+        <div style="font-size: x-small">
+&copy; 2022 Carmi Merimovich  
+&copy; כל הזכויות שמורות
+</div>
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">כרמי מרימוביץ</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+				מבוא לארכיטקטורת מחשבים: תקצירים
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+
+
+        
+    
+        
+    
+        
+    
+
+        <html lang="he" dir="rtl">
+<head>
+    <title>תורת הקבוצות II, הקבוצות הבנויות</title>
+    <link rel="icon" href="me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="דף מסגרת למשפטים על הקבוצות הבנויות">
+
+    
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+</style>
+
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+    
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "כרמי מרימוביץ"
+							src="../../../me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						בית הספר למדעי המחשב
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						המכללה האקדמית תל-אביב
+					</h3>
+					<h4  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+			           עולם הקבוצות הבנויות
+					</h4>
+				</div>
+			</div>
+		</div>
+		
+	</header>
+<body style="font-family: Arial, non-serif;">
+
+
+        
+        
+
+      
+
+
+
+<div>
+    
+      <p style="font-size: x-small; direction: rtl">
+      <a href="../../../index.html">מאמר<a> >>> <a href="../../index.html">סבך (Morass) ב-$L$<a> >>> <a href="../index.html">סבך (Morass)<a> >>> $\rho_{n + 1} \leq \alpha_\nu < \nu < \rho_n$
+      </p>
+      
+    <p><strong>טענה</strong>
+יהי $\nu \in S^1$.
+אז $\rho^{n(\nu)+1}_{J_{\beta(\nu)}} \leq \alpha_{\nu} &lt; \nu \leq \rho$.</p>
+<p><strong>הוכחה</strong>
+נסמן   $\beta = \beta(\nu)$,
+$n = n(\nu)$,
+ולכל $k \leq n+1$,
+$\rho^k = \rho^k_{J_\beta}$,
+$A^k = A^k_{J_\beta}$
+ו-$p^k = p^k_{J_\beta}$.</p>
+<p>ראשית נראה ברקורסיה שלכל $k \leq n$,
+$\nu \leq \rho^k$.</p>
+<p>המקרה  $k = 0$
+מיידי:
+$\nu \leq \beta =\rho^0$
+וסיימנו.</p>
+<p>יהי $0 \leq k &lt;  n$.
+$J_{\rho^k} = h''_{\langle J_{\rho^k}, A^k \rangle}
+(\omega \times (\rho^{k+1} \times \set{p^{k}}))$.
+בפרט יש פונקציה-$\Sigma_1^{\langle J_{\rho^k}, A^k\rangle}$
+חלקית
+מ-$\rho^{k+1}$
+על $J_{\rho^k}$.
+ברקורסיה ידוע ש-$\nu \leq \rho^k$
+ולכן
+בפרט יש פונקציה-$\Sigma_1^{\langle J_{\rho^k}, A^k\rangle}$
+חלקית
+מ-$\rho^{k+1}$
+על $\nu$.
+פונקציה זו היא $\Sigma_{k+1}^{J_\beta}$.
+כיון ש-$k + 1 &lt; n + 1$
+חייב להתקיים $\nu \leq \rho^{k+1}$,
+אחרת נהיה בסתירה למינימליות $n$.</p>
+<p>נשאר להראות ש-$\rho^{n+1} \leq \alpha_\nu &lt; \nu$.
+מהגדרת $S$
+נובע ש-$\alpha_\nu &lt; \nu$.
+נניח בשלילה ש-$\alpha_\nu &lt; \rho^{n+1}$.
+כיון ש-$\alpha_\nu$
+מונה אחרון ב-$J_\nu$,
+יש ב-$J_\nu$
+פונקציה חלקית
+$g : \alpha_\nu \xrightarrow{\text{לע}} \rho^{n + 1}$
+ולכן $h \circ g : \alpha_\nu \xrightarrow{\text{לע}}
+\rho^n$
+היא פונקציה-$\Sigma_1^{J_{\rho_n}}$ חלקית,
+בסתירה להגדרת $\rho_{n+1}$.
+$\square$</p>
+<p><strong>מסקנונת</strong>
+$J_{\rho^n} = h''_{\rho^n,A^n}(\omega \times
+(\alpha_\nu \times \set{p^{n + 1}}))$.</p>
+
+    
+    
+    
+     <ol>  </ol> 
+</div>
+
+        <footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">Carmi Merimovich</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+			Things
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+
