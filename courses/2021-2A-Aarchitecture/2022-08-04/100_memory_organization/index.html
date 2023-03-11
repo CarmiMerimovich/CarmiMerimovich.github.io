@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+
+
+        
+    
+        
+    
+
+        <html lang="he`" dir="rtl">
+<head>
+    <title>תקצירי הרצאות הארכיטקטורת מחשבים קיץ 2021/2</title>
+    <link rel="icon" href="me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=">תקצירי הרצאות בארכיטקטורת מחשבים סמסטר ב' 2022/3">
+
+    
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+    
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="../../../../me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						בית-הספר למדעי המחשב
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						המכללה האקדמית תל-אביב
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        תקצירי הרצאות בארכיטקטורת מחשבים סמסטר ב' 2022/3
+					</h3>
+                </div>
+			</div>
+		</div>
+		
+	</header>
+<body style="font-family: Arial, non-serif;">
+
+
+        
+        
+
+      
+
+
+
+<div>
+    
+      <p style="font-size: x-small; direction: rtl">
+      <a href="../../index.html"><a> >>> <a href="../index.html">2022-08-04<a> >>> מבנה כללי של הזכרון הראשי
+      </p>
+      
+    <h1>הזכרון הראשי</h1>
+<p>להלן סכמה של מערכת הזכרון:<br>
+<img src="memory.png" alt="מערכת הזכרון"><br>
+משמעות הסכימה היא זו.
+האותות
+d<sub>0</sub>
+עד
+d<sub>m-1</sub>
+הם אותות הנתונים.
+כלומר מילה במערכת זיכרון זו היא ברוחב m ביטים.
+האותות
+a<sub>0</sub>
+עד
+a<sub>n-1</sub>
+הם אותות הכתובת.
+לכל מילה יש כתובת.
+כלומר
+סך-הכל בזכרון יש עד
+2<sup>n</sup>
+מילים שכל אחת ברוחב
+m ביטים.</p>
+<h2>קריאה מהזכרון</h2>
+<p>יש לשים במבואות
+a<sub>0</sub>
+עד
+a<sub>n-1</sub>
+את כתובת המילה ולדרוך את המבוא R:<br>
+<img src="memory_read.png" alt="קריאה מהזכרון"><br>
+בתגובה מערכת זכרון תוציא על קוי הנתונים את המילה המתאימה:
+<img src="memory_answer.png" alt="תשובת מהזכרון"></p>
+<h2>כתיבה לזכרון</h2>
+<p>יש לשים במבואות
+a<sub>0</sub>
+עד
+a<sub>n-1</sub>
+את כתובת המילה,
+יש לשים במבואות הנתונים את התוכן הרלוונטי,
+ואז יש לדרוך את אותות הכתיבה הרלונטיים:<br>
+<img src="memory_write.png" alt="כתיבה זכרון"><br>
+יש אות קריאה אחד ואפשרות לכמה אותות כתיבה.
+אם יש אות כתיבה אחד אזי המערכת מאפשרת לכתוב לזיכרון רק מילים.
+לפעמים (למעשה בדרך-כלל) מערכת הזכרון רוצה לאפשר עדכון
+לחלקי מילה.
+אז לכל חלק יהיה אות כתיבה עצמאי.</p>
+<p>לדוגמא. אם יש מערכת בה יש 32 קווי נתונים.
+ואנו רוצים לאפשר עדכון של כל אחד מהבתים בנפרד אזי יהיו
+לנו אותות כתיבה w<sub>0</sub>
+עד
+W<sub>3</sub>.</p>
+<h2>1MB, ‏ 8 קווי נתונים</h2>
+<p>כדוגמא ראשונה ניקח מערכת שמאפשר זכרון של עד
+1MB
+כאשר יש לנו 8 מבואות נתונים.
+במערכת כזה נצטרך
+1M
+כתובות
+כשבכל כתובת יהיו 8 ביטים.
+נאמר שמערכת כזו מאורגנת
+1M × 8.
+<img src="memory_8088.png" alt="זכרון של 8088"></p>
+<h2>1MB, ‏ 16 קווי נתונים</h2>
+<p>נניח שאנחנו רוצים לתמוך בעד
+1MB
+זיכרון אבל מעוניינים (מטעמי ביצועים, כפי שנראה בהמשך)
+שהזיכרון יחזיר 16 ביטים בכל קריאה.
+אזי מבנה הזכרון יהיה
+512K × 16.
+כלומר נצטרך 19 קווי כתובת ו-16 קווי נתונים.
+אם נשאר אם אות W אחד,
+אזי נוכל לכתוב לזכרון כל פעם 16 ביטים בבת אחת בלבד.
+אם נרצה לתמוך בכך שאפשר יהיה לכתוב לכל בית בנפרד אזי נצטרך
+2 אותות כתיבה.<br>
+<img src="memory_8086.png" alt="זכרון של 8088"><br>
+סביר לקבוע ש-W<sub>0</sub>
+יאמר שיש לעדכן על-ידי
+d<sub>0</sub>
+עד
+d<sub>7</sub>,
+ו-W<sub>1</sub>
+יעדכן על-ידי
+d<sub>8</sub>
+עד
+d<sub>15</sub>.</p>
+<p>ננסה עוד מספר דוגמאות, אבל בלי שירטוטים הפעם.
+בכולן נאפשר עדכון ברמת הבית הבודד.</p>
+<h2>4GB עם מבואות נתונים ברוחב 8 ביטים</h2>
+<p>מבנה הזכרון יהיה
+4G × 8.
+נצטרך 32 קוי כתובת, 8 קווי נתונים, וקו W אחד.</p>
+<h2>4GB עם מבואות נתונים ברוחב 16 ביטים</h2>
+<p>מבנה הזכרון יהיה
+2G × 16.
+נצטרך 31 קוי כתובת, 16 קווי נתונים, ושני קווי
+W.</p>
+<h2>4GB עם מבואות נתונים ברוחב 32  ביטים</h2>
+<p>מבנה הזכרון יהיה
+1G × 32.
+נצטרך 30 קוי כתובת, 32 קווי נתונים, וארבעה קווי
+W.</p>
+<h2>64GB עם מבואות נתונים ברוחב 64  ביטים</h2>
+<p>מבנה הזכרון יהיה
+8G × 64.
+נצטרך 33 קוי כתובת, 64 קווי נתונים, ושמונה קווי
+W.</p>
+<h2>256GB עם מבואות נתונים ברוחב 128  ביטים</h2>
+<p>מבנה הזכרון יהיה
+16G × 128.
+נצטרך 34 קוי כתובת, 128 קווי נתונים, ו-16 קווי
+W.</p>
+
+    
+    
+    
+     <ol>  </ol> 
+</div>
+
+        <div style="font-size: x-small">
+&copy; 2022 Carmi Merimovich  
+&copy; כל הזכויות שמורות
+</div>
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">כרמי מרימוביץ</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+				מבוא לארכיטקטורת מחשבים: תקצירים
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+
