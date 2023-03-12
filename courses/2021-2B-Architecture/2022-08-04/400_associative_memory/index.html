@@ -2,6 +2,10 @@
 
 
 
+        
+    
+        
+    
 
         <html lang="he`" dir="rtl">
 <head>
@@ -40,6 +44,17 @@
 </style>
 
     
+        <link rel="stylesheet" href="index.css">
+        
+        
+        
+    
+        
+        
+    
+        
+        
+    
 <script>
 MathJax = {
     loader: {load: ['[tex]/unicode']},
@@ -62,8 +77,8 @@ MathJax = {
 			<div class="photoAndText">
 				<div style="vertical-align: center; padding: 0px;">
 					<img class="staffPhoto" 
-							alt = "Carmi Merimovich"
-							src="../me.png">
+							alt = "כרמי מרימוביץ"
+							src="../../../../me.png">
 				</div>
 				<div>
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
@@ -72,7 +87,7 @@ MathJax = {
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
 					</h3>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                        תקצירי הרצאות בארכיטקטורת מחשבים סמסטר ב' 2022/3
+                        תקצירי הרצאות בארכיטקטורת מחשבים סמסטר ב' 2021/2
 					</h3>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
                     </h3>
@@ -94,119 +109,68 @@ MathJax = {
 <div>
     
       <p style="font-size: x-small; direction: rtl">
-      ארכיטקטורה
+      <a href="../../index.html"><a> >>> <a href="../index.html">2022-08-04<a> >>> זכרון אסוציאטיבי
       </p>
       
-    <h1>תקצירים של נושאים בארכיטקטורת מחשבים לפי הרצאות בסמסטר ב 2022/3</h1>
+    <h1>זכרון אסוציאטיבי</h1>
+<p>להלן סכמה של זכרון אסוציאטיבי:<br>
+<img src="associative_memory.png" alt="זכרון אסוציאטיבי"><br>
+ההבדל ברמת הסכמה בין מערכת זיכרון לבין זכרון אסוציאטיבי
+הוא
+שבמקום המבואות
+a<sub>i</sub>
+ישנם המבואות
+k<sub>i</sub>,
+יש אות W יחיד,
+ונוסף האות
+Valid.</p>
+<p>משמעות הסכימה היא זו.
+האותות
+d<sub>0</sub>
+עד
+d<sub>m-1</sub>
+הם אותות הנתונים.
+כלומר מילה במערכת זיכרון זו היא ברוחב m ביטים.
+האותות
+k<sub>0</sub>
+עד
+k<sub>n-1</sub>
+הם <strong>המפתח</strong>.
+לכל מילה בזכרון יש מפתח.
+אבל לא לכל ערך אפשרי של המפתח יש מילה בזיכרון.</p>
+<p>כיון שלא לכל ערך של מפתח מתאימה מילה בזכרון
+נוסף המוצא V.</p>
+<h2>קריאה מהזכרון</h2>
+<p>יש לשים במבואות
+k<sub>0</sub>
+עד
+k<sub>n-1</sub>
+את המפתח ולדרוך את המבוא R:<br>
+<img src="memory_read.png" alt="קריאה מהזכרון"><br>
+בתגובה מערכת זכרון מוציאה את האות
+V.
+אם V הוא true אזי
+על קווי הנתונים תופיעה המילה המתאימה:<br>
+<img src="memory_answer.png" alt="תשובת מהזכרון"></p>
+<h2>כתיבה לזכרון</h2>
+<p>יש לשים במבואות
+k<sub>0</sub>
+עד
+k<sub>n-1</sub>
+את כתובת המילה,
+יש לשים במבואות הנתונים את התוכן הרלוונטי,
+ואז יש לדרוך את אות הכתיבה W:<br>
+<img src="memory_write.png" alt="כתיבה זכרון"></p>
+<p>שתי נקודות להרהור:</p>
+<ol>
+<li>למה צריך את זה?</li>
+<li>איך מממשים את זה?</li>
+</ol>
 
     
     
     
-    
-    
-     <ol> 
-            <li>
-                
-            <a href="2023-03-02_intro/index.html">2 במרץ 2023</a>
-         <ol> 
-            <li>
-                
-            <a href="2023-03-02_intro/100_technichalities/index.html">פרטים טכניים</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-02_intro/200_intro/index.html">מבוא</a>
-         <ol>  </ol> 
-        </li>
-         </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/index.html">3 ו-6 מרץ, 2023</a>
-         <ol> 
-            <li>
-                
-            <a href="2023-03-03/0050_slide_02_von_neumann/index.html">עקרון התוכנית המאוחסנת</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0100_instruction_set/index.html">קבוצת הפקודות (Instruction Set)</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0200_integer_alu/index.html">מבנה פקודות אריתמטיות לוגיות על שלמים</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0300_semi_compile/index.html">קומפילציה בקירוב טוב</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0400_register_operands/index.html">אופרנדים ברגיסטרים</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0500_symmetry/index.html">סימטריה</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0600_register_conventions/index.html">הסכמי שימוש באוגרים</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0700_compile/index.html">קומפילציה</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0800_memory/index.html">הזכרון הראשי - מבוא</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0900_addressing_modes/index.html">שיטות מיעון</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/1000_index_offset/index.html">אינדקס והיסט</a>
-         <ol>  </ol> 
-        </li>
-         </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-10/index.html">10 במרץ, 2023</a>
-         <ol> 
-            <li>
-                
-            <a href="2023-03-10/100_branch/index.html">קפיצות</a>
-         <ol>  </ol> 
-        </li>
-         </ol> 
-        </li>
-         </ol> 
+     <ol>  </ol> 
 </div>
 
         <div style="font-size: x-small">

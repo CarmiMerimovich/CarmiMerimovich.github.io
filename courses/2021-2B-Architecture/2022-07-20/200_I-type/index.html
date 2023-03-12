@@ -2,6 +2,10 @@
 
 
 
+        
+    
+        
+    
 
         <html lang="he`" dir="rtl">
 <head>
@@ -40,6 +44,15 @@
 </style>
 
     
+        
+        
+    
+        
+        
+    
+        
+        
+    
 <script>
 MathJax = {
     loader: {load: ['[tex]/unicode']},
@@ -62,8 +75,8 @@ MathJax = {
 			<div class="photoAndText">
 				<div style="vertical-align: center; padding: 0px;">
 					<img class="staffPhoto" 
-							alt = "Carmi Merimovich"
-							src="../me.png">
+							alt = "כרמי מרימוביץ"
+							src="../../../../me.png">
 				</div>
 				<div>
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
@@ -72,7 +85,7 @@ MathJax = {
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
 					</h3>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                        תקצירי הרצאות בארכיטקטורת מחשבים סמסטר ב' 2022/3
+                        תקצירי הרצאות בארכיטקטורת מחשבים סמסטר ב' 2021/2
 					</h3>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
                     </h3>
@@ -94,119 +107,39 @@ MathJax = {
 <div>
     
       <p style="font-size: x-small; direction: rtl">
-      ארכיטקטורה
+      <a href="../../index.html"><a> >>> <a href="../index.html">2022-07-20<a> >>> פקודות מטיפוס I
       </p>
       
-    <h1>תקצירים של נושאים בארכיטקטורת מחשבים לפי הרצאות בסמסטר ב 2022/3</h1>
+    <h1>פקודות מטיפוס I</h1>
+<p>ככלל מטרת הפקודות במשפחה זו היא לבצע פקודות בין אוגר לבין קבוע
+ואת התוצאה לטעון לאוגר שני.
+בפקודה יש 12 ביטים לקבוע ולכן טווח הערכים של הקבוע יכול להיות
+2048-
+עד 2047.</p>
+<p>הפקודות במשפחה זו משמשות גם עבור פקודות הטעינה מהזיכרון אותן נלמד בהמשך.
+יש מוזרות מסויימת, אבל הגיונית, בפקודות ההזזהה בהן הקבוע הוא בין
+6 ביטים בלבד ושאר הביטים משמשים כחלק מקוד הפעולה.</p>
+<p><img src="I.png" alt="פקןדןת מטיפוס I"></p>
+<ul>
+<li>addi ‏ 000</li>
+<li>slti ‏ 010</li>
+<li>sltiu ‏ 011</li>
+<li>xori ‏ 100</li>
+<li>ori ‏ 110</li>
+<li>andi ‏ 111</li>
+</ul>
+<p>כפי שציינו קודם, פקודות ההזזה קצת שונות:
+<img src="I2.png" alt="פקןדןת הזזה I"></p>
+<ul>
+<li>slli ‏ 001 000000</li>
+<li>srli ‏ 101 000000</li>
+<li>srai ‏ 101 010000</li>
+</ul>
 
     
     
     
-    
-    
-     <ol> 
-            <li>
-                
-            <a href="2023-03-02_intro/index.html">2 במרץ 2023</a>
-         <ol> 
-            <li>
-                
-            <a href="2023-03-02_intro/100_technichalities/index.html">פרטים טכניים</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-02_intro/200_intro/index.html">מבוא</a>
-         <ol>  </ol> 
-        </li>
-         </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/index.html">3 ו-6 מרץ, 2023</a>
-         <ol> 
-            <li>
-                
-            <a href="2023-03-03/0050_slide_02_von_neumann/index.html">עקרון התוכנית המאוחסנת</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0100_instruction_set/index.html">קבוצת הפקודות (Instruction Set)</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0200_integer_alu/index.html">מבנה פקודות אריתמטיות לוגיות על שלמים</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0300_semi_compile/index.html">קומפילציה בקירוב טוב</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0400_register_operands/index.html">אופרנדים ברגיסטרים</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0500_symmetry/index.html">סימטריה</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0600_register_conventions/index.html">הסכמי שימוש באוגרים</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0700_compile/index.html">קומפילציה</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0800_memory/index.html">הזכרון הראשי - מבוא</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/0900_addressing_modes/index.html">שיטות מיעון</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-03/1000_index_offset/index.html">אינדקס והיסט</a>
-         <ol>  </ol> 
-        </li>
-         </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="2023-03-10/index.html">10 במרץ, 2023</a>
-         <ol> 
-            <li>
-                
-            <a href="2023-03-10/100_branch/index.html">קפיצות</a>
-         <ol>  </ol> 
-        </li>
-         </ol> 
-        </li>
-         </ol> 
+     <ol>  </ol> 
 </div>
 
         <div style="font-size: x-small">
