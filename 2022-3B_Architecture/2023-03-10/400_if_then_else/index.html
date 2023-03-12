@@ -4,6 +4,8 @@
 
         
     
+        
+    
 
         <html lang="he`" dir="rtl">
 <head>
@@ -45,6 +47,9 @@
         
         
     
+        
+        
+    
 <script>
 MathJax = {
     loader: {load: ['[tex]/unicode']},
@@ -68,7 +73,7 @@ MathJax = {
 				<div style="vertical-align: center; padding: 0px;">
 					<img class="staffPhoto" 
 							alt = "Carmi Merimovich"
-							src="../../me.png">
+							src="../../../me.png">
 				</div>
 				<div>
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
@@ -99,69 +104,51 @@ MathJax = {
 <div>
     
       <p style="font-size: x-small; direction: rtl">
-      <a href="../index.html">ארכיטקטורה<a> >>> 10 במרץ, 2023
+      <a href="../../index.html">ארכיטקטורה<a> >>> <a href="../index.html">10 במרץ, 2023<a> >>> if ... then .... else ...
       </p>
       
-    <p>עברנו על שקפים 25 עד 30</p>
+    <h1>if ... then .... else ...</h1>
+<p>נעיין במבנה הבא בשפת על.</p>
+<pre><code>if (i == j)
+    f = g + h;
+else
+    f = g - h;
+</code></pre>
+<p>לקוד שמתבצע אם i = j
+נקרא then-block.
+לקטע שמתבצע אם i ≠ j
+נקרא else-block.</p>
+<p>נניח שהקומפיילר בחר להציב את המשתנים
+f, g, h, i, j
+באוגרים
+x19, x20, x21, x22, x23,
+בהתאמה.
+אז:</p>
+<ul>
+<li>צריך להיות מקום לקמפל לתוכו את ב-then-block
+ואת ב-else-block.</li>
+<li>צריך שבסיום כל אחד מהבלוקים נגיע לאותו מקום.</li>
+<li>צריך להגיע לאחד מהקטעים בהתאם למב השוויון בין i וי-j.</li>
+</ul>
+<p>אפשרות 1:</p>
+<pre><code>    beq x22, x23, 12     // if i = j goto then-block
+    sub x19, x20, x21   // i != j: else block
+    beq x0, x0, 8       // skip over then block
+    add x19, x20 x21
+</code></pre>
+<p><em>שימו לב</em>
+למספרים  בבתים של המרחק אל פקודות היעד.</p>
+<p>וכמובן, אפשרות 2:</p>
+<pre><code>    bne x22, x23, 12     // if i != j goto then-block
+    add x19, x20, x21   // i == j: else block
+    beq x0, x0, 8       // skip over else block
+    sub x19, x20 x21
+</code></pre>
 
     
     
     
-     <ol> 
-            <li>
-                
-            <a href="100_B_format/index.html">קפיצות</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="200_branch_instructions/index.html">פקודות מכוננה לקפיצות</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="300_branch_pseudo_instructions/index.html">פסאודו-פקודות מכונה לקפיצות</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="350_branch_unconditional/index.html">קפיצה לא מותנה</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="370_distance_limit/index.html">מגבלת המרחק בקפיצה</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="400_if_then_else/index.html">if ... then .... else ...</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="500_if_then_else_modified/index.html">שנוי קטן if ... then .... else ...</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="600_labels/index.html">תוויות</a>
-         <ol>  </ol> 
-        </li>
-        
-            <li>
-                
-            <a href="700_while/index.html">while () {}</a>
-         <ol>  </ol> 
-        </li>
-         </ol> 
+     <ol>  </ol> 
 </div>
 
         <div style="font-size: x-small">
