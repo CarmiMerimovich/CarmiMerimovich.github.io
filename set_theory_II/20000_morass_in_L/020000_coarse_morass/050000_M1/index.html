@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+
+
+        
+    
+        
+    
+        
+    
+
+        <html lang="he" dir="rtl">
+<head>
+    <title>תורת הקבוצות II, הקבוצות הבנויות</title>
+    <link rel="icon" href="me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="דף מסגרת למשפטים על הקבוצות הבנויות">
+
+    
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+</style>
+
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+    
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "כרמי מרימוביץ"
+							src="../../../me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						בית הספר למדעי המחשב
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						המכללה האקדמית תל-אביב
+					</h3>
+					<h4  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+			           עולם הקבוצות הבנויות
+					</h4>
+				</div>
+			</div>
+		</div>
+		
+	</header>
+<body style="font-family: Arial, non-serif;">
+
+
+        
+        
+
+      
+
+
+
+<div>
+    
+      <p style="font-size: x-small; direction: ltr">
+      <a href="../../../index.html">מאמר<a> >>> <a href="../../index.html">סבך (Morass) ב-$L$<a> >>> <a href="../index.html">סבך גס (Coarse Morass)<a> >>> M1
+      </p>
+      
+    <h1>M1</h1>
+<p><strong>טענה</strong></p>
+<ol>
+<li>
+<p>אם $\pi$
+מעיד ש-$\nu_0 \unicode{x297D} \nu_1$
+אז $\pi \mid \alpha_{\nu_0} = \text{id}$
+ו-$\pi(\alpha_{\nu_0}) = \alpha_{\nu_1}$.
+(ולכן $\pi$
+הוא העד היחיד.)</p>
+</li>
+<li>
+<p>$\unicode{x297D}$
+הוא סדר עץ על $S^1$
+כך שאם $\nu_0 \unicode{x297D} \nu_1$
+אז $\alpha_{\nu_0} &lt; \alpha_{\nu_1}$.</p>
+</li>
+<li>
+<p>$\langle \pi_{\nu_0, \nu_1} \mid \nu_0 \unicode{x297D} \nu_1 \rangle$
+היא מערכת קומוטטיבית.
+$\langle \pi_{\nu_0, \nu_1}| \nu_0 + 1 \mid \nu_0 \unicode{x297D} \nu_1 \rangle$
+היא מערכת קומוטטיבית של פונקציות שומרות סדר.</p>
+</li>
+<li>
+<p>נקבע $\alpha_i = \alpha_{\nu_i}$
+ו-$S_i = S_{\alpha_i} \cap (\nu_i + 1)$,
+עבור $i &lt; 2$.
+אז:</p>
+<ul>
+<li>$\nu_0 = \min S_0 \iff \nu_1 = \min S_1$.</li>
+<li>אם $\pi_{\nu_0, \nu_1}(\tau_0) = \tau_1$
+ו-$\nu_0$
+הוא העוקב המיידי
+ב-$S_0$
+של $\tau_0$, אז $\nu_1$
+הוא העוקב המיידי ב-$S_1$
+של $\tau_1$.</li>
+</ul>
+</li>
+</ol>
+<p><strong>הוכחה</strong></p>
+<ol>
+<li>
+<p>מאלמנטריות
+$\pi(\omega_1^{J_{\nu_0}}) = \omega_1^{J_{\nu_1}}$.
+כלומר $\pi(\alpha_{\nu_0}) = \alpha_{\nu_1}$.</p>
+<p>נוכיח ש-$\pi \vert \alpha_{\nu_0} = \text{id}$
+באינדוקציה על $\beta \leq \alpha_{\nu_0}$.
+מאלמנטריות נובע שאם $\beta \leq \omega$
+אז $\pi(\beta) = \beta$.
+אם $\pi(\beta) = \beta$
+אזי מאלמנטריות $\pi(\beta+1) = \pi(\beta) + 1 = \beta+1$.
+נשאר המקרה $\beta &lt; \alpha_{\nu_0}$
+גבולי כאשר ידוע ש-$\pi \vert \beta = \text{id}$.
+כיון ש-$\beta &lt; \alpha_{\nu_0} = \omega_1^{J_{\nu_0}}$
+יש ב-$J_{\nu_0}$
+פונקציה $f : \omega \xrightarrow{\text{לע}} \beta$.
+אזי $\pi(f) : \omega \xrightarrow{\text{לע}} \pi(\beta)$.
+לכל $n &lt; \omega$
+מתקיים
+$\pi(f)(\pi(n)) = \pi(f(n)) = f(n)$.
+כלומר $\pi(f) = f$
+ולכן $\pi(\beta) = \beta$.</p>
+<p>$\pi$
+הוא עד יחיד כיון שלשיכון אין &quot;ברירה&quot;.
+נניח $x \in J_{\nu_0}$.
+אז $x = f(\alpha_0,\dotsc,\alpha_{n-1}, p_{\nu_0})$,
+כאשר $f$ נוסחה
+ו-$\alpha_0,\dotsc,\alpha_{n-1} &lt; \alpha_{\nu_0}$.
+יש לנו $\pi(\alpha_0) = \alpha_0$, $\dotsc$,
+$\pi(\alpha_{n-1}) = \alpha_{n-1}$.
+מאלמנטריות נקבל $\pi(x) =
+f(\alpha_0,\dotsc,\alpha_{n-1}, p_{\nu_1})$.</p>
+</li>
+<li>
+<p>נניח $\nu_0, \nu_1 \unicode{x297D} \nu_2$.
+יהי $x \in J_{\nu_0}$.
+אז יש נוסחה $f(x_0,\dotsc,x_{k-1}, y)$
+כך ש-$x = f(\xi_0,\dotsc,\xi_{k-1}, p_{\nu_0})$
+כאשר $\xi_0,\dotsc, \xi_{k-1} &lt; \alpha_{\nu_0}$.
+ואז $\pi_{\nu_0,\nu_2}(x) = f(\xi_0,\dotsc,\xi_{k-1}, p_{\nu_2})$.
+נקבע $\pi(x) = f(\xi_0,\dotsc,\xi_{k-1}, p_{\nu_1})$.
+קל לראות ש-$\pi : J_{\nu_0} \to J_{\nu_1}$
+שיכון יפה,
+ולכן $\nu_0 \unicode{x297D} \nu_1$.</p>
+<p>אם $\alpha_{\nu_0} = \alpha_{\nu_1}$
+אזי $\pi_{\nu_0, \nu_1}$
+פונקציה על
+ולכן היא הזהות.</p>
+</li>
+<li>
+<p>איו פה כל כך מה להראות.
+מדובר בהרכבות של שיכונים אלמנטריים.</p>
+</li>
+<li></li>
+</ol>
+
+    
+    
+    
+    
+    
+     <ol>  </ol> 
+</div>
+
+        <footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">Carmi Merimovich</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+			Things
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+

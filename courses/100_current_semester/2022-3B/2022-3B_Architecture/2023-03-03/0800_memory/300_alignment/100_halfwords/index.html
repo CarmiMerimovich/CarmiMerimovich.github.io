@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+
+
+        
+    
+        
+    
+        
+    
+        
+    
+
+        <html lang="he" dir="rtl">
+<head>
+    <title>תקצירי הרצאות הארכיטקטורת מחשבים קיץ 2022/32</title>
+    <link rel="icon" href="me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=">תקצירי הרצאות בארכיטקטורת מחשבים סמסטר ב' 2022/3">
+
+    
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+    
+
+    
+
+    <div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="../../../../../../../../me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ, אתר אישי
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        תקצירי הרצאות בארכיטקטורת מחשבים סמסטר ב' 2022/3
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        <a href="../../../../affiliation.html">השתייכות</a>
+                    </h3>
+                </div>
+			</div>
+		</div>
+		
+	</header>
+<body style="font-family: Arial, non-serif;">
+
+
+        
+        
+
+      
+
+
+
+<div>
+    
+      <p style="font-size: x-small; direction: ltr">
+      <a href="../../../../../../../index.html">Course (taught and being teached)<a> >>> <a href="../../../../../../index.html">Current Semester<a> >>> <a href="../../../../../index.html">2022-3B<a> >>> <a href="../../../../index.html">מבוא לארכיטקטורת מחשבים<a> >>> <a href="../../../index.html">3 ו-6 מרץ, 2023 (שקפים 1-12)<a> >>> <a href="../../index.html">הזכרון הראשי - מבוא<a> >>> <a href="../index.html">כתובות אינטגרליות<a> >>> חיבור זכרון-מעבד ברוחב 16 ביטים
+      </p>
+      
+    <h1>חיבור זכרון-מעבד ברוחב 16 ביטים</h1>
+<p>נקח חצי-מילה, כלומר שני בתים.
+מבחינת המתכנת שליפה של חצי מילה כזו היא ברורה:</p>
+<pre><code>    lh  x5,0(x10)   // for example
+</code></pre>
+<p>אבל מבחינת המימוש במעבד,  נכנס פה המבנה הפיזי של חיבור המעבד לזכרון למשחק.
+אם החיבור הפיזי מאפשר להעביר בין הזכרון למעבד כל פעם בית אחד
+אזי המעבד יצטרך לגשת פעמיים לזכרון
+וישלוף משם כל פעם בית.
+זה כמובן גורם למעבד לעבוד יותר זמן.</p>
+<p>כדי להאיץ את העבודה ניתן לחבר את הזכרון והמעבד כך שאפשר להעביר שני בתים כל פעם.
+אבל פה נכנסים שיקולים הנדסיים.
+בחיבור כזה המעבד יכול לבקש מהזכרון רק כתובות זוגיות,
+ותמיד חוזרים שני בתים.
+נניח שהמעבד מבצע</p>
+<pre><code>    lb  x7,0(x12)
+</code></pre>
+<p>אם ב-x12
+יש 100,
+אזי המעבד יבקש ויקבל את שני הבתים בכתובת 100
+וישתמש רק בבית בכתובת 100.</p>
+<p>אם ב-x12
+יש 101,
+אזי המעבד יבקש ויקבל את שני הבתים בכתובת 100
+וישתמש רק בבית בכתובת 101.</p>
+<p>כל זה סביר מצויין ולא פוגע בשום דבר למעט בתכנון
+המעט יותר מורכב של המעבד.</p>
+<p>נעיין בפקודה הבאה.
+נניח שהמעבד מבצע</p>
+<pre><code>    lh  x7,0(x12)
+</code></pre>
+<p>אם ב-x12
+יש 100,
+אזי המעבד יבקש ויקבל את שני הבתים בכתובת 100
+ויאחסן את שניהם ב-x7.
+מצויין ויעיל.
+לטעון בית אחד או לטעון שני בתים יקח בדיוק אותו זמן.
+<strong>אבל</strong>
+מה יקרה אם ב-x12
+יש 101?
+במקרה זה צריך לשלוף את הבתים בכתובות 101 ו-102
+מהזכרון.
+ובגלל האופן שבו הזכרון והמעבד מחוברים
+<strong>אין למעבד דרך לבקש בפעם אחת את שני הבתים האלה</strong>.</p>
+<p>מעבדים קדמונים
+(8086, 80286)
+היו עפים במקרה כזה.
+מעבדים מודרניים נוקטים בגישה הבאה.
+יטענו שני הבתים בכתובת 100.
+אז יטענו שני הבתים בכתובת 102.
+המעבד יקח את הבתים בכתובות 101 ו-102
+ויטען אותפ לאוגר.
+כלומר התוכנית עובדת אבל הביצועים ירודים.</p>
+<p>גישה לשני בתים בכתובת אי-זוגית תקרא כתובת לא אינטגרלית וראינו
+את הפגיעה בביצועים.</p>
+
+    
+    
+    
+    
+    
+     <ol>  </ol> 
+</div>
+
+        <div style="font-size: x-small">
+&copy; 2022 Carmi Merimovich  
+&copy; כל הזכויות שמורות
+</div>
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">כרמי מרימוביץ</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+				מבוא לארכיטקטורת מחשבים: תקצירים
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+

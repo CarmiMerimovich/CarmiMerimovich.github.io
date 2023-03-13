@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+
+
+        
+    
+
+        <html lang="he" dir="rtl">
+<head>
+    <title>תורת הקבוצות II, הקבוצות הבנויות</title>
+    <link rel="icon" href="me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="דף מסגרת למשפטים על הקבוצות הבנויות">
+
+    
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+</style>
+
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+    
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "כרמי מרימוביץ"
+							src="../me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						בית הספר למדעי המחשב
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						המכללה האקדמית תל-אביב
+					</h3>
+					<h4  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+			           עולם הקבוצות הבנויות
+					</h4>
+				</div>
+			</div>
+		</div>
+		
+	</header>
+<body style="font-family: Arial, non-serif;">
+
+
+        
+        
+
+      
+
+
+
+<div>
+    
+      <p style="font-size: x-small; direction: ltr">
+      <a href="../index.html">מאמר<a> >>> מבוא
+      </p>
+      
+    <h1>$L$: עולם הקבוצות הבנויות</h1>
+<p><a href="https://www.pnas.org/doi/10.1073/pnas.24.12.556">מודל</a>
+זה התגלה על-ידי
+גודל
+<a href="https://en.wikipedia.org/wiki/Kurt_G%C3%B6del">(Gödel)</a>
+ונצטרך לא מעט עבודה טכנית רק כדי להגדיר אותו במדויק.
+גודל השתמש במודל זה כדי להראות שאקסיומת הבחירה
+והשערת הרצף עקביות ביחס לתורה
+ZF.</p>
+<p>&quot;ההגדרה&quot; הראשונה של
+L
+שניתן תכיל אלמנט אינטאיטיבי רציני.</p>
+<p><strong>&quot;הגדרה&quot;</strong>
+תהי
+$\psi(v, v_0, \dotsc, v_{n-1})$
+נוסחה
+ו-$X$
+קבוצה.
+נגדיר
+\begin{equation}
+Y = \set{x \in X \mid X \models \psi(x, p_0, \dotsc, p_{n-1})},
+\end{equation}
+כאשר
+$p_0, \dotsc, p_{n-1} \in X$.
+נאמר שהקבוצה $Y$
+מוגדרת מעל הקבוצה
+$X$
+על-ידי הנוסחה
+$\psi$
+והפרמטרים
+$p_0, \dotsc, p_{n-1}$.</p>
+<p><strong>יש לשים לב</strong>
+ב-&quot;הגדרה&quot; הקודמת יש שתי בעיות.
+ראשית בעוד שברורה משמעות היחס
+$\models$
+לא ברור כלל כיצד ניתן לרשום אותו
+<strong>כנוסחה</strong> בשפה של תורת הקבוצות.</p>
+<p>שנית.
+מדובר פה בשורת הגדרות.
+לכל נוסחה
+$\psi$
+נוצרת הגדרה נפרדת.</p>
+<p><strong>&quot;הגדרה&quot;</strong>
+קבוצה
+$Y$
+תקרא גדירה מעל
+$X$
+אם יש נוסחה
+$\psi$
+ופרמטרים
+$p_0, \dotsc, p_{n-1} \in X$
+כך שמתקיים
+$Y = \set{x \in X \mid X \models \psi(x, p_0, \dotsc, p_{n-1})}$,
+כאשאר
+$p_0, \dotsc, p_{n-1} \in X$.</p>
+<p><strong>יש לשים לב</strong>
+ב-&quot;הגדרה&quot; הקודמת יש
+$\exists \psi$.
+כלומר &quot;קיימת נוסחה&quot;.
+אבל אין לנו יכולת בתורת הקבוצות לנסח דבר כזה.
+אנו יכולים לנסח &quot;קיימת קבוצה&quot; בלבד.</p>
+<p><strong>הגדרה</strong>
+נגדיר את הפונקציה
+$\text{Def}$ באופן הבא:
+\begin{equation}
+Y = \text{Def}(X) \iff \forall Z \ (Z \in Y \leftrightarrow
+Z \text{ is definable over } X).
+\end{equation}
+הבעיה בהדרה הקודמת היא שהיא נשענת על &quot;הגדרות&quot;.
+אבל, אם
+(כאשר)
+נפתור את הבעייות בשתי ההגדרות הראשונות
+אזי הגדרה זו בהחלט תשמש אותנו.</p>
+<p>בהינתן הפונקציה
+$\text{Def}$
+נגדיר את
+$L$,
+עולם הקבוצות הבנויות, באינדוקציה על הסודרים באופן הבא:
+\begin{align}
+&amp; L_0 = \emptyset, \\
+&amp; L_{\alpha + 1} = \text{Def}(L_{\alpha}), \\
+&amp; L_{\beta} = \bigcup_{\alpha &lt; \beta} L_\alpha, \\
+&amp; L = \bigcup_{\alpha \in \text{On}} L_{\alpha}.
+\end{align}
+אפשר בהחלט כשלב ראשון לעבוד עם ההגדרות האינטואיטיביות הנ&quot;ל.</p>
+
+    
+    
+    
+    
+    
+     <ol>  </ol> 
+</div>
+
+        <footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">Carmi Merimovich</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+			Things
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+

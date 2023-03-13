@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+
+
+        
+    
+
+        <html lang="he" dir="rtl">
+<head>
+    <title>מבוא לארכיטקטורת מחשבים, תוכן </title>
+    <link rel="icon" href="me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="מבוא לארכיטקטורת מחשבים, תוכן">
+
+    
+
+    
+    <link rel="stylesheet" href="index.css">
+    
+    <style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+        pre {
+    direction: ltr;
+    text-align: left;
+}
+</style>
+<script>
+MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+    
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "כרמי מרימוביץ"
+							src="me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						בית הספר למדעי המחשב
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						המכללה האקדמית תל-אביב
+					</h3>
+					<h4  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+			           צוק העיתים:  משפטים בתורת הקבוצות
+					</h4>
+				</div>
+			</div>
+		</div>
+		
+	</header>
+<body style="font-family: Arial, non-serif;">
+
+
+        
+        
+
+      
+
+
+
+<div>
+    
+      <p style="font-size: x-small; direction: ltr">
+      <a href="../index.html"><a> >>> הזוג הסדור
+      </p>
+      
+    <p><strong>הגדרה</strong>
+נגדיר זוג סדור באופן הבא:
+$\langle x, y \rangle = \set{\set{x}, \set{x, y}}$.</p>
+<p><strong>טענה</strong>
+$\langle x_0, y_0 \rangle = \langle x_1, y_1 \rangle \iff
+x_0 = x_1 \wedge y_0 = y_1$.</p>
+<p>אפשר היה להגדיר זוג סדור באופן סימטרי:
+$\langle x, y \rangle = \set{\set{y}, \set{x, y}}$.</p>
+<p><strong>הגדרה</strong>
+עבור
+$n &gt; 1$
+נגדיר
+$n$-יה
+ברקורסיה באופן הבא:
+$\langle x_0, \dotsc, x_n \rangle =
+\langle \langle x_0, \dotsc, x_{n-1} \rangle, x_n \rangle$.</p>
+<p>לפעמים מגדירים
+$n$-יות
+באופו הבא:
+$\langle x_0, \dotsc, x_n \rangle =
+\langle x_0, \langle x_1, \dotsc, x_{n} \rangle  \rangle$.</p>
+<p><strong>טענה</strong>
+$\langle x_0, ,\dotsc, x_n \rangle = \langle y_0, \dotsc, y_n \rangle \iff
+x_0 = x_1 \wedge \dotsb \wedge x_n = y_n$.</p>
+<hr>
+<p>לפעמים ההגדרה הנ&quot;ל של זוג סדור לא נוחה,
+בדרך כלל בגלל העליה בדרגה של הזוג הסדור לעומת הקוארדינטות שלו.
+במקרים כאלה ניתן להגדיר את הזוג הסדור באופן הבא.</p>
+<p><strong>הגדרה (שלא נשתמש בה) (סקוט ומקארתי)</strong>
+$\langle x, y \rangle = \set{\langle 0,t \rangle \mid t\in x }\cup
+\set{\langle 1, t \rangle \mid t \in y}$.</p>
+<p><strong>הרחבה</strong>
+<a href="https://www.jstor.org/stable/20059989">מאמר נחמד</a>
+על הסטוריה והגדרות שונות של הזוג הסדור.</p>
+
+    
+    
+    
+    
+    
+     <ol>  </ol> 
+</div>
+
+        <footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">Carmi Merimovich</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+			Things
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+
+
+        
+    
+        
+    
+
+        <html lang="he" dir="rtl">
+<head>
+    <title>תורת הקבוצות II, הקבוצות הבנויות</title>
+    <link rel="icon" href="me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="דף מסגרת למשפטים על הקבוצות הבנויות">
+
+    
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+</style>
+
+    
+        
+        
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+    
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "כרמי מרימוביץ"
+							src="../../me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						בית הספר למדעי המחשב
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						המכללה האקדמית תל-אביב
+					</h3>
+					<h4  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+			           עולם הקבוצות הבנויות
+					</h4>
+				</div>
+			</div>
+		</div>
+		
+	</header>
+<body style="font-family: Arial, non-serif;">
+
+
+        
+        
+
+      
+
+
+
+<div>
+    
+      <p style="font-size: x-small; direction: ltr">
+      <a href="../../index.html">מאמר<a> >>> <a href="../index.html">פרוג'קטום-$\Sigma_n$ והאחדה-$\Sigma_n$<a> >>> אם $\rho_1^M = \delta_1^M$ אז יש $B \in \mathscr{P}(J_\rho) \cap \Sigma_1^M$ כך ש-$\Sigma_n^{\langle J_\rho, B \rangle}=\mathscr{P}(J_\rho) \cap \Sigma_{n+1}^M$
+      </p>
+      
+    <p><strong>משפט (Jensen)</strong>
+יהי
+$M$
+מבנה-$J$,
+$\rho = \rho_1^M$,
+$p \in M$
+ו-$f : \rho \xrightarrow{\text{לע}} M$
+פונקציה-$\Sigma_1^M(\set{p})$
+חלקית.
+אז יש יחס $B \in \mathscr{P}(J_\rho) \cap \Sigma^M_1$
+כך ש-$\Sigma_n^{\langle J_\rho, B \rangle}=
+\mathscr{P}(J_\rho) \cap \Sigma_{n+1}^M$.</p>
+<p><strong>הוכחה</strong>
+יהי $u = \text{dom}(f)$.
+ברור ש-$u$
+קבוצה-$\Sigma_1^M(\set{p})$.
+נקבע
+\begin{equation}
+B = \set{\langle \ulcorner \varphi \urcorner,x \rangle \mid
+x \in J_\rho,\ 
+M \models^{\Sigma_1} \varphi(\langle x, p\rangle}.
+\end{equation}
+$B$
+הוא יחס-$\Sigma^M_1$.
+ולכן לפי
+<a href="../simple_subset_complex/">למה</a>
+מתקיים $\Sigma_n^{\langle J_\rho, B\rangle} \subseteq
+\Sigma_{n+1}^M$.</p>
+<p>נראה את הכיוון ההפוך.
+יהי $R \in \mathscr{P}(J_\rho) \cap \Sigma_{n+1}^M$.</p>
+<p>נניח ש-$n$
+זוגי.
+אז יש $P(x_0,\dotsc,x_{n-1},x)$
+יחס-$\Sigma^M_1$
+כך שמתקיים
+\begin{equation}
+R(x) \iff M \models \exists x_0\ \dotsb \forall x_{n-1}\ 
+P(x_0,\dotsc,x_{n-1}, x).
+\end{equation}
+בעזרת הפונקציה $f$
+אפשר להחליף את המשתנים $x_0,\dotsc,x_{n-1}$
+בסודרים קטנים מ-$\rho$:
+\begin{equation}
+R(x) \iff M \models \exists \xi_1\ \dotsb \forall \xi_n\ 
+\xi_0,\dotsc,\xi_{n-1} \in \text{dom}(f) \wedge
+P(f(\xi_1),\dotsc,f(\xi_n), x).
+\end{equation}
+כיון ש-$P$
+יחס-$\Sigma_1^M$
+גם ההרכבה שלו עם הפונציה $f$
+היא $\Sigma_1^M$.
+סך הכל קיבלנו שהנוסחה
+\begin{equation}
+\xi_0,\dotsc,\xi_{n-1} \in \text{dom}(f) \wedge
+P(f(\xi_0),\dotsc,f(\xi_{n-1}),x)
+\end{equation}
+הינה $\Sigma_1^M$.
+ביחס $P$
+יש פרמטרים.
+בעזרת $f$
+נהפוך אותם לסודרים.
+סך-הכל נבנה יחס
+$\bar{P} \in \Sigma_1^M(\set{p})$
+כך שמתקיים
+\begin{multline}
+M \models \xi_0,\dotsc,\xi_{n-1} \in \text{dom}(f) \wedge
+P(f(\xi_0),\dotsc,f(\xi_{n-1}),x) \iff \\
+M \models \bar{P}(\xi_0, \dotsc, \xi_{n-1},
+\tau_0, \dotsc, \tau_{k-1}, x).
+\end{multline}
+יהי $i$
+קוד של נוסחה זו.
+לכן
+\begin{equation}
+B(i,\langle \xi_0,\dotsc,\xi_{n-1},
+\tau_0,\dotsc,\tau_{k-1}, x\rangle) \iff
+M \models
+\bar{P}(\xi_0, \dotsc, \xi_{n-1},
+\tau_0, \dotsc, \tau_{k-1}, x).
+\end{equation}
+ולבסוף נקבל
+\begin{equation}
+R(x) \iff \langle J_\rho, B\rangle \models
+\exists \xi_0\ \dotsb \forall \xi_{n-1}\ 
+B(i, \langle \xi_0,\dotsc,\xi_{n-1},
+\tau_0,\dotsc,\tau_{k-1},
+x\rangle).
+\end{equation}
+$\square$</p>
+
+    
+    
+    
+    
+    
+     <ol>  </ol> 
+</div>
+
+        <footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">Carmi Merimovich</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+			Things
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+

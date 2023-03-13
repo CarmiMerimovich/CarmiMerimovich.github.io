@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+
+
+        
+    
+        
+    
+        
+    
+
+        <html lang="he" dir="rtl">
+<head>
+    <title>תורת הקבוצות II, הקבוצות הבנויות</title>
+    <link rel="icon" href="me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="דף מסגרת למשפטים על הקבוצות הבנויות">
+
+    
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+</style>
+
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+    
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "כרמי מרימוביץ"
+							src="../../../me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						בית הספר למדעי המחשב
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						המכללה האקדמית תל-אביב
+					</h3>
+					<h4  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+			           עולם הקבוצות הבנויות
+					</h4>
+				</div>
+			</div>
+		</div>
+		
+	</header>
+<body style="font-family: Arial, non-serif;">
+
+
+        
+        
+
+      
+
+
+
+<div>
+    
+      <p style="font-size: x-small; direction: ltr">
+      <a href="../../../index.html">מאמר<a> >>> <a href="../../index.html">קידוד נוסחאות על ידי מבנים<a> >>> <a href="../index.html">קוד נוסחה<a> >>> סדרת בניה של נוסחה
+      </p>
+      
+    <h1>סדרת בניה</h1>
+<p>הנוסחה $\text{buildSeq}(xs, x)$
+מתקיימת אם $x$
+קוד של נוסחה ואם $xs$
+היא סדרת הבניה של $x$.</p>
+<p>\begin{align}
+&amp; \text{function}(xs) \wedge \\
+&amp; \text{natural}(\text{dom}(xs))  \wedge \\
+&amp; \forall k \in \text{dom } xs\  ( \\
+&amp;    xs(k) = \ulcorner v_i = v_j \urcorner \vee \\
+&amp;    xs(k) = \ulcorner v_i \in v_j \urcorner \vee \\
+&amp; \exists l &lt; k\  xs(k) =
+\ulcorner \neg xs(l)  \urcorner \vee \\
+&amp; \exists l_0, l_1 &lt; k\  xs(k) =
+\ulcorner xs(l_0) \wedge xs(l_1) \urcorner \vee \\
+&amp; \exists l_0, l_1 &lt; k\  xs(k) =
+\ulcorner xs(l_0) \vee xs(l_1)  \urcorner \vee \\
+&amp; \exists l_0, l_1 &lt; k\  xs(k) =
+\ulcorner xs(l_0) \to xs(l_1) \urcorner \vee \\
+&amp; \exists l_0, l_1 &lt; k\  xs(k) =
+\ulcorner xs(l_0) \leftrightarrow
+xs(l_1) \urcorner \vee \\
+&amp; \exists l &lt; k\  xs(k) =
+\ulcorner \exists v_i\  xs(l) \urcorner \vee \\
+&amp; \exists l &lt; k\  xs(k) =
+\ulcorner \forall v_i\  xs(l) \urcorner \vee \\
+&amp; \exists l &lt; k\  xs(k) =
+\ulcorner \exists v_i \in v_j\  xs(l) \urcorner \vee \\
+&amp; \exists l &lt; k\  xs(k) =
+\ulcorner \forall v_i \in v_j\  xs(l) \urcorner \\
+&amp;) \wedge \\
+&amp; xs(\max \text{dom}(xs)) = x.
+\end{align}</p>
+<hr>
+<p>הנוסחה הנ&quot;ל מזכירה קצת הרכבות אך אין צורך להיבהל מהן.
+לדוגמא נטפל ב-$\text{natural}(\text{dom} (xs))$.
+לשם כך נזכר בהגדרה של $\text{natural}(n)$:
+\begin{align}
+&amp; n = \emptyset \vee \\
+&amp; \exists m \in n\ \forall k \in n\ k \leq m \wedge \\
+&amp; \forall k \in n \ k = \emptyset \vee
+\exists l \in n\ k = l \cap \set{l}.
+\end{align}
+לתוך ההגדרה הנ&quot;ל נכניס את ההגדרה של $\text{dom}(xs)$
+ונקבל את הנוסחה הבאה:
+\begin{align}
+&amp; xs = \emptyset \vee \\
+&amp; \exists mp \in xs\ 
+\forall kp \in xs \ (kp)_0 \leq (mp)_0 \wedge \\
+&amp; \forall kp \in xs \ (kp)_0 = \emptyset \vee
+\exists lp \in xs\ (kp)_0 = (lp)_0 \cup \set{(lp)_0}).
+\end{align}</p>
+<hr>
+<p>ניתן עוד דוגמא עבור
+$xs(\max \text{dom}(xs)) = x$:
+\begin{align}
+&amp; \exists mp \in xs\ 
+\forall kp \in xs \ (kp)_0 \leq (mp)_0 \wedge \\
+&amp; \exists p \in xs\ (p)_0 = (mp)_0 \wedge (p)_1 = x.
+\end{align}</p>
+
+    
+    
+    
+    
+    
+     <ol>  </ol> 
+</div>
+
+        <footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">Carmi Merimovich</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+			Things
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+
