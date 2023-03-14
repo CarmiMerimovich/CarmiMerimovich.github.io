@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+
+<html lang="he" dir="ltr">
+<head>
+    <title>Carmi Merimovich, Personal Site</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Carmi Merimovich, Personal Site">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+    
+        
+        
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Carmi Merimovich
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Personal Site
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        <a href="/affiliation.html">Affiliation</a>
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+
+					</h3>
+                </div>
+			</div>
+		</div>
+		
+	</header>
+
+
+
+      
+
+
+
+<div>
+    
+      <p style="font-size: x-small">
+      <a href="../index.html"><a> >>> חיתוך סלחים
+      </p>
+      
+    <h1>חיתוכי סלחים</h1>
+<p><strong>טענה</strong>
+יהי
+$\kappa$
+מונה סדיר.
+החיתוך של שני סלחים של
+$\kappa$
+הוא סלח.</p>
+<p><strong>הוכחה</strong>
+יהיו
+$C_0 \subseteq \kappa$
+ו-$C_1 \subseteq \kappa$
+שני סלחים.
+עלינו להראות
+שהחיתוך
+ש-$C_0 \cap C_1 \subseteq \kappa$
+הינו סלח.</p>
+<p>נתחיל בסגירות שזה הדבר הקל.
+(למכירי טופולוגיה:
+$C_0$
+ו-$C_1$
+סגורות בטופלוגיית הסדר ולכן החיתוך
+סגור.)
+תהי
+$a \subseteq C_0 \cap C_1$
+קבוצת סודרים עולה וחסומה
+ב-$\kappa$.
+אזי
+$a \subseteq C_0$
+ו-$a \subseteq C_1$.
+ולכן
+$\bigcup a \in C_0$
+ו-$\bigcup a \in C_1$.
+כלומר
+$\bigcup a \in C_0 \cap C_1$.</p>
+<p>אי חסימות:
+כאן נשתמש בשיטת הזיג-זג המפורסמת
+(בחוגים בהם דברים כאלה הם מפורסמים).
+יהי
+$\alpha &lt; \kappa$.
+עלינו למצוא
+$\beta &gt; \alpha$
+כך
+ש-$\beta \in C_0 \cap C_1$.
+נבנה באינדוקציה כלהלן את הסדרה
+$\langle \gamma_n,\delta_n \mid n &lt; \omega \rangle$.</p>
+<p>נבחר
+$\gamma_0 \in C_0$
+כך ש-$\gamma_0 &gt; \alpha$.
+נבחר
+$\delta_0 \in C_1$
+כך ש-$\delta_0 &gt; \gamma_0$.</p>
+<p>נניח
+ש-$\gamma_n$
+ו-$\delta_n$
+הוגדרו עבור
+$n&lt;\omega$.
+נבחר
+$\gamma_{n+1} \in C_0$
+כך ש-$\gamma_{n+1} &gt; \delta_n$.
+נבחר
+$\delta_{n+1} \in C_1$
+כך ש-$\delta_{n+1} &gt; \gamma_{n+1}$.</p>
+<p>עם גמר הבנייה נשים לב לדברים הבאים.
+$\bigcup \gamma_n \in C_0$,
+$\bigcup \delta_n \in C_1$,
+$\bigcup \gamma_n = \bigcup \delta_n$.
+נסמן
+$\beta = \bigcup \delta_n$.
+אזי
+$\beta \in C_0 \cap C_1$
+ו-$\beta &gt; \alpha$.
+$\square$</p>
+<hr>
+<p>הטענה הקודמת מוכיחה שהקבוצה
+$\text{Club}_\kappa$
+הינה מסנן:</p>
+<p><strong>מסקנה</strong>
+יהי
+$\kappa$
+מונה סדיר.
+אזי
+$\text{Cub}(\kappa)$ הוא מסנן.</p>
+<p><strong>הגדרה</strong>
+לקבוצה
+$\text{Cub}(\kappa)$
+נקרא מסנן הסלחים על
+$\kappa$.</p>
+<hr>
+<p><strong>טענה</strong>
+יהי
+$\kappa$
+מונה סדיר.
+חיתוך פחות
+מ-$\kappa$
+סלחים של
+$\kappa$
+הוא סלח.</p>
+<p><strong>מסקנה</strong>
+$Cub_\kappa$
+הוא מסנן
+$\kappa$-שלם.</p>
+<p><strong>טענה</strong>
+החיתוך האלכסוני של
+$\kappa$
+סלחים הוא סלח.</p>
+<p>סך הכל קיבלנו את המשפט הבא.</p>
+<p><strong>משפט</strong>
+יהי
+$\kappa$
+מונה סדיר.
+מסנן הסלחים על
+$\kappa$
+הוא נורמלי.</p>
+
+    
+    
+    
+    
+    
+     <ol>  </ol> 
+</div>
+
+        <footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">Carmi Merimovich</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+			Things
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+
