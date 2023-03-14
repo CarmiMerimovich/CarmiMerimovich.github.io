@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+
+<html lang="he" dir="ltr">
+<head>
+    <title>Carmi Merimovich, Personal Site</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Carmi Merimovich, Personal Site">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Carmi Merimovich
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Personal Site
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        <a href="/affiliation.html">Affiliation</a>
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+
+					</h3>
+                </div>
+			</div>
+		</div>
+		
+	</header>
+
+
+
+      
+
+
+
+<div>
+    
+      <p style="font-size: x-small">
+      <a href="../../index.html">מאמר<a> >>> <a href="../index.html">פרוג'קטום-$\Sigma_n$ והאחדה-$\Sigma_n$<a> >>> יחסים פשוטים על הפרוג'קטום הם מסובכים על $M$
+      </p>
+      
+    <p><strong>משפט (Jensen)</strong>
+יהי
+$M = \langle J_\alpha, A \rangle$
+מבנה-$J$,
+$\rho = \rho_1^M$,
+ו-$B \in \mathscr{P}(J_\rho) \cap \Sigma^M_1$.
+אז
+$\Sigma_1^{M_1} \subseteq
+\Sigma_2^M$,
+כאשר
+$M_1 = \langle J_\rho, B \rangle$.</p>
+<p><strong>הוכחה</strong>
+תהי $\varphi(x)$
+נוסחה-$\Sigma_1^{M_1}$.
+אז יש
+$\varphi_0(y,x)$
+נוסחה-$\Delta^{M_1}_0$
+כך שמתקיים
+$\varphi(x) = \exists y\ \varphi_0(y,x)$.
+מטעמי מוטיבציה נניח לרגע שהנוסחה $\varphi_0(y,x)$
+לא משתמשת ביחס $B$.
+אזי ממוחלטות נוסחאות $\Delta_0$
+עבור מבנים טרנזיטייבים נקבל שמתקיים לכל
+$y,x \in M_1$:
+\begin{equation}
+M_1 \models \varphi_0(y, x) \iff
+M \models \varphi_0(y,x).
+\end{equation}
+אם
+$\rho = \alpha$
+נקבע
+\begin{equation}
+\psi(x) =  \exists y\ \varphi_0(y,x).
+\end{equation}
+אם
+$\rho &lt; \alpha$
+נקבע
+\begin{equation}
+\psi(x) =  x \in M_1 \wedge \exists y \in M_1\ \varphi_0(y,x).
+\end{equation}
+בכל מקרה נקבל:
+\begin{equation}
+\set{x \in M_1 \mid M_1 \models \varphi(x)} =
+\set{x \in M \mid M   \models  \psi(x)}.
+\end{equation}
+כיון ש-$\psi$
+(שקולה ל-) נוסחה-$\Sigma_1^M$,
+סיימנו מקרה זה.</p>
+<p>כלומר סיבוך, אם יש, נוצר כשהנוסחה $\varphi_0$
+מזכירה את היחס $B$.</p>
+<p>נטפל במקרה שהנוסחה $\varphi_0$
+מזכירה את היחס $B$.
+תהי $\sigma(x)$
+נוסחה $\Sigma^M_1$
+שמגדירת את $B$:
+$B(x) \iff M \models \sigma(x)$.
+תהי $\sigma_0(z, x)$
+נוסחה-$\Delta^M_0$
+כך שמתקיים
+$\sigma(x) = \exists z \  \sigma_0(z, x)$.
+נשים לב שמתקיים
+$\neg B(x) \iff M \models \forall z\ \neg \sigma_0(z, x)$.
+ברור ש-$\forall z\ \neg \sigma_0(z, x)$
+היא נוסחה-$\Pi^M_1$.</p>
+<p>בנוסחה $\varphi_0$
+נדאג ששלילה, $\neg$,
+תופעל רק על התת-נוסחאות האטומיות.
+את הדבר הבא פורמלית צריך לבצע באינדוקציה על מבנה הנוסחה $\varphi_0$,
+אבל נראה שזה די ברור גם מתיאור פשוט.
+נבנה את הנוסחה $\psi_0$
+מהנוסחה $\varphi_0$
+באופן הבא.
+נמצא שני משתנים שאינם מופיעים בנוסחה $\varphi_0$,
+נאמר $z_0$ ו-$z_1$.
+הנוסחה $\psi_0(z_0, z_1, y, x)$
+תהיה הנוסחה $\varphi_0(y,x)$
+בה החלפנו את $B(x)$ ו-$\neg B(x)$
+בנוסחאות $\sigma_0(z_0,x)$ ו-$\neg \sigma_0(z_1,x)$,
+בהתאמה.</p>
+<p>אם $\rho = \alpha$
+נקבע
+\begin{equation}
+\psi(x) = \exists y\ \exists z_0 \forall z_1 \psi_0(z_0, z_1, y, x).
+\end{equation}</p>
+<p>אם $\rho &lt; \alpha$
+נקבע
+\begin{equation}
+\psi(x) = x \in M_1 \wedge \exists y \in M_1\ \exists z_0 \forall z_1 \psi_0(z_0, z_1, y, x).
+\end{equation}
+בשני המקרים נקבל
+\begin{equation}
+\set{x \in M_1 \mid M_1 \models \varphi(x)} =
+\set{x \in M \mid M \models \psi(x)}.
+\end{equation}
+כיון ש-$\psi$
+(שקולה ל-) נוסחה-$\Sigma^M_2$,
+סיימנו.
+$\square$</p>
+
+    
+    
+    
+    
+    
+     <ol> 
+            <li>
+                
+            <a href="01000_Jensen_proof/index.html">הוכחה של Jensen</a>
+         <ol>  </ol> 
+        </li>
+        
+            <li>
+                
+            <a href="02000_suspicious_proof/index.html">הוכחה מפוקפקת שלי</a>
+         <ol>  </ol> 
+        </li>
+         </ol> 
+</div>
+
+        <footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">Carmi Merimovich</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+			Things
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+

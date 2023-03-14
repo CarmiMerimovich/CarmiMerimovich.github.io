@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+
+<html lang="he" dir="ltr">
+<head>
+    <title>Carmi Merimovich, Personal Site</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Carmi Merimovich, Personal Site">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Carmi Merimovich
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Personal Site
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        <a href="/affiliation.html">Affiliation</a>
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+
+					</h3>
+                </div>
+			</div>
+		</div>
+		
+	</header>
+
+
+
+      
+
+
+
+<div>
+    
+      <p style="font-size: x-small">
+      <a href="../../../index.html">מאמר<a> >>> <a href="../../index.html">סבך (Morass) ב-$L$<a> >>> <a href="../index.html">סבך (Morass)<a> >>> $M0'$
+      </p>
+      
+    <h1>$M0'$</h1>
+<p><strong>טענה</strong>
+$S$
+מקיים את $M0'$.</p>
+<ol>
+<li>אם $\langle \alpha, \nu\rangle  \in S$
+אזי $\alpha &lt; \nu &lt; \omega_2$.</li>
+<li>אם $\langle \alpha_0, \nu_0\rangle,
+\langle \alpha_1, \nu_1\rangle \in S$
+ו-$\alpha_0 &lt; \alpha_1$
+אזי $\nu_0 &lt; \alpha_1$.</li>
+<li>$S_\alpha \subseteq \sup S_\alpha$
+קבוצה סגורה.</li>
+<li>$\omega_1 = \max S^0 = \sup (S^0 \cap \omega_1)$
+ו-$\omega_2 = \sup S^1 = \sup S_{\omega_1}$.</li>
+</ol>
+<p><strong>הוכחה</strong></p>
+<ol>
+<li>
+<p>כיון שב-$J_\nu$
+יש מונה יחיד שאינו בן-מניה חייב להתקיים $\nu \leq \omega_2$.
+מהגדרת $S$
+ידוע ש-$\nu$
+אינו מונה ולכן $\nu &lt; \omega_2$.</p>
+<p>כיון ש-$\alpha \in J_\nu$
+חייב להתקיים $\alpha &lt; \nu$.</p>
+</li>
+<li>
+<p>כיון ש-$\alpha_0 &lt; \alpha_1$
+נובע $J_{\nu_1} \models \ulcorner
+\text{הנומ וניא }  \alpha_0 \ \urcorner$,
+ולכן $\nu_0 &lt; \nu_1$.
+אם $\nu_0 &gt; \alpha_1$
+אזי ב-$J_{\nu_0}$
+יש שני מונים שאינם בני מניה. סתירה.
+ולכן $\nu_0 \leq \alpha_1$.
+<strong>למה $&lt;$ מתקיים?</strong></p>
+</li>
+<li>
+<p>נניח $\nu &lt; \omega_2$
+נקודת הצטברות של $S_\alpha$.
+מיידי ש-$\nu$
+גבול של סודרים שאינם ברי-הטלה.
+גם מיידי ש-$\alpha$
+הוא המונה היחיד שאינן בן-מניה ב-$J_\nu$.</p>
+</li>
+<li>
+<p>כיון שהקבוצה
+$\set{N \cap \omega_2 \mid N \prec L_{\omega_2},\ 
+N \cap \omega_2 \in \text{On}}$
+מכילה סל&quot;ח ברור ש-$\sup S_{\omega_1} = \omega_2$.</p>
+<p>לסיום.
+יהי $N \in S_{\omega_1}$
+מינימלי.
+ניקח סדרה $\in$-עולה
+של תת-מודלים אלמנטריים בני מניה
+$\langle X_\xi \prec J_{\omega_2} \mid
+X_\xi \cap \omega_1 \in \omega_1,\ 
+\xi &lt; \omega_1\rangle$
+כך ש-$N \in X_0$.
+המיטוט הטרנזיטיבי של כל אחד מהמודלים  בסדרה
+$\langle N \cap X_\xi \mid \xi &lt; \omega_1\rangle$
+מוכיח ש-$\sup (S^0 \cap \omega_1) = \omega_1$.</p>
+</li>
+</ol>
+
+    
+    
+    
+    
+    
+     <ol>  </ol> 
+</div>
+
+        <footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">Carmi Merimovich</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+			Things
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+
