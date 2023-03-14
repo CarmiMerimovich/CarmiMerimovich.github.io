@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+
+<html lang="he" dir="rtl">
+<head>
+    <title>כרמי מרימוביץ, דף אישי</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="כרמי מרימוביץ, דף אישי">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+    
+        <link rel="stylesheet" href="index.css">
+        
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						דף אישי
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        <a href="">השתייכות</a>
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+
+					</h3>
+                </div>
+			</div>
+		</div>
+		
+	</header>
+
+
+
+      
+
+
+
+<div>
+    
+      <p style="font-size: x-small">
+      <a href="../../../../../../index.html">Course (taught and being teached)<a> >>> <a href="../../../../../index.html">Current Semester<a> >>> <a href="../../../../index.html">2022-3B<a> >>> <a href="../../../index.html">מבוא לארכיטקטורת מחשבים<a> >>> <a href="../../index.html"><a> >>> <a href="../index.html">2022-08-18<a> >>> 16 ביט כתובת וירטואלית,     22 ביט כתובת פיזית,      4KB גודל דף
+      </p>
+      
+    <h1>כתובת וירטואלית 16, כתובת פיזית 22, גודל דף 4KB</h1>
+<p>כתובת וירטואלית נראית כך:<br>
+<img src="va16.png" alt="16 bit virtua address"></p>
+<p>גודל דף הוא
+4KB
+ולכן שדה ההיסט ברוחב 12 ביטים
+(2<sup>12</sup>= 4096 = 4K).
+ולכן יש ארבעה ביטים בשדה מספר דף וירטואלי.<br>
+<img src="va16parts.png" alt="16 bit virtua address parts"></p>
+<p>כיון שגודל דף וירטואלי וגודל דף פיזי שווים,
+כתובת פיזית נראית כלהלן:<br>
+<img src="pa22.png" alt="18 bit physical address"></p>
+<p>כיון שרוחב
+ה-vpn
+הוא
+4 ביטים,
+בטבלת התירגום יש לכל היותר 16  מקומות.
+מספר זה קטן מספיק כדי שיהיו 16 אוגרים בתוך
+ה-mmu
+שיכילו את המידע.
+שימו לב שהמשמעות של אוגרים
+ב-mmu
+היא שבזמן החלפת הקשר על מערכת ההפעלה לדאוג להטעין להם ערכים מתאימים.
+בדרך כלל לא צריך לשמור את התוכן שלהם כי המידע זמין למערכת ההפעלה ממקורותיה.
+העובדה שיש צורך להטעין את האוגרים בזמן החלפת הקשר אומרת שאם יש מספר
+&quot;גדול מדי&quot;
+של כניסות בטבלת התירגום אזי הטבלה צריכה להיות בזכרון
+ולא באוגרים בתוך
+ה-mmu.
+במקרה כזה
+ב-mmu
+יהיה אוגר שמכיל את כתובת תחילת טבלת התרגום.
+כמובן שבמצב כזה יש גישות עודפות לזכרון ובכך נטפל בהמשך.</p>
+<p>בכל כניסה צריך מקום ל-10
+ביטים עבור
+ppn,
+ובנוסף לדגלים.
+שני בתים
+(16 ביטים)
+נשמע סביר למדי עבור גודל כניסה בנסיבות כאלו.
+נניח שכניסה בטבלת התרגום נראית כך:<br>
+<img src="pte.png" alt="Page table entry"></p>
+<p>נניח שהערכים בטבלהׂ (בהקסה) הם כלהלן</p>
+<table>
+<tr><td>F801</td></tr>
+<tr><td>F001</td></tr>
+<tr><td>E801</td></tr>
+<tr><td>E001</td></tr>
+<tr><td>D801</td></tr>
+<tr><td>D001</td></tr>
+<tr><td>C801</td></tr>
+<tr><td>C001</td></tr>
+<tr><td>B801</td></tr>
+<tr><td>B001</td></tr>
+<tr><td>A801</td></tr>
+<tr><td>A001</td></tr>
+<tr><td>9801</td></tr>
+<tr><td>9001</td></tr>
+<tr><td>8801</td></tr>
+<tr><td>8001</td></tr>
+</table>
+לאיזו כתובת פיזית תתורגם הכתובת הוירטואלית 
+F713?  
+ובכן, נפרק את הכתובת בבינרית לפי השדות.  
+<p><img src="F713.png" alt="F713 parts"></p>
+<p>השדה
+vpn
+מכיל 15 (עשרוני).
+נפרק את כניסה 15
+של הטבלה,
+שתוכנה 8001,
+לפי השדות:<br>
+<img src="8001parts.png" alt="8001 parts"></p>
+<p>ה-valid
+בכניסה 15 הוא אמת.
+לכן לשדה ppn,
+שערכו 1000000000,
+יש משמעות והוא יחליף את
+ה-vpn.<br>
+<img src="200713parts.png" alt="200713 parts"></p>
+<p>ובהקסה הכתובת הפיזית היא
+200713.</p>
+
+    
+    
+    
+    
+    
+     <ol>  </ol> 
+</div>
+
+        <div style="font-size: x-small">
+&copy; 2022 Carmi Merimovich  
+&copy; כל הזכויות שמורות
+</div>
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">כרמי מרימוביץ</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+				מבוא לארכיטקטורת מחשבים: תקצירים
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+

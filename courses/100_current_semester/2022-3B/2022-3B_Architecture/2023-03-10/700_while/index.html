@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+
+<html lang="he" dir="rtl">
+<head>
+    <title>כרמי מרימוביץ, דף אישי</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="כרמי מרימוביץ, דף אישי">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						דף אישי
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        <a href="">השתייכות</a>
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+
+					</h3>
+                </div>
+			</div>
+		</div>
+		
+	</header>
+
+
+
+      
+
+
+
+<div>
+    
+      <p style="font-size: x-small">
+      <a href="../../../../../index.html">Course (taught and being teached)<a> >>> <a href="../../../../index.html">Current Semester<a> >>> <a href="../../../index.html">2022-3B<a> >>> <a href="../../index.html">מבוא לארכיטקטורת מחשבים<a> >>> <a href="../index.html">10 ו-13 במרץ 2023 (שקפים 25-30)<a> >>> while () {}
+      </p>
+      
+    <h1>while () {}</h1>
+<p>בשפת על ידוע המבנה הבא:</p>
+<pre><code>while (cond) {
+    while-block
+}
+</code></pre>
+<p>התרגום הכללי של לולאת while
+לשפת סף יהיה כזה.</p>
+<ul>
+<li>נקפל את ה-whilte-block.</li>
+<li>בסוף ה-while-block
+נוסיף קפיצה לבדיקת התנאי שנמצא לפני ה-while-block.</li>
+<li>לפני ה-while-block
+נוסיף בדיקה <strong>שמדלגת</strong>
+על ה-while-block
+עבור תנאי הפוך.</li>
+</ul>
+<p>בדדוגמא הבאה יש
+לולאת while
+השוואה, וגישה למערך.</p>
+<pre><code>long long save[];
+while (save[i] == k)  i += 1;
+</code></pre>
+<p>נניח שכתובת המערך נמצאת ב-x25
+והמשתנים i, k
+באוגרים x22, 24, בהתאמה.</p>
+<p>שימו לב שעכשיו בגישה למערך יש <strong>משתנה</strong>
+ולא קבוע.
+לכן את האינדקס i
+יש להפוך להיסט על-ידי הכפלה פי 8
+ואת ההיסט הזה יש להוסיף לכתובת של המערך save.
+בקוד רשום להשוות תא במערך עם המשתנה k.
+k נמצא באוגר כך שאין בעיה.
+אבל את save[i]
+נהיה חייבים לקרוא לאוגר כדי שנוכל לבצע את ההשוואה.
+להלן הקוד שטוען את save[i]
+ל-x9.</p>
+<pre><code>    slli    x9, x22, 3  // i * 8
+    add     x9, x9, x25 // address of save[i]
+    ld      x9, 0(x9)   // value of save[i]
+</code></pre>
+<p>עכשיו ההשוואה ל-k
+היא פשוטה:</p>
+<pre><code>    bne x9,x24,done
+</code></pre>
+<p>וגוף הלולאה (ה-while block)
+פשוט במקרה הזה:</p>
+<pre><code>    add x22,x22,1
+</code></pre>
+<p>סך הכל זה יהיה הקוד:</p>
+<pre><code>cond:
+    slli    x9, x22, 3  // i * 8
+    add     x9, x9, x25 // address of save[i]
+    ld      x9, 0(x9)   // value of save[i]
+    bne     x9, x24, done   // opposite direction!
+
+    add x22,x22,1
+    beq     x0, x0, cond
+done:
+</code></pre>
+
+    
+    
+    
+    
+    
+     <ol>  </ol> 
+</div>
+
+        <div style="font-size: x-small">
+&copy; 2022 Carmi Merimovich  
+&copy; כל הזכויות שמורות
+</div>
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">כרמי מרימוביץ</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+				מבוא לארכיטקטורת מחשבים: תקצירים
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+
