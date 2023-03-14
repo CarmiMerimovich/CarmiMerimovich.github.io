@@ -1,0 +1,299 @@
+<html lang="he" dir="rtl">
+<head>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {extensions: ["AMSmath.js","AMSsymbols.js"]}
+    });
+    </script>
+</head>
+<body>
+    <h1>כרמי</h1>
+    <audio id = "audiothm-000" style="display: none;">
+        <source src="thm-000.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audiothm-100" style="display: none;">
+        <source src="thm-100.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audiothm-200" style="display: none;">
+        <source src="thm-200.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audiomambo-100" style="display: none;">
+        <source src="mambo-100.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audio400" style="display: none;">
+        <source src="400.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audiomambo-200" style="display: none;">
+        <source src="mambo-200.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audioTarski-def-000" style="display: none;">
+        <source src="Tarski-def-000.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audioTarski-def-100" style="display: none;">
+        <source src="Tarski-def-100.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audioTarski-def-200" style="display: none;">
+        <source src="Tarski-def-200.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audiowitchcraft" controls style="display: none;">
+        <source src="witchcraft.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audioshort" controls style="display: none;">
+        <source src="short.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audioTarski-thm-000" controls style="display: none;">
+        <source src="Tarski-thm-000.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audio0" controls style="display: none;">
+        <source src="0.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audio1" controls style="display: none;">
+        <source src="1.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audio2" controls style="display: none;">
+        <source src="2.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audiothen" controls style="display: none;">
+        <source src="then.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audiocase1" controls style="display: none;">
+        <source src="case1.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audioa_in_Y" controls style="display: none;">
+        <source src="a_in_Y.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audiothus_a_in_fy" controls style="display: none;">
+        <source src="thus_a_in_fy.m4a" type="audio/mpeg">
+    </audio>
+    <audio id = "audiothus_y_supseteq" controls style="display: none;">
+        <source src="thus_y_supseteq.m4a" type="audio/mpeg">
+    </audio>
+    <form>
+        <input type="button"  value = "Ok" onclick="work();"/>
+      </form>
+    <p></p>
+    <div id="destination">
+        
+    </div>
+<script>
+    let block = [
+        {text: " משפט (קנטור-ברנשטיין)", audio: "thm-000"},
+        {html: "</br>"},
+        {text: " תהינה \\(A\\) ו-\\(B\\) קבוצות כך ש \\(\\lvert A \\rvert  \\leq  \\lvert B \\rvert\\) ו- \\(\\lvert A \\rvert \\geq \\lvert B \\rvert\\).", audio: "thm-100"},
+        {text: " אז \\(\\lvert A \\rvert  =  \\lvert B \\rvert\\).", audio: "thm-200"},
+        {html: "<br/>"},
+        {html: "<br/>"},
+        {html: "<br/>"},
+        {text: " ניתן שתי הוכחות למשפט זה.", audio: "mambo-100"},
+        {text: " ההוכחה הראשונה היא די טבעית, לפחות אחרי שמבינים אותה.", audio: "mambo-200"},
+        {text: " The second proof is simpler than the first one, but its proof is kind of magical."},
+        {html: "<br/>"},
+        {html: "<br/>"},
+        {html: "<br/>"},
+        {text: " We present now the second proof."},
+        {html: "<br/>"},
+        {html: "<br/>"},
+        {text: " The following proof of the Cantor-Berstein theorem falls under the category of witchcraft.", audio: "witchcraft"},
+        {text: " It is short and very elegant.", audio: "short"},
+        {text: " It depends on Tarski's fixed point theorem, which is rather surprsing."},
+        {html: "<br/>"},
+        {html: "<br/>"},
+        {text: " הגדרה", audio: "Tarski-def-000"},
+        {html: "<br/>"},
+        {text: " Let \\(A\\) be a set.", audio: "Tarski-def-100"},
+        {text: " Let \\(F: \\mathfrak{A} \\to \\mathfrak{A}\\).", audio: "Tarski-def-200"},
+        {text: " We say that \\(F\\) is monotone if \\( F(X) \\subseteq F(Y)\\) whenever \\(X \\subseteq Y\\)."},
+        {text: " We say that \\(F\\) is non-decreasing if \\( F(X) \\subpseteq X\\) for every  \\(X \\subseteq A\\)."},
+        {html: "<br/>"},
+        {text:"Theorem. (Tarski)", audio: "Tarski-thm-000"},
+        {html: "<br/>"},
+        {text:" Let \\(A\\) be a set.", audio: "0"},
+        {text: " Let \\(F: \\mathfrak{P}(A) \\to \\mathfrak{P}(A)\\) be a \\(\\subseteq\\)-nondecreasing function.", audio: "1"},
+       {text:" Then the function \\(F\\) has a fixed point. ", audio: "then"},
+       {html: "<br/>"},
+       {html: "<br/>"},
+        {text: "Proof."},
+        {html: "<br/>"},
+        {text: " Let \\( \\mathfrak{F} = \\{X \\subseteq A\\}\\mid \\{X \\subseteq F(X)\\} \\)."},
+        {text: " Set \\(Y = \\bigcup \\mathfrak{F}.\\)"},
+        {text: " We claim that \\(Y\\) is a fixed point of the function \\(F\\)."},
+        {text: " Thus we need to show that \\(Y = F(Y)\\)."},
+        {text: " We will show \\(Y \\subseteq F(Y)\\) and \\(Y \\supseteq F(Y)\\), by which we will be done."},
+        {html: "<br/>"},
+        {text: " (\\(Y \\subseteq F(Y)\\))", audio: "case1"},
+        {text: " Assume \\(a \\in Y\\).", audio: "a_in_Y"},
+        {text: " Then there is a set \\(X \\subseteq A\\) such that \\(a \\in X\\) and \\(X \\subseteq F(X)\\)."},
+        {text: " Thus \\(a \\in F(Y)\\).", audio: "thus_a_in_fy"},
+        {html: "<br/>"},
+        {text: " (\\(Y \\supseteq F(Y)\\))"},
+        {text: " We already know that \\(Y \\subseteq F(Y)\\)."},
+        {text: " Hence, by the monotonicity of \\(F\\) we get \\(F(Y) \\subseteq F(F(Y))\\)."},
+        {text: " This of course means, by the definition of \\(\\mathfrak{F}\\) that \\(F(Y) \\in \\mathfrak{F}\\)."},
+        {text: " Thus \\( Y \\supseteq F(Y) \\).", audio: "thus_y_supseteq"},
+        {html: "<br/>"},
+        {html: "<br/>"},
+        {text: " Proof."},
+        {text: " Let \\(f : A \\to  B\\) be a 1-1 function."},
+        {text: " Let \\(g : B \\to  A\\) be a 1-1."},
+        {text: " We will exhibit a function \\(h : A \\to B\\) which is 1-1 and onto, by which we will be done."},
+    ];
+let senNumber = -1;
+
+function work() {
+
+    animateSentence();
+}
+
+let played = null;
+
+function animateSentence() {
+    senNumber++;
+    if (senNumber >= block.length)
+        return;
+
+    let sen = block[senNumber].text;
+    if (sen == null) {
+        let html = block[senNumber].html;
+        let elem = createElementFromHTML(html);
+        let dst = document.getElementById("destination");
+        dst.appendChild(elem);
+        setTimeout(animateSentence, 1);
+        return;
+    }
+
+    let v = [];
+    let state = 0;
+    let i = 0;
+    while (i < sen.length) {
+        if (sen.substr(i,2) == "\\(") {
+            i += 2;
+            parseMath("\\)");
+            continue;
+        };
+        i++;
+        v.push(sen.substr(0, i));
+    }
+
+    function parseMath(suffix) {
+        console.log("parseMath entering", sen.substr(0, i));
+        while (i < sen.length) {
+            if (sen.substr(i,2) == "\\)") {
+                v.push(sen.substr(0, i) + suffix);
+                console.log('\\) found', sen.substr(0, i) + suffix);
+                i += 2;
+                return;
+            };
+
+            if (sen.substr(i,1) == "{") {
+                i++;
+                parseBrace("}" + suffix);
+                return;
+            };
+
+            if (sen.substr(i,1) == "\\") {
+                i++;
+                parseCmd(suffix);
+                continue;
+            };
+
+            i++;
+            v.push(sen.substr(0, i) + suffix);
+            console.log('inside math', sen.substr(0, i) + suffix);
+        }
+        return;
+    }
+
+    function parseBrace(suffix) {
+        while (i < sen.length) {
+            let c = sen.substr(i,1);
+            if (c == "}" ) {
+                i++;
+                return;
+            }
+            i++;
+            v.push(sen.substr(0,i) + suffix);
+        }
+    }
+
+    function parseCmd(suffix) {
+        console.log("parseCmd entering");
+        while (i < sen.length) {
+            let c = sen.substr(i,1);
+            if (c == " " || c == "\\") {
+                v.push(sen.substr(0, i) + suffix);
+                console.log("parseCmd leaving", sen.substr(0, i) + suffix);
+                return;
+            }
+            i++;
+        }
+        v.push(sen.substr(0, i) + suffix);
+        console.log("parseCmd end of sentence", sen.substr(0, i));
+    }
+
+    let span = document.getElementById("sentence"+(senNumber).toString());
+    if (span == null) {
+        let dst = document.getElementById("destination");
+        span = document.createElement("span");
+        span.id = "sentence"+(senNumber).toString();
+        dst.appendChild(span);
+    }
+
+
+    //for (let i = 0; i < v.length; i++) {
+    //    console.log(senNumber, i, v[i]);
+    //}
+
+    let idx;
+    let id;
+
+    playWait();
+
+    function playWait() {
+
+        if (played != null) {
+            if (!played.ended) {
+                setTimeout(playWait, 100);
+                return;
+            }
+        }
+        let n = block[senNumber].audio;
+        if (typeof n != "undefined") {
+            let a = document.getElementById("audio" + n);
+            played = a;
+            if (a != null) {
+                a.play();
+            }
+        }
+        idx = -1;
+        id = setTimeout(show, 100);
+    }
+
+
+    
+    function show() {
+        idx = idx + 1;
+        if (idx >= v.length) {
+            setTimeout(animateSentence, 500);
+            return;
+        }
+            span.textContent = v[idx];
+            MathJax.typeset();  
+            setTimeout(show, 100);
+    }; 
+}
+
+
+function createElementFromHTML(htmlString) {
+  var div = document.createElement('div');
+  div.innerHTML = htmlString.trim();
+
+  // Change this to div.childNodes to support multiple top-level nodes.
+  return div.firstChild;
+}
+</script>
+</body>
+</html>

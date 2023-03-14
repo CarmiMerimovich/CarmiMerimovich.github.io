@@ -1,0 +1,33 @@
+---
+layout: risc_en
+topic: C and Memory
+shortText: (C/memory) absint
+---
+<script src="./c_abs.js" type="module">
+</script>
+
+<p>
+Consider the following function in an
+	x86-32 system:
+</p>
+<div   style='font-family: Consolas,"courier new";
+  color: crimson;
+  background-color: #f1f1f1;
+  padding: 1px;
+  font-size: 105%;'><pre>
+<span id="functionType"></span> absint(<span id="argumentType"></span> x) {
+	return x<0? -x : x;
+}</pre>
+</div>
+
+<p>
+What is the return value (in decimal) of this function if
+	on entering the function the value	
+		of <var>esp</var> is <span id="esp"></span>?
+</p>
+<p>
+<button id="answerButton">Answer</button>
+<span id="answer" dir="ltr"></span>
+</p>
+<div id="displayArea">
+</div>

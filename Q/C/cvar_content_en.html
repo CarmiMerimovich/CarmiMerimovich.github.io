@@ -1,0 +1,33 @@
+---
+layout: risc_en
+topic: C and Memory
+shortText: (C/memory) Simple function return value
+---
+<script src="./cvar_content.js" type="module">
+</script>
+
+<p>
+Consider the following function in an
+	x86-32 system:
+</p>
+<div   style='font-family: Consolas,"courier new";
+  color: crimson;
+  background-color: #f1f1f1;
+  padding: 1px;
+  font-size: 105%;'><pre>
+char func(char a, char b) {
+	return (a+b);
+}</pre>
+</div>
+
+<p>
+What is the return value of this function if
+	on entering the function the value	
+		of <var>esp</var> is <span id="esp"></span>?
+</p>
+<p>
+<button id="answerButton">Answer</button>
+<span id="answer"></span>
+</p>
+<div id="displayArea">
+</div>
