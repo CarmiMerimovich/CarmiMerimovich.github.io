@@ -1,1 +1,0 @@
-do SumVector,SumVector
