@@ -1,0 +1,69 @@
+---
+layout: risc_he
+topic: Cache
+shortText: התנהגות cache Mano.
+---
+<script src="./mano_cache.js" type="module">
+</script>
+
+<div dir="rtl" style="padding-top: 0.5Em;">
+נתון מחשב עם זיכרון פיזי בגודל
+<span id = "memorySize"></span>
+מילים וזיכרון מטמון בגודל
+<span id = "cacheSize"></span>
+מילות מחשב.
+
+גודל כל מילת מחשב הוא
+<span id = "memWordWidth"></span>
+ביטים.
+
+זכרון המטמון מנוהל בשיטה
+ה-<span id="cacheSetSize" dir="ltr"></span>-קבוצתית אסוציאטיבית
+(<span dir="ltr"><span id="cacheSetSize2"></span>-way set associative</span>)
+עם בלוק בגודל 1 ומדיניות
+LRU.
+
+מבנה כל עמודה הוא
+(כרגיל, משמאל לימין):
+
+שדה valid,
+שדה tag,
+שדה ערך.
+(שדה valid הוא השמאלי)
+
+נתונה סדרת הגישות הבאה אל כתובות בזיכרון
+(משמאל לימין)
+כאשר בתחילה זיכרון המטמון ריק:
+<div dir="ltr" id="accessList" style="padding-top: 0.5Em; padding-bottom: 0.5Em;"></div>
+</div>
+
+<div id = "debug" dir="ltr"></div>
+
+<ol>
+<li>
+כמה פעמים התרחש 
+hit? <span id="answerHit" dir="ltr"></span>
+</li>
+<li>
+כמה פעמים כתובת דורכת על כתובת אחרת
+ב-cache? <span id="answerReplace" dir="ltr"></span>
+</li>
+<li>
+מה רוחב שורה בזכרון 
+ה-cache? <span id="answerCacheLineWidth" dir="ltr"></span>
+</li>
+<li>
+מה ערך שדה 
+ה-TAG
+הנפוץ ביותר 
+ב-cache
+לאחר סיום סדרת הקריאות?
+</li>
+<li>
+כמה ביטי
+VALID
+מכילים 0 לאחר סיום הסדרה הנ"ל?
+<span id="answerNotValid" dir="ltr"></span>
+</li>
+</ol>
+

@@ -1,0 +1,162 @@
+body {
+	font-family: Verdana, Arial, Helvetica, sans-seif;
+	background-color: gainsboro;
+}
+
+
+td.building {
+  background-repeat: repeat;
+  background-image: url('/images/Weston.jpg');
+}
+
+table  {
+  background-color: #ffffff;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid #B0C4DE;
+}
+
+th, td {
+  padding: 10px;
+}
+td {
+	vertical-align: top;
+}
+
+thead, tfoot {
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #ADD8E6;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #E6E6FA;
+}
+
+h1, h2, h3, h4, h5 {
+	margin: 0 0 0 0;
+}
+
+thead th, tfoot th, tfoot td {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+  border: 3px solid #B0C4DE;
+}
+
+caption {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+  border: 3px solid #B0C4DE;
+  padding: 20px;
+  color: #666;
+  letter-spacing: 1px;
+}
+
+ol {
+  background-color: #B0C4DE;
+}
+
+ol  li {
+	color: black;
+}
+
+li {
+	padding:5px;
+}
+
+ol li:nth-child(odd) {
+  background-color: #ADD8E6;
+}
+
+ol li:nth-child(even) {
+  background-color: #E6E6FA;
+}
+
+
+.socialEvents {
+    list-style: none;
+	padding: 0px;
+}
+
+.socialEvents li:nth-child(odd) {
+  background-color: #DCDCDC;
+}
+
+.socialEvents li:nth-child(even) {
+  background-color: #D3D3D3;
+}
+
+
+.flag {
+	width: 20px;
+	height: 20px;
+}
+
+.picture {
+	width: 115px;
+}
+
+.switch {
+	width: 30px;
+}
+
+header td[dir='rtl'] {
+	padding: 0px;
+	margin: 0 0 0 0;
+	border: 1px solid;
+}
+header td[dir='ltr'] {
+	padding: 0px;
+	margin: 0 0 0 0;
+	border: 1px solid;
+}
+
+
+
+nav ul, footer ul {
+    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    padding: 0px;
+    list-style: none;
+    font-weight: bold;
+}
+nav ul li, footer ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+span.menu {
+    font-weight: bold;
+}
+
+
+h1 {
+    font-size: 3em;
+    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+}
+
+p {
+    font-size: 1.5em;
+    line-height: 1.4em;
+    color: #333;
+}
+
+
+footer {
+    border-top: 1px solid #d5d5d5;
+    font-size: .8em;
+}
+
+
+ul.posts li {
+    list-style: none;
+}
+
+.teachingCol1 {
+	width: 2Em;
+	min-width: 2Em;
+	max-width: 2Em;
+	}
+
+
+
