@@ -1,1 +1,0 @@
-do WriteStr,main
