@@ -52,6 +52,9 @@
         
         
     
+        
+        
+    
 <script>
 MathJax = {
     loader: {load: ['[tex]/unicode']},
@@ -94,7 +97,7 @@ MathJax = {
         <div>
             
               <p style="font-size: x-small">
-              <span><a href="../../../../index.html">Courses<a></span>&rlm; >>> <span><a href="../../../index.html">Current Semester<a></span>&rlm; >>> <span><a href="../../index.html">2022-3B<a></span>&rlm; >>> <span><a href="../index.html">מבוא לארכיטקטורת מחשבים<a></span>&rlm; >>> <span>16/3/2023</span>&rlm;
+              <span><a href="../../../../../index.html">Courses<a></span>&rlm; >>> <span><a href="../../../../index.html">Current Semester<a></span>&rlm; >>> <span><a href="../../../index.html">2022-3B<a></span>&rlm; >>> <span><a href="../../index.html">מבוא לארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../index.html">16/3/2023<a></span>&rlm; >>> <span>jal</span>&rlm;
               </p>
               
                 
@@ -106,11 +109,43 @@ MathJax = {
 
 
 
-    <h1>16/3/2023 דילוגים קפיצות וקצת תירגולים</h1>
-<p>דיברנו על  פקודות הדילוג (branch)
-לבין פקודות הקפיצה (jal, jalr).</p>
-<p>תירגלנו תרגום מסף לבינרי ולהיפך.</p>
-<p>דיברנו על הסכם הקריאה בין שגרות.</p>
+    <h1>jal</h1>
+<p>את הפקודה jal
+נתאר בשני שלבים.
+ראשית נראה את המקרה הזה:</p>
+<pre><code>    jal x0, offset
+</code></pre>
+<p>זוהי קפיצה יחסיץ לעצמנו בלתי מותנית.
+ההבדל בינה לבין, נאמר,
+beq x0,x0, offset
+היא שבמקרה של jal
+שדה ההיסט הוא של 20 ביטים,
+ואותו טריק כמו בפקודות branch
+מאפשר לנו 21 ביטים
+כאשר הביט הימני ביותר הוא אפס.</p>
+<p>כלומר jal
+מאפשר לנו לקפוץ למרחק של 1MB
+קדימה או אחורה.
+סך הכל, אם היעד לקפיתה רחוק יותר מאשר 4KB
+אבל קטן מ-1MB
+נוכל להשתמש ב-jal.</p>
+<p>שימו לב אין jal
+מותנה.
+לכן אם נאמר צריך</p>
+<pre><code>beq x5,x6,Label
+</code></pre>
+<p>והיעד רחוק ביותר מ-4KB
+ופחות מ-1MB
+נאלץ לבצע:</p>
+<pre><code>bne x5,x6,S
+jal x0,Label
+S:
+</code></pre>
+<p>שוב, שימו לב.
+המקרה <strong>הנפוץ</strong>
+הוא זילוגים מותנים למרחקים קצרים.
+אם צריך לקפוץ למרחק גדול יותר (אבל לא עצום) יש לנו פתרון.
+פחות יעיל אמנם, אבל עובד.</p>
 
     
     
@@ -121,55 +156,7 @@ MathJax = {
     
     
     
-     <ol > 
-            <li>
-                
-            <a href="100_jal/index.html">jal</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="200_jalr/index.html">jalr</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="300_jal_jalr_full/index.html">תאור מלא של jal/jalr</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="400_conclusion/index.html">סיכום</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-         </ol> 
+     <ol >  </ol> 
 </div>
 
         <div style="font-size: x-small">

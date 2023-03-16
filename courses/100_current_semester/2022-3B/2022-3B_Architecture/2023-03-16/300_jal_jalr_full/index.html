@@ -52,6 +52,9 @@
         
         
     
+        
+        
+    
 <script>
 MathJax = {
     loader: {load: ['[tex]/unicode']},
@@ -94,7 +97,7 @@ MathJax = {
         <div>
             
               <p style="font-size: x-small">
-              <span><a href="../../../../index.html">Courses<a></span>&rlm; >>> <span><a href="../../../index.html">Current Semester<a></span>&rlm; >>> <span><a href="../../index.html">2022-3B<a></span>&rlm; >>> <span><a href="../index.html">מבוא לארכיטקטורת מחשבים<a></span>&rlm; >>> <span>16/3/2023</span>&rlm;
+              <span><a href="../../../../../index.html">Courses<a></span>&rlm; >>> <span><a href="../../../../index.html">Current Semester<a></span>&rlm; >>> <span><a href="../../../index.html">2022-3B<a></span>&rlm; >>> <span><a href="../../index.html">מבוא לארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../index.html">16/3/2023<a></span>&rlm; >>> <span>תאור מלא של jal/jalr</span>&rlm;
               </p>
               
                 
@@ -106,11 +109,50 @@ MathJax = {
 
 
 
-    <h1>16/3/2023 דילוגים קפיצות וקצת תירגולים</h1>
-<p>דיברנו על  פקודות הדילוג (branch)
-לבין פקודות הקפיצה (jal, jalr).</p>
-<p>תירגלנו תרגום מסף לבינרי ולהיפך.</p>
-<p>דיברנו על הסכם הקריאה בין שגרות.</p>
+    <h1>jal/jalr</h1>
+<pre><code>    jal rd, offset
+</code></pre>
+<p>מבצע שני דברים:</p>
+<pre><code>    rd = pc + 4
+    pc = pc + offset
+</code></pre>
+<p>באופן דומה jalr</p>
+<pre><code>    jalr rd, offset
+</code></pre>
+<p>מבצע שני דברים:</p>
+<pre><code>    rd = pc + 4
+    pc = rs1 + offset
+</code></pre>
+<p>כלומר, בשני המקרים כאשר מגיעים אל היעד יש באוגר rd
+את כתובת הפקודה <strong>העוקבת</strong>
+לפקודת הקפיצה.
+(אלא כמובן אם rd=x0.
+במקרה זה, כמובן, x0
+נשאר אפס.)</p>
+<p>מה נותנת לנו השמירה של PC+4
+באוגר?</p>
+<p>ניתן דוגמא:</p>
+<pre><code>jal x1, L
+.
+.
+.
+.
+jal x1, L
+.
+.
+.
+.
+L:
+.
+.   Code preserves x1
+.
+.
+jalr x0,0(x1)
+</code></pre>
+<p>מה שיש לנו פה זה שתי קריאות לשגרה.
+L היא שגרה.
+הפקודה jalr
+בסיום השגרה מבצעת מה שבשפה עילית נקרא return.</p>
 
     
     
@@ -121,55 +163,7 @@ MathJax = {
     
     
     
-     <ol > 
-            <li>
-                
-            <a href="100_jal/index.html">jal</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="200_jalr/index.html">jalr</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="300_jal_jalr_full/index.html">תאור מלא של jal/jalr</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="400_conclusion/index.html">סיכום</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-         </ol> 
+     <ol >  </ol> 
 </div>
 
         <div style="font-size: x-small">
