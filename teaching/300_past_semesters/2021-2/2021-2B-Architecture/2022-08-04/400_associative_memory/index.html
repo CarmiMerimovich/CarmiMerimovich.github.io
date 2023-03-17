@@ -37,6 +37,26 @@
 </style>
 
     
+        <link rel="stylesheet" href="index.css">
+        
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
 <script>
 MathJax = {
     loader: {load: ['[tex]/unicode']},
@@ -78,6 +98,10 @@ MathJax = {
 		</div>
         <div>
             
+              <p style="font-size: x-small">
+              <span><a href="../../../../../index.html">Teaching<a></span> >>> <span><a href="../../../../index.html">Past Semesters<a></span> >>> <span><a href="../../../index.html">2021-2<a></span> >>> <span><a href="../../index.html">2021-2B Intro. to Computer Architecture<a></span> >>> <span><a href="../index.html">2022-08-04<a></span> >>> <span>זכרון אסוציאטיבי</span>
+              </p>
+              
                 
 	</header>
 
@@ -87,17 +111,61 @@ MathJax = {
 
 
 
-    <ul>
-<li>
-<p><a href="publications.html">Papers</a></p>
-</li>
-<li>
-<p><a href="Teaching/index.html">Teaching</a></p>
-</li>
-</ul>
+    <h1>זכרון אסוציאטיבי</h1>
+<p>להלן סכמה של זכרון אסוציאטיבי:<br>
+<img src="associative_memory.png" alt="זכרון אסוציאטיבי"><br>
+ההבדל ברמת הסכמה בין מערכת זיכרון לבין זכרון אסוציאטיבי
+הוא
+שבמקום המבואות
+a<sub>i</sub>
+ישנם המבואות
+k<sub>i</sub>,
+יש אות W יחיד,
+ונוסף האות
+Valid.</p>
+<p>משמעות הסכימה היא זו.
+האותות
+d<sub>0</sub>
+עד
+d<sub>m-1</sub>
+הם אותות הנתונים.
+כלומר מילה במערכת זיכרון זו היא ברוחב m ביטים.
+האותות
+k<sub>0</sub>
+עד
+k<sub>n-1</sub>
+הם <strong>המפתח</strong>.
+לכל מילה בזכרון יש מפתח.
+אבל לא לכל ערך אפשרי של המפתח יש מילה בזיכרון.</p>
+<p>כיון שלא לכל ערך של מפתח מתאימה מילה בזכרון
+נוסף המוצא V.</p>
+<h2>קריאה מהזכרון</h2>
+<p>יש לשים במבואות
+k<sub>0</sub>
+עד
+k<sub>n-1</sub>
+את המפתח ולדרוך את המבוא R:<br>
+<img src="memory_read.png" alt="קריאה מהזכרון"><br>
+בתגובה מערכת זכרון מוציאה את האות
+V.
+אם V הוא true אזי
+על קווי הנתונים תופיעה המילה המתאימה:<br>
+<img src="memory_answer.png" alt="תשובת מהזכרון"></p>
+<h2>כתיבה לזכרון</h2>
+<p>יש לשים במבואות
+k<sub>0</sub>
+עד
+k<sub>n-1</sub>
+את כתובת המילה,
+יש לשים במבואות הנתונים את התוכן הרלוונטי,
+ואז יש לדרוך את אות הכתיבה W:<br>
+<img src="memory_write.png" alt="כתיבה זכרון"></p>
+<p>שתי נקודות להרהור:</p>
+<ol>
+<li>למה צריך את זה?</li>
+<li>איך מממשים את זה?</li>
+</ol>
 
-    
-    
     
     
     
@@ -110,7 +178,12 @@ MathJax = {
      <ol >  </ol> 
 </div>
 
-        <footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+        <div style="font-size: x-small">
+&copy; 2022 Carmi Merimovich  
+&copy; כל הזכויות שמורות
+</div>
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
 	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
 			padding: 0px;
 			list-style: none;
@@ -121,11 +194,11 @@ MathJax = {
 		</li>
   		<li style="display: inline; margin-right: 20px;">
 			<a style="color: #999;"
-				href="https://carmimerimovich.github.io/">Carmi Merimovich</a>
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">כרמי מרימוביץ</a>
 		</li>
         <li style="display: inline; margin-right: 20px;">
 			<span style="color: #999;">
-			Things
+				מבוא לארכיטקטורת מחשבים: תקצירים
             </span>
 		</li>
 	</ul>

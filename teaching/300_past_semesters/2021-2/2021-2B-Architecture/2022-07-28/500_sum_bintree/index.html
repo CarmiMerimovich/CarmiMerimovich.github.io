@@ -37,6 +37,24 @@
 </style>
 
     
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
 <script>
 MathJax = {
     loader: {load: ['[tex]/unicode']},
@@ -78,6 +96,10 @@ MathJax = {
 		</div>
         <div>
             
+              <p style="font-size: x-small">
+              <span><a href="../../../../../index.html">Teaching<a></span> >>> <span><a href="../../../../index.html">Past Semesters<a></span> >>> <span><a href="../../../index.html">2021-2<a></span> >>> <span><a href="../../index.html">2021-2B Intro. to Computer Architecture<a></span> >>> <span><a href="../index.html">2022-07-28<a></span> >>> <span>סכום אברי עץ בינרי</span>
+              </p>
+              
                 
 	</header>
 
@@ -87,17 +109,47 @@ MathJax = {
 
 
 
-    <ul>
-<li>
-<p><a href="publications.html">Papers</a></p>
-</li>
-<li>
-<p><a href="Teaching/index.html">Teaching</a></p>
-</li>
-</ul>
+    <pre><code>struct node {
+    struct node *left;
+    struct node *right;
+    long long value;
+};
 
-    
-    
+long long sum(struct node *node) {
+    if (node == NULL)
+        return (0);
+
+    return (sum(node-&gt;left) = node-&gt;value + sum(node-&gt;right));
+}
+</code></pre>
+<pre><code>sum:
+    bne a0, zero, work  // if (node != NULL) goto work
+    jalr   zero, 0(ra)  // return
+work:
+    addi   sp, sp, -24    // 3 dwords on stack
+    sd  ra, 0(sp)         // save: return address
+    sd  a0, 8(sp)         //       node
+
+    ld  a0, 0(a0)       // node-&gt;left
+    jal ra, sum         // sum(node-&gt;left)
+
+    ld  t0, 0(sp)       // node
+    ld  t1, 16(t0)      // node-&gt;value
+    add t1, t1, a0      / node-&gt;value + sum(node-&gt;left)
+    sd  t1, 16(sp)      // save 
+
+    ld  a0, 8(t0)     // node-&gt;right
+    jal ra, sum       // sum(node-&gt;right)
+
+    ld  t0, 16(sp)      // restore node-&gt;value + sum(node-&gt;left)
+    add a0, a0, t0      // node-&gt;value + sum(node-&gt;left) + sum(node-&gt;right)
+
+    ld  ra, 0(sp)
+    addi    sp, sp, 24
+
+    jalr zero, 0(ra)    // return
+</code></pre>
+
     
     
     
@@ -110,7 +162,12 @@ MathJax = {
      <ol >  </ol> 
 </div>
 
-        <footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+        <div style="font-size: x-small">
+&copy; 2022 Carmi Merimovich  
+&copy; כל הזכויות שמורות
+</div>
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
 	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
 			padding: 0px;
 			list-style: none;
@@ -121,11 +178,11 @@ MathJax = {
 		</li>
   		<li style="display: inline; margin-right: 20px;">
 			<a style="color: #999;"
-				href="https://carmimerimovich.github.io/">Carmi Merimovich</a>
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">כרמי מרימוביץ</a>
 		</li>
         <li style="display: inline; margin-right: 20px;">
 			<span style="color: #999;">
-			Things
+				מבוא לארכיטקטורת מחשבים: תקצירים
             </span>
 		</li>
 	</ul>
