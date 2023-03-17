@@ -1,1 +1,0 @@
-do sum,sum
