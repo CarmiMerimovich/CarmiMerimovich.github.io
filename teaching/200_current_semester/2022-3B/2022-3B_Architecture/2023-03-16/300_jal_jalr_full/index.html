@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+
+<html lang="he" dir="rtl">
+<head>
+    <title>כרמי מרימוביץ, אתר אישי</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="כרמי מרימוביץ, אתר אישי">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						אתר אישי
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        <a href="/affiliation_he.html">השתייכות</a>
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+
+					</h3>
+                </div>
+			</div>
+		</div>
+        <div>
+            
+              <p style="font-size: x-small">
+              <span><a href="../../../../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../../../../index.html">Current Semester<a></span>&rlm; >>> <span><a href="../../../index.html">2022-3B<a></span>&rlm; >>> <span><a href="../../index.html">מבוא לארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../index.html">16/3/2023<a></span>&rlm; >>> <span>תאור מלא של jal/jalr</span>&rlm;
+              </p>
+              
+                
+	</header>
+
+
+
+      
+
+
+
+    <h1>jal/jalr</h1>
+<pre><code>    jal rd, offset
+</code></pre>
+<p>מבצע שני דברים:</p>
+<pre><code>    rd = pc + 4
+    pc = pc + offset
+</code></pre>
+<p>באופן דומה jalr</p>
+<pre><code>    jalr rd, offset
+</code></pre>
+<p>מבצע שני דברים:</p>
+<pre><code>    rd = pc + 4
+    pc = rs1 + offset
+</code></pre>
+<p>כלומר, בשני המקרים כאשר מגיעים אל היעד יש באוגר rd
+את כתובת הפקודה <strong>העוקבת</strong>
+לפקודת הקפיצה.
+(אלא כמובן אם rd=x0.
+במקרה זה, כמובן, x0
+נשאר אפס.)</p>
+<p>מה נותנת לנו השמירה של PC+4
+באוגר?</p>
+<p>ניתן דוגמא:</p>
+<pre><code>jal x1, L
+.
+.
+.
+.
+jal x1, L
+.
+.
+.
+.
+L:
+.
+.   Code preserves x1
+.
+.
+jalr x0,0(x1)
+</code></pre>
+<p>מה שיש לנו פה זה שתי קריאות לשגרה.
+L היא שגרה.
+הפקודה jalr
+בסיום השגרה מבצעת מה שבשפה עילית נקרא return.</p>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     <ol >  </ol> 
+</div>
+
+        <div style="font-size: x-small">
+&copy; 2022 Carmi Merimovich  
+&copy; כל הזכויות שמורות
+</div>
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://carmimerimovich.github.io/">כרמי מרימוביץ</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+				מבוא לארכיטקטורת מחשבים: תקצירים
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,1 @@
+do Minor,Minor

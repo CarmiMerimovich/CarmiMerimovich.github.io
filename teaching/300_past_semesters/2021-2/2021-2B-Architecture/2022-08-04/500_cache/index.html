@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+
+<html lang="he" dir="ltr">
+<head>
+    <title>Carmi Merimovich, Personal Site</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Carmi Merimovich, Personal Site">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+    
+        <link rel="stylesheet" href="index.css">
+        
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Carmi Merimovich
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Personal Site
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        <a href="/affiliation.html">Affiliation</a>
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+
+					</h3>
+                </div>
+			</div>
+		</div>
+        <div>
+            
+              <p style="font-size: x-small">
+              <span><a href="../../../../../index.html">Teaching<a></span> >>> <span><a href="../../../../index.html">Past Semesters<a></span> >>> <span><a href="../../../index.html">2021-2<a></span> >>> <span><a href="../../index.html">2021-2B Intro. to Computer Architecture<a></span> >>> <span><a href="../index.html">2022-08-04<a></span> >>> <span>המטמון</span>
+              </p>
+              
+                
+	</header>
+
+
+
+      
+
+
+
+    <h1>המטמון</h1>
+<p>מטרת המטמון הינה לייצר גישה אפקטיבית לנתונים בזיכרון
+במהירות גבוהה הרבה יותר מאשר מהירות הזיכרון.</p>
+<p>הדרך לבצע זאת היא על-ידי שימוש בזיכרון אסוציאטיבי קטן ביחס לזיכרון הראשי
+אך מהיר בהרבה.
+במטמון נשים העתקים של מילים פופולריות מהזיכרון הראשי וכך
+ניצור מצב בו מהירות הגישה האפקטיבית לזיכרון גבוהה.<br>
+<img src="cpu_cache_memory.png" alt="מעבד מטמון זכרון"></p>
+<h2>קריאה מהזכרון</h2>
+<p>המעבד יוזם קריאה.
+שימו לב שלמעבד אין מושג מי עונה לו.
+הוא שם אותות על הבס.
+מי שנמצא על הבס עונה.
+כיון שכרגע שמנו מערכת מטמון על הבס לפני הזכרון,
+אזי המטמון הוא זה שצריך לענות.<br>
+<img src="cpu_read.png" alt="מעבד יוזם קריאה"><br>
+במטמון יש זכרון אסוציאטיבי.
+המטמון בודק אם הכתובת שניתנה לו בבס
+(המפתח מבחינת הזכרון האסוציאטיבי)
+נמצאת בזכרון האסוציאטיבי.
+אם כן, הוא מחזיר את התוכן למעבד.
+זו תגובה במהירות גבוהה ונקראת פגיעה (hit).<br>
+<img src="cache_answer.png" alt="מטמון עונה"><br>
+אם המפתח לא נמצא בזכרון האסוציאטיבי, המטמון יוזם קריאה לכיוון הזכרון.
+<img src="cache_read.png" alt="מטמון יוזם קריאה"><br>
+הזכרון עונה כהרגלו.
+שימו לב שלזכרון אין מושג אם הפניה מגיעה ממטמון או ממעבד.
+הוא מגיב לאותות שמגיעים מהבס.
+<img src="memory_answer.png" alt="הזכרון עונה"><br>
+עם קבלת התשובה המטמון עושה שני דברים.
+שומר את התשובה בזכרון האסוציאטיבי שלו, ומעביר את התשובה אל המעבד.
+המצב הזה נקרא החטאה (miss).
+<img src="cache_answer.png" alt="המטמון עונה"><br>
+כתובן שתשובה כזו לוקחת יותר זמן מאשר כשהמפתח מלכתחילה היה בזכרון האסוציאטיבי.
+התקווה היא שברוב הפעמים הנתון ימצא בזכרון המטמון.</p>
+<h2>כתיבה לזכרון</h2>
+<p>בכתיבה יש כמה מנגנונים אפשריים.
+יש מערכות מטמון שיש בהן מנגנון מסוג אחד בלבד.
+יש מערכות מטמון שיש בהן כמה אפשרויות ומערכת ההפעלה מחליטה איזה
+מנגנון להפעיל.
+בכל מקרה, הכתיבה מתחילה כרגיל כאשר המעבד יוזם:<br>
+<img src="cpu_write.png" alt="מעבד כותב"></p>
+<h3>Write through</h3>
+<p>שיטה זו היא הנפוצה ביותר.
+היא פשוטה וקלה למימוש.
+בשיטה זו כל בקשת כתיבה שמגיעה למטמון מועברת לזכרון הראשי.
+<img src="cache_write.png" alt="מטמון כותב"><br>
+במקביל,
+אם הכתובת נמצאת בזיכרון המטמון
+אזי מתבצע עידכון גם של זכרון המטמון.<br>
+כיון שהמטמון מהיר בהרבה מהזכרון הראשי היא יכול, בעיקרון, להודיע למעבד
+שהכתיבה הסתיימה עוד לפני שהכתיבה לזכרון הראשי הסתיימה.
+איזה יתרון יכול לצמוח מכך שהמטמון יודיע למעבד על סיום הכתיבה לפני שהיא
+אכן הסתיימה?</p>
+<p>ובכן, במצב האידאלי, שהוא די נפוץ, יש הרבה קריאות יחסית לכתובות.
+כלל האצבע הוא משהו כמו 80% קריאות ו-20% כתיבות.
+ושוב, במצב האידאלי, הנתון שקוראים נמצא במטמון.
+ולכן במצב האידאלי בזמן שהכתיבה לזיכרון הראשי נמשכת המעבד יכול לבצע
+קריאות שהמטמון יענה עליהן.
+כלומר המעבד יזום קריאה.
+<img src="cpu_read_cache_write.png" alt="מעבד קורא מטמון כותב"><br>
+ואז המטמון יענה:
+<img src="cache_answer_cache_write.png" alt="מטמון עונה מטמון כותב"><br>
+יתכנו כמה תנועות קריאה כאלה ואז הכתיבה שמתחוללת במקביל כאילו לא לוקחת זמן!</p>
+<p>כמובן שיתכן שהמצב האידאלי לא יתקיים.
+לדוגמא יש קריאה אבל התשובה אינה במטמון.
+במצב הז המטמון יאלץ להמתין עש שתסתיים הכתיבה ואז ליזום קריאה לכיוון
+הזיכרון הראשי.</p>
+<p>יתכן כמובן שאחרי כתיבה תגיע עוד כתיבה.
+ואז על פניו, כמו במקרה הקריאה, המטמון יאלץ לחכות עד שהכתיבה תסתיים.
+אבל, פה יש דרך לשפר את ההנהגות.
+למטמון יכול להיות
+<strong>תור</strong>
+של בקשות כתיבה לכיוון הזיכרון הראשי.
+וכל זמן שיש מקום בתור לבקשות כתיבה, המטמון יודיע למעבד מייד שהבקשה
+טופלה.
+בקשת קריאה שתגיע תהיה תמיד אחרונה כיון שהמטמון לא יענה למעבד
+לפני שתגיע תשובה מהזכרון הראשי.</p>
+<p>שימו לב שהמקרה הגרוע יכול להיות ממש גרוע פה.
+יתכן שיש תור מלא בבקשות כתיבה שצריכות להסתיים לפני שאפשר יהיה
+לשגר את בקשת הקריאה.</p>
+<p>יש מערכות שבהן מותר לשנות את סדר הקריאות והכתיבות אך זה מסוכן ביותר,
+ובדרך כלל דורש התערבות תוכנה כדי להמנע מתאונות תוכנה
+קשים.</p>
+<h2>Write back</h2>
+<p>שיטה זו קשה יותר למימוש והיא פחות פופולרית.
+היא דורשת יותר מהזיכרון האסוציאטיבי מאשר ה-write through.
+בעיקר היא יכולה ליצור חוסר עיקביות לזמן ממושך בין התוכן במטמון
+לבין התוכן בזכרון מה שבעייתי בסביביות מרובות מעבדים
+או בסביבות תומכות DMA.</p>
+<p>יתרון השיטה הוא כאשר יש עדכונים תכופים של מילת זכרון מסויימת.
+הרעיון הבסיסי של השיטה הוא כלהלן.
+כאשר המעבד יוזם כתיבה לנתון שנימצא במטמון,
+הנתון יעודכן במטמון
+<strong>ולא</strong>
+יעודכן בזכרון הראשי.
+בשיטה זו, אם יש עדכונים תכופים נחסכות כתיבות לזכרון הראשי.</p>
+<p>המכשלה העיקרית שנוספת לנו היא שאי אפשר כעת סתם &quot;לדרוס&quot; מילה
+מהזכרון האסוציאטיבי.
+אם מתעורר הצורך לדרוס, אזי, אם המילה הנדרסת עודכנה במטמון,
+יש להחזיר אותו לזכרון הראשי קודם.</p>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     <ol >  </ol> 
+</div>
+
+        <div style="font-size: x-small">
+&copy; 2022 Carmi Merimovich  
+&copy; כל הזכויות שמורות
+</div>
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://www.cs.mta.ac.il/he/staff/Carmi_Merimovich/">כרמי מרימוביץ</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+				מבוא לארכיטקטורת מחשבים: תקצירים
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+
