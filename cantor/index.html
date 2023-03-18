@@ -89,307 +89,144 @@ MathJax = {
 	</header>
 
 
-
       
 
 
-
-    <html lang="en">
-<head>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
-    </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      TeX: {extensions: ["AMSmath.js","AMSsymbols.js"]}
-    });
-    </script>
-</head>
-<body>
-    <h1>Carmi</h1>
-    <audio id = "audio100" style="display: none;">
-        <source src="100.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audio200" style="display: none;">
-        <source src="200.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audio300" style="display: none;">
-        <source src="300.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audio400" style="display: none;">
-        <source src="400.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audiomambo-200" style="display: none;">
-        <source src="mambo-200.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audioTarski-def-000" style="display: none;">
-        <source src="Tarski-def-000.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audioTarski-def-100" style="display: none;">
-        <source src="Tarski-def-100.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audioTarski-def-200" style="display: none;">
-        <source src="Tarski-def-200.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audiowitchcraft" controls style="display: none;">
-        <source src="witchcraft.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audioshort" controls style="display: none;">
-        <source src="short.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audioTarski-thm-000" controls style="display: none;">
-        <source src="Tarski-thm-000.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audio0" controls style="display: none;">
-        <source src="0.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audio1" controls style="display: none;">
-        <source src="1.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audio2" controls style="display: none;">
-        <source src="2.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audiothen" controls style="display: none;">
-        <source src="then.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audiocase1" controls style="display: none;">
-        <source src="case1.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audioa_in_Y" controls style="display: none;">
-        <source src="a_in_Y.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audiothus_a_in_fy" controls style="display: none;">
-        <source src="thus_a_in_fy.m4a" type="audio/mpeg">
-    </audio>
-    <audio id = "audiothus_y_supseteq" controls style="display: none;">
-        <source src="thus_y_supseteq.m4a" type="audio/mpeg">
-    </audio>
-    <form>
-        <input type="button"  value = "Ok" onclick="work();"/>
-      </form>
-    <p></p>
-    <div id="destination">
-<pre><code>&lt;/div&gt;
-</code></pre>
-<script>
-    let block = [
-        {text: " Theorem (Cantor-Bernstein)", audio: "100"},
-        {html: "</br>"},
-        {text: " Assume \\(A\\) and \\(B\\) are sets such that \\(\\lvert A \\rvert  \\leq  \\lvert B \\rvert\\) and \\(\\lvert A \\rvert \\geq \\lvert B \\rvert\\).", audio: "200"},
-        {text: " Then \\(\\lvert A \\rvert  =  \\lvert B \\rvert\\).", audio: "300"},
-        {html: "<br/>"},
-        {html: "<br/>"},
-        {html: "<br/>"},
-        {text: " We present two proofs of this theorem.", audio: "400"},
-        {text: " The first proof is quite natural, at least once one understands it.", audio: "mambo-200"},
-        {text: " The second proof is simpler than the first one, but its proof is kind of magical."},
-        {html: "<br/>"},
-        {html: "<br/>"},
-        {html: "<br/>"},
-        {text: " We present now the second proof."},
-        {html: "<br/>"},
-        {html: "<br/>"},
-        {text: " The following proof of the Cantor-Berstein theorem falls under the category of witchcraft.", audio: "witchcraft"},
-        {text: " It is short and very elegant.", audio: "short"},
-        {text: " It depends on Tarski's fixed point theorem, which is rather surprsing."},
-        {html: "<br/>"},
-        {html: "<br/>"},
-        {text: " Definition", audio: "Tarski-def-000"},
-        {html: "<br/>"},
-        {text: " Let \\(A\\) be a set.", audio: "Tarski-def-100"},
-        {text: " Let \\(F: \\mathfrak{A} \\to \\mathfrak{A}\\).", audio: "Tarski-def-200"},
-        {text: " We say that \\(F\\) is monotone if \\( F(X) \\subseteq F(Y)\\) whenever \\(X \\subseteq Y\\)."},
-        {text: " We say that \\(F\\) is non-decreasing if \\( F(X) \\subpseteq X\\) for every  \\(X \\subseteq A\\)."},
-        {html: "<br/>"},
-        {text:"Theorem. (Tarski)", audio: "Tarski-thm-000"},
-        {html: "<br/>"},
-        {text:" Let \\(A\\) be a set.", audio: "0"},
-        {text: " Let \\(F: \\mathfrak{P}(A) \\to \\mathfrak{P}(A)\\) be a \\(\\subseteq\\)-nondecreasing function.", audio: "1"},
-       {text:" Then the function \\(F\\) has a fixed point. ", audio: "then"},
-       {html: "<br/>"},
-       {html: "<br/>"},
-        {text: "Proof."},
-        {html: "<br/>"},
-        {text: " Let \\( \\mathfrak{F} = \\{X \\subseteq A\\}\\mid \\{X \\subseteq F(X)\\} \\)."},
-        {text: " Set \\(Y = \\bigcup \\mathfrak{F}.\\)"},
-        {text: " We claim that \\(Y\\) is a fixed point of the function \\(F\\)."},
-        {text: " Thus we need to show that \\(Y = F(Y)\\)."},
-        {text: " We will show \\(Y \\subseteq F(Y)\\) and \\(Y \\supseteq F(Y)\\), by which we will be done."},
-        {html: "<br/>"},
-        {text: " (\\(Y \\subseteq F(Y)\\))", audio: "case1"},
-        {text: " Assume \\(a \\in Y\\).", audio: "a_in_Y"},
-        {text: " Then there is a set \\(X \\subseteq A\\) such that \\(a \\in X\\) and \\(X \\subseteq F(X)\\)."},
-        {text: " Thus \\(a \\in F(Y)\\).", audio: "thus_a_in_fy"},
-        {html: "<br/>"},
-        {text: " (\\(Y \\supseteq F(Y)\\))"},
-        {text: " We already know that \\(Y \\subseteq F(Y)\\)."},
-        {text: " Hence, by the monotonicity of \\(F\\) we get \\(F(Y) \\subseteq F(F(Y))\\)."},
-        {text: " This of course means, by the definition of \\(\\mathfrak{F}\\) that \\(F(Y) \\in \\mathfrak{F}\\)."},
-        {text: " Thus \\( Y \\supseteq F(Y) \\).", audio: "thus_y_supseteq"},
-        {html: "<br/>"},
-        {html: "<br/>"},
-        {text: " Proof."},
-        {text: " Let \\(f : A \\to  B\\) be a 1-1 function."},
-        {text: " Let \\(g : B \\to  A\\) be a 1-1."},
-        {text: " We will exhibit a function \\(h : A \\to B\\) which is 1-1 and onto, by which we will be done."},
-    ];
-let senNumber = -1;
-
-function work() {
-
-    animateSentence();
-}
-
-let played = null;
-
-function animateSentence() {
-    senNumber++;
-    if (senNumber >= block.length)
-        return;
-
-    let sen = block[senNumber].text;
-    if (sen == null) {
-        let html = block[senNumber].html;
-        let elem = createElementFromHTML(html);
-        let dst = document.getElementById("destination");
-        dst.appendChild(elem);
-        setTimeout(animateSentence, 1);
-        return;
-    }
-
-    let v = [];
-    let state = 0;
-    let i = 0;
-    while (i < sen.length) {
-        if (sen.substr(i,2) == "\\(") {
-            i += 2;
-            parseMath("\\)");
-            continue;
-        };
-        i++;
-        v.push(sen.substr(0, i));
-    }
-
-    function parseMath(suffix) {
-        console.log("parseMath entering", sen.substr(0, i));
-        while (i < sen.length) {
-            if (sen.substr(i,2) == "\\)") {
-                v.push(sen.substr(0, i) + suffix);
-                console.log('\\) found', sen.substr(0, i) + suffix);
-                i += 2;
-                return;
-            };
-
-            if (sen.substr(i,1) == "{") {
-                i++;
-                parseBrace("}" + suffix);
-                return;
-            };
-
-            if (sen.substr(i,1) == "\\") {
-                i++;
-                parseCmd(suffix);
-                continue;
-            };
-
-            i++;
-            v.push(sen.substr(0, i) + suffix);
-            console.log('inside math', sen.substr(0, i) + suffix);
-        }
-        return;
-    }
-
-    function parseBrace(suffix) {
-        while (i < sen.length) {
-            let c = sen.substr(i,1);
-            if (c == "}" ) {
-                i++;
-                return;
-            }
-            i++;
-            v.push(sen.substr(0,i) + suffix);
-        }
-    }
-
-    function parseCmd(suffix) {
-        console.log("parseCmd entering");
-        while (i < sen.length) {
-            let c = sen.substr(i,1);
-            if (c == " " || c == "\\") {
-                v.push(sen.substr(0, i) + suffix);
-                console.log("parseCmd leaving", sen.substr(0, i) + suffix);
-                return;
-            }
-            i++;
-        }
-        v.push(sen.substr(0, i) + suffix);
-        console.log("parseCmd end of sentence", sen.substr(0, i));
-    }
-
-    let span = document.getElementById("sentence"+(senNumber).toString());
-    if (span == null) {
-        let dst = document.getElementById("destination");
-        span = document.createElement("span");
-        span.id = "sentence"+(senNumber).toString();
-        dst.appendChild(span);
-    }
-
-
-    //for (let i = 0; i < v.length; i++) {
-    //    console.log(senNumber, i, v[i]);
-    //}
-
-    let idx;
-    let id;
-
-    playWait();
-
-    function playWait() {
-
-        if (played != null) {
-            if (!played.ended) {
-                setTimeout(playWait, 100);
-                return;
-            }
-        }
-        let n = block[senNumber].audio;
-        if (typeof n != "undefined") {
-            let a = document.getElementById("audio" + n);
-            played = a;
-            if (a != null) {
-                a.play();
-            }
-        }
-        idx = -1;
-        id = setTimeout(show, 100);
-    }
-
-
-    
-    function show() {
-        idx = idx + 1;
-        if (idx >= v.length) {
-            setTimeout(animateSentence, 500);
-            return;
-        }
-            span.textContent = v[idx];
-            MathJax.typeset();  
-            setTimeout(show, 100);
-    }; 
-}
-
-
-function createElementFromHTML(htmlString) {
-  var div = document.createElement('div');
-  div.innerHTML = htmlString.trim();
-
-  // Change this to div.childNodes to support multiple top-level nodes.
-  return div.firstChild;
-}
-</script>
-</body>
-</html>
+    <p>^proof0-pre-100^
+ניזכר בהגדרה של היחסים $\leq$ ו-$=$ על גדלי קבוצות.
+^ ^</p>
+<p><strong>הגדרה</strong> (היחסים $\leq$ ו-$=$).
+^proof0-pre-200^
+עבור שתי קבוצות $A$ ו-$B$
+נאמר ש-$\lvert A \rvert \leq \lvert B \rvert$
+אם קיימת פונקציה חד-חד-ערכית
+מהקבוצה $A$ אל הקבוצה $B$.
+^proof0-pre-300^נאמר ש-$\lvert A \rvert = \lvert B \rvert$
+אם קיימת פונקציה חד-חד-ערכית מהקבוצה
+$A$ על הקבוצה $B$.
+$\square$</p>
+<p>^proof0-pre-400^
+שימו לב להבדל התהומי שיוצרות המילים
+<strong>אל</strong> ו-<strong>על</strong>
+בהגדרה הקודמת.</p>
+<p>התכונות של היחס $\leq$
+שראינו עד עכשיו היו די קלות להוכחה.
+מיחס שמסומן על-ידי $\leq$ מצופה שיהיה אנטיסימטרי.
+במשפט הבא נוכיח שהיחס הזה אכן אנטיסימטרי.</p>
+<p>ההוכחה של משפט זה אינה טריואלית ואנו ניתן למשפט זה מספר הוכחות.</p>
+<p>^proof0-thm-100^
+<strong>משפט</strong> (קנטור-ברנשטיין).
+^proof0-thm-200^תהיינה $A$ ו-$B$
+שתי קבוצות כך ש-$\lvert A \rvert \leq \lvert B \rvert$
+ו-$\lvert A \rvert \geq \vert B \rvert$.
+^proof0-thm-300^אזי $\lvert A \rvert = \lvert B \rvert$.</p>
+<p>^proof0-thm-500^משפט זה מספיק חשוב כדי לראות מספר הוכחות שלו.
+^proof0-thm-600^ההוכחה הראשונה משתמשת בטריקים בסיסיים של תורת הקבוצות.</p>
+<p><strong>הוכחה.</strong>
+^proof1-100^מהנתון ישנן שתי פונקציות חד-חד-ערכיות
+$f : A \to B$
+ו-$g : B \to A$.
+^proof1-200^נוכיח את המשפט על-ידי כך שנבנה
+פונקציה חד-חד-ערכית ועל
+$h : A \to B$.</p>
+<p>אם הפונקציה  $f$
+על אזי נקבע $h = f$ ובזאת סיימנו את ההוכחה.
+אחרת, אם הפונקציה  $g$
+על נקבע $h = g$ ובזאת סיימנו את ההוכחה.
+אם שתי הפונקציות, $f$ ו-$g$,
+אינן על נמשיך כלהלן.</p>
+<p>מטעמי נוחות נניח שהקבוצות $A$ ו-$B$
+זרות.
+(דרך פשוטה להשיג זאת היא על ידי קביעת
+$A' = \{ 0 \} \times A$
+ו-$B' = \{ 1 \} \times B$
+ואז להמשיך את ההוכחה עם הקבוצות
+$A'$ ו-$B'$.)</p>
+<p>נגדיר קבוצות
+$A(x)$ ו-$B(x)$ עבור $x\in A \setminus \text{ran} g$ באופן הבא:</p>
+<p>אם $x = g(f(x))$
+אזי נקבע
+$A(x) = \{ x \}$ ו-$B(x) = \{ f(x) \}$.
+כמובן שטריויאלי לחלוטין שהפונקציה
+$f : A(x) \to B(x)$
+הינה  חד-חד-ערכית ועל.</p>
+<p>אם $g(f(x)) \neq x$ אזי נעבוד באופן הבא.
+נקבע $x_0 = x$ ואז באינדוקציה $y_n = f(x_n)$ ו-$x_{n+1} = g(y_n)$.
+נקבע
+$A(x) = \{ x_n \} \{ n &lt; \omega \}$
+ו-$B(x) = \{ y_n \} \{ n &lt; \omega \}$.
+נשים לב שאברי $A(x)$ שונים בזוגות, וכך גם אברי $B(x)$.
+נשים לב  שהצימצום
+$f : A(x) \to B(x)$
+נותן פונקציה  חד-חד-ערכית ועל.</p>
+<p>עובדה מהותית לעיניננו היא שאם
+$x,\bar{x} \in A \setminus \text{ran} g$
+ו-$x \neq \bar{x}$
+אזי הקבוצות $A(x)$ ו-$A(\bar{x})$ הינן זרות וכך גם הקבוצות
+$B(x)$ ו-$B(\bar{x})$.
+מסקנה מכך היא שהצימצום הבא
+נותן פונקציה חד-חד-ערכית ועל:
+$$f : \bigcup \{ A(x) \}
+\{x \in A \setminus \text{ran} g \} \to
+\bigcup \{ B(x) \} \{ x \in A \setminus \text{ran} g\}.$$</p>
+<p>את התהליך שעשינו קודם עבור כל
+$x \in A \setminus \text{ran} g$
+נעשה עבור כל $y \in B \setminus \text{ran} f$.
+נרשום זאת במפורט.
+<em>(שימו לב שזה תרגיל מצויין לנסות לכתוב זאת בעצמכם!)</em></p>
+<p>נגדיר קבוצות
+$A(y)$ ו-$B(y)$
+עבור $y\in B \setminus \text{ran} f$ באופן הבא:</p>
+<p>אם $y = f(g(y))$ אזי נקבע
+$B(y) = \{ y \}$ ו-$A(y) = \{ g(y) \}$
+כמובן שטריויאלי לחלוטין שהפונקציה
+$g^{-1} : A(y) \to B(y)$
+היא חד-חד-ערכית ועל.</p>
+<p>אם $g(f(y)) \neq y$
+אזי נעבוד באופן הבא.
+נקבע $y_0 = y$ ואז באינדוקציה
+$x_n = g(y_n)$ ו-$y_{n+1} = f(x_n)$.
+נקבע
+$A(y) = \{ x_n \} \{ n &lt; \omega \}$
+ו-$B(y) = \{ y_n \} \{ n &lt; \omega \}$.
+נשים לב שאברי $A(y)$ שונים בזוגות,
+וכך גם אברי $B(y)$.
+נשים לב שהצימצום
+$g^{-1} : A(y) \to B(y)$
+נותן פונקציה חד-חד-ערכית ועל.</p>
+<p>עובדה מהותית לעיניננו היא שאם
+$y,\bar{y} \in B \setminus \text{ran} f$
+ו-$y \neq \bar{y}$
+אזי $A(y)$ ו-$A(\bar{y})$
+הינן זרות וכך גם $B(y)$ ו-$B(\bar{y})$.
+מסקנה מכך היא שהפונקציה הבאה היא חד-חד-ערכית ועל:
+$$g^{-1} : \bigcup \{ A(y) \}
+\{y \in B \setminus \text{ran} f \} \to
+\bigcup \{ B(y) \}
+\{ y \in B \setminus \text{ran} f \}.$$</p>
+<p>עם סיום הגדרת הקבוצות יש לשים
+לב לעוד עובדה מהותית אחת.
+אם $x \in A \setminus \text{ran} g$
+ו-$y \in B \setminus \text{ran} f$ אזי הקבוצות
+$A(x)$ ו-$A(y)$ זרות וכך גם הקבוצות
+$B(x)$ ו-$B(y)$.</p>
+<p>נקבע
+$$A' = A \setminus (
+\bigcup \{ A(x) \}
+\{ x \in  A \setminus \text{ran} g \} \cup
+\bigcup \{ A(y) \}
+\{ y \in  B \setminus \text{ran} f \})$$
+ו-
+$$B' = B \setminus (
+\bigcup \{ B(x) \}
+\{ x \in  A \setminus \text{ran} g \}
+\cup
+\bigcup \{ B(y) \}
+\{ y \in  B \setminus \text{ran} f \}).$$</p>
+<p>די מיידי ש-$f^{&quot;}A' \subseteq B'$
+ו-$f^{-1&quot;}B' \subseteq A'$,
+ובכך סיימנו את ההוכחה.
+$\square$</p>
 
     
     
@@ -403,8 +240,8 @@ function createElementFromHTML(htmlString) {
      <ol > 
             <li>
                 
-                
-            
+            <a href="he/index.html"></a>
+        
             
             
             
