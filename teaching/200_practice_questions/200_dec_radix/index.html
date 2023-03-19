@@ -88,64 +88,98 @@ MathJax = {
         <div>
             
               <p style="font-size: x-small">
-              <span><a href="../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../index.html">שאלות תירגול<a></span>&rlm;
+              <span><a href="../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../index.html">שאלות תרגול<a></span>&rlm; >>> <span>Decimal to some Radix</span>&rlm;
               </p>
               
                 
 	</header>
 
 
-<h2>טבעי בבסיס 10 לבסיס <span id="radixHead"></span></h2>
-יש להציג בבסיס
-<span id="radix"></span>
-  את המספר 
-<span id="number"></span>
-<div><button id="answerButton" type="clock" onclick="answer();">תשובה</button></div>
-<div class="hidden" style="visibility: hidden;">תוצאה: <span id="solution" style="direction: ltr;"></span></div>
-<div class="hidden" style="visibility: hidden;">דרך:</div>
-<div class="hidden" id="calculation" style="direction: ltr; visibility: hidden;"></div>
-<script>
-    let radix;
-    do {
-        radix = 2 + Math.trunc(Math.random() * 15);
-    } while (radix == 10);
-    const eRadixHead = document.getElementById("radixHead");
-    eRadixHead.innerHTML = radix;
-    const eRadix = document.getElementById("radix");
-    eRadix.innerHTML = radix;
-    const number = Math.trunc(Math.random() * (2**20));
-    const eNumber = document.getElementById("number");
-    eNumber.innerHTML = number.toString() + "<sub>10</sub>.";
+      
 
-function answer() {
-    const eSolution = document.getElementById("solution");
-    eSolution.innerHTML = "" + number.toString(radix).toUpperCase() +
-             `<sub>${radix}</sub>`;
-    const eHiddens = document.getElementsByClassName("hidden");
 
-    for (const e of eHiddens)
-        e.style.visibility = "visible";
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     <ol > 
+            <li>
+                
+            <a href="200_Dec_2_Radix/index.html">Decimal to some Radix - Small Numbers</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </li>
+        
+            <li>
+                
+            <a href="210_Dec_2_Radix/index.html">Decimal to some Radix - Not So Small Numbers</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </li>
+        
+            <li>
+                
+            <a href="220_Dec_2_Radix/index.html">Decimal to some Radix - Moderately Big</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </li>
+         </ol> 
+</div>
 
-    const eAnswerButton = document.getElementById("answerButton");
-    eAnswerButton.style.visibility = "hidden";
+        <div style="font-size: x-small">
+&copy; 2022 Carmi Merimovich  
+&copy; כל הזכויות שמורות
+</div>
 
-    let result = number;
-    let s = "";
-    do {
-        let digit = result % radix;
-        let result2 = Math.trunc(result / radix);
-        s += `<tr>
-            <td style="text-align: right;">${result}</td>
-            <td style="text-align: center;">${radix}</td>
-            <td style="text-align: right;">${result2}</td>
-            <td style="text-align: center;">${digit.toString(radix).toUpperCase()}</td></tr>`;
-        result = result2;
-    } while (result > 0)
-    const eCalculation = document.getElementById("calculation");
-    eCalculation.innerHTML =
-         `<table> <tr><th>מחולק</th><th>מחלק</th><th>תוצאה</th><th>שארית</th></tr>
-    ${s} </table>`; 
-}
-</script>
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+			padding: 0px;
+			list-style: none;
+			font-weight: bold;">
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="mailto:carmim@gmail.com">email</a>
+		</li>
+  		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;"
+				href="https://carmimerimovich.github.io/">כרמי מרימוביץ</a>
+		</li>
+        <li style="display: inline; margin-right: 20px;">
+			<span style="color: #999;">
+				מבוא לארכיטקטורת מחשבים: תקצירים
+            </span>
+		</li>
+	</ul>
+</footer>
+
+    
 </body>
 </html>
+
+
+
+
+
+
+

@@ -46,6 +46,9 @@
         
         
     
+        
+        
+    
 <script>
 MathJax = {
     loader: {load: ['[tex]/unicode']},
@@ -88,7 +91,7 @@ MathJax = {
         <div>
             
               <p style="font-size: x-small">
-              <span><a href="../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../index.html">שאלות תירגול<a></span>&rlm;
+              <span><a href="../../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../../index.html">שאלות תרגול<a></span>&rlm; >>> <span><a href="../index.html">Decimal to Binary<a></span>&rlm;
               </p>
               
                 
@@ -103,7 +106,8 @@ MathJax = {
 <div class="hidden" style="visibility: hidden;">דרך:</div>
 <div class="hidden" id="calculation" style="direction: ltr; visibility: hidden;"></div>
 <script>
-    const number = Math.trunc(Math.random() * (2**20));
+    const range = 2**20;
+    const number = Math.trunc(Math.random() * range);
     const eNumber = document.getElementById("number");
     eNumber.innerHTML = number.toString() + "<sub>10</sub>.";
 

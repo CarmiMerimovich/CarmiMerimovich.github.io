@@ -43,6 +43,9 @@
         
         
     
+        
+        
+    
 <script>
 MathJax = {
     loader: {load: ['[tex]/unicode']},
@@ -85,98 +88,57 @@ MathJax = {
         <div>
             
               <p style="font-size: x-small">
-              <span><a href="../index.html">Teaching<a></span>&rlm; >>> <span>שאלות תירגול</span>&rlm;
+              <span><a href="../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../index.html">שאלות תרגול<a></span>&rlm;
               </p>
               
                 
 	</header>
 
 
-      
+<h2>שבר עשרוני לשבר בינרי</h2>
+יש להציג בבינרי את המספר 
+<span id="number"></span>
+<div><button id="answerButton" type="clock" onclick="answer();">תשובה</button></div>
+<div class="hidden" style="visibility: hidden;">תוצאה: <span id="solution" style="direction: ltr;"></span></div>
+<div class="hidden" style="visibility: hidden;">דרך:</div>
+<div class="hidden" id="calculation" style="direction: ltr; visibility: hidden;"></div>
+<script>
+    const number = Math.trunc(Math.random() * (2**20));
+    const eNumber = document.getElementById("number");
+    eNumber.innerHTML = (number/(2**20)).toString() + "<sub>10</sub>.";
 
+function answer() {
+    const eHiddens = document.getElementsByClassName("hidden");
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-     <ol > 
-            <li>
-                
-            <a href="100_Dec_2_Bin/index.html">Decimal to Binary</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="100_Dec_2_Radix/index.html">Decimal to some Radix</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="mmu/index.html">mmu</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-         </ol> 
-</div>
+    for (const e of eHiddens)
+        e.style.visibility = "visible";
 
-        <div style="font-size: x-small">
-&copy; 2022 Carmi Merimovich  
-&copy; כל הזכויות שמורות
-</div>
+    const eAnswerButton = document.getElementById("answerButton");
+    eAnswerButton.style.visibility = "hidden";
 
-<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
-	<ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
-			padding: 0px;
-			list-style: none;
-			font-weight: bold;">
-   		<li style="display: inline; margin-right: 20px;">
-			<a style="color: #999;" 
-				href="mailto:carmim@gmail.com">email</a>
-		</li>
-  		<li style="display: inline; margin-right: 20px;">
-			<a style="color: #999;"
-				href="https://carmimerimovich.github.io/">כרמי מרימוביץ</a>
-		</li>
-        <li style="display: inline; margin-right: 20px;">
-			<span style="color: #999;">
-				מבוא לארכיטקטורת מחשבים: תקצירים
-            </span>
-		</li>
-	</ul>
-</footer>
-
-    
+    let resultTop = number;
+    let resultBotoom = 2**20
+    let s = "";
+    let t = "";
+    do {
+        let digit = (resultTop * 2 / resultBottom) > 0? 2: 0;
+        let result2 = result * 2;
+        s += `<tr>
+            <td style="text-align: right;">${result}</td>
+            <td style="text-align: center;">2</td>
+            <td style="text-align: right;">${result2}</td>
+            <td style="text-align: center;">${digit}</td></tr>`;
+        result = result2;
+        t += result > 1? "1": "0";
+        if (result > 1) result -= 1;
+    } while (result > 0)
+    const eCalculation = document.getElementById("calculation");
+    eCalculation.innerHTML =
+         `<table> <tr><th>מחולק</th><th>מחלק</th><th>תוצאה</th><th>שארית</th></tr>
+    ${s} </table>`; 
+    const eSolution = document.getElementById("solution");
+    eSolution.innerHTML = t + "<sub>2</sub>";
+}
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
