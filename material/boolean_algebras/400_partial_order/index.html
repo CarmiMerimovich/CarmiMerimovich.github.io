@@ -43,6 +43,9 @@
         
         
     
+        
+        
+    
 <script>
 MathJax = {
     loader: {load: ['[tex]/unicode']},
@@ -85,7 +88,7 @@ MathJax = {
         <div>
             
               <p style="font-size: x-small">
-              <span><a href="../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>אלגבראות בוליאניות</span>&rlm;
+              <span><a href="../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../index.html">אלגבראות בוליאניות<a></span>&rlm; >>> <span>סדר חלקי</span>&rlm;
               </p>
               
                 
@@ -95,7 +98,41 @@ MathJax = {
       
 
 
-    <h1>אלגבראות בוליאניות</h1>
+    <h1>סדר חלקי</h1>
+<p>קצת מפתיע, אבל המבנה של אלגברה בוליאנית יוצר סדר חלקי
+על אברי האלגברה.
+באופן לא מפתיע נקבל $0 &lt; 1$.
+באלגברה בוליאנית דו-ערכית הסדר החלקי הזה לא ממש עוזר,
+אבל באלגבראות מסובכות יותר הסדר
+בהחלט שופך אור נוסף על המבנה.
+למה לפני ההגדרה.</p>
+<p><strong>למה</strong>
+$x = x y \Leftrightarrow y = x + y$.</p>
+<p><strong>הוכחה</strong>
+($\Rightarrow$)
+\begin{align}
+x + y &amp;= xy + y = \\
+&amp;= (x + 1)y =\\
+&amp; = 1 \cdot y = y.
+\end{align}
+($\Leftarrow$)
+\begin{align}
+x  y &amp;= x(x + y) = \\
+&amp;= x + xy =\\
+&amp; = x(1 + y) \\
+&amp; x \cdot 1 = x.
+\end{align}</p>
+<p><strong>הגדרה</strong>
+$x \leq y$
+אם
+$x = xy$.</p>
+<p>בהתחשב בלמה הקודמת אפשר היה להגדיר גם
+$x \leq y$
+אם
+$y = x + y$.</p>
+<p><strong>תרגיל</strong>
+הוכיחו שהיחס $\leq$
+אכן סדר חלקי.</p>
 
     
     
@@ -106,139 +143,7 @@ MathJax = {
     
     
     
-     <ol > 
-            <li>
-                
-            <a href="100_axioms/index.html">אקסיומות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="200_equalities/index.html">מסקנות</a>
-        
-            
-            
-            
-            
-             <ol > 
-            <li>
-                
-            <a href="200_equalities/100_unique_omplement/index.html">יחידות המשלים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="200_equalities/200_double_negation/index.html">$\bar{\bar{x}} = x$.</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="200_equalities/300_idempotent/index.html">$x+x = x$ ו-$xx=x$.</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="200_equalities/400_bounds/index.html">$x + 1 = 1$ ו-$x \cdot 0 = 0$.</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="200_equalities/500_de_morgan/index.html">$\overline{x + y} = \bar{x}\bar{y}$ ו-$\overline{xy} = \bar{x}+\bar{y}$.</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="200_equalities/600_absorb/index.html">$x + xy = x (x + y) = x$</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="200_equalities/700_constant_complement/index.html">$\bar{0} = 1$ ו-$\bar{1}=0$.</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-         </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="300_boolean_algebra/index.html">אלגברה בוליאנית, סוף סוף</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="400_partial_order/index.html">סדר חלקי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-         </ol> 
+     <ol >  </ol> 
 </div>
 
         <div style="font-size: x-small">
