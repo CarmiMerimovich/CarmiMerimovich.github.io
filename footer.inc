@@ -7,6 +7,10 @@
 			<a style="color: #999;" 
 				href="mailto:carmim@gmail.com">email</a>
 		</li>
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/">linkedin</a>
+		</li>
   		<li style="display: inline; margin-right: 20px;">
 			<a style="color: #999;"
 				href="https://carmimerimovich.github.io/">Carmi Merimovich</a>

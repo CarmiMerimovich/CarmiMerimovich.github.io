@@ -11,6 +11,10 @@
    		<li style="display: inline; margin-right: 20px;">
 			<a style="color: #999;" 
 				href="mailto:carmim@gmail.com">email</a>
+		</li>&rlm;
+   		<li style="display: inline; margin-right: 20px;">
+			<a style="color: #999;" 
+				href="">linkedin</a>
 		</li>
   		<li style="display: inline; margin-right: 20px;">
 			<a style="color: #999;"
