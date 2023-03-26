@@ -1,4 +1,95 @@
-<DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<!DOCTYPE html>
+
+
+<html lang="he" dir="ltr">
+<head>
+    <title>Carmi Merimovich, Personal Site</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Carmi Merimovich, Personal Site">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Carmi Merimovich
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Personal Site
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        <a href="/affiliation.html">Affiliation </a>
+					</h3>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+        <div>
+            
+              <p style="font-size: x-small">
+              <span><a href="../../../../../index.html">Teaching<a></span> >>> <span><a href="../../../../index.html">Past Semesters<a></span> >>> <span><a href="../../../index.html">2018-9<a></span> >>> <span><a href="../../index.html">OS (2018-9B)<a></span>
+              </p>
+              
+                
+	</header>
+
+
+
+
+
+
+<p>&lt;DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;&gt;</p>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Introduction to Operating Systems</title>
@@ -7,159 +98,150 @@
 <script>
 var va, etbl, pa;
 var mem=[], pagesused=[];
+<p>function initQ() {
+va = Math.trunc(Math.random() * Math.pow(2,31));
+pa = (Math.trunc(Math.random() * Math.pow(2,19))&lt;&lt;12) | (va &amp; 4095);
+pagesused = [];
+mem = [];
+etbl = kalloc();
+var itbl = kalloc();</p>
+<pre><code>var j;
+for (j = 0; j &lt; 1024; j++)
+	mem[etbl/4 + j] = (Math.trunc(Math.random() * Math.pow(2,19))&lt;&lt;12) | 7;
+for (j = 0; j &lt; 1024; j++)
+	mem[itbl/4 + j] = (Math.trunc(Math.random() * Math.pow(2,19))&lt;&lt;12) | 7;
+	
 
-function initQ() {
-	va = Math.trunc(Math.random() * Math.pow(2,31));
-	pa = (Math.trunc(Math.random() * Math.pow(2,19))<<12) | (va & 4095);
-	pagesused = [];
-	mem = [];
-	etbl = kalloc();
-	var itbl = kalloc();
+var dumpo = document.getElementById(&quot;dump&quot;);
+dumpo.innerHTML = &quot;&quot;;
 
+var vao = document.getElementById(&quot;vao&quot;);
+var pad = Math.ceil(32 / Math.log2(16));
+vao.innerHTML = va.toString(16).padStart(pad, &quot;0&quot;);
 
+var pao = document.getElementById(&quot;pa&quot;);
+pao.value = &quot;&quot;;
+
+var etblo = document.getElementById(&quot;etblo&quot;);
+var pad = Math.ceil(32 / Math.log2(16));
+etblo.innerText = etbl.toString(16).padStart(pad, &quot;0&quot;);
+
+var i0 = (va &gt;&gt; 22) &amp; 1023;
+var i1 = (va &gt;&gt; 12) &amp; 1023;
+
+var imin = i0 - 10;
+if (imin &lt; 0) imin=0;
+imin &amp;= ~3;
+imin += etbl/4;
+
+var imax = i0 + 10;
+if (imax &gt; 1023) imax = 1023;
+imax += etbl/4;
+
+var i;
+for (i = imin; i &lt; imax; i++) {
+	if (i == (etbl/4 + i0)) 
+		var p = itbl;
+	else
+		var p = kalloc();
+	
+	mem[i] = p | 7;
+	
 	var j;
-	for (j = 0; j < 1024; j++)
-		mem[etbl/4 + j] = (Math.trunc(Math.random() * Math.pow(2,19))<<12) | 7;
-	for (j = 0; j < 1024; j++)
-		mem[itbl/4 + j] = (Math.trunc(Math.random() * Math.pow(2,19))<<12) | 7;
-		
-	
-	var dumpo = document.getElementById("dump");
-	dumpo.innerHTML = "";
-
-	var vao = document.getElementById("vao");
-	var pad = Math.ceil(32 / Math.log2(16));
-	vao.innerHTML = va.toString(16).padStart(pad, "0");
-	
-	var pao = document.getElementById("pa");
-	pao.value = "";
-	
-	var etblo = document.getElementById("etblo");
-	var pad = Math.ceil(32 / Math.log2(16));
-	etblo.innerText = etbl.toString(16).padStart(pad, "0");
-	
-	var i0 = (va >> 22) & 1023;
-	var i1 = (va >> 12) & 1023;
-	
-	var imin = i0 - 10;
-	if (imin < 0) imin=0;
-	imin &= ~3;
-	imin += etbl/4;
-	
-	var imax = i0 + 10;
-	if (imax > 1023) imax = 1023;
-	imax += etbl/4;
-	
-	var i;
-	for (i = imin; i < imax; i++) {
-		if (i == (etbl/4 + i0)) 
-			var p = itbl;
+	for (j = 0; j &lt; 1024; j++) { 
+		if ((i == (etbl/4 + i0)) &amp;&amp; (j == i1))
+            mem[p / 4 + j] = (pa &amp; (~4095)) | 7;  // Corrected by Eldan Fahima
 		else
-			var p = kalloc();
-		
-		mem[i] = p | 7;
-		
-		var j;
-		for (j = 0; j < 1024; j++) { 
-			if ((i == (etbl/4 + i0)) && (j == i1))
-                mem[p / 4 + j] = (pa & (~4095)) | 7;  // Corrected by Eldan Fahima
-			else
-				mem[p/4 + j] = (Math.trunc(Math.random() * Math.pow(2,19))<<12) | 7;
-		}
+			mem[p/4 + j] = (Math.trunc(Math.random() * Math.pow(2,19))&lt;&lt;12) | 7;
 	}
-
-	pagesused = pagesused.sort(function (a,b) {return (Math.sign(a-b));});
-	
-	var i;
-	for (i = 0; i < pagesused.length; i++){
-		if (pagesused[i] == etbl/4096)
-			dumpAddPage(etbl, i0);
-		else if (pagesused[i] == itbl/4096)
-			dumpAddPage(itbl, i1);
-		else
-			dumpAddPage(pagesused[i]*4096, Math.trunc(Math.random() * 1024));
-	}
-	
-
-	correct(0, -1);
 }
 
-function dumpAddPage(tbl, im) {
-	var dumpo = document.getElementById("dump");
-	
-	var r = dumpo.insertRow(-1);
-	r.insertCell(0);
-	var i;
-	for (i = 1; i < 9; i++) {
-		var c = r.insertCell(i);
-		c.align = "center";
-		c.innerText = "+"+((i-1)*4).toString(16).padStart(2, "0");
-	}
-	
-	var imin = im - 10;
-	if (imin < 0) imin = 0;
-	imin = imin & ~3;
-	var imax = im + 10;
-	if (imax > 1023) imax = 1023; 
-	
-	imin += tbl/4;
-	imax += tbl/4;
-	
-	var i;
-	var cn = 0;
-	for (i = imin; i < imax; i++) {
-		if ((cn % 9) == 0) {
-			cn = 0;
-			var r = dumpo.insertRow(-1);
-			var c = r.insertCell(cn);
-			c.innerText = (i*4).toString(16).padStart(8, "0");
-			cn++;
-		}
+pagesused = pagesused.sort(function (a,b) {return (Math.sign(a-b));});
+
+var i;
+for (i = 0; i &lt; pagesused.length; i++){
+	if (pagesused[i] == etbl/4096)
+		dumpAddPage(etbl, i0);
+	else if (pagesused[i] == itbl/4096)
+		dumpAddPage(itbl, i1);
+	else
+		dumpAddPage(pagesused[i]*4096, Math.trunc(Math.random() * 1024));
+}
+
+
+correct(0, -1);
+</code></pre>
+<p>}</p>
+<p>function dumpAddPage(tbl, im) {
+var dumpo = document.getElementById(&quot;dump&quot;);</p>
+<pre><code>var r = dumpo.insertRow(-1);
+r.insertCell(0);
+var i;
+for (i = 1; i &lt; 9; i++) {
+	var c = r.insertCell(i);
+	c.align = &quot;center&quot;;
+	c.innerText = &quot;+&quot;+((i-1)*4).toString(16).padStart(2, &quot;0&quot;);
+}
+
+var imin = im - 10;
+if (imin &lt; 0) imin = 0;
+imin = imin &amp; ~3;
+var imax = im + 10;
+if (imax &gt; 1023) imax = 1023; 
+
+imin += tbl/4;
+imax += tbl/4;
+
+var i;
+var cn = 0;
+for (i = imin; i &lt; imax; i++) {
+	if ((cn % 9) == 0) {
+		cn = 0;
+		var r = dumpo.insertRow(-1);
 		var c = r.insertCell(cn);
-		c.innerText = mem[i].toString(16).padStart(8, "0");
+		c.innerText = (i*4).toString(16).padStart(8, &quot;0&quot;);
 		cn++;
 	}
+	var c = r.insertCell(cn);
+	c.innerText = mem[i].toString(16).padStart(8, &quot;0&quot;);
+	cn++;
 }
-
-
-function kalloc() {
-	do { 
-		var page = Math.trunc(Math.random() * 1024);
-	} while (pagesused.indexOf(page) >= 0);
-	pagesused.push(page);
-	var addr = page << 12;
-	var i;
-	for (i = 0; i < 1024; i++)
-		mem[addr/4+i] = 0;
-	return (addr);
-}
-
-function cheatQ() {
-	var pao = document.getElementById("pa");
-	pao.value = pa.toString(16).padStart(8,"0");
-}
-
-function checkQ() {
-	var pao = document.getElementById("pa");
-	var ipa = parseInt(pao.value, 16);
-	if (isNaN(ipa))
-		correct(0,0);
-	else if (ipa != pa)
-		correct(0,0);
-	else
-		correct(0,1);
-}
-
-function correct(field, type) {
-	c = document.getElementById("correct"+field);
-	if (type == -1)
-		c.innerHTML = "&nbsp;";
-	else if (type == 0)
-		c.innerText = "Incorrect";
-	else
-		c.innerText = "Correct";
-}
-
+</code></pre>
+<p>}</p>
+<p>function kalloc() {
+do {
+var page = Math.trunc(Math.random() * 1024);
+} while (pagesused.indexOf(page) &gt;= 0);
+pagesused.push(page);
+var addr = page &lt;&lt; 12;
+var i;
+for (i = 0; i &lt; 1024; i++)
+mem[addr/4+i] = 0;
+return (addr);
+}</p>
+<p>function cheatQ() {
+var pao = document.getElementById(&quot;pa&quot;);
+pao.value = pa.toString(16).padStart(8,&quot;0&quot;);
+}</p>
+<p>function checkQ() {
+var pao = document.getElementById(&quot;pa&quot;);
+var ipa = parseInt(pao.value, 16);
+if (isNaN(ipa))
+correct(0,0);
+else if (ipa != pa)
+correct(0,0);
+else
+correct(0,1);
+}</p>
+<p>function correct(field, type) {
+c = document.getElementById(&quot;correct&quot;+field);
+if (type == -1)
+c.innerHTML = &quot; &quot;;
+else if (type == 0)
+c.innerText = &quot;Incorrect&quot;;
+else
+c.innerText = &quot;Correct&quot;;
+}</p>
 </script>
 <h1>x86-32 (10,10,12) address translation. Hexa. Reasonable case.</h1>
 <table align="center">
@@ -195,4 +277,62 @@ function correct(field, type) {
 	</table>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+ <ol >  </ol> 
+
+ </div>
+
+ <!DOCTYPE html>
+
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedIn </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;"
+                href="https://carmimerimovich.github.io">Carmi Merimovich</a>
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            Things
+            </span>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
 

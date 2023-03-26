@@ -1,4 +1,95 @@
-<DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<!DOCTYPE html>
+
+
+<html lang="he" dir="ltr">
+<head>
+    <title>Carmi Merimovich, Personal Site</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Carmi Merimovich, Personal Site">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Carmi Merimovich
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Personal Site
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        <a href="/affiliation.html">Affiliation </a>
+					</h3>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+        <div>
+            
+              <p style="font-size: x-small">
+              <span><a href="../../../../../index.html">Teaching<a></span> >>> <span><a href="../../../../index.html">Past Semesters<a></span> >>> <span><a href="../../../index.html">2018-9<a></span> >>> <span><a href="../../index.html">OS (2018-9B)<a></span>
+              </p>
+              
+                
+	</header>
+
+
+
+
+
+
+<p>&lt;DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;&gt;</p>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Introduction to Operating Systems</title>
@@ -7,12 +98,12 @@
             border-collapse:collapse;
             border:1px solid  black;
         }
+<pre><code>    #RegisterDump td {
+        border: 1px solid black;
+    }
 
-        #RegisterDump td {
-            border: 1px solid black;
-        }
-
-    </style>
+&lt;/style&gt;
+</code></pre>
 </head>
 <body onload="initQ()">
 <script>
@@ -29,79 +120,79 @@
         { name: "edi", v: 0  }
     ];
     var am = {BR:0, IR:0, S:0, DISP: 0};
+<pre><code>function initQ() {
+    am.BR = BaseRegister [Math.trunc(Math.random() * BaseRegister.length)];
+    am.IR = IndexRegister[Math.trunc(Math.random() * IndexRegister.length)];
+    am.S  = Math.trunc(Math.random() * 3);
+    am.DISP = Math.trunc(Math.random() * Math.pow(2, 32));
 
-    function initQ() {
-        am.BR = BaseRegister [Math.trunc(Math.random() * BaseRegister.length)];
-        am.IR = IndexRegister[Math.trunc(Math.random() * IndexRegister.length)];
-        am.S  = Math.trunc(Math.random() * 3);
-        am.DISP = Math.trunc(Math.random() * Math.pow(2, 32));
+    for (i = 0; i &lt; Register.length; i++) {
+        Register[i].v = Math.trunc(Math.random()*Math.pow(2,32));
+    }
 
-        for (i = 0; i < Register.length; i++) {
-            Register[i].v = Math.trunc(Math.random()*Math.pow(2,32));
-        }
+    var eAddressingMode = document.getElementById(&quot;AddressingMode&quot;);
 
-        var eAddressingMode = document.getElementById("AddressingMode");
+    var s1 = &quot;&quot;;
+    if (am.DISP != 0)
+        s1 = am.DISP.toString(16);
 
-        var s1 = "";
-        if (am.DISP != 0)
-            s1 = am.DISP.toString(16);
+    var s2 = &quot;&quot;;
+    if (am.BR &gt;= 0) 
+        s2 += &quot;%&quot; + Register[am.BR].name;
+    if (am.IR &gt;= 0) {
+        s2 += &quot;,&quot; + &quot;%&quot; + Register[am.IR].name;
 
-        var s2 = "";
-        if (am.BR >= 0) 
-            s2 += "%" + Register[am.BR].name;
-        if (am.IR >= 0) {
-            s2 += "," + "%" + Register[am.IR].name;
+        if (am.S &gt; 0)
+            s2 += &quot;,&quot; + (1 &lt;&lt; am.S);
+    }
+    var s = &quot;&quot;;
+    if (s1 != &quot;&quot;)
+        s += s1;
+    if (s2 != &quot;&quot;)
+        s += &quot;(&quot; + s2 + &quot;)&quot;;
+    if (s == &quot;&quot;)
+        s = &quot;0&quot;;
 
-            if (am.S > 0)
-                s2 += "," + (1 << am.S);
-        }
-        var s = "";
-        if (s1 != "")
-            s += s1;
-        if (s2 != "")
-            s += "(" + s2 + ")";
-        if (s == "")
-            s = "0";
+    eAddressingMode.innerHTML = s;
 
-        eAddressingMode.innerHTML = s;
+    var eRegisterDump = document.getElementById(&quot;RegisterDump&quot;);
 
-        var eRegisterDump = document.getElementById("RegisterDump");
+    var eRow = eRegisterDump.insertRow();
+    var i;
+    for (i = 0; i &lt; 4; i++) {
+        var s = Register[i].name + &quot;: &quot; + Register[i].v.toString(16).padStart(8, &quot;0&quot;);
+        var eCell = eRow.insertCell();
+        eCell.innerHTML = s;
+    }
 
-        var eRow = eRegisterDump.insertRow();
-        var i;
-        for (i = 0; i < 4; i++) {
-            var s = Register[i].name + ": " + Register[i].v.toString(16).padStart(8, "0");
-            var eCell = eRow.insertCell();
-            eCell.innerHTML = s;
-        }
+    var eRow = eRegisterDump.insertRow();
+    var i;
+    for (i = 4; i &lt; 8; i++) {
+        var s = Register[i].name + &quot;: &quot; + Register[i].v.toString(16).padStart(8, &quot;0&quot;);
+        var eCell = eRow.insertCell();
+        eCell.innerHTML = s;
+    }
+</code></pre>
+<p>}</p>
+<pre><code>function answerQ() {
 
-        var eRow = eRegisterDump.insertRow();
-        var i;
-        for (i = 4; i < 8; i++) {
-            var s = Register[i].name + ": " + Register[i].v.toString(16).padStart(8, "0");
-            var eCell = eRow.insertCell();
-            eCell.innerHTML = s;
-        }
-}
+    var address = 0;
+    if (am.BR &gt;= 0)
+        address = Register[am.BR].v;
 
-    function answerQ() {
+    if (am.IR &gt;= 0)
+        address += Register[am.IR].v * (1 &lt;&lt; am.S);
 
-        var address = 0;
-        if (am.BR >= 0)
-            address = Register[am.BR].v;
+    address += am.DISP;
 
-        if (am.IR >= 0)
-            address += Register[am.IR].v * (1 << am.S);
+    address &amp;= 0xFFFFFFFF;
 
-        address += am.DISP;
-
-        address &= 0xFFFFFFFF;
-
-        var eAnswer = document.getElementById("Answer");
-        alert(address);
-     eAnswer.innerHTML = "The address referred to is " + address.toString(16).padStart(8, "0");
-}
-</script>
+    var eAnswer = document.getElementById(&quot;Answer&quot;);
+    alert(address);
+ eAnswer.innerHTML = &quot;The address referred to is &quot; + address.toString(16).padStart(8, &quot;0&quot;);
+</code></pre>
+<p>}
+</script></p>
  <h1>x86-32 Addressing modes to address</h1>
 <table align="center">
     <tr>
@@ -131,4 +222,62 @@
 </table>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+ <ol >  </ol> 
+
+ </div>
+
+ <!DOCTYPE html>
+
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedIn </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;"
+                href="https://carmimerimovich.github.io">Carmi Merimovich</a>
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            Things
+            </span>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
 

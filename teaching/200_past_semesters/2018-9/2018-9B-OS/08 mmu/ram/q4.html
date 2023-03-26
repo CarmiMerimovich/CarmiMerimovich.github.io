@@ -1,4 +1,95 @@
-<DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<!DOCTYPE html>
+
+
+<html lang="he" dir="ltr">
+<head>
+    <title>Carmi Merimovich, Personal Site</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Carmi Merimovich, Personal Site">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Carmi Merimovich
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Personal Site
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        <a href="/affiliation.html">Affiliation </a>
+					</h3>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+        <div>
+            
+              <p style="font-size: x-small">
+              <span><a href="../../../../../index.html">Teaching<a></span> >>> <span><a href="../../../../index.html">Past Semesters<a></span> >>> <span><a href="../../../index.html">2018-9<a></span> >>> <span><a href="../../index.html">OS (2018-9B)<a></span>
+              </p>
+              
+                
+	</header>
+
+
+
+
+
+
+<p>&lt;DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;&gt;</p>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Introduction to Operating Systems</title>
@@ -8,211 +99,210 @@
     function ram() {
         this.endian = 0;
         this.mem = [];
-
-        this.writeB = function (addr, value) {
-            this.mem[addr] = value;
-        }
-
-
-        this.read = function (addr, size) {
-            switch (size) {
-                default:
-                case 1:
-                    return (this.readB(addr));
-
-                case 2:
-                    return (this.readW(addr));
-
-                case 4:
-                    return (this.readL(addr));
-
-            }
-        }
-        this.readB = function (addr) {
-         return (this.mem[addr]);
-        }
-
-        this.readW = function (addr) {
-            if (this.endian == 0)
-                return (this.mem[addr] + (this.mem[addr+1] << 8));
-            return (this.mem[addr+1] + (this.mem[addr] << 8));
-        }
-
-        this.readL = function (addr) {
-            if (this.endian == 0)
-                return (this.mem[addr] + (this.mem[addr + 1] * (1<<8)) + (this.mem[addr + 2] * (1<<16)) + (this.mem[addr + 3] * (1<<24)));
-            return (this.mem[addr+3] + (this.mem[addr + 2] * (1 << 8)) + (this.mem[addr + 1] * (1 << 16)) + (this.mem[addr] * (1 << 24)));
-        }
-
-        this.dumpB = function (from, to) {
-            return (this.dump(from,to,1));
-        }
-
-        this.dumpW = function (from, to) {
-            return(this.dump(from, to, 2));
-        }
-
-        this.dumpL = function (from, to) {
-            return (this.dump(from, to, 4));
-        }
-
-        this.dump = function (from, to, size) {
-            var atomSize = size;
-            switch (size) {
-                default:
-                    atomSize = 1;
-                case 1:
-                    var atomMask = 0;
-                    var atomLine = 33;
-                    var atomPad = 2;
-                    break;
-
-                case 2:
-                    var atomMask = 1;
-                    var atomLine = 17;
-                    var atomPad = 4;
-                    break;
-
-                case 4:
-                    var atomMask = 3;
-                    var atomLine = 9;
-                    var atomPad = 8;
-                    break;
-            }
-
-            from &= ~atomMask;
-            to = (to + atomMask) & ~atomMask;
-
-            var tbl = document.createElement('table');
-            var f = (from & ~31);
-            var t = (to + 31) & ~31;
-            var cNum;
-            var headLines = 0;
-            var i;
-            for (i = f; i < t; i += atomSize) {
-                if (headLines == 0) {
-                    var r = tbl.insertRow(-1);
-                    var c = r.insertCell(0);
-                    c.innerHTML = "&nbsp;";
-                    var r = tbl.insertRow(-1);
-                    r.insertCell(0);
-                    var j;
-                    for (j = 0; j < atomLine - 1; j++) {
-                        var c = r.insertCell(j + 1);
-                        c.align = "center";
-                        c.innerText = "+" + (j * atomSize).toString(16).toUpperCase().padStart(2, "0");
-                    }
-                    cNum = 0;
-                    headLines = 1;
-                }
-                if (cNum == 0) {
-                    var r = tbl.insertRow(-1);
-                    var c = r.insertCell(0);
-                    c.innerText = i.toString(16).toUpperCase().padStart(8, "0");
-                    cNum = 1;
-                }
-                var c = r.insertCell(cNum);
-                if (from <= i && i < to) {
-                    c.align = "center";
-                    c.innerText = this.read(i,atomSize).toString(16).toUpperCase().padStart(atomPad, "0");
-                }
-                cNum++;
-                if (cNum == atomLine) {
-                    cNum = 0;
-                    headLines++;
-                    if (headLines == 20) headLines = 0;
-                }
-            }
-
-            return (tbl);
-        }
-
-        this.pagesused = []
-
-        this.palloc = function () {
-            do {
-                var page = Math.trunc(Math.random() * 1024);
-            } while (this.pagesused.indexOf(page) >= 0);
-            this.pagesused.push(page);
-            var addr = page << 12;
-            var i;
-            for (i = 0; i < 4096; i++)
-                this.writeB(addr ,0);
-            return (addr);
-        }
-
-    }
-    mem = new ram();
-
-    var state = {address:0, base: 10};
-
-function initQ() {
-    var addr = mem.palloc();
-    for (i = 0; i < 4096; i++)
-        mem.writeB(addr + i, Math.trunc(Math.random() * 256));
-
-    var eEndian = document.getElementById("Endian");
-    if (Math.random() < 0.5) {
-        mem.endian = 0;
-        eEndian.innerHTML = "little endian";
-    } else {
-        mem.endian = 1;
-        eEndian.innerHTML = "big endian";
+<pre><code>    this.writeB = function (addr, value) {
+        this.mem[addr] = value;
     }
 
-    var carmi = document.getElementById("carmi");
-    var rand = Math.trunc(Math.random() * 3);
-    if (rand == 0)
-        var t = mem.dumpB(addr, addr + 4096);
-    else if (rand == 1)
-        var t = mem.dumpW(addr, addr + 4096);
-    else
-        var t = mem.dumpL(addr, addr + 4096);
 
-    carmi.appendChild(t);
+    this.read = function (addr, size) {
+        switch (size) {
+            default:
+            case 1:
+                return (this.readB(addr));
 
- 
-        var eAddress = document.getElementById("Address");
-        state.address = addr + Math.trunc(Math.random() * 4092);
-        eAddress.innerHTML = state.address.toString(16).toUpperCase().padStart(8, "0");
+            case 2:
+                return (this.readW(addr));
 
-        var eBase = document.getElementById("Base");
-        if (Math.random() < 0.5) {
-            state.base = 10;
-        } else {
-            state.base = 16;
+            case 4:
+                return (this.readL(addr));
+
         }
-        eBase.innerHTML = state.base;
-}
+    }
+    this.readB = function (addr) {
+     return (this.mem[addr]);
+    }
 
-    function answerQ() {
-        var AnswerId = ["AnswerChar", "AnswerUChar", "AnswerShort", "AnswerUShort", "AnswerLong", "AnswerULong"];
-        var AnswerSize = [1,1,2,2,4,4];
-        var AnswerSigned = [1, 0, 1, 0, 1, 0];
+    this.readW = function (addr) {
+        if (this.endian == 0)
+            return (this.mem[addr] + (this.mem[addr+1] &lt;&lt; 8));
+        return (this.mem[addr+1] + (this.mem[addr] &lt;&lt; 8));
+    }
 
+    this.readL = function (addr) {
+        if (this.endian == 0)
+            return (this.mem[addr] + (this.mem[addr + 1] * (1&lt;&lt;8)) + (this.mem[addr + 2] * (1&lt;&lt;16)) + (this.mem[addr + 3] * (1&lt;&lt;24)));
+        return (this.mem[addr+3] + (this.mem[addr + 2] * (1 &lt;&lt; 8)) + (this.mem[addr + 1] * (1 &lt;&lt; 16)) + (this.mem[addr] * (1 &lt;&lt; 24)));
+    }
+
+    this.dumpB = function (from, to) {
+        return (this.dump(from,to,1));
+    }
+
+    this.dumpW = function (from, to) {
+        return(this.dump(from, to, 2));
+    }
+
+    this.dumpL = function (from, to) {
+        return (this.dump(from, to, 4));
+    }
+
+    this.dump = function (from, to, size) {
+        var atomSize = size;
+        switch (size) {
+            default:
+                atomSize = 1;
+            case 1:
+                var atomMask = 0;
+                var atomLine = 33;
+                var atomPad = 2;
+                break;
+
+            case 2:
+                var atomMask = 1;
+                var atomLine = 17;
+                var atomPad = 4;
+                break;
+
+            case 4:
+                var atomMask = 3;
+                var atomLine = 9;
+                var atomPad = 8;
+                break;
+        }
+
+        from &amp;= ~atomMask;
+        to = (to + atomMask) &amp; ~atomMask;
+
+        var tbl = document.createElement('table');
+        var f = (from &amp; ~31);
+        var t = (to + 31) &amp; ~31;
+        var cNum;
+        var headLines = 0;
         var i;
-        for (i = 0; i < AnswerId.length; i++) {
-            var v = mem.read(state.address, AnswerSize[i]);
-            if (AnswerSigned[i] != 0) {
-                switch (AnswerSize[i]) {
-                    case 1:
-                        if (v > 127) v -= 256;
-                        break;
-
-                    case 2:
-                        if (v > 32767) v -= 65536;
-                        break;
-
-                    case 4:
-                        if (v > (1 << 31) - 1) v -= Math.pow(2, 32);
-                        break;
+        for (i = f; i &lt; t; i += atomSize) {
+            if (headLines == 0) {
+                var r = tbl.insertRow(-1);
+                var c = r.insertCell(0);
+                c.innerHTML = &quot;&amp;nbsp;&quot;;
+                var r = tbl.insertRow(-1);
+                r.insertCell(0);
+                var j;
+                for (j = 0; j &lt; atomLine - 1; j++) {
+                    var c = r.insertCell(j + 1);
+                    c.align = &quot;center&quot;;
+                    c.innerText = &quot;+&quot; + (j * atomSize).toString(16).toUpperCase().padStart(2, &quot;0&quot;);
                 }
+                cNum = 0;
+                headLines = 1;
             }
-            var eAnswer = document.getElementById(AnswerId[i]);
-            eAnswer.innerHTML = v.toString(state.base).toUpperCase();
-         }
+            if (cNum == 0) {
+                var r = tbl.insertRow(-1);
+                var c = r.insertCell(0);
+                c.innerText = i.toString(16).toUpperCase().padStart(8, &quot;0&quot;);
+                cNum = 1;
+            }
+            var c = r.insertCell(cNum);
+            if (from &lt;= i &amp;&amp; i &lt; to) {
+                c.align = &quot;center&quot;;
+                c.innerText = this.read(i,atomSize).toString(16).toUpperCase().padStart(atomPad, &quot;0&quot;);
+            }
+            cNum++;
+            if (cNum == atomLine) {
+                cNum = 0;
+                headLines++;
+                if (headLines == 20) headLines = 0;
+            }
+        }
+
+        return (tbl);
+    }
+
+    this.pagesused = []
+
+    this.palloc = function () {
+        do {
+            var page = Math.trunc(Math.random() * 1024);
+        } while (this.pagesused.indexOf(page) &gt;= 0);
+        this.pagesused.push(page);
+        var addr = page &lt;&lt; 12;
+        var i;
+        for (i = 0; i &lt; 4096; i++)
+            this.writeB(addr ,0);
+        return (addr);
+    }
+
 }
-</script>
+mem = new ram();
+
+var state = {address:0, base: 10};
+</code></pre>
+<p>function initQ() {
+var addr = mem.palloc();
+for (i = 0; i &lt; 4096; i++)
+mem.writeB(addr + i, Math.trunc(Math.random() * 256));</p>
+<pre><code>var eEndian = document.getElementById(&quot;Endian&quot;);
+if (Math.random() &lt; 0.5) {
+    mem.endian = 0;
+    eEndian.innerHTML = &quot;little endian&quot;;
+} else {
+    mem.endian = 1;
+    eEndian.innerHTML = &quot;big endian&quot;;
+}
+
+var carmi = document.getElementById(&quot;carmi&quot;);
+var rand = Math.trunc(Math.random() * 3);
+if (rand == 0)
+    var t = mem.dumpB(addr, addr + 4096);
+else if (rand == 1)
+    var t = mem.dumpW(addr, addr + 4096);
+else
+    var t = mem.dumpL(addr, addr + 4096);
+
+carmi.appendChild(t);
+
+
+    var eAddress = document.getElementById(&quot;Address&quot;);
+    state.address = addr + Math.trunc(Math.random() * 4092);
+    eAddress.innerHTML = state.address.toString(16).toUpperCase().padStart(8, &quot;0&quot;);
+
+    var eBase = document.getElementById(&quot;Base&quot;);
+    if (Math.random() &lt; 0.5) {
+        state.base = 10;
+    } else {
+        state.base = 16;
+    }
+    eBase.innerHTML = state.base;
+</code></pre>
+<p>}</p>
+<pre><code>function answerQ() {
+    var AnswerId = [&quot;AnswerChar&quot;, &quot;AnswerUChar&quot;, &quot;AnswerShort&quot;, &quot;AnswerUShort&quot;, &quot;AnswerLong&quot;, &quot;AnswerULong&quot;];
+    var AnswerSize = [1,1,2,2,4,4];
+    var AnswerSigned = [1, 0, 1, 0, 1, 0];
+
+    var i;
+    for (i = 0; i &lt; AnswerId.length; i++) {
+        var v = mem.read(state.address, AnswerSize[i]);
+        if (AnswerSigned[i] != 0) {
+            switch (AnswerSize[i]) {
+                case 1:
+                    if (v &gt; 127) v -= 256;
+                    break;
+
+                case 2:
+                    if (v &gt; 32767) v -= 65536;
+                    break;
+
+                case 4:
+                    if (v &gt; (1 &lt;&lt; 31) - 1) v -= Math.pow(2, 32);
+                    break;
+            }
+        }
+        var eAnswer = document.getElementById(AnswerId[i]);
+        eAnswer.innerHTML = v.toString(state.base).toUpperCase();
+     }
+</code></pre>
+<p>}
+</script></p>
 <h1>Addresses and values</h1>
 <table align="center">
     <tr>
@@ -268,4 +358,62 @@ function initQ() {
 	</table>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+ <ol >  </ol> 
+
+ </div>
+
+ <!DOCTYPE html>
+
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedIn </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;"
+                href="https://carmimerimovich.github.io">Carmi Merimovich</a>
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            Things
+            </span>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
 

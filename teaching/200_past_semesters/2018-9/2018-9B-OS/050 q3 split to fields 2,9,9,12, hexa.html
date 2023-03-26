@@ -1,4 +1,95 @@
-<DOCvaTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<!DOCTYPE html>
+
+
+<html lang="he" dir="ltr">
+<head>
+    <title>Carmi Merimovich, Personal Site</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Carmi Merimovich, Personal Site">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Carmi Merimovich
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Personal Site
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        <a href="/affiliation.html">Affiliation </a>
+					</h3>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+        <div>
+            
+              <p style="font-size: x-small">
+              <span><a href="../../../index.html">Teaching<a></span> >>> <span><a href="../../index.html">Past Semesters<a></span> >>> <span><a href="../index.html">2018-9<a></span> >>> <span>OS (2018-9B)</span>
+              </p>
+              
+                
+	</header>
+
+
+
+
+
+
+<p>&lt;DOCvaTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;&gt;</p>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Introduction to Operating Systems</title>
@@ -8,81 +99,75 @@
 var num;
 function initQ() {
 	num = Math.round(Math.random() * Math.pow(2,32));
+<pre><code>var va = document.getElementById(&quot;va&quot;);
+va.innerText = num.toString(16);
 
-	var va = document.getElementById("va");
-	va.innerText = num.toString(16);
-	
-	document.getElementById("i0").value = "";
-	document.getElementById("i1").value = "";
-    document.getElementById("i2").value = "";
-	document.getElementById("offset").value = "";
-	
-	emptycorrect(0);
-	emptycorrect(1);
-	emptycorrect(2);
-    emptycorrect(3);
-}
+document.getElementById(&quot;i0&quot;).value = &quot;&quot;;
+document.getElementById(&quot;i1&quot;).value = &quot;&quot;;
+document.getElementById(&quot;i2&quot;).value = &quot;&quot;;
+document.getElementById(&quot;offset&quot;).value = &quot;&quot;;
 
-function cheatQ() {
-	document.getElementById("i0").value = ((num >>> 30) & 3).toString(16).padStart(1,"0");
-	document.getElementById("i1").value= ((num >>> 21) & 511).toString(16).padStart(3,"0");
-    document.getElementById("i2").value = ((num >>> 12) & 511).toString(16).padStart(3, "0");
-	document.getElementById("offset").value = (num & 4095).toString(16).padStart(3,"0");
-}
+emptycorrect(0);
+emptycorrect(1);
+emptycorrect(2);
+emptycorrect(3);
+</code></pre>
+<p>}</p>
+<p>function cheatQ() {
+document.getElementById(&quot;i0&quot;).value = ((num &gt;&gt;&gt; 30) &amp; 3).toString(16).padStart(1,&quot;0&quot;);
+document.getElementById(&quot;i1&quot;).value= ((num &gt;&gt;&gt; 21) &amp; 511).toString(16).padStart(3,&quot;0&quot;);
+document.getElementById(&quot;i2&quot;).value = ((num &gt;&gt;&gt; 12) &amp; 511).toString(16).padStart(3, &quot;0&quot;);
+document.getElementById(&quot;offset&quot;).value = (num &amp; 4095).toString(16).padStart(3,&quot;0&quot;);
+}</p>
+<p>function checkQ() {
+var i0 = document.getElementById(&quot;i0&quot;);
+var vi0 = parseInt(i0.value,16);
+if (isNaN(vi0))
+incorrect(0);
+else if (vi0 != ((num &gt;&gt;&gt; 30) &amp; 3))
+incorrect(0);
+else
+correct(0);</p>
+<pre><code>var i1 = document.getElementById(&quot;i1&quot;);
+var vi1 = parseInt(i1.value,16);
+if (isNaN(vi1))
+	incorrect(1);
+else if (vi1 != ((num &gt;&gt;&gt; 21) &amp; 511))
+	incorrect(1);
+else
+	correct(1);
 
-function checkQ() {
-	var i0 = document.getElementById("i0");
-	var vi0 = parseInt(i0.value,16);
-	if (isNaN(vi0)) 
-		incorrect(0);
-	else if (vi0 != ((num >>> 30) & 3))
-		incorrect(0);
-	else
-		correct(0);
+var i2 = document.getElementById(&quot;i2&quot;);
+var vi2 = parseInt(i2.value, 16);
+if (isNaN(vi2))
+    incorrect(2);
+else if (vi2 != ((num &gt;&gt;&gt; 12) &amp; 511))
+    incorrect(2);
+else
+    correct(2);
 
-	var i1 = document.getElementById("i1");
-	var vi1 = parseInt(i1.value,16);
-	if (isNaN(vi1))
-		incorrect(1);
-	else if (vi1 != ((num >>> 21) & 511))
-		incorrect(1);
-	else
-		correct(1);
-
-    var i2 = document.getElementById("i2");
-    var vi2 = parseInt(i2.value, 16);
-    if (isNaN(vi2))
-        incorrect(2);
-    else if (vi2 != ((num >>> 12) & 511))
-        incorrect(2);
-    else
-        correct(2);
-
-	offset = document.getElementById("offset");
-	voffset = parseInt(offset.value,16);
-	if (isNaN(voffset))
-		incorrect(3);
-	else if (voffset != (num & 4095))
-		incorrect(3);
-	else
-		correct(3);
-}
-
-function emptycorrect(field) {
-		c = document.getElementById("correct"+field);
-		c.innerHTML = "&nbsp;";
-}
-
-function incorrect(field) {
-		c = document.getElementById("correct"+field);
-		c.innerText = "Incorrect";
-}
-
-function correct(field) {
-		c = document.getElementById("correct"+field);
-		c.innerText = "correct";
-}
-
+offset = document.getElementById(&quot;offset&quot;);
+voffset = parseInt(offset.value,16);
+if (isNaN(voffset))
+	incorrect(3);
+else if (voffset != (num &amp; 4095))
+	incorrect(3);
+else
+	correct(3);
+</code></pre>
+<p>}</p>
+<p>function emptycorrect(field) {
+c = document.getElementById(&quot;correct&quot;+field);
+c.innerHTML = &quot; &quot;;
+}</p>
+<p>function incorrect(field) {
+c = document.getElementById(&quot;correct&quot;+field);
+c.innerText = &quot;Incorrect&quot;;
+}</p>
+<p>function correct(field) {
+c = document.getElementById(&quot;correct&quot;+field);
+c.innerText = &quot;correct&quot;;
+}</p>
 </script>
 <h1>x86-32 (2,9,9,12) Virtual Addresses. Split to fields. Hexadecimal.</h1>
 	<table align="center">
@@ -116,6 +201,111 @@ function correct(field) {
 	</tr>
 	</table>
 </body>
-
 </html>
+
+
+
+
+
+
+
+
+
+
+ <ol > 
+            <li>
+                
+            <a href="08 mmu/index.html"></a>
+        
+            
+            
+            
+            
+             <ol > 
+            <li>
+                
+            <a href="08 mmu/mmu/index.html"></a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </li>
+        
+            <li>
+                
+            <a href="08 mmu/ram/index.html"></a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </li>
+         </ol> 
+        
+        </li>
+        
+            <li>
+                
+            <a href="12 shell/index.html"></a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </li>
+         </ol> 
+
+ </div>
+
+ <!DOCTYPE html>
+
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedIn </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;"
+                href="https://carmimerimovich.github.io">Carmi Merimovich</a>
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            Things
+            </span>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
 
