@@ -78,7 +78,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../../../index.html">Current Semester<a></span>&rlm; >>> <span><a href="../../index.html">2022-3B<a></span>&rlm; >>> <span><a href="../index.html">מבוא לארכיטקטורת מחשבים<a></span>&rlm; >>> <span>23/3/2023</span>&rlm;
+              <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>קריאה לפונקציה עבור כל עלה</span>&rlm;
               </p>
               
                 
@@ -89,21 +89,60 @@ MathJax = {
 
 
 
-<h1>23/3/2023 תכנות</h1>
-<ul>
-<li>
-<p><a href="/standing_material/risc_v/programs/100_strcpy_array/index.html">strcpy כשהקלט מערך</a></p>
-</li>
-<li>
-<p><a href="/standing_material/risc_v/programs/200_strcpy_pointers/index.html">strcpy כשהקלט מצביעים</a></p>
-</li>
-<li>
-<p><a href="/standing_material/risc_v/programs/500_sum_bintree/index.html">סכימת עצ בינרי</a></p>
-</li>
-<li>
-<p><a href="/standing_material/risc_v/programs/600_trav_leafs/index.html">קריאה לפונקציה עבור כל עלה בעץ בינרי</a></p>
-</li>
-</ul>
+<h1>קריאה לפונקציה עבור כל עלה</h1>
+<pre><code>struct node {
+    struct node *left;
+    struct node *right;
+    long long value;
+};
+
+void trav(struct node *node, (*func)()) {
+    if (node == NULL)
+        return (0);
+
+    if (node-&gt;left == NULL  &amp;&amp;  node-&gt;right == NULL) {
+        (*func)(node);
+        return;
+    }   
+
+    trav(node-&gt;left);
+    trav(node-&gt;right);
+    return;
+</code></pre>
+<p>trav:
+bne a0, x0, work
+jalr  x0, 0(ra)
+work:
+addi  sp, sp, -24
+sd    ra, 0(sp)</p>
+<pre><code>ld  t0, 0(a0)
+bne  t0, x0, work2
+ld  t0, 8(a0)
+bne  t0, x0 work2
+
+jalr  ra, 0(a1)
+
+ld     ra, 0(sp)
+addi  sp, sp, 24
+jalr  x0, 0(ra)
+</code></pre>
+<p>work2:
+sd    a0, 8(sp)
+sd    a1, 16(sp)</p>
+<pre><code>ld    a0,0(a0)
+jalr  ra, trav
+
+ld    a0, 8(sp)
+ld    a1, 16(sp)
+
+ld    a0, 8(a0)
+jal   ra, tav
+
+ld     ra, 0(sp)
+addi  sp, sp, 24
+jalr  x0, 0(ra)
+</code></pre>
+<pre><code></code></pre>
 
 
 
@@ -133,15 +172,15 @@ MathJax = {
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;" 
-                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedin </a>
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;"
-                href="/">כרמי מרימוביץ</a>
+                href="/">Carmi Merimovich</a>
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            מבוא לארכיטקטורת מחשבים: תקצירים
+            Thins
             </span>
         </li>
     </ul>
