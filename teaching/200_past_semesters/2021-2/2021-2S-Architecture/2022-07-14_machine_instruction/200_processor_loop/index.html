@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+
+
+<html lang="he" dir="rtl">
+<head>
+    <title>כרמי מרימוביץ, אתר אישי</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="כרמי מרימוביץ, אתר אישי">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						אתר אישי
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        <a href="/affiliation_he.html">השתייכות </a>
+					</h3>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+        <div>
+            
+              <p style="font-size: x-small">
+              <span><a href="../../../../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../../../../index.html">Past Semesters<a></span>&rlm; >>> <span><a href="../../../index.html">2021-2<a></span>&rlm; >>> <span><a href="../../index.html">2021-2S Intro to Computer Architecture<a></span>&rlm; >>> <span><a href="../index.html">2022-07-14<a></span>&rlm; >>> <span>לולאת המעבד</span>&rlm;
+              </p>
+              
+                
+	</header>
+
+
+
+
+
+
+<h1>מה עושה המעבד?</h1>
+<p>במושגי תוכנה המעבד נמצא בלולאה אינסופית של ביצוע פקודות.
+לפקודות אלו קוראים פקודות מכונה.
+יש מעבדים עם פקודות מכונה באורך קבוע.
+לדוגמא, מעבדי risc-v אורך פקודה הוא תמיד ארבעה בתים.
+לעומת זאת במעבדי x86 פקודות יכולות להיות באורך של בית אחד ועד 15 בתים.
+הפקודות נמצאות בזכרון העבודה.</p>
+<p>איך המעבד יודע מאיפה לשלוף פקודה?
+מוקצה לכך אוגר.
+בדרך כלל הוא נקרא pc
+(ראשי תיבות של
+program counter).
+אבל שמות כמו ip
+(ראשי תיבות שלinstruction pointer) בהחלט קיימים.</p>
+<p>להלן המבנה במעבדי risc-v.</p>
+<pre><code>for (;;) {
+   ir ← mem[pc] // fetch bytes at addresses: pc, pc+1, pc+2, pc+3
+   Decode instruction
+   Execute instruction
+   pc ← pc + 4
+}
+</code></pre>
+<p>יש לשים לב שב-riscv
+קידום ה-pc לפקודה העוקבת נעשה לאחר ביצוע הפקודה.
+כלומר, במהלך ביצוע פקודה המספר ב-pc הוא כתובת הפקודה המבצעת.</p>
+<p>ברוב המעבדים בני ימינו ה-pc מקודם ישר לאחר שליפת הפקודה מהזיכרון
+ולכן במהלך ביצוע פקודה המספר ב-pc הוא כתובת הפקודה העוקבת לפקודה המתבצעת.
+כך הדבר, לדוגמא במעבדי x86.</p>
+<p>כדאי לשים לב לעובדה הבאה.
+כיון שהמעבד מבצע פקודות תמיד, אזי כשהוא מתחיל לעבוד
+צריך להיות בזיכרון בכתובת שמופיעה ב-pc פקודת מכונה.
+מין הסתם צריכה להיות שם תוכנית שלמה.</p>
+<p>לכן בכל מחשב שהוא יש תמיד איזשהו סוג של זכרון עבודה לא נדיף
+(לדוגמא rom)
+שיכיל את התוכנית הראשונה שרצה על המחשב.</p>
+
+
+
+
+
+
+
+
+
+
+ <ol >  </ol> 
+
+ </div>
+
+ <!DOCTYPE html>
+
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedin </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;"
+                href="https://carmimerimovich.github.io">Carmi Merimovich</a>
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            Things
+            </span>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
