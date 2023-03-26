@@ -78,7 +78,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../../../index.html">Current Semester<a></span>&rlm; >>> <span><a href="../../index.html">2022-3B<a></span>&rlm; >>> <span><a href="../index.html">מבוא לארכיטקטורת מחשבים<a></span>&rlm; >>> <span>23/3/2023</span>&rlm;
+              <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>strcpy - מערכים</span>&rlm;
               </p>
               
                 
@@ -89,21 +89,20 @@ MathJax = {
 
 
 
-<h1>23/3/2023 תכנות</h1>
-<ul>
-<li>
-<p><a href="/standing_material/risc_v/programs/100_strcpy_array/index.html">strcpy כשהקלט מערך</a></p>
-</li>
-<li>
-<p><a href="/standing_material/risc_v/programs/200_strcpy_pointers/index.html">strcpy כשהקלט מצביעים</a></p>
-</li>
-<li>
-<p><a href="/standing_material/risc_v/programs/500_sum_bintree/index.html">סכימת עצ בינרי</a></p>
-</li>
-<li>
-<p>trav קריאה לפונקציה עבור כל עלה בעץ בינרי</p>
-</li>
-</ul>
+<h1>strcpy - מערכים</h1>
+<pre><code>void strcpy(char *y, char *x) {
+    while ((*y++ = *x++) != 0);
+}
+</code></pre>
+<pre><code>strcpy:
+l:  lb  t0, 0(a1)
+    sb  t0, 0(a0)
+    addi a0, a0, 1
+    addi a1, a1, 1
+    bne t0, x0, l
+    jalr x0, 0(ra)
+
+</code></pre>
 
 
 
@@ -133,15 +132,15 @@ MathJax = {
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;" 
-                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedin </a>
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;"
-                href="https://carmimerimovich.github.io">כרמי מרימוביץ</a>
+                href="https://carmimerimovich.github.io">Carmi Merimovich</a>
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            מבוא לארכיטקטורת מחשבים: תקצירים
+            Thins
             </span>
         </li>
     </ul>

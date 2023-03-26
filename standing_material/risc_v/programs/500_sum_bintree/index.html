@@ -89,6 +89,7 @@ MathJax = {
 
 
 
+<h1>סכום אברי עץ בינרי</h1>
 <pre><code>struct node {
     struct node *left;
     struct node *right;
@@ -99,7 +100,7 @@ long long sum(struct node *node) {
     if (node == NULL)
         return (0);
 
-    return (sum(node-&gt;left) = node-&gt;value + sum(node-&gt;right));
+    return (sum(node-&gt;left) + node-&gt;value + sum(node-&gt;right));
 }
 </code></pre>
 <pre><code>sum:
