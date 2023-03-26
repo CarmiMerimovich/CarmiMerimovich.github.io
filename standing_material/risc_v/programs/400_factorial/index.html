@@ -78,7 +78,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../../../index.html">Current Semester<a></span>&rlm; >>> <span><a href="../../index.html">2022-3B<a></span>&rlm; >>> <span><a href="../index.html">מבוא לארכיטקטורת מחשבים<a></span>&rlm; >>> <span>24/3/2023</span>&rlm;
+              <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>חישוב עצרת רקורסיבי</span>&rlm;
               </p>
               
                 
@@ -89,21 +89,25 @@ MathJax = {
 
 
 
-<h1>24/3/2023 תכנות</h1>
-<ul>
-<li>
-<p><a href="/standing_material/risc_v/programs/100_sum_indices/index.html">סכום אברי מערך long long</a></p>
-</li>
-<li>
-<p><a href="/standing_material/risc_v/programs/200_sum_indices/index.html">סכום אברי מערך short</a></p>
-</li>
-<li>
-<p><a href="/standing_material/risc_v/programs/300_sum_even_indices/index.html">סכום האברים באינדקס זוגי מערך long long</a></p>
-</li>
-<li>
-<p>קבועים 32 ביטים</p>
-</li>
-</ul>
+<pre><code>factorial:
+    addi    t0, zero 2
+    bgeu    a0, t0, work    // if (n &gt;= 2) goto work
+    addi    a0, zero, 1     // 1
+    jalr    zero, 0(ra)     // return (1)
+work:   
+    addi    sp, sp, -16
+    sd      ra, 0(sp)       // save ra
+    sd      a0, 8(sp)       //      and n
+
+    addi    a0, a0, -1      // n-1
+    jal     ra, factorial   // factorial(n-1)
+    ld      t0, 8(sp)       // t0 = n
+    mul     a0, a0 t0       // (n-1)! * n
+
+    ld      ra, 0(sp)       // restore ra
+    addi    sp, sp, 16      // clean stack
+    jalr    x0, 0(ra)       // return ((n-1)! * n)
+</code></pre>
 
 
 
@@ -114,19 +118,7 @@ MathJax = {
 
 
 
- <ol > 
-            <li>
-                
-            <a href="constants/index.html">קבועים ברוחב 32-ביטים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
@@ -145,15 +137,15 @@ MathJax = {
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;" 
-                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedin </a>
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;"
-                href="https://carmimerimovich.github.io">כרמי מרימוביץ</a>
+                href="https://carmimerimovich.github.io">Carmi Merimovich</a>
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            מבוא לארכיטקטורת מחשבים: תקצירים
+            Thins
             </span>
         </li>
     </ul>

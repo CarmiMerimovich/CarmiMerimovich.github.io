@@ -78,7 +78,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span>חומרים מכל מיני קורסים</span>&rlm;
+              <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>סכום אברי ווקטור (מצביעים)</span>&rlm;
               </p>
               
                 
@@ -89,7 +89,30 @@ MathJax = {
 
 
 
-<h1>חומרים מכל מיני קורסים</h1>
+<p>הקוד הזה ניגש לווקטור על-ידי פוינטרים.
+השיפור בקוד הנוצר משמעותי.</p>
+<pre><code>long long sum(long long *vec, unsigned long long len) {
+    long long s;
+    for (unsigned long long i = 0; i &lt; len; i++) {
+        s += *vec++;
+    }
+    return (sum);
+}
+</code></pre>
+<pre><code>sum:
+    add t0, zero zero   // i = 0
+    add t2, zero zero   // s = 0
+    beq zero, zero, L
+loop:
+    ld  t1, 0(a0)       // *vec
+    add t2,t2, t1       // s += *vec
+    addi    a0, a0, 8   // vec += 8
+    addi    t0, t0, 1   // i += 1
+L:  bltu t0, a1, loop   // if (i &lt; len) goto loop
+done:
+    addi a0, t2, 0      // return value
+    jalr zero, 0(ra)    // return
+</code></pre>
 
 
 
@@ -100,151 +123,7 @@ MathJax = {
 
 
 
- <ol > 
-            <li>
-                
-            <a href="boolean_algebras/index.html">אלגבראות בוליאניות</a>
-        
-            
-            
-            
-            
-             <ol > 
-            <li>
-                
-            <a href="boolean_algebras/100_axioms/index.html">אקסיומות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="boolean_algebras/200_equalities/index.html">מסקנות</a>
-        
-            
-            
-            
-            
-             <ol > 
-            <li>
-                
-            <a href="boolean_algebras/200_equalities/100_unique_omplement/index.html">יחידות המשלים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="boolean_algebras/200_equalities/200_double_negation/index.html">$\bar{\bar{x}} = x$.</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="boolean_algebras/200_equalities/300_idempotent/index.html">$x+x = x$ ו-$xx=x$.</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="boolean_algebras/200_equalities/400_bounds/index.html">$x + 1 = 1$ ו-$x \cdot 0 = 0$.</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="boolean_algebras/200_equalities/500_de_morgan/index.html">$\overline{x + y} = \bar{x}\bar{y}$ ו-$\overline{xy} = \bar{x}+\bar{y}$.</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="boolean_algebras/200_equalities/600_absorb/index.html">$x + xy = x (x + y) = x$</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="boolean_algebras/200_equalities/700_constant_complement/index.html">$\bar{0} = 1$ ו-$\bar{1}=0$.</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-         </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="boolean_algebras/300_boolean_algebra/index.html">אלגברה בוליאנית, סוף סוף</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="boolean_algebras/400_partial_order/index.html">סדר חלקי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-         </ol> 
-        
-        </li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 

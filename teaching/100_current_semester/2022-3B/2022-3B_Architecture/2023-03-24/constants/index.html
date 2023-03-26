@@ -78,7 +78,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../../../index.html">Current Semester<a></span>&rlm; >>> <span><a href="../../index.html">2022-3B<a></span>&rlm; >>> <span><a href="../index.html">מבוא לארכיטקטורת מחשבים<a></span>&rlm; >>> <span>24/3/2023</span>&rlm;
+              <span><a href="../../../../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../../../../index.html">Current Semester<a></span>&rlm; >>> <span><a href="../../../index.html">2022-3B<a></span>&rlm; >>> <span><a href="../../index.html">מבוא לארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../index.html">24/3/2023<a></span>&rlm; >>> <span>קבועים ברוחב 32-ביטים</span>&rlm;
               </p>
               
                 
@@ -89,21 +89,52 @@ MathJax = {
 
 
 
-<h1>24/3/2023 תכנות</h1>
-<ul>
-<li>
-<p><a href="/standing_material/risc_v/programs/100_sum_indices/index.html">סכום אברי מערך long long</a></p>
-</li>
-<li>
-<p><a href="/standing_material/risc_v/programs/200_sum_indices/index.html">סכום אברי מערך short</a></p>
-</li>
-<li>
-<p><a href="/standing_material/risc_v/programs/300_sum_even_indices/index.html">סכום האברים באינדקס זוגי מערך long long</a></p>
-</li>
-<li>
-<p>קבועים 32 ביטים</p>
-</li>
-</ul>
+<h1>קבועים ברוחב 32-ביטים</h1>
+<p>ראינו שאפשר לטעון קבועים ברוחב 12-ביטים באופן הבא:</p>
+<pre><code>addi t0, x0, -2048
+addi t1, x0, 2047
+</code></pre>
+<p>מה עם קבועים רחבים יותר?
+כמובן, תמיד יש לרשותנו את הזכרון.
+אבל לקבועים ברוחב 32-ביטים יש פקודת מכונה שעוזרת לנו.</p>
+<p>הפקודה lui
+מטעינה קבוע ברוחב 20-ביטים
+לביטים 12-31 של אוגר.
+ביטים 0-11 מאופסים.
+ביטים 32-63 מקבלים את ביט 31.</p>
+<p>לדוגמא, כדי לטעון
+0x000 0000 0700 0000
+לאוגר t0
+ו-0xFFFF FFFF 8000 0000
+לאוגר t1
+ניתן לבצע:</p>
+<pre><code>lui t0, 0x70000
+lui t1, 0x80000
+</code></pre>
+<p>אם נרצה לטעון
+0x0000 0000 7000 0001
+ל-t1
+נבצע את שתי הפקודות הבאות:</p>
+<pre><code>lui t0, 0x70000
+addi t0, t0, 1
+</code></pre>
+<p>נשים לב לנושא הרחבת הסימן בפקודה addi!
+נניח שרוצים לטעון את הקבוע
+0x0000 0000 7000 0800.
+הסתכלות <strong>לא זהירה</strong>
+תניב את הקוד הבא:</p>
+<pre><code>lui t0, 0x70000
+addi t0, 0x800
+</code></pre>
+<p>אבל הערך שיטען יהיה
+0x0000 0000 6FFF F800.
+זוג הפקודות הנכון יהיה הבא:</p>
+<pre><code>lui t0, 0x70001
+addi t0, 0x800
+</code></pre>
+<p><strong>עדיין! יש לשים לב</strong>
+מצד אחד, טעינת קבוע ברוחב 32-ביטים תהיה איטית יותר מאשר קבוע 12-ביטים.
+מצד שני, קבועים ברוחב 32-ביטים הם נדירים הרבה יותר מאשר קבועים ברוחב 12-ביטים.</p>
 
 
 
@@ -114,19 +145,7 @@ MathJax = {
 
 
 
- <ol > 
-            <li>
-                
-            <a href="constants/index.html">קבועים ברוחב 32-ביטים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
