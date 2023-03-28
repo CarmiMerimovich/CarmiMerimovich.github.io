@@ -114,7 +114,7 @@ work:
     ld  a0, 0(a0)       // node-&gt;left
     jal ra, sum         // sum(node-&gt;left)
 
-    ld  t0, 0(sp)       // node
+    ld  t0, 8(sp)       // node
     ld  t1, 16(t0)      // node-&gt;value
     add t1, t1, a0      / node-&gt;value + sum(node-&gt;left)
     sd  t1, 16(sp)      // save 
