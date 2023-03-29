@@ -78,7 +78,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../index.html">שאלות תרגול<a></span>&rlm; >>> <span><a href="../index.html">Decimal to Binary<a></span>&rlm;
+              <span><a href="../../index.html">שאלות תרגול<a></span>&rlm; >>> <span><a href="../index.html">שלם עשרוני לבינרי<a></span>&rlm;
               </p>
               
                 
@@ -89,59 +89,25 @@ MathJax = {
 
 
 
+    
+
 <h2>טבעי בבסיס 10 לבינרי</h2>
 יש להציג בבינרי את המספר 
 <span id="number"></span>
-<div><button id="answerButton" type="clock" onclick="answer();">תשובה</button></div>
+<div><button id="answerButton" type="clock" onclick="makeAnswer();">תשובה</button></div>
+<div><button id="firstStepButton" type="clock" onclick="firstStep();">צעד ראשון</button></div>
+<div><button id="nextStepButton" style="visibility: hidden;" type="clock" onclick="makeStep();">עוד צעד</button></div>
 <div class="hidden" style="visibility: hidden;">תוצאה: <span id="solution" style="direction: ltr;"></span></div>
 <div class="hidden" style="visibility: hidden;">דרך:</div>
 <div class="hidden" id="calculation" style="direction: ltr; visibility: hidden;"></div>
+
 <script>
     const range = 2**20;
-    const number = Math.trunc(Math.random() * range);
-    const eNumber = document.getElementById("number");
-    eNumber.innerHTML = number.toString() + "<sub>10</sub>.";
-<p>function answer() {
-const eSolution = document.getElementById(&quot;solution&quot;);
-eSolution.innerHTML = &quot;&quot; + number.toString(2) + &quot;<sub>2</sub>&quot;;
-const eHiddens = document.getElementsByClassName(&quot;hidden&quot;);</p>
-<pre><code>for (const e of eHiddens)
-    e.style.visibility = &quot;visible&quot;;
-
-const eAnswerButton = document.getElementById(&quot;answerButton&quot;);
-eAnswerButton.style.visibility = &quot;hidden&quot;;
-
-let result = number;
-let s = &quot;&quot;;
-do {
-    let digit = result % 2;
-    let result2 = Math.trunc(result / 2);
-    s += `&lt;tr&gt;
-        &lt;td style=&quot;text-align: right;&quot;&gt;${result}&lt;/td&gt;
-        &lt;td style=&quot;text-align: center;&quot;&gt;2&lt;/td&gt;
-        &lt;td style=&quot;text-align: right;&quot;&gt;${result2}&lt;/td&gt;
-        &lt;td style=&quot;text-align: center;&quot;&gt;${digit}&lt;/td&gt;&lt;/tr&gt;`;
-    result = result2;
-} while (result &gt; 0)
-const eCalculation = document.getElementById(&quot;calculation&quot;);
-eCalculation.innerHTML =
-     `&lt;table&gt; &lt;tr&gt;&lt;th&gt;מחולק&lt;/th&gt;&lt;th&gt;מחלק&lt;/th&gt;&lt;th&gt;תוצאה&lt;/th&gt;&lt;th&gt;שארית&lt;/th&gt;&lt;/tr&gt;
-${s} &lt;/table&gt;`; 
-</code></pre>
-<p>}
-</script></p>
-</body>
-</html>
+</script>
+<script src="../dec2bin.inc"></script>
 
 
 
-
-
-
-
-
-
- <ol >  </ol> 
 
  </div>
 
@@ -160,15 +126,15 @@ ${s} &lt;/table&gt;`;
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;" 
-                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedin </a>
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;"
-                href="/">Carmi Merimovich</a>
+                href="/">כרמי מרימוביץ</a>
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            Thins
+            מבוא לארכיטקטורת מחשבים: תקצירים
             </span>
         </li>
     </ul>

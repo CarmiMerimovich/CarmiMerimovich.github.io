@@ -89,7 +89,7 @@ MathJax = {
 
 
 
-<p>&lt;DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;&gt;</p>
+    <DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Introduction to Operating Systems</title>
@@ -99,150 +99,158 @@ MathJax = {
 <script>
 var va, etbl, pa;
 var mem=[], pagesused=[];
-<p>function initQ() {
-va = Math.trunc(Math.random() * Math.pow(2,32));
-pa = (Math.trunc(Math.random() * Math.pow(2,19)) &lt;&lt; 12) + (va &amp; 4095);
-pagesused = [];
-mem = [];
-etbl = kalloc();</p>
-<pre><code>var dumpo = document.getElementById(&quot;dump&quot;);
-dumpo.innerHTML = &quot;&quot;;
 
-var vao = document.getElementById(&quot;vao&quot;);
-var pad = Math.ceil(32 / Math.log2(16));
-vao.innerHTML = va.toString(16).padStart(pad, &quot;0&quot;);
-
-var pao = document.getElementById(&quot;pa&quot;);
-pao.value = &quot;&quot;;
-
-var etblo = document.getElementById(&quot;etblo&quot;);
-var pad = Math.ceil(32 / Math.log2(16));
-etblo.innerText = etbl.toString(16).padStart(pad, &quot;0&quot;);
-
-var i0 = (va &gt;&gt; 30) &amp; 3;
-var i1 = (va &gt;&gt; 21) &amp; 511;
-var i2 = (va &gt;&gt; 12) &amp; 511;
-
-var i1tbl = kalloc();
-var itbl = kalloc();
-
-i0 *= 2;
-i1 *= 2;
-i2 *= 2;
-
-mem[etbl / 4 + i0] = i1tbl | 7;
-mem[i1tbl / 4 + i1] = itbl | 7;
-mem[itbl/4 + i2] = (pa &amp; ~4095)  | 7;
-
-
-
-var imin = i0 - 20;
-if (imin &lt; 0) imin=0;
-imin &amp;= ~7;
-
-var imax = i0+20;
-if (imax &gt; 1023) imax = 1023;
-
-var i;
-for (i = imin; i &lt; imax; i += 2) {
-	if (i == i0) continue;
-	var p = kalloc();
-	mem[i] = p | 7;
+function initQ() {
+	va = Math.trunc(Math.random() * Math.pow(2,32));
+	pa = (Math.trunc(Math.random() * Math.pow(2,19)) << 12) + (va & 4095);
+	pagesused = [];
+	mem = [];
+	etbl = kalloc();
 	
-	var j;
-	for (j = 0; j &lt; 1024; j += 2)
-		mem[p/4 + j] = Math.trunc(Math.random() * Math.pow(2,19)) | 7;
+	var dumpo = document.getElementById("dump");
+	dumpo.innerHTML = "";
+
+	var vao = document.getElementById("vao");
+	var pad = Math.ceil(32 / Math.log2(16));
+	vao.innerHTML = va.toString(16).padStart(pad, "0");
+	
+	var pao = document.getElementById("pa");
+	pao.value = "";
+	
+	var etblo = document.getElementById("etblo");
+	var pad = Math.ceil(32 / Math.log2(16));
+	etblo.innerText = etbl.toString(16).padStart(pad, "0");
+
+	var i0 = (va >> 30) & 3;
+	var i1 = (va >> 21) & 511;
+    var i2 = (va >> 12) & 511;
+	
+	var i1tbl = kalloc();
+    var itbl = kalloc();
+
+    i0 *= 2;
+    i1 *= 2;
+    i2 *= 2;
+
+    mem[etbl / 4 + i0] = i1tbl | 7;
+    mem[i1tbl / 4 + i1] = itbl | 7;
+	mem[itbl/4 + i2] = (pa & ~4095)  | 7;
+	
+	
+
+	var imin = i0 - 20;
+	if (imin < 0) imin=0;
+	imin &= ~7;
+	
+	var imax = i0+20;
+	if (imax > 1023) imax = 1023;
+	
+	var i;
+	for (i = imin; i < imax; i += 2) {
+		if (i == i0) continue;
+		var p = kalloc();
+		mem[i] = p | 7;
+		
+		var j;
+		for (j = 0; j < 1024; j += 2)
+			mem[p/4 + j] = Math.trunc(Math.random() * Math.pow(2,19)) | 7;
+	}
+
+	pagesused = pagesused.sort(function (a,b) {return (Math.sign(a-b));});
+
+	var i;
+	for (i = 0; i < pagesused.length; i++){
+		if (pagesused[i] == etbl/4096)
+			dumpAddPage(etbl, i0);
+        else if (pagesused[i] == i1tbl / 4096)
+            dumpAddPage(i1tbl, i1);
+		else if (pagesused[i] == itbl/4096)
+			dumpAddPage(itbl, i2);
+		else
+			dumpAddPage(pagesused[i]*4096, Math.trunc(Math.random() * 1024));
+	}
+	
+
+	correct(0, -1);
 }
 
-pagesused = pagesused.sort(function (a,b) {return (Math.sign(a-b));});
-
-var i;
-for (i = 0; i &lt; pagesused.length; i++){
-	if (pagesused[i] == etbl/4096)
-		dumpAddPage(etbl, i0);
-    else if (pagesused[i] == i1tbl / 4096)
-        dumpAddPage(i1tbl, i1);
-	else if (pagesused[i] == itbl/4096)
-		dumpAddPage(itbl, i2);
-	else
-		dumpAddPage(pagesused[i]*4096, Math.trunc(Math.random() * 1024));
-}
-
-
-correct(0, -1);
-</code></pre>
-<p>}</p>
-<p>function dumpAddPage(tbl, im) {
-var dumpo = document.getElementById(&quot;dump&quot;);</p>
-<pre><code>var r = dumpo.insertRow(-1);
-r.insertCell(0);
-var i;
-for (i = 1; i &lt; 9; i++) {
-	var c = r.insertCell(i);
-	c.align = &quot;center&quot;;
-	c.innerText = &quot;+&quot;+((i-1)*4).toString(16).padStart(2, &quot;0&quot;);
-}
-
-var imin = im - 10;
-if (imin &lt; 0) imin = 0;
-imin = imin &amp; ~3;
-var imax = im + 10;
-if (imax &gt; 1023) imax = 1023; 
-
-imin += tbl/4;
-imax += tbl/4;
-
-var i;
-var cn = 0;
-for (i = imin; i &lt; imax; i++) {
-	if ((cn % 9) == 0) {
-		cn = 0;
-		var r = dumpo.insertRow(-1);
+function dumpAddPage(tbl, im) {
+	var dumpo = document.getElementById("dump");
+	
+	var r = dumpo.insertRow(-1);
+	r.insertCell(0);
+	var i;
+	for (i = 1; i < 9; i++) {
+		var c = r.insertCell(i);
+		c.align = "center";
+		c.innerText = "+"+((i-1)*4).toString(16).padStart(2, "0");
+	}
+	
+	var imin = im - 10;
+	if (imin < 0) imin = 0;
+	imin = imin & ~3;
+	var imax = im + 10;
+	if (imax > 1023) imax = 1023; 
+	
+	imin += tbl/4;
+	imax += tbl/4;
+	
+	var i;
+	var cn = 0;
+	for (i = imin; i < imax; i++) {
+		if ((cn % 9) == 0) {
+			cn = 0;
+			var r = dumpo.insertRow(-1);
+			var c = r.insertCell(cn);
+			c.innerText = (i*4).toString(16).padStart(8, "0");
+			cn++;
+		}
 		var c = r.insertCell(cn);
-		c.innerText = (i*4).toString(16).padStart(8, &quot;0&quot;);
+		c.innerText = mem[i].toString(16).padStart(8, "0");
 		cn++;
 	}
-	var c = r.insertCell(cn);
-	c.innerText = mem[i].toString(16).padStart(8, &quot;0&quot;);
-	cn++;
 }
-</code></pre>
-<p>}</p>
-<p>function kalloc() {
-do {
-var page = Math.trunc(Math.random() * 1024);
-} while (pagesused.indexOf(page) &gt;= 0);
-pagesused.push(page);
-var addr = page &lt;&lt; 12;
-var i;
-for (i = 0; i &lt; 1024; i++)
-mem[addr/4 + i] = 0;
-return (addr);
-}</p>
-<p>function cheatQ() {
-var pao = document.getElementById(&quot;pa&quot;);
-var pad = Math.ceil(32 / Math.log2(16));
-pao.value = pa.toString(16).padStart(pad, &quot;0&quot;);
-}</p>
-<p>function checkQ() {
-var pao = document.getElementById(&quot;pa&quot;);
-var ipa = parseInt(pao.value, 16);
-if (isNaN(ipa))
-correct(0,0);
-else if (ipa != pa)
-correct(0,0);
-else
-correct(0,1);
-}</p>
-<p>function correct(field, type) {
-c = document.getElementById(&quot;correct&quot;+field);
-if (type == -1)
-c.innerHTML = &quot; &quot;;
-else if (type == 0)
-c.innerText = &quot;Incorrect&quot;;
-else
-c.innerText = &quot;Correct&quot;;
-}</p>
+
+
+function kalloc() {
+	do { 
+		var page = Math.trunc(Math.random() * 1024);
+	} while (pagesused.indexOf(page) >= 0);
+	pagesused.push(page);
+	var addr = page << 12;
+	var i;
+	for (i = 0; i < 1024; i++)
+		mem[addr/4 + i] = 0;
+	return (addr);
+}
+
+function cheatQ() {
+	var pao = document.getElementById("pa");
+	var pad = Math.ceil(32 / Math.log2(16));
+	pao.value = pa.toString(16).padStart(pad, "0");
+}
+
+function checkQ() {
+	var pao = document.getElementById("pa");
+	var ipa = parseInt(pao.value, 16);
+	if (isNaN(ipa))
+		correct(0,0);
+	else if (ipa != pa)
+		correct(0,0);
+	else
+		correct(0,1);
+}
+
+function correct(field, type) {
+	c = document.getElementById("correct"+field);
+	if (type == -1)
+		c.innerHTML = "&nbsp;";
+	else if (type == 0)
+		c.innerText = "Incorrect";
+	else
+		c.innerText = "Correct";
+}
+
 </script>
 <h1>x86-32 (2,9,9,12) address translation. Hexa. Easy case.</h1>
 <table align="center">
@@ -277,66 +285,11 @@ c.innerText = &quot;Correct&quot;;
 	<table id="dump">
 	</table>
 </body>
+
 </html>
 
 
 
-
-
-
-
-
-
-
- <ol > 
-            <li>
-                
-            <a href="08 mmu/index.html"></a>
-        
-            
-            
-            
-            
-             <ol > 
-            <li>
-                
-            <a href="08 mmu/mmu/index.html"></a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="08 mmu/ram/index.html"></a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-         </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="12 shell/index.html"></a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-         </ol> 
 
  </div>
 

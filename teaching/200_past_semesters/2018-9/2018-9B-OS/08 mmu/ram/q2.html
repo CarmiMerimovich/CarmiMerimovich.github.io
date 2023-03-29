@@ -89,7 +89,7 @@ MathJax = {
 
 
 
-<p>&lt;DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;&gt;</p>
+    <DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Introduction to Operating Systems</title>
@@ -101,33 +101,34 @@ MathJax = {
         typeName: ["char", "short", "int", "long", "long long"], signedName: ["", "unsigned "], fieldType: [], fieldSigned: [],
         fieldName: ["a", "b", "c", "d", "e", "f"], fieldQ: 0
     };
-<pre><code>function initQ() {
-    var i;
-    for (i = 0; i &lt; state.fieldName.length; i++) {
-        state.fieldType[i] = Math.trunc(Math.random() * state.typeName.length);
-        state.fieldSigned[i] = Math.trunc(Math.random() * 2);
-    }
-    var eCode = document.getElementById(&quot;Code&quot;);
-    var s = &quot;struct {\r\n&quot;
-    for (i = 0; i &lt; state.fieldName.length; i++)
-        s += &quot;\t&quot; + state.signedName[state.fieldSigned[i]] + state.typeName[state.fieldType[i]] + &quot; &quot; + state.fieldName[i] + &quot;;\r\n&quot; ; 
-    s += &quot;};&quot;;
-    eCode.innerHTML = s;
 
-    state.fieldQ = Math.trunc(Math.random() * 6);
-    var eField = document.getElementById(&quot;Field&quot;);
-    eField.innerHTML = state.fieldName[state.fieldQ];
-</code></pre>
-<p>}</p>
-<p>function answerQ() {
-var o = 0;
-for (i = 0; i &lt; state.fieldQ; i++)
-o += state.typeSize[state.fieldType[i]];</p>
-<pre><code> var eAnswer = document.getElementById(&quot;Answer&quot;);
- eAnswer.innerHTML = &quot;The offset is &quot; + o + &quot;.&quot;;
-</code></pre>
-<p>}
-</script></p>
+    function initQ() {
+        var i;
+        for (i = 0; i < state.fieldName.length; i++) {
+            state.fieldType[i] = Math.trunc(Math.random() * state.typeName.length);
+            state.fieldSigned[i] = Math.trunc(Math.random() * 2);
+        }
+        var eCode = document.getElementById("Code");
+        var s = "struct {\r\n"
+        for (i = 0; i < state.fieldName.length; i++)
+            s += "\t" + state.signedName[state.fieldSigned[i]] + state.typeName[state.fieldType[i]] + " " + state.fieldName[i] + ";\r\n" ; 
+        s += "};";
+        eCode.innerHTML = s;
+
+        state.fieldQ = Math.trunc(Math.random() * 6);
+        var eField = document.getElementById("Field");
+        eField.innerHTML = state.fieldName[state.fieldQ];
+}
+
+ function answerQ() {
+     var o = 0;
+     for (i = 0; i < state.fieldQ; i++)
+         o += state.typeSize[state.fieldType[i]];
+
+     var eAnswer = document.getElementById("Answer");
+     eAnswer.innerHTML = "The offset is " + o + ".";
+}
+</script>
 <h1>Field offsets, x86-32</h1>
 <table align="center">
     <tr>
@@ -156,14 +157,6 @@ o += state.typeSize[state.fieldType[i]];</p>
 
 
 
-
-
-
-
-
-
-
- <ol >  </ol> 
 
  </div>
 

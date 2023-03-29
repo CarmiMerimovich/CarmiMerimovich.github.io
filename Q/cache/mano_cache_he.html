@@ -85,34 +85,43 @@ MathJax = {
 
 
 
+    
 <script src="./mano_cache.js" type="module">
 </script>
+
 <div dir="rtl" style="padding-top: 0.5Em;">
 נתון מחשב עם זיכרון פיזי בגודל
 <span id = "memorySize"></span>
 מילים וזיכרון מטמון בגודל
 <span id = "cacheSize"></span>
 מילות מחשב.
-<p>גודל כל מילת מחשב הוא
+
+גודל כל מילת מחשב הוא
 <span id = "memWordWidth"></span>
-ביטים.</p>
-<p>זכרון המטמון מנוהל בשיטה
+ביטים.
+
+זכרון המטמון מנוהל בשיטה
 ה-<span id="cacheSetSize" dir="ltr"></span>-קבוצתית אסוציאטיבית
 (<span dir="ltr"><span id="cacheSetSize2"></span>-way set associative</span>)
 עם בלוק בגודל 1 ומדיניות
-LRU.</p>
-<p>מבנה כל עמודה הוא
-(כרגיל, משמאל לימין):</p>
-<p>שדה valid,
+LRU.
+
+מבנה כל עמודה הוא
+(כרגיל, משמאל לימין):
+
+שדה valid,
 שדה tag,
 שדה ערך.
-(שדה valid הוא השמאלי)</p>
-<p>נתונה סדרת הגישות הבאה אל כתובות בזיכרון
+(שדה valid הוא השמאלי)
+
+נתונה סדרת הגישות הבאה אל כתובות בזיכרון
 (משמאל לימין)
-כאשר בתחילה זיכרון המטמון ריק:</p>
+כאשר בתחילה זיכרון המטמון ריק:
 <div dir="ltr" id="accessList" style="padding-top: 0.5Em; padding-bottom: 0.5Em;"></div>
 </div>
+
 <div id = "debug" dir="ltr"></div>
+
 <ol>
 <li>
 כמה פעמים התרחש 
@@ -143,14 +152,6 @@ VALID
 
 
 
-
-
-
-
-
-
-
- <ol >  </ol> 
 
  </div>
 

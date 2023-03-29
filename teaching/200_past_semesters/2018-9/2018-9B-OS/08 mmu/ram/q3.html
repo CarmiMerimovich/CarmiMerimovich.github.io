@@ -89,7 +89,7 @@ MathJax = {
 
 
 
-<p>&lt;DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;&gt;</p>
+    <DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Introduction to Operating Systems</title>
@@ -98,12 +98,12 @@ MathJax = {
             border-collapse:collapse;
             border:1px solid  black;
         }
-<pre><code>    #RegisterDump td {
-        border: 1px solid black;
-    }
 
-&lt;/style&gt;
-</code></pre>
+        #RegisterDump td {
+            border: 1px solid black;
+        }
+
+    </style>
 </head>
 <body onload="initQ()">
 <script>
@@ -120,79 +120,79 @@ MathJax = {
         { name: "edi", v: 0  }
     ];
     var am = {BR:0, IR:0, S:0, DISP: 0};
-<pre><code>function initQ() {
-    am.BR = BaseRegister [Math.trunc(Math.random() * BaseRegister.length)];
-    am.IR = IndexRegister[Math.trunc(Math.random() * IndexRegister.length)];
-    am.S  = Math.trunc(Math.random() * 3);
-    am.DISP = Math.trunc(Math.random() * Math.pow(2, 32));
 
-    for (i = 0; i &lt; Register.length; i++) {
-        Register[i].v = Math.trunc(Math.random()*Math.pow(2,32));
-    }
+    function initQ() {
+        am.BR = BaseRegister [Math.trunc(Math.random() * BaseRegister.length)];
+        am.IR = IndexRegister[Math.trunc(Math.random() * IndexRegister.length)];
+        am.S  = Math.trunc(Math.random() * 3);
+        am.DISP = Math.trunc(Math.random() * Math.pow(2, 32));
 
-    var eAddressingMode = document.getElementById(&quot;AddressingMode&quot;);
+        for (i = 0; i < Register.length; i++) {
+            Register[i].v = Math.trunc(Math.random()*Math.pow(2,32));
+        }
 
-    var s1 = &quot;&quot;;
-    if (am.DISP != 0)
-        s1 = am.DISP.toString(16);
+        var eAddressingMode = document.getElementById("AddressingMode");
 
-    var s2 = &quot;&quot;;
-    if (am.BR &gt;= 0) 
-        s2 += &quot;%&quot; + Register[am.BR].name;
-    if (am.IR &gt;= 0) {
-        s2 += &quot;,&quot; + &quot;%&quot; + Register[am.IR].name;
+        var s1 = "";
+        if (am.DISP != 0)
+            s1 = am.DISP.toString(16);
 
-        if (am.S &gt; 0)
-            s2 += &quot;,&quot; + (1 &lt;&lt; am.S);
-    }
-    var s = &quot;&quot;;
-    if (s1 != &quot;&quot;)
-        s += s1;
-    if (s2 != &quot;&quot;)
-        s += &quot;(&quot; + s2 + &quot;)&quot;;
-    if (s == &quot;&quot;)
-        s = &quot;0&quot;;
+        var s2 = "";
+        if (am.BR >= 0) 
+            s2 += "%" + Register[am.BR].name;
+        if (am.IR >= 0) {
+            s2 += "," + "%" + Register[am.IR].name;
 
-    eAddressingMode.innerHTML = s;
+            if (am.S > 0)
+                s2 += "," + (1 << am.S);
+        }
+        var s = "";
+        if (s1 != "")
+            s += s1;
+        if (s2 != "")
+            s += "(" + s2 + ")";
+        if (s == "")
+            s = "0";
 
-    var eRegisterDump = document.getElementById(&quot;RegisterDump&quot;);
+        eAddressingMode.innerHTML = s;
 
-    var eRow = eRegisterDump.insertRow();
-    var i;
-    for (i = 0; i &lt; 4; i++) {
-        var s = Register[i].name + &quot;: &quot; + Register[i].v.toString(16).padStart(8, &quot;0&quot;);
-        var eCell = eRow.insertCell();
-        eCell.innerHTML = s;
-    }
+        var eRegisterDump = document.getElementById("RegisterDump");
 
-    var eRow = eRegisterDump.insertRow();
-    var i;
-    for (i = 4; i &lt; 8; i++) {
-        var s = Register[i].name + &quot;: &quot; + Register[i].v.toString(16).padStart(8, &quot;0&quot;);
-        var eCell = eRow.insertCell();
-        eCell.innerHTML = s;
-    }
-</code></pre>
-<p>}</p>
-<pre><code>function answerQ() {
+        var eRow = eRegisterDump.insertRow();
+        var i;
+        for (i = 0; i < 4; i++) {
+            var s = Register[i].name + ": " + Register[i].v.toString(16).padStart(8, "0");
+            var eCell = eRow.insertCell();
+            eCell.innerHTML = s;
+        }
 
-    var address = 0;
-    if (am.BR &gt;= 0)
-        address = Register[am.BR].v;
+        var eRow = eRegisterDump.insertRow();
+        var i;
+        for (i = 4; i < 8; i++) {
+            var s = Register[i].name + ": " + Register[i].v.toString(16).padStart(8, "0");
+            var eCell = eRow.insertCell();
+            eCell.innerHTML = s;
+        }
+}
 
-    if (am.IR &gt;= 0)
-        address += Register[am.IR].v * (1 &lt;&lt; am.S);
+    function answerQ() {
 
-    address += am.DISP;
+        var address = 0;
+        if (am.BR >= 0)
+            address = Register[am.BR].v;
 
-    address &amp;= 0xFFFFFFFF;
+        if (am.IR >= 0)
+            address += Register[am.IR].v * (1 << am.S);
 
-    var eAnswer = document.getElementById(&quot;Answer&quot;);
-    alert(address);
- eAnswer.innerHTML = &quot;The address referred to is &quot; + address.toString(16).padStart(8, &quot;0&quot;);
-</code></pre>
-<p>}
-</script></p>
+        address += am.DISP;
+
+        address &= 0xFFFFFFFF;
+
+        var eAnswer = document.getElementById("Answer");
+        alert(address);
+     eAnswer.innerHTML = "The address referred to is " + address.toString(16).padStart(8, "0");
+}
+</script>
  <h1>x86-32 Addressing modes to address</h1>
 <table align="center">
     <tr>
@@ -225,14 +225,6 @@ MathJax = {
 
 
 
-
-
-
-
-
-
-
- <ol >  </ol> 
 
  </div>
 

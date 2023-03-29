@@ -89,6 +89,7 @@ MathJax = {
 
 
 
+    
 <h2>טבעי בבסיס 10 לבסיס <span id="radixHead"></span> - עד 1024</h2>
 יש להציג בבסיס
 <span id="radix"></span>
@@ -105,56 +106,48 @@ MathJax = {
     } while (radix == 10);
     const range = 1024;
     const number = Math.trunc(Math.random() * range);
-<pre><code>const eRadixHead = document.getElementById(&quot;radixHead&quot;);
-eRadixHead.innerHTML = radix;
-const eRadix = document.getElementById(&quot;radix&quot;);
-eRadix.innerHTML = radix;
 
-const eNumber = document.getElementById(&quot;number&quot;);
-eNumber.innerHTML = number.toString() + &quot;&lt;sub&gt;10&lt;/sub&gt;.&quot;;
-</code></pre>
-<p>function answer() {
-const eSolution = document.getElementById(&quot;solution&quot;);
-eSolution.innerHTML = &quot;&quot; + number.toString(radix).toUpperCase() +
-<code>&lt;sub&gt;${radix}&lt;/sub&gt;</code>;
-const eHiddens = document.getElementsByClassName(&quot;hidden&quot;);</p>
-<pre><code>for (const e of eHiddens)
-    e.style.visibility = &quot;visible&quot;;
+    const eRadixHead = document.getElementById("radixHead");
+    eRadixHead.innerHTML = radix;
+    const eRadix = document.getElementById("radix");
+    eRadix.innerHTML = radix;
 
-const eAnswerButton = document.getElementById(&quot;answerButton&quot;);
-eAnswerButton.style.visibility = &quot;hidden&quot;;
+    const eNumber = document.getElementById("number");
+    eNumber.innerHTML = number.toString() + "<sub>10</sub>.";
 
-let result = number;
-let s = &quot;&quot;;
-do {
-    let digit = result % radix;
-    let result2 = Math.trunc(result / radix);
-    s += `&lt;tr&gt;
-        &lt;td style=&quot;text-align: right;&quot;&gt;${result}&lt;/td&gt;
-        &lt;td style=&quot;text-align: center;&quot;&gt;${radix}&lt;/td&gt;
-        &lt;td style=&quot;text-align: right;&quot;&gt;${result2}&lt;/td&gt;
-        &lt;td style=&quot;text-align: center;&quot;&gt;${digit.toString(radix).toUpperCase()}&lt;/td&gt;&lt;/tr&gt;`;
-    result = result2;
-} while (result &gt; 0)
-const eCalculation = document.getElementById(&quot;calculation&quot;);
-eCalculation.innerHTML =
-     `&lt;table&gt; &lt;tr&gt;&lt;th&gt;מחולק&lt;/th&gt;&lt;th&gt;מחלק&lt;/th&gt;&lt;th&gt;תוצאה&lt;/th&gt;&lt;th&gt;שארית&lt;/th&gt;&lt;/tr&gt;
-${s} &lt;/table&gt;`; 
-</code></pre>
-<p>}
-</script></p>
+function answer() {
+    const eSolution = document.getElementById("solution");
+    eSolution.innerHTML = "" + number.toString(radix).toUpperCase() +
+             `<sub>${radix}</sub>`;
+    const eHiddens = document.getElementsByClassName("hidden");
+
+    for (const e of eHiddens)
+        e.style.visibility = "visible";
+
+    const eAnswerButton = document.getElementById("answerButton");
+    eAnswerButton.style.visibility = "hidden";
+
+    let result = number;
+    let s = "";
+    do {
+        let digit = result % radix;
+        let result2 = Math.trunc(result / radix);
+        s += `<tr>
+            <td style="text-align: right;">${result}</td>
+            <td style="text-align: center;">${radix}</td>
+            <td style="text-align: right;">${result2}</td>
+            <td style="text-align: center;">${digit.toString(radix).toUpperCase()}</td></tr>`;
+        result = result2;
+    } while (result > 0)
+    const eCalculation = document.getElementById("calculation");
+    eCalculation.innerHTML =
+         `<table> <tr><th>מחולק</th><th>מחלק</th><th>תוצאה</th><th>שארית</th></tr>
+    ${s} </table>`; 
+}
+</script>
 </body>
 </html>
 
-
-
-
-
-
-
-
-
- <ol >  </ol> 
 
  </div>
 
@@ -173,15 +166,15 @@ ${s} &lt;/table&gt;`;
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;" 
-                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedin </a>
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;"
-                href="/">Carmi Merimovich</a>
+                href="/">כרמי מרימוביץ</a>
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            Thins
+            מבוא לארכיטקטורת מחשבים: תקצירים
             </span>
         </li>
     </ul>

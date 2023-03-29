@@ -89,7 +89,7 @@ MathJax = {
 
 
 
-<p>&lt;DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;&gt;</p>
+    <DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Introduction to Operating Systems</title>
@@ -98,91 +98,97 @@ MathJax = {
 <script>
 var num, radix;
 function initQ() {
-<pre><code>var vradix = [16, 16, 16, 8, 4, 2];
-var oad;
 
-num = Math.round(Math.random() * Math.pow(2,32));
-radix = vradix[Math.trunc((Math.random() * 6))];
+	var vradix = [16, 16, 16, 8, 4, 2];
+	var oad;
 
-var va = document.getElementById(&quot;va&quot;);
+	num = Math.round(Math.random() * Math.pow(2,32));
+	radix = vradix[Math.trunc((Math.random() * 6))];
+	
+	var va = document.getElementById("va");
 
-var pad = Math.ceil(32 / Math.log2(radix));
-va.innerHTML = num.toString(radix).padStart(pad, &quot;0&quot;) + &quot;&lt;sub&gt;&quot;+radix.toString()+&quot;&lt;/sub&gt;&quot;;
-var i0 = document.getElementById(&quot;i0&quot;);
-i0.value = &quot;&quot;;
-var i1 = document.getElementById(&quot;i1&quot;);
-i1.value = &quot;&quot;;
-var offset = document.getElementById(&quot;offset&quot;);
-offset.value = &quot;&quot;;
+	var pad = Math.ceil(32 / Math.log2(radix));
+	va.innerHTML = num.toString(radix).padStart(pad, "0") + "<sub>"+radix.toString()+"</sub>";
+	var i0 = document.getElementById("i0");
+	i0.value = "";
+	var i1 = document.getElementById("i1");
+	i1.value = "";
+	var offset = document.getElementById("offset");
+	offset.value = "";
+	
+	var base = document.getElementById("base");
+	if (radix == 16)
+		base.innerText = "hexadecimal";
+	else if (radix == 8)
+		base.innerText = "octal";
+	else if (radix == 4)
+		base.innerText = "radix 4";
+	else
+		base.innerText = "binary";
 
-var base = document.getElementById(&quot;base&quot;);
-if (radix == 16)
-	base.innerText = &quot;hexadecimal&quot;;
-else if (radix == 8)
-	base.innerText = &quot;octal&quot;;
-else if (radix == 4)
-	base.innerText = &quot;radix 4&quot;;
-else
-	base.innerText = &quot;binary&quot;;
+	emptycorrect(0);
+	emptycorrect(1);
+	emptycorrect(2);
+}
 
-emptycorrect(0);
-emptycorrect(1);
-emptycorrect(2);
-</code></pre>
-<p>}</p>
-<p>function cheatQ() {
-var i0 = document.getElementById(&quot;i0&quot;);
-var pad = Math.ceil(10/Math.log2(radix));
-i0.value = ((num &gt;&gt; 22) &amp; 1023).toString(radix).padStart(pad, &quot;0&quot;);</p>
-<pre><code>var i1 = document.getElementById(&quot;i1&quot;);
-var pad = Math.ceil(10/Math.log2(radix));
-i1.value = ((num &gt;&gt; 12) &amp; 1023).toString(radix).padStart(pad, &quot;0&quot;);
+function cheatQ() {
+	var i0 = document.getElementById("i0");
+	var pad = Math.ceil(10/Math.log2(radix));
+	i0.value = ((num >> 22) & 1023).toString(radix).padStart(pad, "0");
 
-var offset = document.getElementById(&quot;offset&quot;);
-var pad = Math.ceil(10/Math.log2(radix));
-offset.value = ((num) &amp; 4095).toString(radix).padStart(pad, &quot;0&quot;);
-</code></pre>
-<p>}</p>
-<p>function checkQ() {
-var i0 = document.getElementById(&quot;i0&quot;);
-var vi0 = parseInt(i0.value,radix);
-if (isNaN(vi0))
-incorrect(0);
-else if (vi0 != ((num &gt;&gt; 22) &amp; 1023))
-incorrect(0);
-else
-correct(0);</p>
-<pre><code>var i1 = document.getElementById(&quot;i1&quot;);
-var vi1 = parseInt(i1.value,radix);
-if (isNaN(vi1))
-	incorrect(1);
-else if (vi1 != ((num &gt;&gt; 12) &amp; 1023))
-	incorrect(1);
-else
-	correct(1);
+	var i1 = document.getElementById("i1");
+	var pad = Math.ceil(10/Math.log2(radix));
+	i1.value = ((num >> 12) & 1023).toString(radix).padStart(pad, "0");
+	
+	var offset = document.getElementById("offset");
+	var pad = Math.ceil(10/Math.log2(radix));
+	offset.value = ((num) & 4095).toString(radix).padStart(pad, "0");
+}
 
-var offset = document.getElementById(&quot;offset&quot;);
-var voffset = parseInt(offset.value,radix);
-if (isNaN(voffset))
-	incorrect(2);
-else if (voffset != ((num &gt;&gt; 0) &amp; 4095))
-	incorrect(2);
-else
-	correct(2);
-</code></pre>
-<p>}</p>
-<p>function emptycorrect(field) {
-var c = document.getElementById(&quot;correct&quot;+field);
-c.innerHTML = &quot; &quot;;
-}</p>
-<p>function incorrect(field) {
-var c = document.getElementById(&quot;correct&quot;+field);
-c.innerText = &quot;Incorrect&quot;;
-}</p>
-<p>function correct(field) {
-cvar  = document.getElementById(&quot;correct&quot;+field);
-c.innerText = &quot;correct&quot;;
-}</p>
+function checkQ() {
+	var i0 = document.getElementById("i0");
+	var vi0 = parseInt(i0.value,radix);
+	if (isNaN(vi0)) 
+		incorrect(0);
+	else if (vi0 != ((num >> 22) & 1023))
+		incorrect(0);
+	else
+		correct(0);
+
+	var i1 = document.getElementById("i1");
+	var vi1 = parseInt(i1.value,radix);
+	if (isNaN(vi1))
+		incorrect(1);
+	else if (vi1 != ((num >> 12) & 1023))
+		incorrect(1);
+	else
+		correct(1);
+
+	var offset = document.getElementById("offset");
+	var voffset = parseInt(offset.value,radix);
+	if (isNaN(voffset))
+		incorrect(2);
+	else if (voffset != ((num >> 0) & 4095))
+		incorrect(2);
+	else
+		correct(2);
+}
+
+function emptycorrect(field) {
+		var c = document.getElementById("correct"+field);
+		c.innerHTML = "&nbsp;";
+}
+
+function incorrect(field) {
+		var c = document.getElementById("correct"+field);
+		c.innerText = "Incorrect";
+}
+
+function correct(field) {
+		cvar  = document.getElementById("correct"+field);
+		c.innerText = "correct";
+}
+
 </script>
 <h1>x86-32 (10,10,12) Virtual Addresses. Split to fields. Hexadecimal/Octal/Base 4/Binary.</h1>
 	<table align="center">
@@ -214,18 +220,11 @@ c.innerText = &quot;correct&quot;;
 	</tr>
 	</table>
 </body>
+
 </html>
 
 
 
-
-
-
-
-
-
-
- <ol >  </ol> 
 
  </div>
 

@@ -89,6 +89,7 @@ MathJax = {
 
 
 
+    
 <h1>נקודה צפה 32-ביט לעשרוני</h1>
 Sign: <span id="sign"></span>
 Exponent: <span id="exponent"></span>
@@ -103,42 +104,34 @@ Mantissa: <span id="mantissa"></span>
     const sign = Math.random() < 0.5 ? 0: 1;
     const exponent = Math.trunc(Math.random() * 253 + 1); // For Normal
     const mantissa = Math.trunc(Math.random() * 1024);
-<pre><code>let eSign = document.getElementById(&quot;sign&quot;);
-eSign.innerText = sign.toString();
 
-let eExponent = document.getElementById(&quot;exponent&quot;);
-eExponent.innerText = exponent.toString();
+    let eSign = document.getElementById("sign");
+    eSign.innerText = sign.toString();
 
-let eMantissa = document.getElementById(&quot;mantissa&quot;);
-eMantissa.innerText = mantissa.toString(2);
+    let eExponent = document.getElementById("exponent");
+    eExponent.innerText = exponent.toString();
 
-let s = `1.${mantissa.toString(2)}&lt;sub&gt;2&lt;/sub&gt; &amp;times; 
-        2&lt;sup&gt;${exponent - 127}&lt;/sup&gt;`; 
+    let eMantissa = document.getElementById("mantissa");
+    eMantissa.innerText = mantissa.toString(2);
 
-let eValueBinary = document.getElementById(&quot;valueBinary&quot;);
-eValueBinary.innerHTML = s;
+    let s = `1.${mantissa.toString(2)}<sub>2</sub> &times; 
+            2<sup>${exponent - 127}</sup>`; 
 
-let ms = &quot;1&quot; + mantissa.toString(2);
-let m  = parseInt(ms, 2);
-let exp = (exponent - 127) - (ms.length - 1);
+    let eValueBinary = document.getElementById("valueBinary");
+    eValueBinary.innerHTML = s;
 
-s = `${m} &amp;times; 
-        2&lt;sup&gt;${exp}&lt;/sup&gt;`; 
-let eValueHalfBinary = document.getElementById(&quot;valueHalfBinary&quot;);
-eValueHalfBinary.innerHTML = s;
-</code></pre>
+    let ms = "1" + mantissa.toString(2);
+    let m  = parseInt(ms, 2);
+    let exp = (exponent - 127) - (ms.length - 1);
+
+    s = `${m} &times; 
+            2<sup>${exp}</sup>`; 
+    let eValueHalfBinary = document.getElementById("valueHalfBinary");
+    eValueHalfBinary.innerHTML = s;
+
 </script>
 
 
-
-
-
-
-
-
-
-
- <ol >  </ol> 
 
  </div>
 
@@ -157,15 +150,15 @@ eValueHalfBinary.innerHTML = s;
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;" 
-                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedin </a>
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;"
-                href="/">Carmi Merimovich</a>
+                href="/">כרמי מרימוביץ</a>
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            Thins
+            מבוא לארכיטקטורת מחשבים: תקצירים
             </span>
         </li>
     </ul>

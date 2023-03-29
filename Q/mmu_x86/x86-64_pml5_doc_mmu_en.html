@@ -85,9 +85,13 @@ MathJax = {
 
 
 
+    
 <script src="./x86-64_pml5_doc_mmu.js" type="module">
 </script>	
 <h2>(x86-64 pml5) mmu doc</h2>
+	
+
+
 <h3 style="padding-top: 0.5Em;">cr3</h3>
 Register CR3 points to the active level 0 table.<br/>
 If cr4.pcide is clear then the format is:
@@ -96,8 +100,12 @@ If cr4.pcide is clear then the format is:
 If cr4.pcide is set then the format is:
 <canvas id= "cr3new" width="1000" height="30" style="padding-top: 0.5Em; padding-bottom: 0.5Em;">
 </canvas>
-<p>Loading of CR3 purges the TLB unless
-we have ASIDs in the TLB.</p>
+
+Loading of CR3 purges the TLB unless
+	we have ASIDs in the TLB.
+
+
+
 <h3 style="padding-top: 0.5Em;">Level 0 (PML5E)</h3>
 An entry in the external table (level 0) has the following format:
 <canvas id="pml5e" width="1000" height="130" style="padding-top: 0.5Em;">
@@ -108,6 +116,7 @@ In fact only the P bit is relevant
 since the page size we use is always 4KB and both the U and R
 bit are always one.
 <br/>
+
 <h3 style="padding-top: 0.5Em;">Level 1 (PML4)</h3>
 An entry in the level1 table has the following format:
 <canvas id="pml4e" width="1000" height="130" style="padding-top: 0.5Em;">
@@ -118,6 +127,7 @@ In fact only the P bit is relevant
 since the page size we use is always 4KB and both the U and R
 bit are always one.
 <br/>
+
 <h3 style="padding-top: 0.5Em;">Middle Page Table Entry</h3>
 An entry in the middle table has the following format:
 <canvas id="pde" width="1000" height="130" style="padding-top: 0.5Em;">
@@ -128,6 +138,8 @@ In fact only the P bit is relevant
 since the page size we use is always 4KB and both the U and R
 bit are always one.
 <br/>
+
+
 <h3 style="padding-top: 0.5Em;">Internal Page Table Entry</h3>
 The internal table entries are almost identical
 	to the external table entries.
@@ -141,11 +153,15 @@ is also relevant here, i.e.,
 In fact only the P bit is relevant
 since e page size we use is always 4KB and both the U and R
 bit are always one.
+
+
 <h3 style="padding-top: 0.5Em;">Virtual Address</h3>
 The virtual address is considered to have three	
 	fields as follows.
 <canvas id="va" width="1000" height="60" style="padding-top: 0.5Em;">
 </canvas>
+
+
 <h3 style="padding-top: 0.5Em;">References	</h3>
 The definite information on paging on Intel's processsor
 	can be find in reference 1 chapter 4.
@@ -161,6 +177,7 @@ System Programming Guide, Part 1.</a>
  <a href="https://wiki.osdev.org/Paging">osdev paging.</a>
 </li>
 </ol>
+	
 
 
 
@@ -168,10 +185,6 @@ System Programming Guide, Part 1.</a>
 
 
 
-
-
-
- <ol >  </ol> 
 
  </div>
 

@@ -85,7 +85,7 @@ MathJax = {
 
 
 
-<p>&lt;!doctype html&gt;</p>
+    <!doctype html>
 <html>
 <head>
 <link rel="stylesheet" href="../../main.css">
@@ -98,6 +98,9 @@ MathJax = {
 <script src="./x86-32_doc_mmu.js" type="module">
 </script>	
 <h2>(x86-32) Basic mmu doc</h2>
+	
+
+
 <h3 style="padding-top: 0.5Em;">cr3</h3>
 Register CR3 points to the active external table.
 <canvas id= "cr3" width="1000" height="30" style="padding-top: 0.5Em;">
@@ -105,6 +108,9 @@ Register CR3 points to the active external table.
 The external table must be page aligned.
 Loading of CR3 purges the TLB unless
 	we have ASIDs in the TLB.
+
+
+
 <h3 style="padding-top: 0.5Em;">External Page Table Entry</h3>
 An entry in the external table has the following format:
 <canvas id="pde" width="1000" height="130" style="padding-top: 0.5Em;">
@@ -128,11 +134,15 @@ is also relevant here, i.e.,
 In fact only the P bit is relevant
 since e page size we use is always 4KB and both the U and R
 bit are always one.
+
+
 <h3 style="padding-top: 0.5Em;">Virtual Address</h3>
 The virtual address is considered to have three	
 	fields as follows.
 <canvas id="va" width="1000" height="60" style="padding-top: 0.5Em;">
 </canvas>
+
+
 <h3 style="padding-top: 0.5Em;">References	</h3>
 The definite information on paging on Intel's processsor
 	can be find in reference 1 chapter 4.
@@ -148,6 +158,7 @@ System Programming Guide, Part 1.</a>
  <a href="https://wiki.osdev.org/Paging">osdev paging.</a>
 </li>
 </ol>
+	
 
 
 
@@ -155,10 +166,6 @@ System Programming Guide, Part 1.</a>
 
 
 
-
-
-
- <ol >  </ol> 
 
  </div>
 
