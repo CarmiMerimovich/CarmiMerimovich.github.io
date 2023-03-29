@@ -78,7 +78,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../index.html">שאלות תרגול<a></span>&rlm; >>> <span><a href="../index.html">Decimal to some Radix<a></span>&rlm;
+              <span><a href="../../index.html">שאלות תרגול<a></span>&rlm; >>> <span><a href="../index.html">שלם עשרוני לבסיס כלשהו<a></span>&rlm;
               </p>
               
                 
@@ -90,64 +90,25 @@ MathJax = {
 
 
     
-<h2>טבעי בבסיס 10 לבסיס <span id="radixHead"></span> - עד
-     2<sup>20</sup></h2>
+<h2>טבעי בבסיס 10 לבסיס <span id="radixHead"></span> - עד  ספרות</h2>
 יש להציג בבסיס
 <span id="radix"></span>
   את המספר 
 <span id="number"></span>
-<div><button id="answerButton" type="clock" onclick="answer();">תשובה</button></div>
+
+<div><button id="answerButton" type="clock" onclick="makeAnswer();">תשובה</button></div>
+<div><button id="firstStepButton" type="clock" onclick="firstStep();">צעד ראשון</button></div>
+<div><button id="nextStepButton" style="visibility: hidden;" type="clock" onclick="makeStep();">עוד צעד</button></div>
 <div class="hidden" style="visibility: hidden;">תוצאה: <span id="solution" style="direction: ltr;"></span></div>
 <div class="hidden" style="visibility: hidden;">דרך:</div>
 <div class="hidden" id="calculation" style="direction: ltr; visibility: hidden;"></div>
+
 <script>
-    let radix;
-    do {
-        radix = 2 + Math.trunc(Math.random() * 15);
-    } while (radix == 10);
-    const range = 2**20;
-    const number = Math.trunc(Math.random() * range);
-
-    const eRadixHead = document.getElementById("radixHead");
-    eRadixHead.innerHTML = radix;
-    const eRadix = document.getElementById("radix");
-    eRadix.innerHTML = radix;
-
-    const eNumber = document.getElementById("number");
-    eNumber.innerHTML = number.toString() + "<sub>10</sub>.";
-
-function answer() {
-    const eSolution = document.getElementById("solution");
-    eSolution.innerHTML = "" + number.toString(radix).toUpperCase() +
-             `<sub>${radix}</sub>`;
-    const eHiddens = document.getElementsByClassName("hidden");
-
-    for (const e of eHiddens)
-        e.style.visibility = "visible";
-
-    const eAnswerButton = document.getElementById("answerButton");
-    eAnswerButton.style.visibility = "hidden";
-
-    let result = number;
-    let s = "";
-    do {
-        let digit = result % radix;
-        let result2 = Math.trunc(result / radix);
-        s += `<tr>
-            <td style="text-align: right;">${result}</td>
-            <td style="text-align: center;">${radix}</td>
-            <td style="text-align: right;">${result2}</td>
-            <td style="text-align: center;">${digit.toString(radix).toUpperCase()}</td></tr>`;
-        result = result2;
-    } while (result > 0)
-    const eCalculation = document.getElementById("calculation");
-    eCalculation.innerHTML =
-         `<table> <tr><th>מחולק</th><th>מחלק</th><th>תוצאה</th><th>שארית</th></tr>
-    ${s} </table>`; 
-}
+    const digits = 6;
 </script>
-</body>
-</html>
+<script src="../dec2radix.inc"></script>
+
+
 
 
  </div>
