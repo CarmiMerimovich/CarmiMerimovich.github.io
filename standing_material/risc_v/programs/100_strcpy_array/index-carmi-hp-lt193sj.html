@@ -78,7 +78,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../../../index.html">Current Semester<a></span>&rlm; >>> <span><a href="../../index.html">2022-3B<a></span>&rlm; >>> <span><a href="../index.html">מבוא לארכיטקטורת מחשבים<a></span>&rlm; >>> <span>24/3/2023</span>&rlm;
+              <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>strcpy - מערכים</span>&rlm;
               </p>
               
                 
@@ -89,18 +89,28 @@ MathJax = {
 
 
 
-<h1>24/3/2023 תכנות</h1>
-<ul>
-<li>
-<p><a href="/standing_material/risc_v/programs/100_sum_indices/index.html">סכום אברי מערך long long</a></p>
-</li>
-<li>
-<p><a href="/standing_material/risc_v/programs/200_sum_indices/index.html">סכום אברי מערך short</a></p>
-</li>
-<li>
-<p><a href="/standing_material/risc_v/programs/300_sum_even_indices/index.html">סכום האברים באינדקס זוגי מערך long long</a></p>
-</li>
-</ul>
+<h1>strcpy - מערכים</h1>
+<pre><code>void strcpy(char y[], char x[]) {
+    unsigned long long i = 0;
+    while ((y[i] = x[i]) != 0) i++;
+}
+</code></pre>
+<pre><code>strcpy:
+    addi    t0, x0, 0
+loop:
+    add     t1, t0, a0
+    lb      t1, 0(t1)
+    add     t2, t0, a1
+    sb      t1, 0(t2)
+    beq     t1, done
+skip:
+    addi    t0, t0, 1
+    beq     x0, x0, loop
+done:
+    jalr    x0, 0(ra)
+</code></pre>
+
+    
 
 
 
@@ -109,23 +119,8 @@ MathJax = {
 
 
 
+ <ol >  </ol> 
 
-
-
-
- <ul> 
-            <li>
-                
-            <a href="constants/index.html">קבועים ברוחב 32-ביטים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-         </ul> 
 
  </div>
 
@@ -144,15 +139,15 @@ MathJax = {
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;" 
-                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedin </a>
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;"
-                href="/">כרמי מרימוביץ</a>
+                href="/">Carmi Merimovich</a>
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            מבוא לארכיטקטורת מחשבים: תקצירים
+            Thins
             </span>
         </li>
     </ul>
