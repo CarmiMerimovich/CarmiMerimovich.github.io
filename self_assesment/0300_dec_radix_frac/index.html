@@ -78,7 +78,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>strcpy - מערכים</span>&rlm;
+              <span><a href="../index.html">שאלות תרגול<a></span>&rlm; >>> <span>שבר עשרוני לבסיס כלשהו</span>&rlm;
               </p>
               
                 
@@ -89,26 +89,6 @@ MathJax = {
 
 
 
-<h1>strcpy - מערכים</h1>
-<pre><code>void strcpy(char y[], char x[]) {
-    unsigned long long i = 0;
-    while ((y[i] = x[i]) != 0) i++;
-}
-</code></pre>
-<pre><code>strcpy:
-    addi    t0, x0, 0
-loop:
-    add     t1, t0, a0
-    lb      t1, 0(t1)
-    add     t2, t0, a1
-    sb      t1, 0(t2)
-    beq     t1, done
-skip:
-    addi    t0, t0, 1
-    beq     x0, x0, loop
-done:
-    jalr    x0, 0(ra)
-</code></pre>
 
     
 
@@ -119,7 +99,43 @@ done:
 
 
 
- <ol >  </ol> 
+ <ol > 
+            <li>
+                
+            <a href="100_Dec_2_Radix/index.html">מספר קטן</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </li>
+        
+            <li>
+                
+            <a href="200_Dec_2_Radix/index.html">מספר בינוני</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </li>
+        
+            <li>
+                
+            <a href="300_Dec_2_Radix/index.html">מספר גדול</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </li>
+         </ol> 
 
 
  </div>
@@ -139,15 +155,15 @@ done:
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;" 
-                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedin </a>
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;"
-                href="/">Carmi Merimovich</a>
+                href="/">כרמי מרימוביץ</a>
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            Thins
+            מבוא לארכיטקטורת מחשבים: תקצירים
             </span>
         </li>
     </ul>

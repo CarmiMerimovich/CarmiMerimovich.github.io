@@ -78,7 +78,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../../../index.html">Current Semester<a></span>&rlm; >>> <span><a href="../../index.html">2022-3B<a></span>&rlm; >>> <span><a href="../index.html">מבוא לארכיטקטורת מחשבים<a></span>&rlm; >>> <span>23/3/2023</span>&rlm;
+              <span><a href="../../index.html">שאלות תרגול<a></span>&rlm; >>> <span><a href="../index.html">שבר עשרוני לבסיס כלשהו<a></span>&rlm;
               </p>
               
                 
@@ -89,32 +89,26 @@ MathJax = {
 
 
 
-<h1>23/3/2023 תכנות</h1>
-<ul>
-<li>
-<p><a href="/standing_material/risc_v/programs/100_strcpy_array/index.html">strcpy כשהקלט מערך</a></p>
-</li>
-<li>
-<p><a href="/standing_material/risc_v/programs/200_strcpy_pointers/index.html">strcpy כשהקלט מצביעים</a></p>
-</li>
-<li>
-<p><a href="/standing_material/risc_v/programs/500_sum_bintree/index.html">סכימת עצ בינרי</a></p>
-</li>
-<li>
-<p><a href="/standing_material/risc_v/programs/600_trav_leafs/index.html">קריאה לפונקציה עבור כל עלה בעץ בינרי</a></p>
-</li>
-</ul>
-
     
+<h2>שבר בבסיס 10 לבסיס <span id="radixHead"></span> - עד 2 ספרות</h2>
+יש להציג בבסיס
+<span id="radix"></span>
+  את המספר 
+<span id="number"></span>
+
+<div><button id="answerButton" type="clock" onclick="makeAnswer();">תשובה</button></div>
+<div><button id="firstStepButton" type="clock" onclick="firstStep();">צעד ראשון</button></div>
+<div><button id="nextStepButton" style="visibility: hidden;" type="clock" onclick="makeStep();">עוד צעד</button></div>
+<div class="hidden" style="visibility: hidden;">תוצאה: <span id="solution" style="direction: ltr;"></span></div>
+<div class="hidden" style="visibility: hidden;">דרך:</div>
+<div class="hidden" id="calculation" style="direction: ltr; visibility: hidden;"></div>
+
+<script>
+    const digits = 2;
+</script>
+<script src="../dec2radixFrac.inc"></script>
 
 
-
-
-
-
-
-
- <ol >  </ol> 
 
 
  </div>

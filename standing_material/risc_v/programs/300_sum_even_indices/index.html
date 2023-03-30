@@ -90,31 +90,30 @@ MathJax = {
 
 
 <h1>סכום האברים הזוגיים בווקטור long long  (אינדקסים)</h1>
-<p>ל``
-long long sum(long long *vec, unsigned long long len) {
-long long s = 0;
-for (unsigned long long i = 0; i &lt; len; i += 2) {
-s += vec[i];
+<pre><code>long long sum(long long *vec, unsigned long long len) {
+    long long s = 0;
+    for (unsigned long long i = 0; i &lt; len; i += 2) {
+        s += vec[i];
+    }
+    return (sum);
 }
-return (sum);
-}</p>
-<pre><code>להלן תרגום אפשרי לחלוטין של הקוד הנ&quot;ל.
 </code></pre>
-<p>sum:
-add t2, zero zero   // s = 0
-add t0, zero zero   // i = 0
+<p>להלן תרגום אפשרי לחלוטין של הקוד הנ&quot;ל.</p>
+<pre><code>sum:
+    add t2, zero zero   // s = 0
+    add t0, zero zero   // i = 0
 loop:
-bgeu t0, a1, done   // if (i &gt;= len) goto done
-slli t1, t0, 3      // i*8
-add  t1, t1, a0     // vec + i * 8
-ld  t1, 0(t1)       // vec[i]
-add t2,t2, t1       // s = s + vec[i]
-addi    t0, t0, 2   //
-beq zero, zero, loop
+    bgeu t0, a1, done   // if (i &gt;= len) goto done
+    slli t1, t0, 3      // i*8
+    add  t1, t1, a0     // vec + i * 8
+    ld  t1, 0(t1)       // vec[i]
+    add t2,t2, t1       // s = s + vec[i]
+    addi    t0, t0, 2   // 
+    beq zero, zero, loop
 done:
-addi a0, t2         // return value
-jalr zero, 0(ra)    // return</p>
-<pre><code></code></pre>
+    addi a0, t2         // return value
+    jalr zero, 0(ra)    // return
+</code></pre>
 
     
 
