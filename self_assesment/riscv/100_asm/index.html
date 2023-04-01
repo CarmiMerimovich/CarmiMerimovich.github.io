@@ -4,10 +4,10 @@
 
 <html lang="he" dir="rtl">
 <head>
-    <title>כרמי מרימוביץ, אתר אישי</title>
+    <title>Carmi Merimovich, Personal Site</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="כרמי מרימוביץ, אתר אישי">
+    <meta name="description" content="Carmi Merimovich, Personal Site">
 
 <style>
         .staffHeader {
@@ -62,13 +62,13 @@ MathJax = {
 				</div>
 				<div>
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						כרמי מרימוביץ
+						Carmi Merimovich
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						אתר אישי
+						Personal Site
 					</h3>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                        <a href="/affiliation_he.html">השתייכות </a>
+                        <a href="/affiliation.html">Affiliation </a>
 					</h3>
                     <h3>
 					</h3>
@@ -77,10 +77,6 @@ MathJax = {
 		</div>
         <div>
             
-              <p style="font-size: xx-small">
-              <span><a href="../../index.html">שאלות תרגול<a></span>&rlm;
-              </p>
-              
                 
 	</header>
 
@@ -89,25 +85,242 @@ MathJax = {
 
 
 
-     
-
-<textarea style="direction:ltr;" rows="10" id="textarea">
-</textarea>
-<button onclick="asm();">Assemble</button>
-<script>
-function asm() {
-    const e = document.getElementById("textarea");
-    const lines = e.value.split("\n");
-    console.log(lines);
-    for (i = 0; i < lines.length; i++)
-        asm_line(line[i]);
-}
-
-function asm_line(line) {
-    let l = line.trim();
     
-}
+<h2>קימפול פקודת שפת סף אחת</h2>
+יש לקמפל את הפקודה הבאה:
+<div id="assemblyInstruction" style="direction: ltr; text-align: center;"></div>
+יש לתת שתי צורות פתרון.
+אחת כמספר הקסה ברוחב 32 ביטים.
+השניה רצף בתים בהקסה משמאל לימין.
+<div><button id="answerButton" type="clock" onclick="makeAnswer();">תשובה</button></div>
+<div><button id="firstStepButton" type="clock" onclick="firstStep();">צעד ראשון</button></div>
+<div id="answer"></div>
+<div><button id="nextStepButton" style="visibility: hidden;" type="clock" onclick="nextStep();">עוד צעד</button></div>
+<div class="hidden" style="visibility: hidden;">תוצאה: <span id="solution" style="direction: ltr;"></span></div>
+<div class="hidden" style="visibility: hidden;">דרך:</div>
+<div class="hidden" id="calculation" style="direction: ltr; visibility: hidden;"></div>
+
+<script src="../types.inc"></script>
+<script>
+  let step = 0;
+  let idx = Math.trunc(Math.random() * typeB.info.length);
+  let arg = {};
+  arg.opCode = typeB.opCode;
+  arg.i = idx;
+  arg.rs1 = Math.trunc(Math.random() * 32);
+  arg.rs2 = Math.trunc(Math.random() * 32);
+  arg.off = (-2048 + Math.trunc(Math.random() * 4096)) * 2;
+
+  const info = instrAsm(arg);
+
+  let e = document.getElementById("assemblyInstruction");
+  e.innerHTML = info.str;
+
+  function instrAsm(arg) {
+    let opCode = typeB.opCode;
+    let mnem = typeB.info[arg.i].mnem;
+    let fnc3 = typeB.info[arg.i].fnc3;
+    let rs1 = Math.random() < 0.5 ? "x" + arg.rs1.toString(): rv64Regs[arg.rs1];
+    let rs2 = "x" + arg.rs2.toString();
+    let off = arg.off.toString();
+
+    let imm_1_4 = (off & 0b11110) >> 1;
+    let imm_5_10 = (off & 0b11111100000) >> 5;
+    let imm_11 = (off & 100000000000) >> 11;
+    let imm_12 = (off & 1000000000000) >> 12;
+    let o = opCode + 
+            (imm_11 << 7) +
+            (imm_1_4 << 8) +
+            (fnc3 << 12) + 
+            (arg.rs1 << 15) + (arg.rs2 << 20) + 
+            (imm_5_10 << 25) +
+            (imm_12 << 31);
+
+
+
+    let ret={};
+    ret.bin = o;
+    ret.opCode = opCode;
+    ret.fnc3 = fnc3;
+    ret.rs1 = arg.rs1;
+    ret.rs2 = arg.rs2;
+    ret.off = off;
+
+    ret.str = `${mnem}\t${rs1},${rs2},${off}`;
+    ret.mnem = mnem;
+    ret.rs1_str = rs1;
+    ret.rs2_str = rs2;
+
+    return (ret);
+  }
 </script>
+
+<script>
+function makeAnswer() {
+  const eFirtStepButton = document.getElementById("firstStepButton");
+  eFirtStepButton.style.visibility = "hidden";
+  const eAnswerButton = document.getElementById("answerButton");
+eAnswerButton.style.visibility = "hidden";
+    step = 10000;
+    makeStep();
+}
+
+function firstStep() {
+  const eAnswerButton = document.getElementById("answerButton");
+  eAnswerButton.style.visibility = "hidden";
+  const eFirtStepButton = document.getElementById("firstStepButton");
+  eFirtStepButton.style.visibility = "hidden";
+  const eNextStepButton = document.getElementById("nextStepButton");
+  eNextStepButton.style.visibility = "visible";
+   step = 0;
+    makeStep();
+  }
+
+  function nextStep() {
+    step++;
+    makeStep();
+  }
+
+  function makeStep() {
+ 
+  let s = `
+    דרך <br/>
+  המנמוניק של הפקודה הוא ${info.mnem}. `
+
+    opCode_bin = info.opCode.toString(2).padStart(7, "0");
+    fnc3_bin = info.fnc3.toString(2).padStart(3,"0");
+    if (step > 0)
+     s += `מטבלת הפקודות נקבל שזוהי פקודה מסוג B
+      והשדות המזהים שלה הם כלהלן:
+     <div style="direction: ltr;">
+      opcode = ${info.opCode} = 0b${opCode_bin}<br/> 
+      fnc3 = ${info.fnc3} = 0b${fnc3_bin}<br/>
+      </div>`;
+
+    let imm = arg.off;
+    if (imm < 0) imm += 8192;
+
+    let rs1_bin = info.rs1.toString(2).padStart(5,"0");
+    let rs2_bin = info.rs2.toString(2).padStart(5,"0");
+
+    if (step > 1) {
+      s += `מהטקסט של הפקודה נקבל את שאר השדות:
+     <div style="direction: ltr;">
+      rs1 = ${info.rs1} = 0b${rs1_bin}<br/>
+      rs2 = ${info.rs2} = 0b${rs2_bin}<br/>
+      off = ${info.off} = 0b${imm.toString(2).padStart(13, "0")} <br/>
+      </div>
+     `;
+    }
+
+    let imm_1_4 = (imm & 0b11110) >> 1;
+    let imm_1_4_bin = imm_1_4.toString(2).padStart(4, "0");
+    let imm_5_10 = (imm & 0b11111100000) >> 5;
+    let imm_5_10_bin = imm_5_10.toString(2).padStart(6, "0");
+    let imm_11 = (imm & 0b100000000000) >> 11;
+    let imm_12 = (imm & 0b1000000000000) >> 12;
+    let imm_12_bin = imm_12.toString(2);
+    if (step > 2) {
+      s += `בגלל הסמטוכה (שחוסכת חיווט!) בביטים נפרק את ההיסט לביטים באופן הבא:
+        <div style="direction: ltr;">
+          imm[1:4] = ${imm_1_4} = 0b${imm_1_4_bin} <br/>
+          imm[5:10] = ${imm_5_10} = 0b${imm_5_10_bin} <br/>
+          imm[11] = ${imm_11} <br/>
+          imm[12] = ${imm_12} <br/>
+         </div>`;
+    }
+
+    if (step > 3) {
+      s += `נארגן את השדות בסדר הנכון.
+      <div style="direction: ltr; text-align: center;">
+      <table>
+        <tr>
+        <th>imm12</th>
+         <th>imm[10:5]</th>
+         <th>rs1</th>
+         <th>rs2</th>
+         <th>fnc3</th>
+         <th>imm[4:1]</th>
+         <th>imm[11]</th>
+         <th>opcode</th>
+        </tr>
+        <tr>
+        <td>${imm_12}</td>
+        <td>${imm_5_10}</td>
+        <td>${info.rs1}</td>
+        <td>${info.rs2}</td>
+        <td>${info.fnc3}</td>
+        <td>${imm_1_4}</td>
+        <td>${imm_11}</td>
+        <td>${info.opCode}</td>
+        </tr>
+      </table>
+        </div>`;
+    }
+
+
+    if (step > 3) {
+      s += `נכתוב בבינרי.
+      <div style="direction: ltr; text-align: center;">
+      <table>
+        <tr>
+        <th>imm12</th>
+         <th>imm[10:5]</th>
+         <th>rs1</th>
+         <th>rs2</th>
+         <th>fnc3</th>
+         <th>imm[4:1]</th>
+         <th>imm[11]</th>
+         <th>opcode</th>
+        </tr>
+        <tr>
+        <td>${imm_12}</td>
+        <td>${imm_5_10_bin}</td>
+        <td>${rs1_bin}</td>
+        <td>${rs2_bin}</td>
+        <td>${fnc3_bin}</td>
+        <td>${imm_1_4_bin}</td>
+        <td>${imm_11}</td>
+        <td>${opCode_bin}</td>
+        </tr>
+      </table>
+        </div>`;
+    }
+
+    let all_bin = imm_12_bin + imm_5_10_bin + rs1_bin + rs2_bin + imm_1_4_bin +
+      fnc3_bin + imm_1_4_bin + imm_11 + opCode_bin;
+    if (step > 4)
+      s += `נצרף את כל השדות ונקבל:
+      <div style="direction: ltr; text-align: center;">
+        ${all_bin}
+        </div>`;
+
+      if (step > 5)
+        s += `נחלק לרביעיות ונקבל:
+        <div style="direction: ltr; text-align: center;">
+        ${all_bin.match(/.{1,4}/g).join(" ")}
+        </div>`;
+
+      let all_hex = parseInt(all_bin, 2).toString(16).toUpperCase().padStart(8, "0");
+      if (step > 6)
+        s += `וסוף סוף נקבל את קוד הפקודה בהקסה: ${all_hex} <br/>`;
+
+    let rev = all_hex.match(/.{1,2}/g).reverse().join("");
+    rev = rev.match(/.{1,2}/g).join(" ");
+    if (step > 7)
+        s += `הצגה בבתים מימים לשמאל היא כלהלן:
+        ${rev}`;
+
+    const eHiddens = document.getElementsByClassName("hidden");
+    for (const e of eHiddens)
+      e.style.visibility = "visible";
+
+    let e = document.getElementById("answer");
+    e.innerHTML = s;
+  }
+</script>
+
+
 
 
  </div>
@@ -127,15 +340,15 @@ function asm_line(line) {
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;" 
-                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedIn </a>
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;"
-                href="/">כרמי מרימוביץ</a>
+                href="/">Carmi Merimovich</a>
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            מבוא לארכיטקטורת מחשבים: תקצירים
+            Thins
             </span>
         </li>
     </ul>
