@@ -111,7 +111,7 @@ MathJax = {
 
 
   let e = document.getElementById("assemblyInstruction");
-  e.innerHTML = info.str;
+  e.innerHTML = info.mi.assembly;
 
 </script>
 
@@ -149,62 +149,78 @@ function firstStep() {
  
     {
       let s = `תשובה<br/>
-      קוד הפקודה בהקסה: ${info.machineCode.hex} <br/>`;
-      let rev = info.machineCode.hex.match(/.{1,2}/g).reverse().join(" ");
+      קוד הפקודה בהקסה: ${info.mi.hex} <br/>`;
+      let rev = info.mi.hex.match(/.{1,2}/g).reverse().join(" ");
       s += `הצגה בבתים מכתובת נמוכה לגבוהה (משמאל לימין) היא כלהלן:
         <div style="direction: ltr; text-align: center;">${rev}</div><hr/><hr/>`;
       let eAnswer = document.getElementById("answer");
-      eAnswer .innerHTML = s;
+      eAnswer.innerHTML = s;
     }
  
-    let v = info.vars;
+    let stepHTML = [];
+    let stepCnt = 0;
 
+    {
     let s = `
     דרך <br/>
-  המנמוניק של הפקודה הוא ${info.vars.mnem}. `
-
-
-    if (step > 0)
-     s += `<hr/>מטבלת הפקודות נקבל שזוהי פקודה מסוג ${info.type}
+  המנמוניק של הפקודה הוא ${info.a.mnem}. `
+      let t = "";
+      for (f of info.idFieldName)
+        t += `${f} = ${info[f].num} = ${info[f].bin}<br/>`;
+      
+       s += `<hr/>מטבלת הפקודות נקבל שזוהי פקודה מסוג ${info.type}
       והשדות המזהים שלה הם כלהלן:
      <div style="direction: ltr;">
-      opcode = ${v.opCode.num} = 0b${v.opCode.bin}<br/> 
-      fnc3 = ${v.fnc3.num} = 0b${v.fnc3.bin}<br/>
+      ${t}
       </div>`;
+    stepHTML[stepCnt++] = s;
+  }
 
-
-    if (step > 1) {
+  {
+    let s = "";
       let t = "";
-      for (let i = 0; i < info.asmFields.length; i++) {
-        t += `${info.asmFields[i]} = ${v[info.asmFields[i]].num} = 
-          0b${v[info.asmFields[i]].bin}<br/>`;
-      }
+      for (let f of info.operandsFieldName)
+        t += `${f} = ${info[f].num} = 
+          0b${info[f].bin}<br/>`;
       s += `<hr/>מהטקסט של הפקודה נקבל את שאר השדות:
      <div style="direction: ltr;">
        ${t}
       </div>
      `;
+     stepHTML[stepCnt++] = s;
     }
 
-    if (step > 2  && info.type == "B") {
-      s += `<hr/>בגלל הסמטוכה (שחוסכת חיווט!) בביטים נפרק את ההיסט לביטים באופן הבא:
+    {
+      let s = "";
+      let cnt = 0;
+      for (f of info.miFieldName) 
+        if (f.startsWith("imm")) cnt++;
+      
+      if (cnt > 1) {
+        let t = "";
+        for (f of info.miFieldName) {
+          if (f.startsWith("imm")) 
+            t += `${f} = ${info[f].num} = ${info[f].bin}<br/>`;
+        }
+        s += `<hr/>בגלל הסמטוכה (שחוסכת חיווט!) בביטים נפרק את ההיסט לביטים באופן הבא:
         <div style="direction: ltr;">
-          imm[1:4] = ${v.imm_1_4.num} = 0b${v.imm_1_4.bin} <br/>
-          imm[5:10] = ${v.imm_5_10.num} = 0b${v.imm_5_10.bin} <br/>
-          imm[11] = ${v.imm_11.num} <br/>
-          imm[12] = ${v.imm_12.num} <br/>
-         </div>`;
+          ${t}
+          </div>`;
+          stepHTML[stepCnt++] = s;
+      }
+
     }
 
-    if (step > 3) {
+    {
+        let s = "";
       let t0 = "";
-      for (let i = 0; i < info.fieldHeader.length; i++)
-        t0 += `<th>${info.fieldHeader[i]}</th>`;
+      for (let f of info.miFieldName)
+        t0 += `<th>${f}</th>`;
 
       let t1 = "";
-      for (i = 0; i < info.varName.length; i++) {
-        t1 += `<td>${v[info.varName[i]].num}</td>`;
-      }
+      for (let f of info.miFieldName)
+        t1 += `<td>${info[f].num}</td>`;
+      
       s += `<hr/>נארגן את השדות בסדר הנכון.
         <div style="direction: ltr; text-align: center;">
         <table>
@@ -217,18 +233,20 @@ function firstStep() {
         </tr>
       </table>
         </div>`;
+
+      stepHTML[stepCnt++] = s;
     }
 
-
-    if (step > 4) {
+    {
+      let s = "";
       let t0 = "";
-      for (let i = 0; i < info.fieldHeader.length; i++)
-        t0 += `<th>${info.fieldHeader[i]}</th>`;
+      for (let f of info.miFieldName)
+        t0 += `<th>${f}</th>`;
 
       let t1 = "";
-      for (i = 0; i < info.varName.length; i++) {
-        t1 += `<td>${v[info.varName[i]].bin}</td>`;
-      }
+      for (let f of info.miFieldName)
+        t1 += `<td>${info[f].bin}</td>`;
+      
       s += `<hr/>נכתוב בבינרי.
       <div style="direction: ltr; text-align: center;">
         <table>
@@ -241,48 +259,61 @@ function firstStep() {
         </tr>
       </table>
         </div>`;
+
+        stepHTML[stepCnt++] = s;
     }
 
-    if (step > 5) {
+    {
+      let s = "";
       let t1 = "";
-      for (i = 0; i < info.varName.length; i++) {
-        t1 += `${v[info.varName[i]].bin}`;
-      }
+      for (let f of info.miFieldName) 
+        t1 += `${info[f].bin}`;
+      
       s += `<hr/>נצרף את כל השדות ונקבל:
       <div style="direction: ltr; text-align: center;">
         ${t1}
         </div>`;
-    }
 
-    if (step > 6) {
+      stepHTML[stepCnt++] = s;
+      }
+
+    {
+      let s = "";
       let t1 = "";
-      for (i = 0; i < info.varName.length; i++) 
-        t1 += `${v[info.varName[i]].bin}`;
+      for (let f of info.miFieldName) 
+        t1 += `${info[f].bin}`;
       
       s += `<hr/>נחלק לרביעיות ונקבל:
         <div style="direction: ltr; text-align: center;">
         ${t1.match(/.{1,4}/g).join(" ")}
         </div>`;
+
+      stepHTML[stepCnt++] = s;
     }
 
-    if (step > 7) {
-        s += `<hr/>וסוף סוף נקבל את קוד הפקודה בהקסה: ${info.machineCode.hex} <br/>`;
+    {
+        let s = ""
+        s += `<hr/>וסוף סוף נקבל את קוד הפקודה בהקסה: ${info.mi.hex} <br/>`;
+        stepHTML[stepCnt++] = s;
     }
 
-    if (step > 8) {
-      let rev = info.machineCode.hex.match(/.{1,2}/g).reverse().join(" ");
+    {
+      let s = "";
+      let rev = info.mi.hex.match(/.{1,2}/g).reverse().join(" ");
         s += `<hr/>הצגה בבתים מכתובת נמוכה לגבוהה (משמאל לימין) היא כלהלן:
         <div style="direction: ltr; text-align: center;">${rev}</div>`;
+
+        stepHTML[stepCnt++] = s;
     }
 
-    if (step > 8) {
+    if (step >= stepCnt) {
       let eNextStepButton = document.getElementById("nextStepButton");
       eNextStepButton.style.display = "none";
     }
 
 
     let eSolution = document.getElementById("solution");
-    eSolution.innerHTML = s;
+    eSolution.innerHTML = stepHTML.slice(0, step).join("");
   }
 </script>
 
