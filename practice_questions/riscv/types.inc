@@ -381,7 +381,7 @@ rv64.I3 = {
           subType: 1,
           info: [
                {mnem: "slli",  fnc3: 0b001, fnc6: 0b000000},
-               {mnem: "srl",   fnc3: 0b101, fnc6: 0b000000},
+               {mnem: "srli",  fnc3: 0b101, fnc6: 0b000000},
                {mnem: "srai",  fnc3: 0b101, fnc6: 0b010000},
           ]
      },
