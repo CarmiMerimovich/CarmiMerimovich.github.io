@@ -48,7 +48,8 @@ rv64.randomInstruction = function () {
 
 rv64.B = {
      machineInstructions: {
-          opCode: 0b110011,
+          opCode: 0b1100011,
+          type: "B",
           info: [
                {mnem: "beq",  fnc3: 0b000},
                {mnem: "bne",  fnc3: 0b001},
@@ -95,6 +96,7 @@ rv64.B = {
 rv64.U0 = {
      machineInstructions: {
           opCode: 0b0110111,
+          type: "U",
           info: [
                {mnem: "lui"},
           ]
@@ -128,6 +130,7 @@ rv64.U0 = {
 rv64.U1 = {
      machineInstructions: {
           opCode: 0b0010111,
+          type: "U",
           info: [
                {mnem: "auipc"},
           ]
@@ -163,6 +166,7 @@ rv64.U1 = {
 rv64.J = {
      machineInstructions: {
           opCode: 0b1101111,
+          type: "J",
           memory: true,
           info: [
                {mnem: "jal"}
@@ -202,6 +206,7 @@ rv64.S = {
      machineInstructions: {
           opCode: 0b0100011,
           memory: true,
+          type: "S",
           info: [
                {mnem: "sb",  fnc3: 0b000},
                {mnem: "sh",  fnc3: 0b001},
@@ -244,6 +249,7 @@ rv64.I0 = {
      machineInstructions: {
           opCode: 0b0000011,
           memory: true,
+          type: "I",
           info: [
                {mnem: "lb",  fnc3: 0b000},
                {mnem: "lh",  fnc3: 0b001},
@@ -289,6 +295,7 @@ rv64.I1 = {
      machineInstructions: {
           opCode: 0b1100111,
           memory: true,
+          type: "I",
           info: [
                {mnem: "jalr",  fnc3: 0b000}
           ]
@@ -327,6 +334,7 @@ rv64.I1 = {
 rv64.I2 = {
      machineInstructions: {
           opCode: 0b0010011,
+          type: "I",
           info: [
                {mnem: "addi",  fnc3: 0b000},
                {mnem: "slti",  fnc3: 0b010},
@@ -369,6 +377,8 @@ rv64.I2 = {
 rv64.I3 = {
      machineInstructions: {
           opCode: 0b0010011,
+          type: "I",
+          subType: 1,
           info: [
                {mnem: "slli",  fnc3: 0b001, fnc6: 0b000000},
                {mnem: "srl",   fnc3: 0b101, fnc6: 0b000000},
@@ -410,6 +420,7 @@ rv64.I3 = {
 rv64.R = {
      machineInstructions: {
           opCode: 0b0110011,
+          type: "R",
           info: [
                {mnem: "add",  fnc3: 0b000, fnc7: 0b0000000},
                {mnem: "sub",  fnc3: 0b000, fnc7: 0b0100000},
