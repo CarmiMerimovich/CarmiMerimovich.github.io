@@ -168,7 +168,9 @@ function firstStep() {
       for (f of info.idFieldName)
         t += `${f} = ${info[f].num} = ${info[f].bin}<br/>`;
       
-       s += `<hr/>מטבלת הפקודות נקבל שזוהי פקודה מסוג ${info.type}
+       s += `<hr/>
+       <a href="../050_machine_instructions/index.html">מטבלת הפקודות</a>
+        נקבל שזוהי פקודה מסוג ${info.type}
       והשדות המזהים שלה הם כלהלן:
      <div style="direction: ltr;">
       ${t}
