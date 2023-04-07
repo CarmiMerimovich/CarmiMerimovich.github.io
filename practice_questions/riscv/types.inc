@@ -45,8 +45,9 @@ rv64.randomInstruction = function () {
 // For each instruction class
 // (Really for each opcode, as for now)
 //
+rv64.types = [];
 
-rv64.B = {
+rv64.types.push({        // B
      machineInstructions: {
           opCode: 0b1100011,
           type: "B",
@@ -91,9 +92,9 @@ rv64.B = {
 
           return (ret);
      }
-};
+});
 
-rv64.U0 = {
+rv64.types.push({ // U0
      machineInstructions: {
           opCode: 0b0110111,
           type: "U",
@@ -125,9 +126,9 @@ rv64.U0 = {
           ret = fillRandomInstruction(ret);
           return(ret);
      }
-};
+});
 
-rv64.U1 = {
+rv64.types.push({ // U1
      machineInstructions: {
           opCode: 0b0010111,
           type: "U",
@@ -159,11 +160,11 @@ rv64.U1 = {
           ret = fillRandomInstruction(ret);
           return(ret);
      }
-};
+});
 
 
 
-rv64.J = {
+rv64.types.push({ //J
      machineInstructions: {
           opCode: 0b1101111,
           type: "J",
@@ -199,10 +200,10 @@ rv64.J = {
           ret = fillRandomInstruction(ret);
           return(ret);
      }
-};
+});
 
 
-rv64.S = {
+rv64.types.push({ // S
      machineInstructions: {
           opCode: 0b0100011,
           memory: true,
@@ -243,9 +244,9 @@ rv64.S = {
           ret = fillRandomInstruction(ret);
           return(ret);
      }
-};
+});
 
-rv64.I0 = {
+rv64.types.push({ // I0
      machineInstructions: {
           opCode: 0b0000011,
           memory: true,
@@ -289,9 +290,9 @@ rv64.I0 = {
           ret = fillRandomInstruction(ret);
           return(ret);
      }
-};
+});
 
-rv64.I1 = {
+rv64.types.push({ // I1
      machineInstructions: {
           opCode: 0b1100111,
           memory: true,
@@ -329,9 +330,9 @@ rv64.I1 = {
           ret = fillRandomInstruction(ret);
           return(ret);
      }
-};
+});
 
-rv64.I2 = {
+rv64.types.push({ //I2
      machineInstructions: {
           opCode: 0b0010011,
           type: "I",
@@ -372,9 +373,9 @@ rv64.I2 = {
           ret = fillRandomInstruction(ret);
           return(ret);
      }
-};
+});
 
-rv64.I3 = {
+rv64.types.push({ // I3
      machineInstructions: {
           opCode: 0b0010011,
           type: "I",
@@ -415,9 +416,91 @@ rv64.I3 = {
           ret = fillRandomInstruction(ret);
           return(ret);
      }
-};
+});
 
-rv64.R = {
+rv64.types.push({ // I4
+     machineInstructions: {
+          opCode: 0b0011011,
+          type: "I",
+          subType: 1,
+          info: [
+               {mnem: "addiw",  fnc3: 0b000},
+          ]
+     },
+
+     randomInstruction() {
+          let ret = {};
+
+          ret.type = "I";
+
+          let idx = Math.trunc(Math.random() * this.machineInstructions.info.length);
+          let info = this.machineInstructions.info[idx];
+
+          ret.a = {};
+          ret.a.mnem   = info.mnem;
+          ret.a.opcode = this.machineInstructions.opCode;
+          ret.a.fnc3   = info.fnc3;
+
+
+          ret.idFieldName = ["opcode", "fnc3"];   // CPU identifies instruction
+          ret.operandsFieldName =  ["rd", "rs1", "imm12"];
+          ret.miFieldName = [ // machine instruction format
+               "imm12",
+               "rs1",
+               "fnc3",
+               "rd",
+               "opcode"
+          ];
+
+          ret = fillRandomInstruction(ret);
+          return(ret);
+     }
+});
+
+rv64.types.push({ // I5
+     machineInstructions: {
+          opCode: 0b0011011,
+          type: "I",
+          subType: 1,
+          info: [
+               {mnem: "slliw",  fnc3: 0b001, fnc7: 0b000000},
+               {mnem: "srliw",  fnc3: 0b101, fnc7: 0b000000},
+               {mnem: "sraiw",  fnc3: 0b101, fnc7: 0b010000},
+          ]
+     },
+
+     randomInstruction() {
+          let ret = {};
+
+          ret.type = "I";
+
+          let idx = Math.trunc(Math.random() * this.machineInstructions.info.length);
+          let info = this.machineInstructions.info[idx];
+
+          ret.a = {};
+          ret.a.mnem   = info.mnem;
+          ret.a.opcode = this.machineInstructions.opCode;
+          ret.a.fnc3   = info.fnc3;
+          ret.a.fnc7   = info.fnc7;
+
+
+          ret.idFieldName = ["opcode", "fnc3", "fnc7"];   // CPU identifies instruction
+          ret.operandsFieldName =  ["rd", "rs1", "imm5"];
+          ret.miFieldName = [ // machine instruction format
+               "fnc7",
+               "imm5",
+               "rs1",
+               "fnc3",
+               "rd",
+               "opcode"
+          ];
+
+          ret = fillRandomInstruction(ret);
+          return(ret);
+     }
+});
+
+rv64.types.push({  // R0
      machineInstructions: {
           opCode: 0b0110011,
           type: "R",
@@ -426,12 +509,20 @@ rv64.R = {
                {mnem: "sub",  fnc3: 0b000, fnc7: 0b0100000},
                {mnem: "sll",  fnc3: 0b001, fnc7: 0b0000000},
                {mnem: "slt",  fnc3: 0b010, fnc7: 0b0000000},
-               {mnem: "sltu", fnc3: 0b011, fnc7: 0b0000000},
-               {mnem: "xor",  fnc3: 0b100, fnc7: 0b0000000},
-               {mnem: "srl",  fnc3: 0b101, fnc7: 0b0000000},
-               {mnem: "sra",  fnc3: 0b101, fnc7: 0b0100000},
-               {mnem: "or",   fnc3: 0b110, fnc7: 0b0000000},
-               {mnem: "and",  fnc3: 0b111, fnc7: 0b0000000},
+               {mnem: "sltu",  fnc3: 0b011, fnc7: 0b0000000},
+               {mnem: "xor",   fnc3: 0b100, fnc7: 0b0000000},
+               {mnem: "srl",   fnc3: 0b101, fnc7: 0b0000000},
+               {mnem: "sra",   fnc3: 0b101, fnc7: 0b0100000},
+               {mnem: "or",    fnc3: 0b110, fnc7: 0b0000000},
+               {mnem: "and",   fnc3: 0b111, fnc7: 0b0000000},
+               {mnem: "mul",   fnc3: 0b000, fnc7: 0b0000001, ext: "rv64M"},
+               {mnem: "mulh",  fnc3: 0b001, fnc7: 0b0000001, ext: "rv64M"},
+               {mnem: "mulhsu",fnc3: 0b010, fnc7: 0b0000001, ext: "rv64M"},
+               {mnem: "mulhu", fnc3: 0b011, fnc7: 0b0000001, ext: "rv64M"},
+               {mnem: "div",   fnc3: 0b100, fnc7: 0b0000001, ext: "rv64M"},
+               {mnem: "divu",  fnc3: 0b101, fnc7: 0b0000001, ext: "rv64M"},
+               {mnem: "rem",   fnc3: 0b110, fnc7: 0b0000001, ext: "rv64M"},
+               {mnem: "remu",  fnc3: 0b111, fnc7: 0b0000001, ext: "rv64M"},
           ]
      },
 
@@ -464,11 +555,51 @@ rv64.R = {
           ret = fillRandomInstruction(ret);
           return(ret);
      }
-};
+});
 
-rv64.types = [rv64.B, rv64.I0, rv64.I1, rv64.I2, rv64.I3,
-                rv64.R, rv64.S, rv64.J, rv64.U0, rv64.U1];
 
+rv64.types.push({  // R1
+     machineInstructions: {
+          opCode: 0b0111011,
+          type: "R",
+          info: [
+               {mnem: "addw", fnc3: 0b000, fnc7: 0b0000000},
+               {mnem: "subw", fnc3: 0b000, fnc7: 0b0100000},
+               {mnem: "sllw", fnc3: 0b001, fnc7: 0b0000000},
+               {mnem: "srlw", fnc3: 0b101, fnc7: 0b0000000},
+               {mnem: "sraw", fnc3: 0b101, fnc7: 0b0100000},
+          ]
+     },
+
+     randomInstruction() {
+          let ret = {};
+
+          ret.type = "R";
+
+          let idx = Math.trunc(Math.random() * this.machineInstructions.info.length);
+          let info = this.machineInstructions.info[idx];
+
+          ret.a = {};
+          ret.a.mnem   = info.mnem;
+          ret.a.opcode = this.machineInstructions.opCode;
+          ret.a.fnc3   = info.fnc3;
+          ret.a.fnc7   = info.fnc7;
+
+          ret.idFieldName = ["opcode", "fnc3", "fnc7"];   // CPU identifies instruction
+          ret.operandsFieldName =  ["rd", "rs1", "rs2"];
+          ret.miFieldName = [ // machine instruction format
+               "fnc7",
+               "rs2",
+               "rs1",
+               "fnc3",
+               "rd",
+               "opcode"
+          ];
+
+          ret = fillRandomInstruction(ret);
+          return(ret);
+     }
+});
 
 function fillRandomInstruction(ret) {
 
@@ -495,6 +626,10 @@ function fillRandomInstruction(ret) {
 
           case "imm6":
                ret.a.imm6 = Math.trunc(Math.random() * 64);
+               break;
+
+          case "imm5":
+               ret.a.imm5 = Math.trunc(Math.random() * 32);
                break;
 
           case "rs1":
@@ -589,6 +724,17 @@ function fillRandomInstruction(ret) {
 
           get num() {
                return (ret.a.imm6);
+          }
+     };
+
+     ret["imm5"] = {
+          get bin() {
+               let t = ret.a.imm5.toString(2).padStart(5, "0");
+               return (t);
+          },
+
+          get num() {
+               return (ret.a.imm5);
           }
      };
 
