@@ -563,11 +563,16 @@ rv64.types.push({  // R1
           opCode: 0b0111011,
           type: "R",
           info: [
-               {mnem: "addw", fnc3: 0b000, fnc7: 0b0000000},
-               {mnem: "subw", fnc3: 0b000, fnc7: 0b0100000},
-               {mnem: "sllw", fnc3: 0b001, fnc7: 0b0000000},
-               {mnem: "srlw", fnc3: 0b101, fnc7: 0b0000000},
-               {mnem: "sraw", fnc3: 0b101, fnc7: 0b0100000},
+               {mnem: "addw",  fnc3: 0b000, fnc7: 0b0000000},
+               {mnem: "subw",  fnc3: 0b000, fnc7: 0b0100000},
+               {mnem: "sllw",  fnc3: 0b001, fnc7: 0b0000000},
+               {mnem: "srlw",  fnc3: 0b101, fnc7: 0b0000000},
+               {mnem: "sraw",  fnc3: 0b101, fnc7: 0b0100000},
+               {mnem: "mulw",  fnc3: 0b000, fnc7: 0b0000001},
+               {mnem: "divw",  fnc3: 0b100, fnc7: 0b0000001},
+               {mnem: "divuw", fnc3: 0b101, fnc7: 0b0000001},
+               {mnem: "remw",  fnc3: 0b110, fnc7: 0b0000001},
+               {mnem: "remuw", fnc3: 0b111, fnc7: 0b0000001},
           ]
      },
 
