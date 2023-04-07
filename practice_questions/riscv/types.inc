@@ -37,7 +37,31 @@ rv64.registerName = [
 
 rv64.randomInstruction = function () {
      let i = Math.trunc(Math.random() * rv64.types.length);
-     return (rv64.types[i].randomInstruction());
+     let mi = rv64.types[i].machineInstructions;
+     
+     let ret = {};
+     ret.a = {};
+     ret.type = mi.type;
+
+     let idx = Math.trunc(Math.random() * mi.info.length);
+     let info = mi.info[idx];
+
+
+     for (let f of ["type", "idFieldName", "operandsFieldName", "miFieldName"]) 
+          if (typeof(mi[f]) != "undefined")
+               ret[f] = mi[f];
+
+     ret.a.opcode = mi.opCode;
+     if (typeof(mi["memory"]) != "undefined")
+          ret.a["memory"] = mi["memory"];
+
+     for (let f of ["mnem", "fnc3", "fnc5", "fnc6", "fnc7"])
+          if (typeof(info[f]) != "undefined")
+               ret.a[f] = info[f];
+
+     ret = fillRandomInstruction(ret);
+
+     return (ret);
 }
 
 
@@ -51,33 +75,9 @@ rv64.types.push({        // B
      machineInstructions: {
           opCode: 0b1100011,
           type: "B",
-          info: [
-               {mnem: "beq",  fnc3: 0b000},
-               {mnem: "bne",  fnc3: 0b001},
-               {mnem: "blt",  fnc3: 0b100},
-               {mnem: "bge",  fnc3: 0b101},
-               {mnem: "bltu", fnc3: 0b110},
-               {mnem: "bgeu", fnc3: 0b111}
-          ]
-     },
-
-     randomInstruction() { // random B-cass instruction
-          let ret = {};
-
-          ret.type = "B";
-
-          let idx = Math.trunc(Math.random() * this.machineInstructions.info.length);
-          let info = this.machineInstructions.info[idx];
-
-          ret.a = {};
-          ret.a.mnem   = info.mnem;
-          ret.a.opcode = this.machineInstructions.opCode;
-          ret.a.fnc3   = info.fnc3;
-
-
-          ret.idFieldName = ["opcode", "fnc3"];   // CPU identifies instruction
-          ret.operandsFieldName =  ["rs1", "rs2", "imm13"];
-          ret.miFieldName = [ // machine instruction format
+          idFieldName: ["opcode", "fnc3"],   // CPU identifies instruction
+          operandsFieldName: ["rs1", "rs2", "imm13"],
+          miFieldName: [ // machine instruction format
                "imm13[12]",
                "imm13[10:5]",
                "rs1",
@@ -86,11 +86,15 @@ rv64.types.push({        // B
                "imm13[4:1]",
                "imm13[11]",
                "opcode"
-          ];
-
-          ret = fillRandomInstruction(ret);
-
-          return (ret);
+          ],
+          info: [
+               {mnem: "beq",  fnc3: 0b000},
+               {mnem: "bne",  fnc3: 0b001},
+               {mnem: "blt",  fnc3: 0b100},
+               {mnem: "bge",  fnc3: 0b101},
+               {mnem: "bltu", fnc3: 0b110},
+               {mnem: "bgeu", fnc3: 0b111}
+          ]
      }
 });
 
@@ -98,33 +102,16 @@ rv64.types.push({ // U0
      machineInstructions: {
           opCode: 0b0110111,
           type: "U",
-          info: [
-               {mnem: "lui"},
-          ]
-     },
-
-     randomInstruction() {
-          let ret = {};
-
-          ret.type = "U";
-
-          let idx = Math.trunc(Math.random() * this.machineInstructions.info.length);
-          let info = this.machineInstructions.info[idx];
-
-          ret.a = {};
-          ret.a.mnem   = info.mnem;
-          ret.a.opcode = this.machineInstructions.opCode;
-
-          ret.idFieldName = ["opcode"];   // CPU identifies instruction
-          ret.operandsFieldName =  ["rd", "imm20"];
-          ret.miFieldName = [ // machine instruction format
+          idFieldName: ["opcode"],   // CPU identifies instruction
+          operandsFieldName: ["rd", "imm20"],
+          miFieldName: [ // machine instruction format
                "imm20",
                "rd",
                "opcode"
-          ];
-
-          ret = fillRandomInstruction(ret);
-          return(ret);
+          ],
+          info: [
+               {mnem: "lui"},
+          ]
      }
 });
 
@@ -132,33 +119,16 @@ rv64.types.push({ // U1
      machineInstructions: {
           opCode: 0b0010111,
           type: "U",
-          info: [
-               {mnem: "auipc"},
-          ]
-     },
-
-     randomInstruction() {
-          let ret = {};
-
-          ret.type = "U";
-
-          let idx = Math.trunc(Math.random() * this.machineInstructions.info.length);
-          let info = this.machineInstructions.info[idx];
-
-          ret.a = {};
-          ret.a.mnem   = info.mnem;
-          ret.a.opcode = this.machineInstructions.opCode;
-
-          ret.idFieldName = ["opcode"];   // CPU identifies instruction
-          ret.operandsFieldName =  ["rd", "imm20"];
-          ret.miFieldName = [ // machine instruction format
+          idFieldName: ["opcode"],   // CPU identifies instruction
+          operandsFieldName: ["rd", "imm20"],
+          miFieldName: [ // machine instruction format
                "imm20",
                "rd",
                "opcode"
-          ];
-
-          ret = fillRandomInstruction(ret);
-          return(ret);
+          ],
+          info: [
+               {mnem: "auipc"},
+          ]
      }
 });
 
@@ -169,36 +139,19 @@ rv64.types.push({ //J
           opCode: 0b1101111,
           type: "J",
           memory: true,
-          info: [
-               {mnem: "jal"}
-          ]
-     },
-
-     randomInstruction() {
-          let ret = {};
-
-          ret.type = "J";
-
-          let idx = Math.trunc(Math.random() * this.machineInstructions.info.length);
-          let info = this.machineInstructions.info[idx];
-
-          ret.a = {};
-          ret.a.mnem   = info.mnem;
-          ret.a.opcode = this.machineInstructions.opCode;
-
-          ret.idFieldName = ["opcode"];   // CPU identifies instruction
-          ret.operandsFieldName =  ["rd", "imm21"];
-          ret.miFieldName = [ // machine instruction format
+          idFieldName: ["opcode"],   // CPU identifies instruction
+          operandsFieldName:  ["rd", "imm21"],
+          miFieldName: [ // machine instruction format
                "imm21[20]",
                "imm21[10:1]",
                "imm21[11]",
                "imm21[19:12]",
                "rd",
                "opcode"
-          ];
-
-          ret = fillRandomInstruction(ret);
-          return(ret);
+          ],
+          info: [
+               {mnem: "jal"}
+          ]
      }
 });
 
@@ -208,41 +161,22 @@ rv64.types.push({ // S
           opCode: 0b0100011,
           memory: true,
           type: "S",
-          info: [
-               {mnem: "sb",  fnc3: 0b000},
-               {mnem: "sh",  fnc3: 0b001},
-               {mnem: "sw",  fnc3: 0b010},
-               {mnem: "sd",  fnc3: 0b011}
-          ]
-     },
-
-     randomInstruction() {
-          let ret = {};
-
-          ret.type = "S";
-
-          let idx = Math.trunc(Math.random() * this.machineInstructions.info.length);
-          let info = this.machineInstructions.info[idx];
-
-          ret.a = {};
-          ret.a.mnem   = info.mnem;
-          ret.a.memory = true;
-          ret.a.opcode = this.machineInstructions.opCode;
-          ret.a.fnc3   = info.fnc3;
-
-          ret.idFieldName = ["opcode", "fnc3"];   // CPU identifies instruction
-          ret.operandsFieldName =  ["rs1", "rs2", "imm12"];
-          ret.miFieldName = [ // machine instruction format
+          idFieldName: ["opcode", "fnc3"],   // CPU identifies instruction
+          operandsFieldName:  ["rs1", "rs2", "imm12"],
+          miFieldName: [ // machine instruction format
                "imm12[11:5]",
                "rs2",
                "rs1",
                "fnc3",
                "imm12[4:0]",
                "opcode"
-          ];
-
-          ret = fillRandomInstruction(ret);
-          return(ret);
+          ],
+          info: [
+               {mnem: "sb",  fnc3: 0b000},
+               {mnem: "sh",  fnc3: 0b001},
+               {mnem: "sw",  fnc3: 0b010},
+               {mnem: "sd",  fnc3: 0b011}
+          ]
      }
 });
 
@@ -251,6 +185,15 @@ rv64.types.push({ // I0
           opCode: 0b0000011,
           memory: true,
           type: "I",
+          idFieldName:  ["opcode", "fnc3"],   // CPU identifies instruction
+          operandsFieldName:  ["rd", "rs1", "imm12"],
+          miFieldName: [ // machine instruction format
+               "imm12",
+               "rs1",
+               "fnc3",
+               "rd",
+               "opcode"
+          ],
           info: [
                {mnem: "lb",  fnc3: 0b000},
                {mnem: "lh",  fnc3: 0b001},
@@ -261,35 +204,6 @@ rv64.types.push({ // I0
                {mnem: "lwu", fnc3: 0b110},
           ]
      },
-
-     randomInstruction() {
-          let ret = {};
-
-          ret.type = "I";
-
-          let idx = Math.trunc(Math.random() * this.machineInstructions.info.length);
-          let info = this.machineInstructions.info[idx];
-
-          ret.a = {};
-          ret.a.mnem   = info.mnem;
-          ret.a.memory = true;
-          ret.a.opcode = this.machineInstructions.opCode;
-          ret.a.fnc3   = info.fnc3;
-
-
-          ret.idFieldName = ["opcode", "fnc3"];   // CPU identifies instruction
-          ret.operandsFieldName =  ["rd", "rs1", "imm12"];
-          ret.miFieldName = [ // machine instruction format
-               "imm12",
-               "rs1",
-               "fnc3",
-               "rd",
-               "opcode"
-          ];
-
-          ret = fillRandomInstruction(ret);
-          return(ret);
-     }
 });
 
 rv64.types.push({ // I1
@@ -297,38 +211,18 @@ rv64.types.push({ // I1
           opCode: 0b1100111,
           memory: true,
           type: "I",
-          info: [
-               {mnem: "jalr",  fnc3: 0b000}
-          ]
-     },
-
-     randomInstruction() {
-          let ret = {};
-
-          ret.type = "I";
-
-          let idx = Math.trunc(Math.random() * this.machineInstructions.info.length);
-          let info = this.machineInstructions.info[idx];
-
-          ret.a = {};
-          ret.a.mnem   = info.mnem;
-          ret.a.memory = true;
-          ret.a.opcode = this.machineInstructions.opCode;
-          ret.a.fnc3   = info.fnc3;
-
-
-          ret.idFieldName = ["opcode", "fnc3"];   // CPU identifies instruction
-          ret.operandsFieldName =  ["rd", "rs1", "imm12"];
-          ret.miFieldName = [ // machine instruction format
+          idFieldName: ["opcode", "fnc3"],   // CPU identifies instruction
+          operandsFieldName: ["rd", "rs1", "imm12"],
+          miFieldName: [ // machine instruction format
                "imm12",
                "rs1",
                "fnc3",
                "rd",
                "opcode"
-          ];
-
-          ret = fillRandomInstruction(ret);
-          return(ret);
+          ],
+          info: [
+               {mnem: "jalr",  fnc3: 0b000}
+          ]
      }
 });
 
@@ -336,6 +230,15 @@ rv64.types.push({ //I2
      machineInstructions: {
           opCode: 0b0010011,
           type: "I",
+          idFieldName: ["opcode", "fnc3"],   // CPU identifies instruction
+          operandsFieldName:  ["rd", "rs1", "imm12"],
+          miFieldName: [ // machine instruction format
+               "imm12",
+               "rs1",
+               "fnc3",
+               "rd",
+               "opcode"
+          ],
           info: [
                {mnem: "addi",  fnc3: 0b000},
                {mnem: "slti",  fnc3: 0b010},
@@ -345,34 +248,6 @@ rv64.types.push({ //I2
                {mnem: "andi",  fnc3: 0b111}
           ]
      },
-
-     randomInstruction() {
-          let ret = {};
-
-          ret.type = "I";
-
-          let idx = Math.trunc(Math.random() * this.machineInstructions.info.length);
-          let info = this.machineInstructions.info[idx];
-
-          ret.a = {};
-          ret.a.mnem   = info.mnem;
-          ret.a.opcode = this.machineInstructions.opCode;
-          ret.a.fnc3   = info.fnc3;
-
-
-          ret.idFieldName = ["opcode", "fnc3"];   // CPU identifies instruction
-          ret.operandsFieldName =  ["rd", "rs1", "imm12"];
-          ret.miFieldName = [ // machine instruction format
-               "imm12",
-               "rs1",
-               "fnc3",
-               "rd",
-               "opcode"
-          ];
-
-          ret = fillRandomInstruction(ret);
-          return(ret);
-     }
 });
 
 rv64.types.push({ // I3
@@ -380,42 +255,22 @@ rv64.types.push({ // I3
           opCode: 0b0010011,
           type: "I",
           subType: 1,
-          info: [
-               {mnem: "slli",  fnc3: 0b001, fnc6: 0b000000},
-               {mnem: "srli",  fnc3: 0b101, fnc6: 0b000000},
-               {mnem: "srai",  fnc3: 0b101, fnc6: 0b010000},
-          ]
-     },
-
-     randomInstruction() {
-          let ret = {};
-
-          ret.type = "I";
-
-          let idx = Math.trunc(Math.random() * this.machineInstructions.info.length);
-          let info = this.machineInstructions.info[idx];
-
-          ret.a = {};
-          ret.a.mnem   = info.mnem;
-          ret.a.opcode = this.machineInstructions.opCode;
-          ret.a.fnc3   = info.fnc3;
-          ret.a.fnc6 = info.fnc6;
-
-
-          ret.idFieldName = ["opcode", "fnc3", "fnc6"];   // CPU identifies instruction
-          ret.operandsFieldName =  ["rd", "rs1", "imm6"];
-          ret.miFieldName = [ // machine instruction format
+          idFieldName: ["opcode", "fnc3", "fnc6"],   // CPU identifies instruction
+          operandsFieldName:  ["rd", "rs1", "imm6"],
+          miFieldName: [ // machine instruction format
                "fnc6",
                "imm6",
                "rs1",
                "fnc3",
                "rd",
                "opcode"
-          ];
-
-          ret = fillRandomInstruction(ret);
-          return(ret);
-     }
+          ],
+          info: [
+               {mnem: "slli",  fnc3: 0b001, fnc6: 0b000000},
+               {mnem: "srli",  fnc3: 0b101, fnc6: 0b000000},
+               {mnem: "srai",  fnc3: 0b101, fnc6: 0b010000},
+          ]
+     },
 });
 
 rv64.types.push({ // I4
@@ -423,38 +278,20 @@ rv64.types.push({ // I4
           opCode: 0b0011011,
           type: "I",
           subType: 1,
-          info: [
-               {mnem: "addiw",  fnc3: 0b000},
-          ]
-     },
-
-     randomInstruction() {
-          let ret = {};
-
-          ret.type = "I";
-
-          let idx = Math.trunc(Math.random() * this.machineInstructions.info.length);
-          let info = this.machineInstructions.info[idx];
-
-          ret.a = {};
-          ret.a.mnem   = info.mnem;
-          ret.a.opcode = this.machineInstructions.opCode;
-          ret.a.fnc3   = info.fnc3;
-
-
-          ret.idFieldName = ["opcode", "fnc3"];   // CPU identifies instruction
-          ret.operandsFieldName =  ["rd", "rs1", "imm12"];
-          ret.miFieldName = [ // machine instruction format
+          idFieldName: ["opcode", "fnc3"],   // CPU identifies instruction
+          operandsFieldName: ["rd", "rs1", "imm12"],
+          miFieldName: [ // machine instruction format
                "imm12",
                "rs1",
                "fnc3",
                "rd",
                "opcode"
-          ];
+          ],
 
-          ret = fillRandomInstruction(ret);
-          return(ret);
-     }
+          info: [
+               {mnem: "addiw",  fnc3: 0b000},
+          ]
+     },
 });
 
 rv64.types.push({ // I5
@@ -462,99 +299,59 @@ rv64.types.push({ // I5
           opCode: 0b0011011,
           type: "I",
           subType: 1,
-          info: [
-               {mnem: "slliw",  fnc3: 0b001, fnc7: 0b000000},
-               {mnem: "srliw",  fnc3: 0b101, fnc7: 0b000000},
-               {mnem: "sraiw",  fnc3: 0b101, fnc7: 0b010000},
-          ]
-     },
-
-     randomInstruction() {
-          let ret = {};
-
-          ret.type = "I";
-
-          let idx = Math.trunc(Math.random() * this.machineInstructions.info.length);
-          let info = this.machineInstructions.info[idx];
-
-          ret.a = {};
-          ret.a.mnem   = info.mnem;
-          ret.a.opcode = this.machineInstructions.opCode;
-          ret.a.fnc3   = info.fnc3;
-          ret.a.fnc7   = info.fnc7;
-
-
-          ret.idFieldName = ["opcode", "fnc3", "fnc7"];   // CPU identifies instruction
-          ret.operandsFieldName =  ["rd", "rs1", "imm5"];
-          ret.miFieldName = [ // machine instruction format
+          idFieldName: ["opcode", "fnc3", "fnc7"],   // CPU identifies instruction
+          operandsFieldName: ["rd", "rs1", "imm5"],
+          miFieldName: [ // machine instruction format
                "fnc7",
                "imm5",
                "rs1",
                "fnc3",
                "rd",
                "opcode"
-          ];
-
-          ret = fillRandomInstruction(ret);
-          return(ret);
-     }
+          ],
+          info: [
+               {mnem: "slliw",  fnc3: 0b001, fnc7: 0b000000},
+               {mnem: "srliw",  fnc3: 0b101, fnc7: 0b000000},
+               {mnem: "sraiw",  fnc3: 0b101, fnc7: 0b010000},
+          ]
+     },
 });
 
 rv64.types.push({  // R0
      machineInstructions: {
           opCode: 0b0110011,
           type: "R",
-          info: [
-               {mnem: "add",  fnc3: 0b000, fnc7: 0b0000000},
-               {mnem: "sub",  fnc3: 0b000, fnc7: 0b0100000},
-               {mnem: "sll",  fnc3: 0b001, fnc7: 0b0000000},
-               {mnem: "slt",  fnc3: 0b010, fnc7: 0b0000000},
-               {mnem: "sltu",  fnc3: 0b011, fnc7: 0b0000000},
-               {mnem: "xor",   fnc3: 0b100, fnc7: 0b0000000},
-               {mnem: "srl",   fnc3: 0b101, fnc7: 0b0000000},
-               {mnem: "sra",   fnc3: 0b101, fnc7: 0b0100000},
-               {mnem: "or",    fnc3: 0b110, fnc7: 0b0000000},
-               {mnem: "and",   fnc3: 0b111, fnc7: 0b0000000},
-               {mnem: "mul",   fnc3: 0b000, fnc7: 0b0000001, ext: "rv64M"},
-               {mnem: "mulh",  fnc3: 0b001, fnc7: 0b0000001, ext: "rv64M"},
-               {mnem: "mulhsu",fnc3: 0b010, fnc7: 0b0000001, ext: "rv64M"},
-               {mnem: "mulhu", fnc3: 0b011, fnc7: 0b0000001, ext: "rv64M"},
-               {mnem: "div",   fnc3: 0b100, fnc7: 0b0000001, ext: "rv64M"},
-               {mnem: "divu",  fnc3: 0b101, fnc7: 0b0000001, ext: "rv64M"},
-               {mnem: "rem",   fnc3: 0b110, fnc7: 0b0000001, ext: "rv64M"},
-               {mnem: "remu",  fnc3: 0b111, fnc7: 0b0000001, ext: "rv64M"},
-          ]
-     },
-
-     randomInstruction() {
-          let ret = {};
-
-          ret.type = "R";
-
-          let idx = Math.trunc(Math.random() * this.machineInstructions.info.length);
-          let info = this.machineInstructions.info[idx];
-
-          ret.a = {};
-          ret.a.mnem   = info.mnem;
-          ret.a.opcode = this.machineInstructions.opCode;
-          ret.a.fnc3   = info.fnc3;
-          ret.a.fnc7 = info.fnc7;
-
-
-          ret.idFieldName = ["opcode", "fnc3", "fnc7"];   // CPU identifies instruction
-          ret.operandsFieldName =  ["rd", "rs1", "rs2"];
-          ret.miFieldName = [ // machine instruction format
+          idFieldName: ["opcode", "fnc3", "fnc7"],   // CPU identifies instruction
+          operandsFieldName:  ["rd", "rs1", "rs2"],
+          miFieldName: [ // machine instruction format
                "fnc7",
                "rs2",
                "rs1",
                "fnc3",
                "rd",
                "opcode"
-          ];
-
-          ret = fillRandomInstruction(ret);
-          return(ret);
-     }
+          ],
+          info: [
+               {mnem: "add",    fnc3: 0b000, fnc7: 0b0000000},
+               {mnem: "sub",    fnc3: 0b000, fnc7: 0b0100000},
+               {mnem: "sll",    fnc3: 0b001, fnc7: 0b0000000},
+               {mnem: "slt",    fnc3: 0b010, fnc7: 0b0000000},
+               {mnem: "sltu",   fnc3: 0b011, fnc7: 0b0000000},
+               {mnem: "xor",    fnc3: 0b100, fnc7: 0b0000000},
+               {mnem: "srl",    fnc3: 0b101, fnc7: 0b0000000},
+               {mnem: "sra",    fnc3: 0b101, fnc7: 0b0100000},
+               {mnem: "or",     fnc3: 0b110, fnc7: 0b0000000},
+               {mnem: "and",    fnc3: 0b111, fnc7: 0b0000000},
+               {mnem: "mul",    fnc3: 0b000, fnc7: 0b0000001, ext: "rv64M"},
+               {mnem: "mulh",   fnc3: 0b001, fnc7: 0b0000001, ext: "rv64M"},
+               {mnem: "mulhsu", fnc3: 0b010, fnc7: 0b0000001, ext: "rv64M"},
+               {mnem: "mulhu",  fnc3: 0b011, fnc7: 0b0000001, ext: "rv64M"},
+               {mnem: "div",    fnc3: 0b100, fnc7: 0b0000001, ext: "rv64M"},
+               {mnem: "divu",   fnc3: 0b101, fnc7: 0b0000001, ext: "rv64M"},
+               {mnem: "rem",    fnc3: 0b110, fnc7: 0b0000001, ext: "rv64M"},
+               {mnem: "remu",   fnc3: 0b111, fnc7: 0b0000001, ext: "rv64M"},
+          ]
+     },
 });
 
 
@@ -562,6 +359,16 @@ rv64.types.push({  // R1
      machineInstructions: {
           opCode: 0b0111011,
           type: "R",
+          idFieldName: ["opcode", "fnc3", "fnc7"],   // CPU identifies instruction
+          operandsFieldName: ["rd", "rs1", "rs2"],
+          miFieldName: [ // machine instruction format
+               "fnc7",
+               "rs2",
+               "rs1",
+               "fnc3",
+               "rd",
+               "opcode"
+          ],
           info: [
                {mnem: "addw",  fnc3: 0b000, fnc7: 0b0000000},
                {mnem: "subw",  fnc3: 0b000, fnc7: 0b0100000},
@@ -574,40 +381,10 @@ rv64.types.push({  // R1
                {mnem: "remw",  fnc3: 0b110, fnc7: 0b0000001},
                {mnem: "remuw", fnc3: 0b111, fnc7: 0b0000001},
           ]
-     },
-
-     randomInstruction() {
-          let ret = {};
-
-          ret.type = "R";
-
-          let idx = Math.trunc(Math.random() * this.machineInstructions.info.length);
-          let info = this.machineInstructions.info[idx];
-
-          ret.a = {};
-          ret.a.mnem   = info.mnem;
-          ret.a.opcode = this.machineInstructions.opCode;
-          ret.a.fnc3   = info.fnc3;
-          ret.a.fnc7   = info.fnc7;
-
-          ret.idFieldName = ["opcode", "fnc3", "fnc7"];   // CPU identifies instruction
-          ret.operandsFieldName =  ["rd", "rs1", "rs2"];
-          ret.miFieldName = [ // machine instruction format
-               "fnc7",
-               "rs2",
-               "rs1",
-               "fnc3",
-               "rd",
-               "opcode"
-          ];
-
-          ret = fillRandomInstruction(ret);
-          return(ret);
      }
 });
 
 function fillRandomInstruction(ret) {
-
      for (let f of ret.operandsFieldName) {
           switch (f) {
 
