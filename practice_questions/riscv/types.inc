@@ -88,12 +88,12 @@ rv64.types.push({        // B
                "opcode"
           ],
           info: [
-               {mnem: "beq",  fnc3: 0b000},
-               {mnem: "bne",  fnc3: 0b001},
-               {mnem: "blt",  fnc3: 0b100},
-               {mnem: "bge",  fnc3: 0b101},
-               {mnem: "bltu", fnc3: 0b110},
-               {mnem: "bgeu", fnc3: 0b111}
+               {mnem: "beq",  fnc3: 0b000, desc: "pc &larr; x[rs1] == x[rs2]? pc + imm: pc + 4"},
+               {mnem: "bne",  fnc3: 0b001, desc: "pc &larr; x[rs1] != x[rs2]? pc + imm: pc + 4"},
+               {mnem: "blt",  fnc3: 0b100, desc: "pc &larr; x[rs1] <<sub>s</sub> x[rs2]? pc + imm: pc + 4"},
+               {mnem: "bge",  fnc3: 0b101, desc: "pc &larr; x[rs1] >=<sub>s</sub> x[rs2]? pc + imm: pc + 4"},
+               {mnem: "bltu", fnc3: 0b110, desc: "pc &larr; x[rs1] <<sub>u</sub> x[rs2]? pc + imm: pc + 4"},
+               {mnem: "bgeu", fnc3: 0b111, desc: "pc &larr; x[rs1] >=<sub>u</sub> x[rs2]? pc + imm: pc + 4"}
           ]
      }
 });
@@ -110,7 +110,7 @@ rv64.types.push({ // U0
                "opcode"
           ],
           info: [
-               {mnem: "lui"},
+               {mnem: "lui", desc: "x[rd] &larr; sext(imm << 12)"},
           ]
      }
 });
@@ -127,7 +127,7 @@ rv64.types.push({ // U1
                "opcode"
           ],
           info: [
-               {mnem: "auipc"},
+               {mnem: "auipc", desc: "x[rd] &larr; pc + sext(imm << 12)"},
           ]
      }
 });
@@ -150,7 +150,7 @@ rv64.types.push({ //J
                "opcode"
           ],
           info: [
-               {mnem: "jal"}
+               {mnem: "jal", desc: "pc &larr; pc + imm"}
           ]
      }
 });
@@ -172,10 +172,10 @@ rv64.types.push({ // S
                "opcode"
           ],
           info: [
-               {mnem: "sb",  fnc3: 0b000},
-               {mnem: "sh",  fnc3: 0b001},
-               {mnem: "sw",  fnc3: 0b010},
-               {mnem: "sd",  fnc3: 0b011}
+               {mnem: "sb",  fnc3: 0b000, desc: "byte(x[rs1] + sext(imm)) &larr; x[rs2]"},
+               {mnem: "sh",  fnc3: 0b001, desc: "half(x[rs1] + sext(imm)) &larr; x[rs2]"},
+               {mnem: "sw",  fnc3: 0b010, desc: "word(x[rs1] + sext(imm)) &larr; x[rs2]"},
+               {mnem: "sd",  fnc3: 0b011, desc: "dword(x[rs1] + sext(imm)) &larr; x[rs2]"}
           ]
      }
 });
@@ -195,13 +195,13 @@ rv64.types.push({ // I0
                "opcode"
           ],
           info: [
-               {mnem: "lb",  fnc3: 0b000},
-               {mnem: "lh",  fnc3: 0b001},
-               {mnem: "lw",  fnc3: 0b010},
-               {mnem: "ld",  fnc3: 0b011},
-               {mnem: "lbu", fnc3: 0b100},
-               {mnem: "lhu", fnc3: 0b101},
-               {mnem: "lwu", fnc3: 0b110},
+               {mnem: "lb",  fnc3: 0b000, desc: "x[rd] &larr; sext(byte(x[rs1] + sext(imm)))"},
+               {mnem: "lh",  fnc3: 0b001, desc: "x[rd] &larr; sext(half(x[rs1] + sext(imm)))"},
+               {mnem: "lw",  fnc3: 0b010, desc: "x[rd] &larr; sext(word(x[rs1] + sext(imm)))"},
+               {mnem: "ld",  fnc3: 0b011, desc: "x[rd] &larr; double(x[rs1] + sext(imm))"},
+               {mnem: "lbu", fnc3: 0b100, desc: "x[rd] &larr; zext(byte(x[rs1] + sext(imm)))"},
+               {mnem: "lhu", fnc3: 0b101, desc: "x[rd] &larr; zext(half(x[rs1] + sext(imm)))"},
+               {mnem: "lwu", fnc3: 0b110, desc: "x[rd] &larr; zext(word(x[rs1] + sext(imm)))"},
           ]
      },
 });
@@ -221,7 +221,7 @@ rv64.types.push({ // I1
                "opcode"
           ],
           info: [
-               {mnem: "jalr",  fnc3: 0b000}
+               {mnem: "jalr",  fnc3: 0b000, desc: "x[rd] &larr; pc + 4; pc &larr; rs1 + sext(imm)"}
           ]
      }
 });
@@ -240,12 +240,12 @@ rv64.types.push({ //I2
                "opcode"
           ],
           info: [
-               {mnem: "addi",  fnc3: 0b000},
-               {mnem: "slti",  fnc3: 0b010},
-               {mnem: "sltiu", fnc3: 0b011},
-               {mnem: "xori",  fnc3: 0b100},
-               {mnem: "ori",   fnc3: 0b110},
-               {mnem: "andi",  fnc3: 0b111}
+               {mnem: "addi",  fnc3: 0b000, desc: "x[rd] &larr; x[rs1] + sext(imm)"},
+               {mnem: "slti",  fnc3: 0b010, desc: "x[rd] &larr; x[rs1] <<sub>s</sub> sext(imm)? 1 : 0"},
+               {mnem: "sltiu", fnc3: 0b011, desc: "x[rd] &larr; x[rs1] <<sub>u</sub> zext(imm)? 1 : 0"},
+               {mnem: "xori",  fnc3: 0b100, desc: "x[rd] &larr; x[rs1] ^ sext(imm)"},
+               {mnem: "ori",   fnc3: 0b110, desc: "x[rd] &larr; x[rs1] | sext(imm)"},
+               {mnem: "andi",  fnc3: 0b111, desc: "x[rd] &larr; x[rs1] & sext(imm)"}
           ]
      },
 });
@@ -266,7 +266,7 @@ rv64.types.push({ // I3
                "opcode"
           ],
           info: [
-               {mnem: "slli",  fnc3: 0b001, fnc6: 0b000000},
+               {mnem: "slli",  fnc3: 0b001, fnc6: 0b000000, desc: "x[rd] &larr; x[rs1] << imm"},
                {mnem: "srli",  fnc3: 0b101, fnc6: 0b000000},
                {mnem: "srai",  fnc3: 0b101, fnc6: 0b010000},
           ]
@@ -332,24 +332,24 @@ rv64.types.push({  // R0
                "opcode"
           ],
           info: [
-               {mnem: "add",    fnc3: 0b000, fnc7: 0b0000000},
-               {mnem: "sub",    fnc3: 0b000, fnc7: 0b0100000},
-               {mnem: "sll",    fnc3: 0b001, fnc7: 0b0000000},
-               {mnem: "slt",    fnc3: 0b010, fnc7: 0b0000000},
-               {mnem: "sltu",   fnc3: 0b011, fnc7: 0b0000000},
-               {mnem: "xor",    fnc3: 0b100, fnc7: 0b0000000},
+               {mnem: "add",    fnc3: 0b000, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] + x[rs2]"},
+               {mnem: "sub",    fnc3: 0b000, fnc7: 0b0100000, desc: "x[rd] &larr; x[rs1] - x[rs2]"},
+               {mnem: "sll",    fnc3: 0b001, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] << x[rs2]"},
+               {mnem: "slt",    fnc3: 0b010, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] <<sub>s</sub> x[rs2]? 1 : 0"},
+               {mnem: "sltu",   fnc3: 0b011, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] <<sub>u</sub> x[rs2]? 1 : 0"},
+               {mnem: "xor",    fnc3: 0b100, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] ^ x[rs2]"},
                {mnem: "srl",    fnc3: 0b101, fnc7: 0b0000000},
                {mnem: "sra",    fnc3: 0b101, fnc7: 0b0100000},
-               {mnem: "or",     fnc3: 0b110, fnc7: 0b0000000},
-               {mnem: "and",    fnc3: 0b111, fnc7: 0b0000000},
-               {mnem: "mul",    fnc3: 0b000, fnc7: 0b0000001, ext: "rv64M"},
-               {mnem: "mulh",   fnc3: 0b001, fnc7: 0b0000001, ext: "rv64M"},
-               {mnem: "mulhsu", fnc3: 0b010, fnc7: 0b0000001, ext: "rv64M"},
-               {mnem: "mulhu",  fnc3: 0b011, fnc7: 0b0000001, ext: "rv64M"},
-               {mnem: "div",    fnc3: 0b100, fnc7: 0b0000001, ext: "rv64M"},
-               {mnem: "divu",   fnc3: 0b101, fnc7: 0b0000001, ext: "rv64M"},
-               {mnem: "rem",    fnc3: 0b110, fnc7: 0b0000001, ext: "rv64M"},
-               {mnem: "remu",   fnc3: 0b111, fnc7: 0b0000001, ext: "rv64M"},
+               {mnem: "or",     fnc3: 0b110, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] | x[rs2]"},
+               {mnem: "and",    fnc3: 0b111, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] & x[rs2]"},
+               {mnem: "mul",    fnc3: 0b000, fnc7: 0b0000001, desc: "x[rd] &larr; x[rs1] * x[rs2]", ext: "M"},
+               {mnem: "mulh",   fnc3: 0b001, fnc7: 0b0000001, ext: "M"},
+               {mnem: "mulhsu", fnc3: 0b010, fnc7: 0b0000001, ext: "M"},
+               {mnem: "mulhu",  fnc3: 0b011, fnc7: 0b0000001, ext: "M"},
+               {mnem: "div",    fnc3: 0b100, fnc7: 0b0000001, ext: "M"},
+               {mnem: "divu",   fnc3: 0b101, fnc7: 0b0000001, ext: "M"},
+               {mnem: "rem",    fnc3: 0b110, fnc7: 0b0000001, ext: "M"},
+               {mnem: "remu",   fnc3: 0b111, fnc7: 0b0000001, ext: "M"},
           ]
      },
 });

@@ -109,10 +109,10 @@ function redraw() {
   let fields;
   if (document.getElementById("sortMnemButton").checked) {
     orderFunction = orderMnem;
-    fields= ["mnem", "type", "opcode", "fnc3", "fnc6/fnc7"];
+    fields= ["mnem", "type", "opcode", "fnc3", "fnc6/fnc7", "desc"];
   } else {
     orderFunction = orderOpcode;
-    fields= ["opcode", "fnc3", "fnc6/fnc7", "type", "mnem"];
+    fields= ["opcode", "fnc3", "fnc6/fnc7", "type", "mnem", "desc"];
   }
 
   let ins = [];
@@ -124,6 +124,7 @@ function redraw() {
       o.opcode = opcode;
       o.mnem   = instruction.mnem;
       o.type   = instructionType;
+      if (typeof(instruction.desc) != "undefined") o.desc   = instruction.desc;
 
       for (f of ["fnc3", "fnc6", "fnc7"])
         if (typeof(instruction[f]) != "undefined") {
