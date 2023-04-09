@@ -78,7 +78,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../index.html">שאלות תרגול<a></span>&rlm; >>> <span>RISC-V</span>&rlm;
+              <span><a href="../../index.html">שאלות תרגול<a></span>&rlm; >>> <span><a href="../index.html">RISC-V<a></span>&rlm;
               </p>
               
                 
@@ -89,79 +89,125 @@ MathJax = {
 
 
 
-
     
+<h2>פיענוח קבוע ברוחב 32 ביטים</h2>
+נתונות שתי הפקודות הבאות:
+<div>
+  <div style="direction: ltr;" id="code"></div>
+מה הערך שיטען לאוגר t0?
+<hr />
+<hr />
+</div>
+<div><button id="answerButton" type="clock" onclick="makeAnswer();">תשובה</button></div>
+<div><button id="firstStepButton" type="clock" onclick="firstStep();">צעד ראשון</button></div>
+<div class="hidden" id="answer"> </div>
+<div class="hidden" id="solution"></div>
+<div><button id="nextStepButton" style="display: none" type="clock" onclick="nextStep();">עוד צעד</button></div>
+
+<script>
+  let num = Math.trunc(Math.random() * 2**20);
+  let m = num & 0xFFF;
+  let n = (num >> 12) & 0xFFFFF;
+  let n1 = n;
+  if (m & 0x800)  n1++;
+
+  let s = `<pre>
+    lui t0, 0x${n1.toString(16).toUpperCase()}
+    addi t0, t0, 0x${m.toString(16).toUpperCase()}
+  </pre>`;
+  let e = document.getElementById("code");
+  e.innerHTML = s;
+
+
+</script>
+
+<script>
+function makeAnswer() {
+  const eFirtStepButton = document.getElementById("firstStepButton");
+  eFirtStepButton.style.display = "none";
+
+  const eAnswerButton = document.getElementById("answerButton");
+  eAnswerButton.style.display = "none";
+
+  step = 10000;
+  makeStep();
+}
+
+function firstStep() {
+  const eAnswerButton = document.getElementById("answerButton");
+  eAnswerButton.style.display = "none";
+
+  const eFirtStepButton = document.getElementById("firstStepButton");
+  eFirtStepButton.style.display = "none";
+
+  const eNextStepButton = document.getElementById("nextStepButton");
+  eNextStepButton.style.display = "inline";
+  step = 0;
+  makeStep();
+}
+
+  function nextStep() {
+    step++;
+    makeStep();
+  }
+
+  function makeStep() {
+    let m = num & 0xFFF;
+    let n = (num >> 12) & 0xFFFFF;
+    let n1 = n;
+    if (m & 0x800)  n1++;
+
+    {
+      let s = `תשובה<br/>
+      הערך שיטען הוא
+       0x${num.toString(16).toUpperCase()}.`;
+      let eAnswer = document.getElementById("answer");
+      eAnswer.innerHTML = s;
+    }
+ 
+    let stepHTML = [];
+    let stepCnt = 0;
+
+    {
+    let s = `<hr/>
+    דרך<br/>
+    12 הביטים הימניים של 
+    של התשובה יהיו
+     0x${m.toString(16).toUpperCase().padStart(3, "0")}.`;
+    stepHTML[stepCnt++] = s;
+    }
+    {
+      let t;
+      if (m & 0x800) 
+        t = `כיון שהביט השמאלי של החלק הנמוך
+              הוא 1 אזי 20 הביטים השמאליים:
+                יהיו
+                 0x${n.toString(16).toUpperCase().padStart(5,"0")} = 
+                 0x${n1.toString(16).toUpperCase().padStart(5,"0")} - 1.`;
+        else
+         t = `כיון שהביט השמאלי של החלק הנמוך
+              הוא 0 אזי 20 הביטים השמאליים יהיו
+              0x${n.toString(16).toUpperCase().padStart(5,"0")}.`;
+    let s = `<hr/>
+      ${t}`;
+    
+      stepHTML[stepCnt++] = s;
+    }
 
 
 
+    if (step >= stepCnt) {
+      let eNextStepButton = document.getElementById("nextStepButton");
+      eNextStepButton.style.display = "none";
+    }
 
 
+    let eSolution = document.getElementById("solution");
+    eSolution.innerHTML = stepHTML.slice(0, step).join("");
+  }
+</script>
 
 
-
-
-
- <ol > 
-            <li>
-                
-            <a href="050_machine_instructions/index.html">רשימת פקודות מכונה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="100_asm/index.html">קימפול פקודת שפת סף אחת</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="200_disasm/index.html">פיענוח פקודת מכונה אחת</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="300_32_bit_constants_build/index.html">טעינת קבוע ברוחב 32 ביטים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="400_32_bit_constants_understand/index.html">פיענוח קבוע ברוחב 32 ביטים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-         </ol> 
 
 
  </div>
