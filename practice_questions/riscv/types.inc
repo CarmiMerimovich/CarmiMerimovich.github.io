@@ -46,16 +46,18 @@ rv64.randomInstruction = function () {
      let idx = Math.trunc(Math.random() * mi.info.length);
      let info = mi.info[idx];
 
-
      for (let f of ["type", "idFieldName", "operandsFieldName", "miFieldName"]) 
           if (typeof(mi[f]) != "undefined")
                ret[f] = mi[f];
 
-     ret.a.opcode = mi.opCode;
+     if (typeof(mi.opCode) != "undefined")
+          ret.a.opcode = mi.opCode;
+
+
      if (typeof(mi["memory"]) != "undefined")
           ret.a["memory"] = mi["memory"];
 
-     for (let f of ["mnem", "fnc3", "fnc5", "fnc6", "fnc7"])
+     for (let f of ["opcode", "mnem", "fnc3", "fnc5", "fnc6", "fnc7"])
           if (typeof(info[f]) != "undefined")
                ret.a[f] = info[f];
 
@@ -98,9 +100,8 @@ rv64.types.push({        // B
      }
 });
 
-rv64.types.push({ // U0
+rv64.types.push({ // U
      machineInstructions: {
-          opCode: 0b0110111,
           type: "U",
           idFieldName: ["opcode"],   // CPU identifies instruction
           operandsFieldName: ["rd", "imm20"],
@@ -110,28 +111,11 @@ rv64.types.push({ // U0
                "opcode"
           ],
           info: [
-               {mnem: "lui", desc: "x[rd] &larr; sext(imm << 12)"},
+               {mnem: "lui",   opcode: 0b0110111, desc: "x[rd] &larr; sext(imm << 12)"},
+               {mnem: "auipc", opcode: 0b0010111, desc: "x[rd] &larr; pc + sext(imm << 12)"},
           ]
      }
 });
-
-rv64.types.push({ // U1
-     machineInstructions: {
-          opCode: 0b0010111,
-          type: "U",
-          idFieldName: ["opcode"],   // CPU identifies instruction
-          operandsFieldName: ["rd", "imm20"],
-          miFieldName: [ // machine instruction format
-               "imm20",
-               "rd",
-               "opcode"
-          ],
-          info: [
-               {mnem: "auipc", desc: "x[rd] &larr; pc + sext(imm << 12)"},
-          ]
-     }
-});
-
 
 
 rv64.types.push({ //J
@@ -180,9 +164,8 @@ rv64.types.push({ // S
      }
 });
 
-rv64.types.push({ // I0
+rv64.types.push({ // I  Memory addressing version
      machineInstructions: {
-          opCode: 0b0000011,
           memory: true,
           type: "I",
           idFieldName:  ["opcode", "fnc3"],   // CPU identifies instruction
@@ -195,40 +178,21 @@ rv64.types.push({ // I0
                "opcode"
           ],
           info: [
-               {mnem: "lb",  fnc3: 0b000, desc: "x[rd] &larr; sext(*(x[rs1] + sext(imm))[7:0])"},
-               {mnem: "lh",  fnc3: 0b001, desc: "x[rd] &larr; sext(*(x[rs1] + sext(imm))[15:0])"},
-               {mnem: "lw",  fnc3: 0b010, desc: "x[rd] &larr; sext(*(x[rs1] + sext(imm))[31:0])"},
-               {mnem: "ld",  fnc3: 0b011, desc: "x[rd] &larr; *(x[rs1] + sext(imm))"},
-               {mnem: "lbu", fnc3: 0b100, desc: "x[rd] &larr; zext(*(x[rs1] + sext(imm))[7:0])"},
-               {mnem: "lhu", fnc3: 0b101, desc: "x[rd] &larr; zext(*(x[rs1] + sext(imm))[15:0])"},
-               {mnem: "lwu", fnc3: 0b110, desc: "x[rd] &larr; zext(*(x[rs1] + sext(imm))[31:0])"},
+               {mnem: "lb",  opcode: 0b0000011, fnc3: 0b000, desc: "x[rd] &larr; sext(*(x[rs1] + sext(imm))[7:0])"},
+               {mnem: "lh",  opcode: 0b0000011,  fnc3: 0b001, desc: "x[rd] &larr; sext(*(x[rs1] + sext(imm))[15:0])"},
+               {mnem: "lw",  opcode: 0b0000011,  fnc3: 0b010, desc: "x[rd] &larr; sext(*(x[rs1] + sext(imm))[31:0])"},
+               {mnem: "ld",  opcode: 0b0000011,  fnc3: 0b011, desc: "x[rd] &larr; *(x[rs1] + sext(imm))"},
+               {mnem: "lbu", opcode: 0b0000011, fnc3: 0b100, desc: "x[rd] &larr; zext(*(x[rs1] + sext(imm))[7:0])"},
+               {mnem: "lhu", opcode: 0b0000011, fnc3: 0b101, desc: "x[rd] &larr; zext(*(x[rs1] + sext(imm))[15:0])"},
+               {mnem: "lwu", opcode: 0b0000011, fnc3: 0b110, desc: "x[rd] &larr; zext(*(x[rs1] + sext(imm))[31:0])"},
+               {mnem: "jalr", opcode: 0b1100111, fnc3: 0b000, desc: "x[rd] &larr; pc + 4; pc &larr; rs1 + sext(imm)"},
           ]
      },
 });
 
-rv64.types.push({ // I1
-     machineInstructions: {
-          opCode: 0b1100111,
-          memory: true,
-          type: "I",
-          idFieldName: ["opcode", "fnc3"],   // CPU identifies instruction
-          operandsFieldName: ["rd", "rs1", "imm12"],
-          miFieldName: [ // machine instruction format
-               "imm12",
-               "rs1",
-               "fnc3",
-               "rd",
-               "opcode"
-          ],
-          info: [
-               {mnem: "jalr",  fnc3: 0b000, desc: "x[rd] &larr; pc + 4; pc &larr; rs1 + sext(imm)"}
-          ]
-     }
-});
 
-rv64.types.push({ //I2
+rv64.types.push({ // I normal 12-bit constant
      machineInstructions: {
-          opCode: 0b0010011,
           type: "I",
           idFieldName: ["opcode", "fnc3"],   // CPU identifies instruction
           operandsFieldName:  ["rd", "rs1", "imm12"],
@@ -240,17 +204,18 @@ rv64.types.push({ //I2
                "opcode"
           ],
           info: [
-               {mnem: "addi",  fnc3: 0b000, desc: "x[rd] &larr; x[rs1] + sext(imm)"},
-               {mnem: "slti",  fnc3: 0b010, desc: "x[rd] &larr; x[rs1] <<sub>s</sub> sext(imm) ? 1 : 0"},
-               {mnem: "sltiu", fnc3: 0b011, desc: "x[rd] &larr; x[rs1] <<sub>u</sub> zext(imm) ? 1 : 0"},
-               {mnem: "xori",  fnc3: 0b100, desc: "x[rd] &larr; x[rs1] ^ sext(imm)"},
-               {mnem: "ori",   fnc3: 0b110, desc: "x[rd] &larr; x[rs1] &or; sext(imm)"},
-               {mnem: "andi",  fnc3: 0b111, desc: "x[rd] &larr; x[rs1] &and; sext(imm)"}
+               {mnem: "addi",  opcode: 0b0010011, fnc3: 0b000, desc: "x[rd] &larr; x[rs1] + sext(imm)"},
+               {mnem: "slti",  opcode: 0b0010011, fnc3: 0b010, desc: "x[rd] &larr; x[rs1] <<sub>s</sub> sext(imm) ? 1 : 0"},
+               {mnem: "sltiu", opcode: 0b0010011, fnc3: 0b011, desc: "x[rd] &larr; x[rs1] <<sub>u</sub> zext(imm) ? 1 : 0"},
+               {mnem: "xori",  opcode: 0b0010011, fnc3: 0b100, desc: "x[rd] &larr; x[rs1] ^ sext(imm)"},
+               {mnem: "ori",   opcode: 0b0010011,  fnc3: 0b110, desc: "x[rd] &larr; x[rs1] &or; sext(imm)"},
+               {mnem: "andi",  opcode: 0b0010011, fnc3: 0b111, desc: "x[rd] &larr; x[rs1] &and; sext(imm)"},
+               {mnem: "addiw", opcode: 0b0011011, fnc3: 0b000, desc: "x[rd] &larr; sext((x[rs1] + sext(imm))[31:0])"},
           ]
      },
 });
 
-rv64.types.push({ // I3
+rv64.types.push({ // I'  6-bit immediate for shifts
      machineInstructions: {
           opCode: 0b0010011,
           type: "I'",
@@ -273,28 +238,8 @@ rv64.types.push({ // I3
      },
 });
 
-rv64.types.push({ // I4
-     machineInstructions: {
-          opCode: 0b0011011,
-          type: "I",
-          subType: 1,
-          idFieldName: ["opcode", "fnc3"],   // CPU identifies instruction
-          operandsFieldName: ["rd", "rs1", "imm12"],
-          miFieldName: [ // machine instruction format
-               "imm12",
-               "rs1",
-               "fnc3",
-               "rd",
-               "opcode"
-          ],
 
-          info: [
-               {mnem: "addiw",  fnc3: 0b000, desc: "x[rd] &larr; sext((x[rs1] + sext(imm))[31:0])"},
-          ]
-     },
-});
-
-rv64.types.push({ // I5
+rv64.types.push({ // I'' 5-bit immediate for shifts
      machineInstructions: {
           opCode: 0b0011011,
           type: "I''",
@@ -317,9 +262,8 @@ rv64.types.push({ // I5
      },
 });
 
-rv64.types.push({  // R0
+rv64.types.push({  // R
      machineInstructions: {
-          opCode: 0b0110011,
           type: "R",
           idFieldName: ["opcode", "fnc3", "fnc7"],   // CPU identifies instruction
           operandsFieldName:  ["rd", "rs1", "rs2"],
@@ -332,56 +276,36 @@ rv64.types.push({  // R0
                "opcode"
           ],
           info: [
-               {mnem: "add",    fnc3: 0b000, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] + x[rs2]"},
-               {mnem: "sub",    fnc3: 0b000, fnc7: 0b0100000, desc: "x[rd] &larr; x[rs1] - x[rs2]"},
-               {mnem: "sll",    fnc3: 0b001, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] << x[rs2]"},
-               {mnem: "slt",    fnc3: 0b010, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] <<sub>s</sub> x[rs2] ? 1 : 0"},
-               {mnem: "sltu",   fnc3: 0b011, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] <<sub>u</sub> x[rs2] ? 1 : 0"},
-               {mnem: "xor",    fnc3: 0b100, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] ^ x[rs2]"},
-               {mnem: "srl",    fnc3: 0b101, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] >><sub>u</sub> x[rs2]"},
-               {mnem: "sra",    fnc3: 0b101, fnc7: 0b0100000, desc: "x[rd] &larr; x[rs1] >><sub>s</sub> x[rs2]"},
-               {mnem: "or",     fnc3: 0b110, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] &or; [rs2]"},
-               {mnem: "and",    fnc3: 0b111, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] 	&and; x[rs2]"},
-               {mnem: "mul",    fnc3: 0b000, fnc7: 0b0000001, desc: "x[rd] &larr; x[rs1] &times; x[rs2]", ext: "M"},
-               {mnem: "mulh",   fnc3: 0b001, fnc7: 0b0000001, ext: "M"},
-               {mnem: "mulhsu", fnc3: 0b010, fnc7: 0b0000001, ext: "M"},
-               {mnem: "mulhu",  fnc3: 0b011, fnc7: 0b0000001, ext: "M"},
-               {mnem: "div",    fnc3: 0b100, fnc7: 0b0000001, desc: "x[rd] &larr; x[rs1] /<sub>s</sub> x[rs2]", ext: "M"},
-               {mnem: "divu",   fnc3: 0b101, fnc7: 0b0000001, desc: "x[rd] &larr; x[rs1] /<sub>u</sub> x[rs2]", ext: "M"},
-               {mnem: "rem",    fnc3: 0b110, fnc7: 0b0000001, desc: "x[rd] &larr; x[rs1] %<sub>s</sub> x[rs2]", ext: "M"},
-               {mnem: "remu",   fnc3: 0b111, fnc7: 0b0000001, desc: "x[rd] &larr; x[rs1] %<sub>u</sub> x[rs2]", ext: "M"},
+               {mnem: "add",    opcode: 0b0110011, fnc3: 0b000, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] + x[rs2]"},
+               {mnem: "sub",    opcode: 0b0110011, fnc3: 0b000, fnc7: 0b0100000, desc: "x[rd] &larr; x[rs1] - x[rs2]"},
+               {mnem: "sll",    opcode: 0b0110011, fnc3: 0b001, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] << x[rs2]"},
+               {mnem: "slt",    opcode: 0b0110011, fnc3: 0b010, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] <<sub>s</sub> x[rs2] ? 1 : 0"},
+               {mnem: "sltu",   opcode: 0b0110011, fnc3: 0b011, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] <<sub>u</sub> x[rs2] ? 1 : 0"},
+               {mnem: "xor",    opcode: 0b0110011, fnc3: 0b100, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] ^ x[rs2]"},
+               {mnem: "srl",    opcode: 0b0110011, fnc3: 0b101, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] >><sub>u</sub> x[rs2]"},
+               {mnem: "sra",    opcode: 0b0110011, fnc3: 0b101, fnc7: 0b0100000, desc: "x[rd] &larr; x[rs1] >><sub>s</sub> x[rs2]"},
+               {mnem: "or",     opcode: 0b0110011, fnc3: 0b110, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] &or; [rs2]"},
+               {mnem: "and",    opcode: 0b0110011, fnc3: 0b111, fnc7: 0b0000000, desc: "x[rd] &larr; x[rs1] 	&and; x[rs2]"},
+               {mnem: "mul",    opcode: 0b0110011, fnc3: 0b000, fnc7: 0b0000001, desc: "x[rd] &larr; x[rs1] &times; x[rs2]", ext: "M"},
+               {mnem: "mulh",   opcode: 0b0110011, fnc3: 0b001, fnc7: 0b0000001, ext: "M"},
+               {mnem: "mulhsu", opcode: 0b0110011, fnc3: 0b010, fnc7: 0b0000001, ext: "M"},
+               {mnem: "mulhu",  opcode: 0b0110011, fnc3: 0b011, fnc7: 0b0000001, ext: "M"},
+               {mnem: "div",    opcode: 0b0110011, fnc3: 0b100, fnc7: 0b0000001, desc: "x[rd] &larr; x[rs1] /<sub>s</sub> x[rs2]", ext: "M"},
+               {mnem: "divu",   opcode: 0b0110011, fnc3: 0b101, fnc7: 0b0000001, desc: "x[rd] &larr; x[rs1] /<sub>u</sub> x[rs2]", ext: "M"},
+               {mnem: "rem",    opcode: 0b0110011, fnc3: 0b110, fnc7: 0b0000001, desc: "x[rd] &larr; x[rs1] %<sub>s</sub> x[rs2]", ext: "M"},
+               {mnem: "remu",   opcode: 0b0110011, fnc3: 0b111, fnc7: 0b0000001, desc: "x[rd] &larr; x[rs1] %<sub>u</sub> x[rs2]", ext: "M"},
+               {mnem: "addw",  opcode: 0b0111011, fnc3: 0b000, fnc7: 0b0000000, desc: "x[rd] &larr; sext((x[rs1] + x[rs2])[31:0])"},
+               {mnem: "subw",  opcode: 0b0111011, fnc3: 0b000, fnc7: 0b0100000, desc: "x[rd] &larr; sext((x[rs1] - x[rs2])[31:0])"},
+               {mnem: "sllw",  opcode: 0b0111011, fnc3: 0b001, fnc7: 0b0000000, desc: "x[rd] &larr; sext((x[rs1] << x[rs2])[31:0])"},
+               {mnem: "srlw",  opcode: 0b0111011, fnc3: 0b101, fnc7: 0b0000000, desc: "x[rd] &larr; sext(x[rs1][31:0] >><sub>u</sub> x[rs2])"},
+               {mnem: "sraw",  opcode: 0b0111011, fnc3: 0b101, fnc7: 0b0100000, desc: "x[rd] &larr; sext(x[rs1][31:0] >><sub>s</sub> x[rs2])"},
+               {mnem: "mulw",  opcode: 0b0111011, fnc3: 0b000, fnc7: 0b0000001, desc: "x[rd] &larr; sext((x[rs1] &times; x[rs2])[31:0])"},
+               {mnem: "divw",  opcode: 0b0111011, fnc3: 0b100, fnc7: 0b0000001, desc: "x[rd] &larr; sext(x[rs1][31:0] /<sub>s</sub> x[rs2][31:0])"},
+               {mnem: "divuw", opcode: 0b0111011, fnc3: 0b101, fnc7: 0b0000001, desc: "x[rd] &larr; sext(x[rs1][31:0] /<sub>u</sub> x[rs2][31:0])"},
+               {mnem: "remw",  opcode: 0b0111011, fnc3: 0b110, fnc7: 0b0000001, desc: "x[rd] &larr; sext(x[rs1][31:0] %<sub>s</sub> x[rs2][31:0])"},
+               {mnem: "remuw", opcode: 0b0111011, fnc3: 0b111, fnc7: 0b0000001, desc: "x[rd] &larr; sext(x[rs1][31:0] %<sub>u</sub> x[rs2][31:0])"},
           ]
      },
-});
-
-
-rv64.types.push({  // R1
-     machineInstructions: {
-          opCode: 0b0111011,
-          type: "R",
-          idFieldName: ["opcode", "fnc3", "fnc7"],   // CPU identifies instruction
-          operandsFieldName: ["rd", "rs1", "rs2"],
-          miFieldName: [ // machine instruction format
-               "fnc7",
-               "rs2",
-               "rs1",
-               "fnc3",
-               "rd",
-               "opcode"
-          ],
-          info: [
-               {mnem: "addw",  fnc3: 0b000, fnc7: 0b0000000, desc: "x[rd] &larr; sext((x[rs1] + x[rs2])[31:0])"},
-               {mnem: "subw",  fnc3: 0b000, fnc7: 0b0100000, desc: "x[rd] &larr; sext((x[rs1] - x[rs2])[31:0])"},
-               {mnem: "sllw",  fnc3: 0b001, fnc7: 0b0000000, desc: "x[rd] &larr; sext((x[rs1] << x[rs2])[31:0])"},
-               {mnem: "srlw",  fnc3: 0b101, fnc7: 0b0000000, desc: "x[rd] &larr; sext(x[rs1][31:0] >><sub>u</sub> x[rs2])"},
-               {mnem: "sraw",  fnc3: 0b101, fnc7: 0b0100000, desc: "x[rd] &larr; sext(x[rs1][31:0] >><sub>s</sub> x[rs2])"},
-               {mnem: "mulw",  fnc3: 0b000, fnc7: 0b0000001, desc: "x[rd] &larr; sext((x[rs1] &times; x[rs2])[31:0])"},
-               {mnem: "divw",  fnc3: 0b100, fnc7: 0b0000001, desc: "x[rd] &larr; sext(x[rs1][31:0] /<sub>s</sub> x[rs2][31:0])"},
-               {mnem: "divuw", fnc3: 0b101, fnc7: 0b0000001, desc: "x[rd] &larr; sext(x[rs1][31:0] /<sub>u</sub> x[rs2][31:0])"},
-               {mnem: "remw",  fnc3: 0b110, fnc7: 0b0000001, desc: "x[rd] &larr; sext(x[rs1][31:0] %<sub>s</sub> x[rs2][31:0])"},
-               {mnem: "remuw", fnc3: 0b111, fnc7: 0b0000001, desc: "x[rd] &larr; sext(x[rs1][31:0] %<sub>u</sub> x[rs2][31:0])"},
-          ]
-     }
 });
 
 function fillRandomInstruction(ret) {

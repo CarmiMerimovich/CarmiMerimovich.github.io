@@ -183,11 +183,18 @@ function redraw() {
 
   let ins = [];
   for (let type of rv64.types) {
-    let opcode = type.machineInstructions.opCode.toString(2).padStart(7, "0");
-    let instructionType   = type.machineInstructions.type;
+    let opcode;
+    if (typeof (type.machineInstructions.opCode) != "undefined")
+      opcode = type.machineInstructions.opCode.toString(2).padStart(7, "0");
+    console.log("*", opcode);
+      let instructionType   = type.machineInstructions.type;
     for (instruction of type.machineInstructions.info) {
       let o = {};
-      o.opcode = opcode;
+      console.log(instruction.opcode);
+      if (typeof(instruction.opcode) != "undefined")
+        o.opcode = instruction.opcode.toString(2).padStart(7, "0");
+      else
+        o.opcode = opcode;
       o.mnem   = instruction.mnem;
       o.type   = instructionType;
       if (typeof(instruction.desc) != "undefined") o.desc   = instruction.desc;
