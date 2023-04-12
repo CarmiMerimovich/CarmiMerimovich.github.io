@@ -4,10 +4,10 @@
 
 <html lang="he" dir="rtl">
 <head>
-    <title>Carmi Merimovich, Personal Site</title>
+    <title>כרמי מרימוביץ, אתר אישי</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Carmi Merimovich, Personal Site">
+    <meta name="description" content="כרמי מרימוביץ, אתר אישי">
 
 <style>
         .staffHeader {
@@ -62,13 +62,13 @@ MathJax = {
 				</div>
 				<div>
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						Carmi Merimovich
+						כרמי מרימוביץ
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						Personal Site
+						אתר אישי
 					</h3>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                        <a href="/affiliation.html">Affiliation </a>
+                        <a href="/affiliation_he.html">השתייכות </a>
 					</h3>
                     <h3>
 					</h3>
@@ -77,6 +77,10 @@ MathJax = {
 		</div>
         <div>
             
+              <p style="font-size: xx-small">
+              <span><a href="../../index.html">שאלות תרגול<a></span>&rlm; >>> <span><a href="../index.html">RISC-V<a></span>&rlm;
+              </p>
+              
                 
 	</header>
 
@@ -103,15 +107,63 @@ MathJax = {
   <label for="sortOpcodeButton">opcode</label>
 </div>
 <div id="content" style="direction: ltr;"></div>
+<hr/>
 
-מבנה U
-<div style="direction: ltr;">
-<img src="U.svg" />
-</div>
+<figure id="B">
+<figcaption>
 מבנה B
-<div style="direction: ltr;">
-  <img src="B.svg" />
-</div>
+</figcaption>
+  <img src="B.svg" alt="שרטוט פקודה במנה B"/>
+</figure>
+
+<figure id="I"  style="padding-top: 1Em;">
+  <figcaption>
+    מבנה I
+  </figcaption>
+  <img src="I.svg" alt="שרטוט פקודנ במבנה I"/>
+</figure>
+
+<figure id="I'" style="padding-top: 1Em;">
+  <figcaption>
+  מבנה I'&lrm;
+</figcaption>
+  <img  src="I'.svg" alt="שרטוט פקודנ במבנה I'"/>
+</figure>
+
+<figure id="I''" style="padding-top: 1Em;">
+  <figcaption>
+מבנה I''&lrm;
+</figcaption>
+  <img  src="I''.svg" alt="שרטוט פקודנ במבנה I''"/>
+</figure>
+
+<figure id="J" style="padding-top: 1Em;">
+  <figcaption>
+מבנה J
+</figcaption>
+<img src="J.svg" alt="שרטוט פקודנ במבנה J" />
+</figure>
+
+<figure id="R" style="padding-top: 1Em;">
+  <figcaption>
+מבנה R
+</figcaption>
+  <img src="R.svg"  alt="שרטוט פקודנ במבנה R" />
+</figure>
+
+<figure id="S" style="padding-top: 1Em;">
+  <figcaption>
+מבנה S
+</figcaption>
+  <img src="S.svg"  alt="שרטוט פקודנ במבנה S"/>
+</figure>
+
+<figure id="U" style="padding-top: 1Em;">
+  <figcaption>
+מבנה U
+</figcaption>
+<img  src="U.svg" alt="שרטוט מבנה U"/>
+</figure>
 
 <script src="../types.inc"></script>
 <script>
@@ -164,7 +216,10 @@ function redraw() {
       let found = false;
       for (ff of fs) {
         if (typeof(o[ff]) != "undefined") {
-          r += `<td>${o[ff]}</td>`;
+          let s = `${o[ff]}`;
+          if (ff == "type")
+            s = `<a href="#${s}">${s}</a>`;
+          r += `<td>${s}</td>`;
           found = true;
           break;
         }
@@ -282,15 +337,15 @@ function firstStep() {
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;" 
-                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedIn </a>
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;"
-                href="/">Carmi Merimovich</a>
+                href="/">כרמי מרימוביץ</a>
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            Thins
+            מבוא לארכיטקטורת מחשבים: תקצירים
             </span>
         </li>
     </ul>

@@ -253,7 +253,7 @@ rv64.types.push({ //I2
 rv64.types.push({ // I3
      machineInstructions: {
           opCode: 0b0010011,
-          type: "I",
+          type: "I'",
           subType: 1,
           idFieldName: ["opcode", "fnc3", "fnc6"],   // CPU identifies instruction
           operandsFieldName:  ["rd", "rs1", "imm6"],
@@ -297,7 +297,7 @@ rv64.types.push({ // I4
 rv64.types.push({ // I5
      machineInstructions: {
           opCode: 0b0011011,
-          type: "I",
+          type: "I''",
           subType: 1,
           idFieldName: ["opcode", "fnc3", "fnc7"],   // CPU identifies instruction
           operandsFieldName: ["rd", "rs1", "imm5"],
@@ -310,9 +310,9 @@ rv64.types.push({ // I5
                "opcode"
           ],
           info: [
-               {mnem: "slliw",  fnc3: 0b001, fnc7: 0b000000, desc: "x[rd] &larr; sext((x[rs1] << imm)[31:0])"},
-               {mnem: "srliw",  fnc3: 0b101, fnc7: 0b000000, desc: "x[rd] &larr; sext(x[rs1][31:0] >><sub>u</sub> x[rs2])"},
-               {mnem: "sraiw",  fnc3: 0b101, fnc7: 0b010000, desc: "x[rd] &larr; sext(x[rs1][31:0] >><sub>s</sub> x[rs2])"},
+               {mnem: "slliw",  fnc3: 0b001, fnc7: 0b000000, desc: "x[rd] &larr; sext((x[rs1][31:0] << imm))"},
+               {mnem: "srliw",  fnc3: 0b101, fnc7: 0b000000, desc: "x[rd] &larr; sext(x[rs1][31:0] >><sub>u</sub> imm)"},
+               {mnem: "sraiw",  fnc3: 0b101, fnc7: 0b010000, desc: "x[rd] &larr; sext(x[rs1][31:0] >><sub>s</sub> imm)"},
           ]
      },
 });
