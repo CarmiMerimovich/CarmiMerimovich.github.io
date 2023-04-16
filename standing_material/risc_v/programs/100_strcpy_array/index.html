@@ -104,7 +104,7 @@ loop:
     lb      t1, 0(t1)
     add     t2, t0, a1
     sb      t1, 0(t2)
-    beq     t1, done
+    beq     t1, 0, done
 skip:
     addi    t0, t0, 1
     beq     x0, x0, loop
