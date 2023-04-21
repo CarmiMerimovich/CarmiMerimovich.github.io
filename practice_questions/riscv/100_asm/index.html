@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+
+
+<html lang="he" dir="rtl">
+<head>
+    <title>כרמי מרימוביץ, אתר אישי</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="כרמי מרימוביץ, אתר אישי">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png">
+				</div>
+				<div>
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						אתר אישי
+					</h3>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                        
+                        <a href="/affiliation_he.html">השתייכות </a>
+                        
+                    </h3>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+        <div>
+            
+              <p style="font-size: xx-small">
+              <span><a href="../../index.html">שאלות תרגול<a></span>&rlm; >>> <span><a href="../index.html">RISC-V<a></span>&rlm;
+              </p>
+              
+                
+	</header>
+
+
+
+
+
+
+    
+<h2>קימפול פקודת שפת סף אחת</h2>
+<div>
+יש לקמפל את הפקודה הבאה:
+<div id="assemblyInstruction" style="direction: ltr; text-align: center;"></div>
+יש לתת שתי צורות פתרון.
+אחת כמספר הקסה ברוחב 32 ביטים.
+השניה רצף בתים בהקסה משמאל לימין.
+<hr />
+</div>
+<div><button id="answerButton" type="clock" onclick="makeAnswer();">תשובה</button></div>
+<div><button id="firstStepButton" type="clock" onclick="firstStep();">צעד ראשון</button></div>
+<div class="hidden" id="answer"> </div>
+<div class="hidden" id="solution"></div>
+<div><button id="nextStepButton" style="display: none" type="clock" onclick="nextStep();">עוד צעד</button></div>
+
+<script src="../types.inc"></script>
+<script>
+  let info = rv64.randomInstruction();
+
+
+  let e = document.getElementById("assemblyInstruction");
+  e.innerHTML = info.mi.assembly;
+
+</script>
+
+<script>
+function makeAnswer() {
+  const eFirtStepButton = document.getElementById("firstStepButton");
+  eFirtStepButton.style.display = "none";
+
+  const eAnswerButton = document.getElementById("answerButton");
+  eAnswerButton.style.display = "none";
+
+  step = 10000;
+  makeStep();
+}
+
+function firstStep() {
+  const eAnswerButton = document.getElementById("answerButton");
+  eAnswerButton.style.display = "none";
+
+  const eFirtStepButton = document.getElementById("firstStepButton");
+  eFirtStepButton.style.display = "none";
+
+  const eNextStepButton = document.getElementById("nextStepButton");
+  eNextStepButton.style.display = "inline";
+  step = 0;
+  makeStep();
+}
+
+  function nextStep() {
+    step++;
+    makeStep();
+  }
+
+  function makeStep() {
+ 
+    {
+      let s = `תשובה<br/>
+      קוד הפקודה בהקסה: ${info.mi.hex} <br/>`;
+      let rev = info.mi.hex.match(/.{1,2}/g).reverse().join(" ");
+      s += `הצגה בבתים מכתובת נמוכה לגבוהה (משמאל לימין) היא כלהלן:
+        <div style="direction: ltr; text-align: center;">${rev}</div><hr/><hr/>`;
+      let eAnswer = document.getElementById("answer");
+      eAnswer.innerHTML = s;
+    }
+ 
+    let stepHTML = [];
+    let stepCnt = 0;
+
+    {
+    let s = `
+    דרך <br/>
+  המנמוניק של הפקודה הוא ${info.a.mnem}. `
+      let t = "";
+      for (f of info.idFieldName)
+        t += `${f} = ${info[f].num} = ${info[f].bin}<br/>`;
+      
+       s += `<hr/>
+       <a href="../050_machine_instructions/index.html">מטבלת הפקודות</a>
+        נקבל שזוהי פקודה מסוג ${info.type}
+      והשדות המזהים שלה הם כלהלן:
+     <div style="direction: ltr;">
+      ${t}
+      </div>`;
+    stepHTML[stepCnt++] = s;
+  }
+
+  {
+    let s = "";
+      let t = "";
+      for (let f of info.operandsFieldName)
+        t += `${f} = ${info[f].num} = 
+          0b${info[f].bin}<br/>`;
+      s += `<hr/>מהטקסט של הפקודה נקבל את שאר השדות:
+     <div style="direction: ltr;">
+       ${t}
+      </div>
+     `;
+     stepHTML[stepCnt++] = s;
+    }
+
+    {
+      let s = "";
+      let cnt = 0;
+      for (f of info.miFieldName) 
+        if (f.startsWith("imm")) cnt++;
+      
+      if (cnt > 1) {
+        let t = "";
+        for (f of info.miFieldName) {
+          if (f.startsWith("imm")) 
+            t += `${f} = ${info[f].num} = ${info[f].bin}<br/>`;
+        }
+        s += `<hr/>בגלל הסמטוכה (שחוסכת חיווט!) בביטים נפרק את ההיסט לביטים באופן הבא:
+        <div style="direction: ltr;">
+          ${t}
+          </div>`;
+          stepHTML[stepCnt++] = s;
+      }
+
+    }
+
+    {
+        let s = "";
+      let t0 = "";
+      for (let f of info.miFieldName)
+        t0 += `<th>${f}</th>`;
+
+      let t1 = "";
+      for (let f of info.miFieldName)
+        t1 += `<td>${info[f].num}</td>`;
+      
+      s += `<hr/>נארגן את השדות בסדר הנכון.
+        <div style="direction: ltr; text-align: center;">
+        <table>
+        <tr>
+          ${t0}
+        </tr>
+        <tr>
+          ${t1}
+        </tr>
+        </tr>
+      </table>
+        </div>`;
+
+      stepHTML[stepCnt++] = s;
+    }
+
+    {
+      let s = "";
+      let t0 = "";
+      for (let f of info.miFieldName)
+        t0 += `<th>${f}</th>`;
+
+      let t1 = "";
+      for (let f of info.miFieldName)
+        t1 += `<td>${info[f].bin}</td>`;
+      
+      s += `<hr/>נכתוב בבינרי.
+      <div style="direction: ltr; text-align: center;">
+        <table>
+        <tr>
+          ${t0}
+        </tr>
+        <tr>
+          ${t1}
+        </tr>
+        </tr>
+      </table>
+        </div>`;
+
+        stepHTML[stepCnt++] = s;
+    }
+
+    {
+      let s = "";
+      let t1 = "";
+      for (let f of info.miFieldName) 
+        t1 += `${info[f].bin}`;
+      
+      s += `<hr/>נצרף את כל השדות ונקבל:
+      <div style="direction: ltr; text-align: center;">
+        ${t1}
+        </div>`;
+
+      stepHTML[stepCnt++] = s;
+      }
+
+    {
+      let s = "";
+      let t1 = "";
+      for (let f of info.miFieldName) 
+        t1 += `${info[f].bin}`;
+      
+      s += `<hr/>נחלק לרביעיות ונקבל:
+        <div style="direction: ltr; text-align: center;">
+        ${t1.match(/.{1,4}/g).join(" ")}
+        </div>`;
+
+      stepHTML[stepCnt++] = s;
+    }
+
+    {
+        let s = ""
+        s += `<hr/>וסוף סוף נקבל את קוד הפקודה בהקסה: ${info.mi.hex} <br/>`;
+        stepHTML[stepCnt++] = s;
+    }
+
+    {
+      let s = "";
+      let rev = info.mi.hex.match(/.{1,2}/g).reverse().join(" ");
+        s += `<hr/>הצגה בבתים מכתובת נמוכה לגבוהה (משמאל לימין) היא כלהלן:
+        <div style="direction: ltr; text-align: center;">${rev}</div>`;
+
+        stepHTML[stepCnt++] = s;
+    }
+
+    if (step >= stepCnt) {
+      let eNextStepButton = document.getElementById("nextStepButton");
+      eNextStepButton.style.display = "none";
+    }
+
+
+    let eSolution = document.getElementById("solution");
+    eSolution.innerHTML = stepHTML.slice(0, step).join("");
+  }
+</script>
+
+
+
+
+ </div>
+
+ <!DOCTYPE html>
+
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;"
+                href="/">כרמי מרימוביץ</a>
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            מבוא לארכיטקטורת מחשבים: תקצירים
+            </span>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
