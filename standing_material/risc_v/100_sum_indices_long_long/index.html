@@ -4,10 +4,10 @@
 
 <html lang="he" dir="rtl">
 <head>
-    <title>כרמי מרימוביץ, אתר אישי</title>
+    <title>כרמי מרימוביץ, תוכניות rv64</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="כרמי מרימוביץ, אתר אישי">
+    <meta name="description" content="כרמי מרימוביץ, תוכניות rv64">
 
 <style>
         .staffHeader {
@@ -83,7 +83,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>חישוב עצרת רקורסיבי</span>&rlm;
+              <span><a href="../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../index.html">תוכניות rv64<a></span>&rlm; >>> <span>סכום אברי ווקטור long long  (אינדקסים)</span>&rlm;
               </p>
               
                 
@@ -94,24 +94,32 @@ MathJax = {
 
 
 
-<pre><code>factorial:
-    addi    t0, zero 2
-    bgeu    a0, t0, work    // if (n &gt;= 2) goto work
-    addi    a0, zero, 1     // 1
-    jalr    zero, 0(ra)     // return (1)
-work:   
-    addi    sp, sp, -16
-    sd      ra, 0(sp)       // save ra
-    sd      a0, 8(sp)       //      and n
-
-    addi    a0, a0, -1      // n-1
-    jal     ra, factorial   // factorial(n-1)
-    ld      t0, 8(sp)       // t0 = n
-    mul     a0, a0 t0       // (n-1)! * n
-
-    ld      ra, 0(sp)       // restore ra
-    addi    sp, sp, 16      // clean stack
-    jalr    x0, 0(ra)       // return ((n-1)! * n)
+<h1>סכום אברי ווקטור long long  (אינדקסים)</h1>
+<p>לפננו פונקציה סטנדרטית ב-C אשר סוכמת אברי מערך.
+הארגומנטים הם כתובת המערך ומספר האיברים בו.</p>
+<pre><code>long long sum(long long *vec, unsigned long long len) {
+    long long s = 0;
+    for (unsigned long long i = 0; i &lt; len; i++) {
+        s += vec[i];
+    }
+    return (sum);
+}
+</code></pre>
+<p>להלן תרגום אפשרי לחלוטין של הקוד הנ&quot;ל.</p>
+<pre><code>sum:
+    add t2, zero zero   // s = 0
+    add t0, zero zero   // i = 0
+loop:
+    bgeu t0, a1, done   // if (i &gt;= len) goto done
+    slli t1, t0, 3      // i*8
+    add  t1, t1, a0     // vec + i * 8
+    ld  t1, 0(t1)       // vec[i]
+    add t2,t2, t1       // s = s + vec[i]
+    addi    t0, t0, 1   // 
+    beq zero, zero, loop
+done:
+    addi a0, t2         // return value
+    jalr zero, 0(ra)    // return
 </code></pre>
 
     
@@ -142,15 +150,15 @@ work:
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;" 
-                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedin </a>
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;"
-                href="/">Carmi Merimovich</a>
+                href="/">כרמי מרימוביץ</a>
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            Thins
+            תוכניות rv64
             </span>
         </li>
     </ul>

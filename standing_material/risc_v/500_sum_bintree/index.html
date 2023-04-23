@@ -4,10 +4,10 @@
 
 <html lang="he" dir="rtl">
 <head>
-    <title>כרמי מרימוביץ, אתר אישי</title>
+    <title>כרמי מרימוביץ, תוכניות rv64</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="כרמי מרימוביץ, אתר אישי">
+    <meta name="description" content="כרמי מרימוביץ, תוכניות rv64">
 
 <style>
         .staffHeader {
@@ -83,7 +83,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>סכום אברי ווקטור (אינדקסים וטריק)</span>&rlm;
+              <span><a href="../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../index.html">תוכניות rv64<a></span>&rlm; >>> <span>סכום אברי עץ בינרי</span>&rlm;
               </p>
               
                 
@@ -94,30 +94,45 @@ MathJax = {
 
 
 
-<p>הפונקציה הבאה זהה לקודמת.
-ההבדל הוא בקוד הנוצר בו משתמשים באריק קטןץ</p>
-<pre><code>long long sum(long long *vec, unsigned long long len) {
-    long long s;
-    for (unsigned long long i = 0; i &lt; len; i++) {
-        s += vec[i];
-    }
-    return (sum);
+<h1>סכום אברי עץ בינרי</h1>
+<pre><code>struct node {
+    struct node *left;
+    struct node *right;
+    long long value;
+};
+
+long long sum(struct node *node) {
+    if (node == NULL)
+        return (0);
+
+    return (sum(node-&gt;left) + node-&gt;value + sum(node-&gt;right));
 }
 </code></pre>
-<p>הקוד הבא יותר קרוב לקוד שקומפיילר בין ימינו יוציא.</p>
 <pre><code>sum:
-    add t0, zero zero   // i = 0
-    add t2, zero zero   // s = 0
-    beq zero, zero, L
-loop:
-    slli t1, t0, 3      // i*8
-    add  t1, t1, a0     // vec + i * 8
-    ld  t1, 0(t1)       // vec[i]
-    add t2,t2, t1       // s = s + vec[i]
-    addi    t0, t0, 1   // 
-L:  bltu t0, a1, loop   // if (i &lt; len) goto loop
-done:
-    addi a0, t2, 0        // return value
+    bne a0, zero, work  // if (node != NULL) goto work
+    jalr   zero, 0(ra)  // return
+work:
+    addi   sp, sp, -24    // 3 dwords on stack
+    sd  ra, 0(sp)         // save: return address
+    sd  a0, 8(sp)         //       node
+
+    ld  a0, 0(a0)       // node-&gt;left
+    jal ra, sum         // sum(node-&gt;left)
+
+    ld  t0, 8(sp)       // node
+    ld  t1, 16(t0)      // node-&gt;value
+    add t1, t1, a0      / node-&gt;value + sum(node-&gt;left)
+    sd  t1, 16(sp)      // save 
+
+    ld  a0, 8(t0)     // node-&gt;right
+    jal ra, sum       // sum(node-&gt;right)
+
+    ld  t0, 16(sp)      // restore node-&gt;value + sum(node-&gt;left)
+    add a0, a0, t0      // node-&gt;value + sum(node-&gt;left) + sum(node-&gt;right)
+
+    ld  ra, 0(sp)
+    addi    sp, sp, 24
+
     jalr zero, 0(ra)    // return
 </code></pre>
 
@@ -149,15 +164,15 @@ done:
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;" 
-                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedin </a>
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;"
-                href="/">Carmi Merimovich</a>
+                href="/">כרמי מרימוביץ</a>
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            Thins
+            תוכניות rv64
             </span>
         </li>
     </ul>

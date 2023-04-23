@@ -85,19 +85,20 @@ fs.watch(sourceRoot, {recursive: true}, (event, fileName) => {
 function invoke(event, fileName) {
     console.log(new Date().toTimeString(), "Rebuild", event, fileName);
     if (typeof fileName != "undefined" && fileName != null) {
-        if (fileName.startsWith(".") || fileName.startsWith("node_modules")) {
+        let fn = fileName.replace(/\\/g, "/");
+        if (fn.startsWith(".") || fn.startsWith("node_modules")) {
             console.log("           ", new Date().toTimeString(), "Done");
             return;
         }
 
         let isFile;
         try {
-            isFile = !fs.lstatSync(sourceRoot + "/" + fileName).isDirectory();
+            isFile = !fs.lstatSync(sourceRoot + "/" + fn).isDirectory();
         } catch  {
             isFile = false;
         }
         if (isFile) {
-            buildFile(fileName);
+            buildFile(fn);
             console.log("           ", new Date().toTimeString(), "Done");
             return;
         }
@@ -209,7 +210,7 @@ function buildSemiAtomic(fileName) {
     const html = ejs.render(personalEJS, {
         fs: fs,
         md: md,
-        help: {findUp: findUp},
+        help: {findUp: findUp, findUp2: findUp2},
         yamlFront: yamlFront,
         sourceRoot: sourceRoot,
         req: {path: fileName}
@@ -228,7 +229,7 @@ function buildBib(fileName) {
     const fn = fileName.replace(/.bib$/, ".html");
     const html = ejs.render(publicationsEJS, {
                     fs: fs,
-                    help: {findUp: findUp},
+                    help: {findUp: findUp, findUp2: findUp2},
                     sourceRoot: sourceRoot,
                     bibtex: bibtex,
                     yamlFront: yamlFront,
@@ -250,7 +251,7 @@ function buildField(fileName) {
                     fs: fs,
                     bitfield: bitfield,
                     onml: onml,
-                    help: {findUp: findUp},
+                    help: {findUp: findUp, findUp2: findUp2},
                     sourceRoot: sourceRoot,
                     req: {path: fn}
                 },
@@ -317,6 +318,46 @@ function findUp(fn, req) {
         if (fs.existsSync(sourceRoot + "/" + tryName)) 
             return (tryName);
     }
+}
+
+function findUp2(field, req) {
+
+    let path = req.path;
+    path = path.replace(/\\/g, "/");
+    let p = path.split("/").filter(item => item);
+    let fn = p.join("/");
+    try {
+        let yaml = fs.readFileSync(sourceRoot + "/" + fn, "utf8").toString();
+        yaml = yamlFront.loadFront(yaml);
+        if (typeof yaml[field] != "undefined") {
+            return (yaml[ffield]);
+        }
+    } catch {};
+    p.pop();
+
+    while (p.length > 0) {
+        p.pop();
+        let fn = p.join("/") + "/index.md";
+        let yaml;
+        try {
+            yaml = fs.readFileSync(sourceRoot + "/" + fn, "utf8").toString();
+        } catch {
+            fn = p.join("/") + "/index.html";
+            try {
+                yaml = fs.readFileSync(sourceRoot + "/" + fn, "utf8").toString();
+            } catch {
+                continue;
+            }
+        }
+        try {
+            yaml = yamlFront.loadFront(yaml);
+            if (typeof yaml[field] != "undefined") {
+                return (yaml[field]);
+            }
+        } catch {
+        }
+    }
+    return (undefined);
 }
 
 function getDir(fn) {
