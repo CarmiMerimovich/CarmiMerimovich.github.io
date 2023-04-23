@@ -56,22 +56,25 @@ MathJax = {
 		<div class="staffHeader">
 			<div class="photoAndText">
 				<div style="vertical-align: center; padding: 0px;">
-					<img class="staffPhoto" 
+					<a href="/" style="display: contents;" class="headL1">
+                        <img class="staffPhoto" 
 							alt = "Carmi Merimovich"
-							src="/me.png">
+							src="/me.png"></a>
 				</div>
-				<div>
+				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						כרמי מרימוביץ
+						<a href="/" class="headerL1">כרמי מרימוביץ</a>
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
 						אתר אישי
 					</h3>
-					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                        
-                        <a href="/affiliation_he.html">השתייכות </a>
-                        
-                    </h3>
+                    <style>
+                        .headerL1, .headerL1:active, .headerL1:visited
+                            {
+                             text-decoration: inherit;
+                             color: inherit;
+                            }
+                    </style>
                     <h3>
 					</h3>
                 </div>
@@ -92,18 +95,10 @@ MathJax = {
 
 
     
-<h2>טעינת קבוע ברוחב 32 ביטים</h2>
+<h2> פיענוח פקודת מכונה אחת</h2>
 <div>
-צריך לטעון לאוגר t0
-  את הקבוע
-  <span id="constant" style="direction: ltr;"></span>
-  על ידי שתי הפקודות הבאות:
-  <div style="direction: ltr;"><pre>
-    lui t0, n
-    addi t0, t0, m
-  </pre></div>
-  מה צריכים להיות ערכי n ו-m?
-<hr />
+פענחו את פקודת המכונה הבאה:
+<div id="machineInstruction" style="direction: ltr; text-align: center;"></div>
 <hr />
 </div>
 <div><button id="answerButton" type="clock" onclick="makeAnswer();">תשובה</button></div>
@@ -112,11 +107,13 @@ MathJax = {
 <div class="hidden" id="solution"></div>
 <div><button id="nextStepButton" style="display: none" type="clock" onclick="nextStep();">עוד צעד</button></div>
 
+<script src="../types.inc"></script>
 <script>
-  let num = Math.trunc(Math.random() * 2**20);
-  let e = document.getElementById("constant");
-  e.innerHTML = `0x${num.toString(16).toUpperCase()}`;
+  let info = rv64.randomInstruction();
 
+
+  let e = document.getElementById("machineInstruction");
+  e.innerHTML = info.mi.hex;
 
 </script>
 
@@ -151,17 +148,10 @@ function firstStep() {
   }
 
   function makeStep() {
-    let m = num & 0xFFF;
-    let n = (num >> 12) & 0xFFFFF;
-    let n1 = n;
-    if (m & 0x800)  n1++;
-
+ 
     {
       let s = `תשובה<br/>
-      <div style="direction: ltr;">
-        n = 0x${n1.toString(16).toUpperCase().padStart(5,"0")} <br/>
-        m = 0x${m.toString(16).toUpperCase().padStart(3,"0")} <br/>
-      </div?`;
+       הפקודה בשפת סף היא: ${info.mi.assembly} <br/><hr/>`;
       let eAnswer = document.getElementById("answer");
       eAnswer.innerHTML = s;
     }
@@ -170,40 +160,112 @@ function firstStep() {
     let stepCnt = 0;
 
     {
-    let s = `<hr/>
-    דרך<br/>
-    12 הביטים הימניים של 
-    0x${num.toString(16).toUpperCase()}
-    הם
-     0x${m.toString(16).toUpperCase().padStart(3, "0")},
-     זה יהיה ערכו של m.`;
+    let s = `דרך<br/>
+    ראשית נמצא את ה-opcode.
+    שתי הספרות הימניות בהקסה הן ${info.mi.hex.substring(6, 8)}.<hr/>`;
     stepHTML[stepCnt++] = s;
     }
     {
-      let t;
-      if (m & 0x800) 
-        t = `כיון שהביט השמאלי של
-               m
-              הוא 1 אזי צריך להגדיל ערך זה ב-1:
-               n
-                יהיה
-                 0x${n1.toString(16).toUpperCase().padStart(5,"0")} = 
-                 0x${n.toString(16).toUpperCase().padStart(5,"0")} + 1.`;
-        else
-         t = `כיון שהביט השמאלי של
-               m
-              הוא 0 אזי זה יהיה ערכו של 
-              n.`;
-    let s = `<hr/>
-    20 הביטים השמאליים של 
-    0x${num.toString(16).toUpperCase()}
-    הם 
-      0x${n.toString(16).toUpperCase().padStart(5, "0")}.
-      ${t}`;
-    
+    let s = `
+    בבינרי מדובר ב-8 הספרות 
+      ${parseInt(info.mi.hex.substring(6, 8), 16).toString(2).padStart(8, "0")}<hr/>`;
+      stepHTML[stepCnt++] = s;
+    }
+    {
+      let s = `  
+    ה-opcode נמצא בשבעת הספרות הבינריות הימניות, כלומר
+    ${info.opcode.bin}.<hr/>`;
+    stepHTML[stepCnt++] = s;
+    }
+    {
+      let s = `  
+    <a href="../050_machine_instructions/index.html">מטבלת הפקודות</a>
+     נקבל שהפקודה היא מטיפוס
+    ${info.type}.<hr/>`;
+    stepHTML[stepCnt++] = s;
+    }
+
+    {
+        let s = `נתרגם את הקוד לבינרי ונשים לפי השדות של מבנה ${info.type}:`;
+      let t0 = "";
+      for (let f of info.miFieldName)
+        t0 += `<th>${f}</th>`;
+
+      let t1 = "";
+      for (let f of info.miFieldName)
+        t1 += `<td>${info[f].bin}</td>`;
+      
+      s += `
+        <div style="direction: ltr; text-align: center;">
+        <table>
+        <tr>
+          ${t0}
+        </tr>
+        <tr>
+          ${t1}
+        </tr>
+        </tr>
+      </table>
+        </div>
+        <hr/>`;
+
       stepHTML[stepCnt++] = s;
     }
 
+    {
+      let hebrewField = info.idFieldName.length < 2 ?
+                    "השדה":
+                       "השדות";
+      let fieldsName;
+      if (info.idFieldName.length < 2)
+        fieldsName = info.idFieldName[0];
+      else {
+        fieldsName = info.idFieldName.slice(0,info.idFieldName.length - 1).join(", &rlm;");
+      }
+      let s = `כדי לזהות את הפקודה תמיד צריך את השדה  ${info.idFieldName[0]}.`;
+      if (info.idFieldName.length < 2)
+        s += `
+        עבור פקודות מטיפןס ${info.type}
+          השדה הנ"ל מספיק.`;
+      else {
+        s += `
+        עבור פקודות מטיפןס ${info.type}
+          עלינו להסתכל גם על ${info.idFieldName[1]}`;
+        if (info.idFieldName.length > 2)
+          s += ` וגם על ${info.idFieldName[2]}`;
+        s += ".";
+      }
+      s += "<hr/>";
+
+      stepHTML[stepCnt++] = s;
+    }
+
+    { let s=`
+  מטבלת הפקודות נקבל שהמנמוניק  הוא ${info.a.mnem}.`
+  stepHTML[stepCnt++] = s;
+  }
+
+
+  {
+    let s = "";
+      let t = "";
+      for (let f of info.operandsFieldName)
+        t += `${f} =  0b${info[f].bin} = ${info[f].num} <br/>`;
+      s += `<hr/>נרשום את שדות האופרנדים:
+     <div style="direction: ltr;">
+       ${t}
+      </div>
+     `;
+     stepHTML[stepCnt++] = s;
+    }
+
+
+
+    {
+        let s = ""
+        s += `<hr/>וסוף סוף נקבל את הפקודה באסמבלי: ${info.mi.assembly} <br/>`;
+        stepHTML[stepCnt++] = s;
+    }
 
 
     if (step >= stepCnt) {

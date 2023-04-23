@@ -56,22 +56,25 @@ MathJax = {
 		<div class="staffHeader">
 			<div class="photoAndText">
 				<div style="vertical-align: center; padding: 0px;">
-					<img class="staffPhoto" 
+					<a href="/" style="display: contents;" class="headL1">
+                        <img class="staffPhoto" 
 							alt = "Carmi Merimovich"
-							src="/me.png">
+							src="/me.png"></a>
 				</div>
-				<div>
+				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						כרמי מרימוביץ
+						<a href="/" class="headerL1">כרמי מרימוביץ</a>
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
 						אתר אישי
 					</h3>
-					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                        
-                        <a href="/affiliation_he.html">השתייכות </a>
-                        
-                    </h3>
+                    <style>
+                        .headerL1, .headerL1:active, .headerL1:visited
+                            {
+                             text-decoration: inherit;
+                             color: inherit;
+                            }
+                    </style>
                     <h3>
 					</h3>
                 </div>
@@ -92,12 +95,13 @@ MathJax = {
 
 
     
-<h2>פיענוח קבוע ברוחב 32 ביטים</h2>
-נתונות שתי הפקודות הבאות:
+<h2>קימפול פקודת שפת סף אחת</h2>
 <div>
-  <div style="direction: ltr;" id="code"></div>
-מה הערך שיטען לאוגר t0?
-<hr />
+יש לקמפל את הפקודה הבאה:
+<div id="assemblyInstruction" style="direction: ltr; text-align: center;"></div>
+יש לתת שתי צורות פתרון.
+אחת כמספר הקסה ברוחב 32 ביטים.
+השניה רצף בתים בהקסה משמאל לימין.
 <hr />
 </div>
 <div><button id="answerButton" type="clock" onclick="makeAnswer();">תשובה</button></div>
@@ -106,20 +110,13 @@ MathJax = {
 <div class="hidden" id="solution"></div>
 <div><button id="nextStepButton" style="display: none" type="clock" onclick="nextStep();">עוד צעד</button></div>
 
+<script src="../types.inc"></script>
 <script>
-  let num = Math.trunc(Math.random() * 2**20);
-  let m = num & 0xFFF;
-  let n = (num >> 12) & 0xFFFFF;
-  let n1 = n;
-  if (m & 0x800)  n1++;
+  let info = rv64.randomInstruction();
 
-  let s = `<pre>
-    lui t0, 0x${n1.toString(16).toUpperCase()}
-    addi t0, t0, 0x${m.toString(16).toUpperCase()}
-  </pre>`;
-  let e = document.getElementById("code");
-  e.innerHTML = s;
 
+  let e = document.getElementById("assemblyInstruction");
+  e.innerHTML = info.mi.assembly;
 
 </script>
 
@@ -154,15 +151,13 @@ function firstStep() {
   }
 
   function makeStep() {
-    let m = num & 0xFFF;
-    let n = (num >> 12) & 0xFFFFF;
-    let n1 = n;
-    if (m & 0x800)  n1++;
-
+ 
     {
       let s = `תשובה<br/>
-      הערך שיטען הוא
-       0x${num.toString(16).toUpperCase()}.`;
+      קוד הפקודה בהקסה: ${info.mi.hex} <br/>`;
+      let rev = info.mi.hex.match(/.{1,2}/g).reverse().join(" ");
+      s += `הצגה בבתים מכתובת נמוכה לגבוהה (משמאל לימין) היא כלהלן:
+        <div style="direction: ltr; text-align: center;">${rev}</div><hr/><hr/>`;
       let eAnswer = document.getElementById("answer");
       eAnswer.innerHTML = s;
     }
@@ -171,32 +166,152 @@ function firstStep() {
     let stepCnt = 0;
 
     {
-    let s = `<hr/>
-    דרך<br/>
-    12 הביטים הימניים של 
-    של התשובה יהיו
-     0x${m.toString(16).toUpperCase().padStart(3, "0")}.`;
+    let s = `
+    דרך <br/>
+  המנמוניק של הפקודה הוא ${info.a.mnem}. `
+      let t = "";
+      for (f of info.idFieldName)
+        t += `${f} = ${info[f].num} = ${info[f].bin}<br/>`;
+      
+       s += `<hr/>
+       <a href="../050_machine_instructions/index.html">מטבלת הפקודות</a>
+        נקבל שזוהי פקודה מסוג ${info.type}
+      והשדות המזהים שלה הם כלהלן:
+     <div style="direction: ltr;">
+      ${t}
+      </div>`;
     stepHTML[stepCnt++] = s;
+  }
+
+  {
+    let s = "";
+      let t = "";
+      for (let f of info.operandsFieldName)
+        t += `${f} = ${info[f].num} = 
+          0b${info[f].bin}<br/>`;
+      s += `<hr/>מהטקסט של הפקודה נקבל את שאר השדות:
+     <div style="direction: ltr;">
+       ${t}
+      </div>
+     `;
+     stepHTML[stepCnt++] = s;
     }
+
     {
-      let t;
-      if (m & 0x800) 
-        t = `כיון שהביט השמאלי של החלק הנמוך
-              הוא 1 אזי 20 הביטים השמאליים:
-                יהיו
-                 0x${n.toString(16).toUpperCase().padStart(5,"0")} = 
-                 0x${n1.toString(16).toUpperCase().padStart(5,"0")} - 1.`;
-        else
-         t = `כיון שהביט השמאלי של החלק הנמוך
-              הוא 0 אזי 20 הביטים השמאליים יהיו
-              0x${n.toString(16).toUpperCase().padStart(5,"0")}.`;
-    let s = `<hr/>
-      ${t}`;
-    
+      let s = "";
+      let cnt = 0;
+      for (f of info.miFieldName) 
+        if (f.startsWith("imm")) cnt++;
+      
+      if (cnt > 1) {
+        let t = "";
+        for (f of info.miFieldName) {
+          if (f.startsWith("imm")) 
+            t += `${f} = ${info[f].num} = ${info[f].bin}<br/>`;
+        }
+        s += `<hr/>בגלל הסמטוכה (שחוסכת חיווט!) בביטים נפרק את ההיסט לביטים באופן הבא:
+        <div style="direction: ltr;">
+          ${t}
+          </div>`;
+          stepHTML[stepCnt++] = s;
+      }
+
+    }
+
+    {
+        let s = "";
+      let t0 = "";
+      for (let f of info.miFieldName)
+        t0 += `<th>${f}</th>`;
+
+      let t1 = "";
+      for (let f of info.miFieldName)
+        t1 += `<td>${info[f].num}</td>`;
+      
+      s += `<hr/>נארגן את השדות בסדר הנכון.
+        <div style="direction: ltr; text-align: center;">
+        <table>
+        <tr>
+          ${t0}
+        </tr>
+        <tr>
+          ${t1}
+        </tr>
+        </tr>
+      </table>
+        </div>`;
+
       stepHTML[stepCnt++] = s;
     }
 
+    {
+      let s = "";
+      let t0 = "";
+      for (let f of info.miFieldName)
+        t0 += `<th>${f}</th>`;
 
+      let t1 = "";
+      for (let f of info.miFieldName)
+        t1 += `<td>${info[f].bin}</td>`;
+      
+      s += `<hr/>נכתוב בבינרי.
+      <div style="direction: ltr; text-align: center;">
+        <table>
+        <tr>
+          ${t0}
+        </tr>
+        <tr>
+          ${t1}
+        </tr>
+        </tr>
+      </table>
+        </div>`;
+
+        stepHTML[stepCnt++] = s;
+    }
+
+    {
+      let s = "";
+      let t1 = "";
+      for (let f of info.miFieldName) 
+        t1 += `${info[f].bin}`;
+      
+      s += `<hr/>נצרף את כל השדות ונקבל:
+      <div style="direction: ltr; text-align: center;">
+        ${t1}
+        </div>`;
+
+      stepHTML[stepCnt++] = s;
+      }
+
+    {
+      let s = "";
+      let t1 = "";
+      for (let f of info.miFieldName) 
+        t1 += `${info[f].bin}`;
+      
+      s += `<hr/>נחלק לרביעיות ונקבל:
+        <div style="direction: ltr; text-align: center;">
+        ${t1.match(/.{1,4}/g).join(" ")}
+        </div>`;
+
+      stepHTML[stepCnt++] = s;
+    }
+
+    {
+        let s = ""
+        s += `<hr/>וסוף סוף נקבל את קוד הפקודה בהקסה: ${info.mi.hex} <br/>`;
+        stepHTML[stepCnt++] = s;
+    }
+
+    {
+      let s = "";
+      let rev = info.mi.hex.match(/.{1,2}/g).reverse().join(" ");
+        s += `<hr/>הצגה בבתים מכתובת נמוכה לגבוהה (משמאל לימין) היא כלהלן:
+        <div style="direction: ltr; text-align: center;">${rev}</div>`;
+
+        stepHTML[stepCnt++] = s;
+    }
 
     if (step >= stepCnt) {
       let eNextStepButton = document.getElementById("nextStepButton");
