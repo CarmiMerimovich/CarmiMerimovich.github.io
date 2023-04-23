@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+
+
+<html lang="he" dir="rtl">
+<head>
+    <title>כרמי מרימוביץ, ארכיטקטורת מחשבים</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="כרמי מרימוביץ, ארכיטקטורת מחשבים">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<a href="/" style="display: contents;" class="headL1">
+                        <img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png"></a>
+				</div>
+				<div style="vertical-align: middle;">
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						<a href="/" class="headerL1">כרמי מרימוביץ</a>
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						אתר אישי
+					</h3>
+                    <style>
+                        .headerL1, .headerL1:active, .headerL1:visited
+                            {
+                             text-decoration: inherit;
+                             color: inherit;
+                            }
+                    </style>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+        <div>
+            
+              <p style="font-size: xx-small">
+              <span><a href="../../../../../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../../../../../index.html">Current Semester<a></span>&rlm; >>> <span><a href="../../../../index.html">2022-3B<a></span>&rlm; >>> <span><a href="../../../index.html">מבוא לארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../../index.html"><a></span>&rlm; >>> <span><a href="../index.html">2022-09-01<a></span>&rlm; >>> <span>Virtual Memory</span>&rlm;
+              </p>
+              
+                
+	</header>
+
+
+
+
+
+
+<h1>זיכרון בפועל (Virtual memory)</h1>
+<p>המנגנון שפותח
+ב-mmu
+יכול לשמש למטרה מעניינת.
+כאשר כמות הזיכרון הפיזי הזמינה היתה נמוכה המטרה היתה קריטית.
+היום ברוב המקרים אין צורך ברעיון שיופיע כאן.</p>
+<p>חשוב מאוד להדגיש שהרעיו המוצג פה הוא כיצד מערכת ההפעלה יכולה
+להשתמש
+ב-mmu
+בצורה מיוחדת.
+הסבר עמוק יותר ינתן בקורס מערכות הפעלה.</p>
+<p>ובכן, מה הרעיון?
+הרעיון הוא להריץ תוכניות שכמות הזיכרון שהן דורשות
+יותר גדולה מהזכרון הפיזי הזמין.</p>
+<p>לדוגמא, נניח שיש לנו מכונה עם
+8GB
+זכרון פיזי.
+ונניח שיש צורך להריץ תוכניות שצורכות
+16GB
+זכרון פיזי.
+המודל שיש לנו עד עכשיו לא מאפשר דבר כזה.
+כדי שתוכנית תרוץ היא צריכה להיות בזיכרון הפיזי.</p>
+<p>אז. מה הטריק?
+הטריק הוא שמערכת ההפעלה תטען רק
+<strong>חלק</strong>
+מהתוכנית.
+ובטבלת התירגום אותם דפים שלא נטענו לזיכרון יהיו לא-וולידים.
+<strong>אבל</strong>,
+מערכת ההפעלה יודעת איזה דפים הם לא-וולידיים
+באמת, ואלו לא-וולידיים בגלל מצוקת זיכרון.
+ולכן, כאשר קורה
+page-fault
+מערכת ההפעלה
+<strong>תבדוק</strong>
+אם הסיבה
+ל-page-fault
+היא אכן גישה לדף לא חוקי (ואז תעיף את התוכנית)
+או שהסיבה היא מצוקת זיכרון ואז מערכת ההפעלה תתקן את הבעיה
+על-יד הטענת הדף החסר לזיכרון ותיקון טבלת התירגום.
+כמובן שזו שאלה טובה מאוד איך
+<strong>פתאום</strong>
+נהיה מקום, אבל זה כבר עניין לקורס מערכות הפעלה.</p>
+<p>שימו לב שכל התהליך הזה קורה בלי שום התערבות או ידע של
+התוכנית הרצה.</p>
+
+    
+
+
+
+
+
+
+
+
+ <ol >  </ol> 
+
+
+ </div>
+
+ 
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;"
+                href="/">כרמי מרימוביץ</a>
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            ארכיטקטורת מחשבים
+            </span>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

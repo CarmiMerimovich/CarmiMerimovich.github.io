@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+
+
+<html lang="he" dir="rtl">
+<head>
+    <title>כרמי מרימוביץ, ארכיטקטורת מחשבים</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="כרמי מרימוביץ, ארכיטקטורת מחשבים">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<a href="/" style="display: contents;" class="headL1">
+                        <img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png"></a>
+				</div>
+				<div style="vertical-align: middle;">
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						<a href="/" class="headerL1">כרמי מרימוביץ</a>
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						אתר אישי
+					</h3>
+                    <style>
+                        .headerL1, .headerL1:active, .headerL1:visited
+                            {
+                             text-decoration: inherit;
+                             color: inherit;
+                            }
+                    </style>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+        <div>
+            
+              <p style="font-size: xx-small">
+              <span><a href="../../../../../../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../../../../../../index.html">Current Semester<a></span>&rlm; >>> <span><a href="../../../../../index.html">2022-3B<a></span>&rlm; >>> <span><a href="../../../../index.html">מבוא לארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../../../index.html">3/3/2023 (ו-6/3/2023) שקפים 1-12<a></span>&rlm; >>> <span><a href="../../index.html">הזכרון הראשי - מבוא<a></span>&rlm; >>> <span><a href="../index.html">כתובות אינטגרליות<a></span>&rlm; >>> <span>חיבור זכרון-מעבד ברוחב 16 ביטים</span>&rlm;
+              </p>
+              
+                
+	</header>
+
+
+
+
+
+
+<h1>חיבור זכרון-מעבד ברוחב 16 ביטים</h1>
+<p>נקח חצי-מילה, כלומר שני בתים.
+מבחינת המתכנת שליפה של חצי מילה כזו היא ברורה:</p>
+<pre><code>    lh  x5,0(x10)   // for example
+</code></pre>
+<p>אבל מבחינת המימוש במעבד,  נכנס פה המבנה הפיזי של חיבור המעבד לזכרון למשחק.
+אם החיבור הפיזי מאפשר להעביר בין הזכרון למעבד כל פעם בית אחד
+אזי המעבד יצטרך לגשת פעמיים לזכרון
+וישלוף משם כל פעם בית.
+זה כמובן גורם למעבד לעבוד יותר זמן.</p>
+<p>כדי להאיץ את העבודה ניתן לחבר את הזכרון והמעבד כך שאפשר להעביר שני בתים כל פעם.
+אבל פה נכנסים שיקולים הנדסיים.
+בחיבור כזה המעבד יכול לבקש מהזכרון רק כתובות זוגיות,
+ותמיד חוזרים שני בתים.
+נניח שהמעבד מבצע</p>
+<pre><code>    lb  x7,0(x12)
+</code></pre>
+<p>אם ב-x12
+יש 100,
+אזי המעבד יבקש ויקבל את שני הבתים בכתובת 100
+וישתמש רק בבית בכתובת 100.</p>
+<p>אם ב-x12
+יש 101,
+אזי המעבד יבקש ויקבל את שני הבתים בכתובת 100
+וישתמש רק בבית בכתובת 101.</p>
+<p>כל זה סביר מצויין ולא פוגע בשום דבר למעט בתכנון
+המעט יותר מורכב של המעבד.</p>
+<p>נעיין בפקודה הבאה.
+נניח שהמעבד מבצע</p>
+<pre><code>    lh  x7,0(x12)
+</code></pre>
+<p>אם ב-x12
+יש 100,
+אזי המעבד יבקש ויקבל את שני הבתים בכתובת 100
+ויאחסן את שניהם ב-x7.
+מצויין ויעיל.
+לטעון בית אחד או לטעון שני בתים יקח בדיוק אותו זמן.
+<strong>אבל</strong>
+מה יקרה אם ב-x12
+יש 101?
+במקרה זה צריך לשלוף את הבתים בכתובות 101 ו-102
+מהזכרון.
+ובגלל האופן שבו הזכרון והמעבד מחוברים
+<strong>אין למעבד דרך לבקש בפעם אחת את שני הבתים האלה</strong>.</p>
+<p>מעבדים קדמונים
+(8086, 80286)
+היו עפים במקרה כזה.
+מעבדים מודרניים נוקטים בגישה הבאה.
+יטענו שני הבתים בכתובת 100.
+אז יטענו שני הבתים בכתובת 102.
+המעבד יקח את הבתים בכתובות 101 ו-102
+ויטען אותפ לאוגר.
+כלומר התוכנית עובדת אבל הביצועים ירודים.</p>
+<p>גישה לשני בתים בכתובת אי-זוגית תקרא כתובת לא אינטגרלית וראינו
+את הפגיעה בביצועים.</p>
+
+    
+
+
+
+
+
+
+
+
+ <ol >  </ol> 
+
+
+ </div>
+
+ 
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;"
+                href="/">כרמי מרימוביץ</a>
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            ארכיטקטורת מחשבים
+            </span>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

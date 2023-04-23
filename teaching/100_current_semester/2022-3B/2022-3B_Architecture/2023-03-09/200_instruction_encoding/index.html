@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+
+
+<html lang="he" dir="rtl">
+<head>
+    <title>כרמי מרימוביץ, ארכיטקטורת מחשבים</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="כרמי מרימוביץ, ארכיטקטורת מחשבים">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<a href="/" style="display: contents;" class="headL1">
+                        <img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png"></a>
+				</div>
+				<div style="vertical-align: middle;">
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						<a href="/" class="headerL1">כרמי מרימוביץ</a>
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						אתר אישי
+					</h3>
+                    <style>
+                        .headerL1, .headerL1:active, .headerL1:visited
+                            {
+                             text-decoration: inherit;
+                             color: inherit;
+                            }
+                    </style>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+        <div>
+            
+              <p style="font-size: xx-small">
+              <span><a href="../../../../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../../../../index.html">Current Semester<a></span>&rlm; >>> <span><a href="../../../index.html">2022-3B<a></span>&rlm; >>> <span><a href="../../index.html">מבוא לארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../index.html">9/3/2023 שקפים 13-24<a></span>&rlm; >>> <span>שפת מכונה</span>&rlm;
+              </p>
+              
+                
+	</header>
+
+
+
+
+
+
+<h1>שפת מכונה</h1>
+<p>איך שפת הסף אותה ראינו עד עכשיו מקודדת לשפת מכונה?
+כל מעבד בוחר כמובן קידוד משלו.
+במעבדי risc
+הקידוד, ככלל, פשוט הרבה יותר מאשר במעבדי cics.</p>
+<p>לדוגמא במעבד שלנו כל פקודה היא ברוחב 32 ביטים (ארבעה בתים).</p>
+<p>יתר על כן, יש מספר קטן של פורמטים שונים של פקודות,
+דבר שמקל על התכנון ומפשט את המעגל.</p>
+<p>להלן מבנה-R.</p>
+<p><img src="R.png" style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;" /></p>
+<p>בפקודו במבנה R
+קוד הפקודה נקבע על-ידי שלושת השדות הבאים:
+opcode, fnc3, fnc7.</p>
+<p>יש מבנים בהם קוד הפקודה הוא רק השדות
+opcode ו-fnc3.</p>
+<p>ויש מבנים בהם קוד הפקודה הוא רק השדה opcode.</p>
+<p>ברור שהקודים לשדות נבחרים באופן שאין בלגן.</p>
+<p>אנחנו יכולים להסיק ממבנה הפקודה ורוחב השדות (ושמותיהם)
+שפקודות מטיפוס R
+יש שלושה אופרנדים שהם אוגרים.
+5 ביטים
+נותנים לנו טווח של 0-31
+כצפוי משדה שצריך להכיל מספר אוגר.</p>
+<ul>
+<li>
+<p>rs1 - Register Source 1</p>
+</li>
+<li>
+<p>rs2 - Register Source 2</p>
+</li>
+<li>
+<p>rd - Register Desination</p>
+</li>
+</ul>
+<p>לדוגמא.
+הפקודה add
+היא, די כצפוי, ממבנה R.</p>
+<p>ולכן הקידוד של נאמר</p>
+<pre><code>add x9, x20, x21
+</code></pre>
+<p>יהיה כלהלן.
+<img src="add.png" style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;" /></p>
+<p>את הערכים עבור השדות opcode, fnc3 ו-fnc7
+צריך להוציא מהתיעוד.
+אנחנו נצרף קובץ עם כל התעוד הרלוונטי.</p>
+
+    
+
+
+
+
+
+
+
+
+ <ol >  </ol> 
+
+
+ </div>
+
+ 
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;"
+                href="/">כרמי מרימוביץ</a>
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            ארכיטקטורת מחשבים
+            </span>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+
+
+<html lang="he" dir="rtl">
+<head>
+    <title>כרמי מרימוביץ, ארכיטקטורת מחשבים</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="כרמי מרימוביץ, ארכיטקטורת מחשבים">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<a href="/" style="display: contents;" class="headL1">
+                        <img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png"></a>
+				</div>
+				<div style="vertical-align: middle;">
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						<a href="/" class="headerL1">כרמי מרימוביץ</a>
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						אתר אישי
+					</h3>
+                    <style>
+                        .headerL1, .headerL1:active, .headerL1:visited
+                            {
+                             text-decoration: inherit;
+                             color: inherit;
+                            }
+                    </style>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+        <div>
+            
+              <p style="font-size: xx-small">
+              <span><a href="../../../../../../index.html">Teaching<a></span>&rlm; >>> <span><a href="../../../../../index.html">Current Semester<a></span>&rlm; >>> <span><a href="../../../../index.html">2022-3B<a></span>&rlm; >>> <span><a href="../../../index.html">מבוא לארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../../index.html"><a></span>&rlm; >>> <span><a href="../index.html">2022-08-17<a></span>&rlm; >>> <span>כתובות פיזיות ו-וירטואליות</span>&rlm;
+              </p>
+              
+                
+	</header>
+
+
+
+
+
+
+<h1>כתובות פיזיות וכתובות וירטואליות</h1>
+<p>עד עכשיו כל כתובת שיצאה מהמעבד הגיעה אל הזכרון.
+כתובת שמגיעה על מערכת הזכרון נקראת כתובת פיזית.
+כשמה שיש לנו זה רק כתובות פיזיות נוצרות בעיות קשות אם
+רוצים להריץ מספר תוכניות במקביל.</p>
+<p>כל תוכנית מסוגלת לגשת לזכרון של כל תוכנית אחרת.
+וצריך, בנוסף, הסכמים בין כל התוכניות כדי להסתדר ביחד.
+יותר מזה, בהרצות שונות תוכנית יכולה להיטען לכתובות שונות בזכרון,
+וצריך ללמוד לחיות עם זה.</p>
+<p>בקיצור, בלאגן גדול.</p>
+<p>כדי לפתור את כל הנ&quot;ל צריך
+<strong>לבודד</strong>
+בין הכתובות של התוכניות השונות.
+בבצורה כלשהי צריך לאפשר לכמה תוכניות שונות להשתמש במרחבי כתובות
+שבהן הן לא יכולות לגשת אאחת לזכרון השניה.</p>
+<p>הכתובות הללו שהמעבד יוצר אך אן לא כתובות פיזיות נקראות
+כתובות וירטואליות.
+כמובן צריך להוסיף חומרה שתקבל כתובת וירטואלית
+ותייצר ממנה כתובת פיזית.
+יחידה זו נקראת היחידה לניהול הזכרון
+(memory management unit - mmu).
+השם הזה לא מאוד מוצלח כי יחידה זו לא מנהלת את הזכרון,
+או כל דבר אחר.
+היא
+<strong>מתרגמת</strong>
+כתובת וירטואלית לכתובת פיזית.</p>
+
+    
+
+
+
+
+
+
+
+
+ <ol >  </ol> 
+
+
+ </div>
+
+ 
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;"
+                href="/">כרמי מרימוביץ</a>
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            ארכיטקטורת מחשבים
+            </span>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
