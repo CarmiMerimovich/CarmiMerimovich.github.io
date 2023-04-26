@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+
+<html lang="he" dir="rtl">
+<head>
+    <title>כרמי מרימוביץ, תירגול עצמי</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="כרמי מרימוביץ, תירגול עצמי">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<a href="/" style="display: contents;" class="headL1">
+                        <img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png"></a>
+				</div>
+				<div style="vertical-align: middle;">
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						<a href="/" class="headerL1">כרמי מרימוביץ</a>
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						אתר אישי
+					</h3>
+                    <style>
+                        .headerL1, .headerL1:active, .headerL1:visited
+                            {
+                             text-decoration: inherit;
+                             color: inherit;
+                            }
+                    </style>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+        <div>
+            
+                
+	</header>
+
+
+
+
+
+
+    
+<h2>רשימת פקודות מכונה</h2>
+<div>
+<ul style="font-size: xx-small;">
+<li>
+  כשיש הבדל בין פעולות או יחסים עם סימן וללא סמן נשתמש באינדקס 
+  s ו-u
+  עבור עם סימן ובלי סימן, בהתאמה.
+</li>
+</ul>
+</div>
+<div>מיון: 
+  <input type="radio" id="sortMnemButton" name="sortGroup" onchange="redraw();">
+  <label for="sortMnemButton">מנמוניק</label>
+  <input type="radio" id="sortOpcodeButton" name="sortGroup" onchange="redraw();">
+  <label for="sortOpcodeButton">opcode</label>
+</div>
+<div id="content" style="direction: ltr;"></div>
+<hr/>
+
+<figure id="B">
+<figcaption>
+מבנה B
+</figcaption>
+  <img src="B.svg" alt="שרטוט פקודה במנה B" style="width: 100%;"/>
+</figure>
+
+<figure id="I"  style="padding-top: 1Em;">
+  <figcaption>
+    מבנה I
+  </figcaption>
+  <img src="I.svg" alt="שרטוט פקודנ במבנה I"  style="width: 100%;"/>
+</figure>
+
+<figure id="I'" style="padding-top: 1Em;">
+  <figcaption>
+  מבנה I'&lrm;
+</figcaption>
+  <img  src="I'.svg" alt="שרטוט פקודנ במבנה I'" style="width: 100%;"/>
+</figure>
+
+<figure id="I''" style="padding-top: 1Em;">
+  <figcaption>
+מבנה I''&lrm;
+</figcaption>
+  <img  src="I''.svg" alt="שרטוט פקודנ במבנה I''" style="width: 100%;"/>
+</figure>
+
+<figure id="J" style="padding-top: 1Em;">
+  <figcaption>
+מבנה J
+</figcaption>
+<img src="J.svg" alt="שרטוט פקודנ במבנה J"  style="width: 100%;"/>
+</figure>
+
+<figure id="R" style="padding-top: 1Em;">
+  <figcaption>
+מבנה R
+</figcaption>
+  <img src="R.svg"  alt="שרטוט פקודנ במבנה R"  style="width: 100%;"/>
+</figure>
+
+<figure id="S" style="padding-top: 1Em;">
+  <figcaption>
+מבנה S
+</figcaption>
+  <img src="S.svg"  alt="שרטוט פקודנ במבנה S" style="width: 100%;"/>
+</figure>
+
+<figure id="U" style="padding-top: 1Em;">
+  <figcaption>
+מבנה U
+</figcaption>
+<img  src="U.svg" alt="שרטוט מבנה U" style="width: 100%;"/>
+</figure>
+
+<script src="../types.inc"></script>
+<script>
+   document.getElementById("sortMnemButton").checked = true;
+   redraw();
+
+function redraw() {
+  let orderFunction;
+  let fields;
+  if (document.getElementById("sortMnemButton").checked) {
+    orderFunction = orderMnem;
+    fields= ["mnem", "type", "opcode", "fnc3", "fnc6/fnc7", "desc"];
+  } else {
+    orderFunction = orderOpcode;
+    fields= ["opcode", "fnc3", "fnc6/fnc7", "type", "mnem", "desc"];
+  }
+
+  let ins = [];
+  for (let type of rv64.types) {
+    let opcode;
+    if (typeof (type.machineInstructions.opCode) != "undefined")
+      opcode = type.machineInstructions.opCode.toString(2).padStart(7, "0");
+    console.log("*", opcode);
+      let instructionType   = type.machineInstructions.type;
+    for (instruction of type.machineInstructions.info) {
+      let o = {};
+      console.log(instruction.opcode);
+      if (typeof(instruction.opcode) != "undefined")
+        o.opcode = instruction.opcode.toString(2).padStart(7, "0");
+      else
+        o.opcode = opcode;
+      o.mnem   = instruction.mnem;
+      o.type   = instructionType;
+      if (typeof(instruction.desc) != "undefined") o.desc   = instruction.desc;
+
+      for (f of ["fnc3", "fnc6", "fnc7"])
+        if (typeof(instruction[f]) != "undefined") {
+          let l = parseInt(f.substring(3,4));
+          o[f] = instruction[f].toString(2).padStart(l, "0");
+        }
+
+      ins.push(o);
+    }
+  }
+  let s = "";
+  for (f of fields) {
+    s += `<th>${f}</th>`;
+  }
+  s = `<tr>${s}</tr>`;
+
+  ins.sort(orderFunction);
+
+  for (let o of ins) {
+    let r = "";
+    for (f of fields) {
+      fs = f.split("/");
+      let found = false;
+      for (ff of fs) {
+        if (typeof(o[ff]) != "undefined") {
+          let s = `${o[ff]}`;
+          if (ff == "type")
+            s = `<a href="#${s}">${s}</a>`;
+          r += `<td>${s}</td>`;
+          found = true;
+          break;
+        }
+      }
+      if (!found)
+        r += `<td></td>`;
+    }
+    s += `<tr>${r}</tr>`;
+  }
+  s = `<table>${s}</table>`;
+  let e = document.getElementById("content");
+  e.innerHTML = s;
+}
+
+function orderMnem(o0,o1) {
+  if (o0.mnem < o1.mnem) return (-1);
+  if (o0.mnem > o1.mnem) return ( 1);
+  return (0);
+}
+
+function orderOpcode(o0,o1) {
+  if (o0.opcode < o1.opcode) return (-1);
+  if (o0.opcode > o1.opcode) return ( 1);
+
+  if (o0.fnc3 < o1.fnc3) return (-1);
+  if (o0.fnc3 > o1.fnc3) return ( 1);
+
+  if (typeof(o0.fnc6) == "undefined"  && typeof(o1.fnc6) != "undefined") return (-1);
+  if (typeof(o0.fnc6) != "undefined"  && typeof(o1.fnc6) == "undefined") return ( 1);
+  if (typeof(o0.fnc6) != "undefined"  && typeof(o1.fnc6) != "undefined") {
+    if (o0.fnc6 < o1.fnc6) return (-1);
+    if (o0.fnc6 > o1.fnc6) return ( 1);
+    return (0);
+  }
+  if (typeof(o0.fnc7) == "undefined"  && typeof(o1.fnc7) != "undefined") return (-1);
+  if (typeof(o0.fnc7) != "undefined"  && typeof(o1.fnc7) == "undefined") return ( 1);
+  if (typeof(o0.fnc7) != "undefined"  && typeof(o1.fnc7) != "undefined") {
+    if (o0.fnc7 < o1.fnc7) return (-1);
+    if (o0.fnc7 > o1.fnc7) return ( 1);
+    return (0);
+  }
+
+  return (0);
+}
+
+</script>
+
+
+<script>
+function makeAnswer() {
+  const eFirtStepButton = document.getElementById("firstStepButton");
+  eFirtStepButton.style.display = "none";
+
+  const eAnswerButton = document.getElementById("answerButton");
+  eAnswerButton.style.display = "none";
+
+  step = 10000;
+  makeStep();
+}
+
+function firstStep() {
+  const eAnswerButton = document.getElementById("answerButton");
+  eAnswerButton.style.display = "none";
+
+  const eFirtStepButton = document.getElementById("firstStepButton");
+  eFirtStepButton.style.display = "none";
+
+  const eNextStepButton = document.getElementById("nextStepButton");
+  eNextStepButton.style.display = "inline";
+  step = 0;
+  makeStep();
+}
+
+  function nextStep() {
+    step++;
+    makeStep();
+  }
+
+  function makeStep() {
+ 
+    {
+      let s = `תשובה<br/>
+      קוד הפקודה בהקסה: ${info.mi.hex} <br/>`;
+      let rev = info.mi.hex.match(/.{1,2}/g).reverse().join(" ");
+      s += `הצגה בבתים מכתובת נמוכה לגבוהה (משמאל לימין) היא כלהלן:
+        <div style="direction: ltr; text-align: center;">${rev}</div><hr/><hr/>`;
+      let eAnswer = document.getElementById("answer");
+      eAnswer.innerHTML = s;
+    }
+ 
+    let stepHTML = [];
+    let stepCnt = 0;
+
+
+  }
+</script>
+
+
+
+
+ </div>
+
+ 
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;"
+                href="/">כרמי מרימוביץ</a>
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            שאלות תירגול
+            </span>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
