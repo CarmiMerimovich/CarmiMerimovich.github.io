@@ -26,7 +26,7 @@ let i0 = Math.trunc(va / (2**22));
 let i1 = Math.trunc(va / 4096) % 1024;
 
 let eVa = document.getElementById("va");
-eVa.innerHTML = va.toString(16).padStart(8, "0");
+eVa.innerHTML = va.toString(16).toUpperCase().padStart(8, "0");
 
 let ram = new Ram;
 ram.littleEndian = true;
@@ -87,13 +87,13 @@ let eSatp = document.getElementById("satp");
 let satp = (2**31) +
 			Math.trunc(Math.random() * 512) * (2**22) + 
 			Math.trunc(extTbl / 4096);
-eSatp.innerHTML = satp.toString(16).padStart(8, "0");
+eSatp.innerHTML = satp.toString(16).toUpperCase().padStart(8, "0");
 
 displayRam.display();
 
 function displayAnswer() {
 	let eAnswer = document.getElementById("answer");
-	eAnswer.innerHTML = pa.toString(16).padStart(8, "0");
+	eAnswer.innerHTML = pa.toString(16).toUpperCase().padStart(8, "0");
 }
 
 function displayDump() {

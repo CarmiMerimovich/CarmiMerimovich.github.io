@@ -182,7 +182,7 @@ class DisplayRam {
 					let row = "<td style='border-bottom: 1px solid black; border-top: 1px solid black; padding: 10px;" + b + "'></td>";
 					for (let ii = 0; ii < cols; ii++) {
 						let c = "<td style='text-align: center; border-bottom: 1px solid black; border-top:1px; padding: 10px; solid black;	'>";
-						c += (ii * this.unit).toString(16);
+						c += (ii * this.unit).toString(16).toUpperCase();
 						c += "</td>";
 						if (this.rtl) 
 							row = c + row;
@@ -206,7 +206,7 @@ class DisplayRam {
 					b = "border-right: 1px black solid;";
 					
 				let c = "<td style='" + b + "'>";
-				let addr_s = addrLine.toString(this.radix);
+				let addr_s = addrLine.toString(this.radix).toUpperCase();
 				if (this.addressDigits > 0) {
 					addr_s = addr_s.padStart(this.addressDigits, "0");
 				}
@@ -215,7 +215,7 @@ class DisplayRam {
 				row = c;	
 
 				for (let off = 0; off < cols*this.unit; off += this.unit) {
-					let toolTip = off.toString(this.radix);
+					let toolTip = off.toString(this.radix).toUpperCase();
 					let c = "<td title='" + toolTip + "'>";
 					let v = this.readValue(addrLine + off);
 					let vs = "";
@@ -226,7 +226,7 @@ class DisplayRam {
 							else
 								vs = "-" + (2**(this.unit*8)-v).toString(this.radix);
 						} else {
-							vs = v.toString(this.radix);
+							vs = v.toString(this.radix).toUpperCase();
 							if (this.unitDigits > 0)
 								vs = vs.padStart(this.unit * 2, "0");
 						}

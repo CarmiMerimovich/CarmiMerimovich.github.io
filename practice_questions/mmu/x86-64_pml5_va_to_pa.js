@@ -21,7 +21,7 @@ let i1 = Math.trunc(va / (2**21)) % 512;
 let i2 = Math.trunc(va / (2**12)) % 512;
 
 let eVa = document.getElementById("va");
-eVa.innerHTML = va.toString(16).padStart(8, "0");
+eVa.innerHTML = va.toString(16).toUpperCase().padStart(8, "0");
 
 let ram = new Ram;
 ram.littleEndian = true;
@@ -99,13 +99,13 @@ displayRam.showQ(lev2Entry);
 
 
 let eCr3 = document.getElementById("cr3");
-eCr3.innerHTML = lev0Tbl.toString(16).padStart(8, "0");
+eCr3.innerHTML = lev0Tbl.toString(16).toUpperCase().padStart(8, "0");
 
 displayRam.display();
 
 function displayAnswer() {
 	let eAnswer = document.getElementById("answer");
-	eAnswer.innerHTML = pa.toString(16).padStart(9, "0");
+	eAnswer.innerHTML = pa.toString(16).toUpperCase().padStart(9, "0");
 }
 
 
@@ -129,10 +129,10 @@ function setHelpMode() {
 		let i1 = Math.trunc(Math.trunc(va / (2**21)) % 512);
 		let i2 = Math.trunc(Math.trunc(va / (2**12)) % 512);
 		let off = Math.trunc(va % 4096);
-		e.title="i0=" + i0.toString(16)+ "; " +
-				"i1=" + i1.toString(16) + "; " +
-				"i2=" + i2.toString(16) + "; " +
-				"off=" + off.toString(16);
+		e.title="i0=" + i0.toString(16).toUpperCase() + "; " +
+				"i1=" + i1.toString(16).toUpperCase() + "; " +
+				"i2=" + i2.toString(16).toUpperCase() + "; " +
+				"off=" + off.toString(16).toUpperCase();
 	}
 
 }

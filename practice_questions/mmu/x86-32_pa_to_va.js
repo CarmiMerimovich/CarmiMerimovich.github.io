@@ -19,9 +19,9 @@ let i0 = Math.trunc(va / Math.pow(2, 22));
 let i1 = Math.trunc(va / 4096) % 1024;
 
 let eVa = document.getElementById("va");
-eVa.innerHTML = va.toString(16).padStart(8, "0");
+eVa.innerHTML = va.toString(16).toUpperCase().padStart(8, "0");
 let ePa = document.getElementById("pa");
-ePa.innerHTML = pa.toString(16).padStart(8, "0");
+ePa.innerHTML = pa.toString(16).toUpperCase().padStart(8, "0");
 
 let ram = new Ram;
 ram.littleEndian = true;
@@ -74,16 +74,16 @@ for (let i = 0; i < 3; i++) {
 
 
 let eCr3 = document.getElementById("cr3");
-eCr3.innerHTML = extTbl.toString(16).padStart(8, "0");
+eCr3.innerHTML = extTbl.toString(16).toUpperCase().padStart(8, "0");
 
 displayRam.display();
 
 function displayAnswer() {
 	let ePa = document.getElementById("paMachineAnswer");
-	ePa.innerHTML = inrEntry.toString(16).padStart(8, "0");
+	ePa.innerHTML = inrEntry.toString(16).toUpperCase().padStart(8, "0");
 	let eValue = document.getElementById("valueMachineAnswer");
 	let v = Math.trunc(pa / 4096) * 4096 + 7;
-	eValue.innerHTML = v.toString(16).padStart(8, "0");
+	eValue.innerHTML = v.toString(16).toUpperCase().padStart(8, "0");
 }
 
 
@@ -106,9 +106,9 @@ function setHelpMode() {
 		let i0 = Math.trunc(Math.trunc(va / Math.pow(2, 22)) % 1024);
 		let i1 = Math.trunc(Math.trunc(va / 4096) % 1024);
 		let off = Math.trunc(va % 4096);
-		e.title="i0=" + i0.toString(16)+ "; " +
-				"i1=" + i1.toString(16) + "; " +
-				"off=" + off.toString(16);
+		e.title="i0=" + i0.toString(16).toUpperCase()+ "; " +
+				"i1=" + i1.toString(16).toUpperCase() + "; " +
+				"off=" + off.toString(16).toUpperCase();
 	}
 
 }
