@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+
+<html lang="he" dir="ltr">
+<head>
+    <title>Carmi Merimovich, Teaching</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Carmi Merimovich, Teaching">
+
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+		<div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+					<a href="/" style="display: contents;" class="headL1">
+                        <img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png"></a>
+				</div>
+				<div style="vertical-align: middle;">
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						<a href="/" class="headerL1">Carmi Merimovich</a>
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						Personal Site
+					</h3>
+                    <style>
+                        .headerL1, .headerL1:active, .headerL1:visited
+                            {
+                             text-decoration: inherit;
+                             color: inherit;
+                            }
+                    </style>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+        <div>
+            
+                
+	</header>
+
+
+
+
+
+
+    <DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Introduction to Operating Systems</title>
+	<style>.routine {font-family: monospace}</style>
+</head>
+<body onload="initQ()">
+<script>
+var va, etbl, pa;
+var mem=[], pagesused=[];
+
+function initQ() {
+	va = Math.trunc(Math.random() * Math.pow(2,32));
+	pa = (Math.trunc(Math.random() * Math.pow(2,19)) << 12) + (va & 4095);
+	pagesused = [];
+	mem = [];
+	etbl = kalloc();
+	
+	var dumpo = document.getElementById("dump");
+	dumpo.innerHTML = "";
+
+	var vao = document.getElementById("vao");
+	var pad = Math.ceil(32 / Math.log2(16));
+	vao.innerHTML = va.toString(16).padStart(pad, "0");
+	
+	var etblo = document.getElementById("etblo");
+	var pad = Math.ceil(32 / Math.log2(16));
+	etblo.innerText = etbl.toString(16).padStart(pad, "0");
+	
+	var pao = document.getElementById("pa");
+	pao.value = "";
+	
+	var i0 = (va >> 30) & 3;
+	var i1 = (va >> 21) & 511;
+    var i2 = (va >> 12) & 511;
+
+    i0 *= 2;
+    i1 *= 2;
+    i2 *= 2;
+	
+    var i1tbl = kalloc();
+	var itbl  = kalloc();
+	mem[etbl/4 + i0] = i1tbl | 7;
+    mem[i1tbl/4 + i1] = itbl | 7;
+	mem[itbl/4 + i2] = (pa & ~4095)  | 7;
+
+    pagesused.sort();
+
+    pages = [{ key: etbl, ofst: i0 }, { key: i1tbl, ofst: i1 }, { key: itbl, ofst: i2 }].sort(
+        function (a, b) {
+            if (a.key < b.key) return (-1);
+            if (a.key > b.key) return (1);
+            return (0);
+        }
+    );
+
+
+    dumpAddPage(pages[0].key, pages[0].ofst);
+    dumpAddPage(pages[1].key, pages[1].ofst);
+    dumpAddPage(pages[2].key, pages[2].ofst);
+
+	correct(0, -1);
+}
+
+function dumpAddPage(tbl, im) {
+	var dumpo = document.getElementById("dump");
+	
+	var r = dumpo.insertRow(-1);
+	r.insertCell(0);
+	var i;
+	for (i = 1; i < 9; i++) {
+		var c = r.insertCell(i);
+		c.align = "center";
+		c.innerText = "+"+((i-1)*4).toString(16).padStart(2, "0");
+	}
+	
+	var imin = im - 10;
+	if (imin < 0) imin = 0;
+	imin = imin & ~3;
+	var imax = im + 10;
+	if (imax > 1023) imax = 1023; 
+	
+	imin += tbl/4;
+	imax += tbl/4;
+	
+	var i;
+	var cn = 0;
+	for (i = imin; i < imax; i++) {
+		if ((cn % 9) == 0) {
+			cn = 0;
+			var r = dumpo.insertRow(-1);
+			var c = r.insertCell(cn);
+			c.innerText = (i*4).toString(16).padStart(8, "0");
+			cn++;
+		}
+		var c = r.insertCell(cn);
+		c.innerText = mem[i].toString(16).padStart(8, "0");
+		cn++;
+	}
+}
+
+
+function kalloc() {
+	do { 
+		var page = Math.trunc(Math.random() * 1024);
+	} while (pagesused.indexOf(page) >= 0);
+	pagesused.push(page);
+	var addr = page << 12;
+	var i;
+	for (i = 0; i < 1024; i++)
+		mem[addr/4+i] = 0;
+	return (addr);
+}
+
+function cheatQ() {
+	var pao = document.getElementById("pa");
+	pao.value = pa.toString(16).padStart(8, "0");
+}
+
+
+function checkQ() {
+	var pao = document.getElementById("pa");
+	var ipa = parseInt(pao.value, 16);
+	if (isNaN(ipa))
+		correct(0,0);
+	else if (ipa != pa)
+		correct(0,0);
+	else
+		correct(0,1);
+}
+
+function correct(field, type) {
+	c = document.getElementById("correct"+field);
+	if (type == -1)
+		c.innerHTML = "&nbsp;";
+	else if (type == 0)
+		c.innerText = "Incorrect";
+	else
+		c.innerText = "Correct";
+}
+</script>
+<h1>x86-32 (2,9,9,12) address translation. Hexa. Very easy case.</h1>
+	<table align="center">
+	<tr>
+		<td>
+		The external table physical address is <span id="etblo"></span>.
+		To which physical address the virtual address <span id="vao"></span> will be translated?
+        </td>
+	</tr>
+	<tr>
+		<td align="center">Physical address: <input type="text" id="pa"> <span id=correct0></span></td>
+	</tr>
+	<tr><td align="center">
+    <table>
+        <tr>
+            <td align="center">
+                <input type="submit" value="Submit" onclick="checkQ();">
+            </td>
+            <td>
+                <input type="submit" value="Cheat" onclick="cheatQ();">
+            </td>
+            <td align="center">
+                <input type="submit" value="Next" onclick="initQ();">
+            </td>
+        </tr>
+    </table>
+    </td></tr>
+	</table>
+<h2>Memory Dump</h2>
+	<table id="dump">
+	</table>
+</body>
+</html>
+
+
+
+
+ </div>
+
+ 
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedin </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;"
+                href="/">Carmi Merimovich</a>
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            teaching
+            </span>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
