@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 
-<html lang="en" 
-        dir="ltr">
+<html lang="he" 
+        dir="rtl">
 <head>
-    <title>Carmi Merimovich, Teaching</title>
+    <title>Carmi Merimovich, Personal Site</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -55,7 +55,7 @@ MathJax = {
 		<div class="staffHeader">
 			<div class="photoAndText">
 				<div style="vertical-align: center; padding: 0px;">
-					<a href="/" 
+					<a href="/he/" 
                     style="display: contents;" 
                         class="headL1">
                         <img class="staffPhoto" 
@@ -64,11 +64,11 @@ MathJax = {
 				</div>
 				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						<a href="/"
-                             class="headerL1">Carmi Merimovich</a>
+						<a href="/he/"
+                             class="headerL1">כרמי מרימוביץ</a>
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						Personal Site
+						אתר אישי
 					</h3>
                     <style>
                         .headerL1, .headerL1:active, .headerL1:visited
@@ -92,66 +92,63 @@ MathJax = {
 
 
 
-<h1>2021/2</h1>
-
     
+<h2>הרכב כתובת וירטואלית</h2>
 
+<p>
+נתונה מערכת עם כתובת וירטואלית ברוחב 
+<span id="vaWidth">64</span>
+ביטים.
+גודל דף 
+<span id="pageSize">4KB</span>.
+גודל כניסה בטבלת התרגום
+<span id="entryWidth" style="direction: ltr">8</span>
+בתים.
+מה מבנה כתובת וירטואלית?
+</p>
+<p>
+<button onclick="toSize()" id="answerButton">הצג תשובה</button>
+<span id="answer"></span>
+</p>
 
+<script>
+const vaWidth = Math.trunc(Math.random() * 49) + 16;
+const offsetWidth = Math.trunc(Math.random() * vaWidth);
+const pageSize = 2n ** BigInt(offsetWidth);
+const entryWidth = 2n ** BigInt(Math.trunc(Math.random() * 6));
+const entriesPerPage = pageSize / entryWidth;
+const indexWidth = entriesPerPage.toString(2).length - 1;
 
+let e = document.getElementById("vaWidth");
+e.innerHTML = vaWidth.toString();
 
+e = document.getElementById("pageSize");
+e.innerHTML = toSize(pageSize);
 
+e = document.getElementById("entryWidth");
+e.innerHTML = entryWidth.toString();
 
+let a = [];
+a.push(offsetWidth);
+let remain = vaWidth - offsetWidth;
+while (remain >= indexWidth) {
+    a.push(indexWidth);
+    remain -= indexWidth;
+}
+if (remain > 0)
+    a.push(remain);
 
+e = document.getElementById("answer");
+e.innerHTML = `(${a.reverse().join(",")})`;
 
+function toSize(bytes) {
+    let names = ["B", "KB", "MB", "GB", "TB", "PB", "XB"];
+    const units = Math.trunc((bytes.toString(2).length - 1) / 10);
+    const prefix = bytes / (2n ** (BigInt(units) * 10n));
+    return (prefix.toString() + names[units]);
+}
+</script>
 
-
-
-
-
-
-
-
- <ul> 
-            <li>
-                
-            <a href="2021-2S-Architecture/index.html">2021-2S Intro to Computer Architecture</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-                
-                2021-2B Intro. to Computer Architecture
-                
-            
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-                
-                2021-2A Intro. to Computer Architecture
-                
-            
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-         </ul> 
 
 
  </div>
@@ -170,15 +167,15 @@ MathJax = {
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;" 
-                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedin </a>
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;"
-                href="/">Carmi Merimovich</a>
+                href="/he/">כרמי מרימוביץ</a>
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            teaching
+            שאלות תירגול
             </span>
         </li>
     </ul>
