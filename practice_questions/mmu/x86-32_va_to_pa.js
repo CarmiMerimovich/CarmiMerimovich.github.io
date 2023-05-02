@@ -116,7 +116,7 @@ function displayAnswer() {
 		בהקסה נקבל ש-i0 הוא
 		${(i0*4).toString(16).toUpperCase().padStart(3, "0")}
 		ואילו i1*4 הוא
-		${(i1*4).toString(16).toUpperCase().padStart(3, "0")}
+		${(i1*4).toString(16).toUpperCase().padStart(3, "0")}.
 		<br/>
 		אחרי ההכנה המפרכת הנ"ל אפשר לגשת לתמונת הזכרון.
 		מספר הדף הפיזי בו נמצאת הטבלה החיצונית
@@ -148,7 +148,8 @@ function displayAnswer() {
 		על ידי הצמדת שדה ההיסט של הכתובת הוירטואלית למספר זה
 		נקבל אץ הכתובת הפיזית המבוקשת:
 		${pa.toString(16).toUpperCase().padStart(8,"0")}.
-		`;
+		<br/>
+		<hr>`;
 
 	let eExplanation = document.getElementById("explanation");
 	eExplanation.innerHTML = s;
