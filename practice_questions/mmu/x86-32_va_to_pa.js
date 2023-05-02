@@ -112,7 +112,7 @@ function displayAnswer() {
 		הוא
 		${(i0*4).toString(2).padStart(12, "0")}
 		ואילו i1*4 הוא
-		${(i0*4).toString(2).padStart(12, "0")}.
+		${(i1*4).toString(2).padStart(12, "0")}.
 		בהקסה נקבל ש-i0 הוא
 		${(i0*4).toString(16).toUpperCase().padStart(3, "0")}
 		ואילו i1*4 הוא
