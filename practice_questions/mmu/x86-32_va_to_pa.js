@@ -84,74 +84,160 @@ function displayAnswer() {
 	let eAnswer = document.getElementById("answer");
 	eAnswer.innerHTML = pa.toString(16).toUpperCase().padStart(8, "0");
 
-	let s = `הכתובת הוירטואלית הנתונה היא 
-		${va.toString(16).toUpperCase().padStart(8, "0")}.
+	let s = `<ol>
+		<li>
+		הכתובת הוירטואלית הנתונה היא 
+		0x${va.toString(16).toUpperCase().padStart(8, "0")}.
+		</li>
+		<li>
 		יש לפרק אותה למספר דף וירטואלי והיסט.
-		כיון שההיסט הוא ברוחב 12 ביטים שזה בדיוק 3 ספרות הקסה אנו מקבלים שההיסט הוא
-			${offset.toString(16).toUpperCase().padStart(3,"0")}
-		ואילו מספר הדף הוירטואלי הוא 
-		${vp.toString(16).toUpperCase().padStart(5, "0")}.<br/>
-		בשלב זה עלינו לפצל את מספר הדף הוירטואלי לשני האינדקסים
+		כיון ש-12 הביטים הם ההיסט 
+		וזה בדיוק 3 ספרות הקסה
+		 אנו מקבלים את הפירוק הבא:
+		<ol>
+		<li>
+		 ההיסט הוא
+			ox${offset.toString(16).toUpperCase().padStart(3,"0")}.
+		</li>
+		<li>
+			מספר הדף הוירטואלי הוא 
+		ox${vp.toString(16).toUpperCase().padStart(5, "0")}.<br/>
+		</li>
+		</ol>
+		</li>
+		<li>
+		בשלב זה עלינו לפצל את מספר הדף 
+		הוירטואלי לשני האינדקסים
 		i0 ו-i1.
-		כל אחד מהשדות הוא ברוחב 10 ביטים והדרך הבטוחה לעבוד
+		כל אחד מהשדות הוא ברוחב 10 ביטים
+		 והדרך הבטוחה לעבוד
 		היא לתרגם את מספר הדף הוירטואלי לבינרי ואז לפצל לשדות.
-		ובכן.
-		בבינרי מספר הדף הוירטואלי הוא
-		${vp.toString(2).padStart(20,"0")}.
-		ולכן השדה i0 הוא
-		${i0.toString(2).padStart(10, "0")}
-		ואילו השדה i1 הוא
-		${i1.toString(2).padStart(10, "0")}.
+		נקבל
+		0b${vp.toString(2).padStart(20,"0")} ואז:
+		<ol>
+		<li>
+		i0 = 0b${i0.toString(2).padStart(10, "0")}.
+		</li>
+		<li>
+		i1 = 0b${i1.toString(2).padStart(10, "0")}.
+		</li>
+		</ol>
+		</li>
+		<li>
 		השדות i0 ו-i1 הינם אינדקסים
 		ולכן חסרי שימוש.
 		יש להפוך אותם להיסטים.
 		כיון שכל כניסה בטבלת התרגום היא ברוחב 4B
 		יש להכפיל את האינדקסים פי 4.
 		בבינרי קל להכפיל פי 4 מוסיפים שני אפסים מימין.
-		אז אנו מקבלים ש-i0 &times; 4
-		הוא
-		${(i0*4).toString(2).padStart(12, "0")}
-		ואילו i1 &times; 4 הוא
-		${(i1*4).toString(2).padStart(12, "0")}.
-		בהקסה נקבל ש-i0 הוא
-		${(i0*4).toString(16).toUpperCase().padStart(3, "0")}
-		ואילו i1 &times; 4 הוא
-		${(i1*4).toString(16).toUpperCase().padStart(3, "0")}.
-		<br/>
-		אחרי ההכנה המפרכת הנ"ל אפשר לגשת לתמונת הזכרון.
+		<ol>
+		<li>
+		i0 &times; 4 = 
+		0b${(i0*4).toString(2).padStart(12, "0")}
+		</li>
+		<li>
+		i1 &times; 4 =
+		0b${(i1*4).toString(2).padStart(12, "0")}.
+		</li>
+		</ol>
+		<li>
+		נתרגם את 
+		i0 ו-i1
+		להקסה.
+		<ol>
+		<li>
+		i0 &times 4 = 
+		0x${(i0*4).toString(16).toUpperCase().padStart(3, "0")}
+		</li>
+		<li>
+		i1 &times; 4 =
+		0x${(i1*4).toString(16).toUpperCase().padStart(3, "0")}.
+		</li>
+		</ol>
+		</li>
+		<li>
+		נתון 
+		cr3 =
+		0x${extTbl.toString(16).toUpperCase().padStart(5, "0")}.
+		</li>
+		<li>
 		מספר הדף הפיזי בו נמצאת הטבלה החיצונית
 		(הטבלה ברמה 0)
 		נמצא ב-20 הביטים השמאליים של
-		cr3,
+		cr3.
 		כלומר:
-		${Math.trunc(extTbl/4096).toString(16).toUpperCase().padStart(5, "0")}.
-		על ידי הצמדת ההיסט של כניסה i0
-		למספר זה נקבל את הכתובת הפיזית של כניסה i0
-		בטבלה החיצונית, משמע:
-		${(extEntry).toString(16).toUpperCase().padStart(8,"0")}.
-			מתמונת הזכרון נקבל שהתוכן (4 בתים) שנמצא בכתובת זו הוא
-		${ram.readD(extEntry).toString(16).toUpperCase().padStart(8,"0")}.
+		0x${Math.trunc(extTbl/4096).toString(16).toUpperCase().padStart(5, "0")}.
+		</li>
+		<li>
+		הטבלה החיצונית מצחילה בכתובת
+		0x${extTbl.toString(16).toUpperCase().padStart(5, "0")}.
+		</li>
+		<li>
+		צריך לקרוא את כניסה 
+		i0
+		של הטבלה החיצונית.
+		לשם כך צריך לחשב את הכתובת  הפיזית של כניסה זו.
+		לשם כך צריך להוסיף את ההיסט של כניסה 
+			i0
+		לכתובת ההתחלה של הטבלה החיצונית:
+		0x${(extEntry).toString(16).toUpperCase().padStart(8,"0")}.
+		</li>
+		<li>
+			מתמונת הזכרון נקבל שהתוכן (4 בתים)
+			 שנמצא בכתובת זו הוא
+		0x${ram.readD(extEntry).toString(16).toUpperCase().padStart(8,"0")}.
+		</li>
+		<li>
 		התוכן הוא אי-זוגי כלומר הכניסה וולידית.
-		12 הביטים הימניים הם דגלים.
-		12 מתחלק יפה ב-4
-		ולכן חמשת הספרות ההקסה השמאליות הן מספר הדף הפיזי של הטבלה הפנימית (רמה 1)
-		שאנו צריכים.
-		כלומר:
-		${Math.trunc(ram.readD(extEntry)/4096).toString(16).toUpperCase().padStart(5,"0")}.
-
-		אנו צריכים לגשת לאינדקס i1
+		</li>
+		<li>
+		12 
+		הביטים הימניים הם דגלים.
+		12
+		 מתחלק יפה ב-4
+		ולכן חמשת הספרות ההקסה השמאליות הן
+		 מספר הדף הפיזי של הטבלה הפנימית (רמה 1)
+		שאנו צריכים:
+		0x${Math.trunc(ram.readD(extEntry)/4096).toString(16).toUpperCase().padStart(5,"0")}.
+		</li>
+		<li>
+		כתובת ההתחלה של הטבלה הפנימית היא
+		0x${Math.trunc(ram.readD(extEntry)/4096).toString(16).toUpperCase().padStart(5,"0")}000.
+			</li>
+		<li>
+		אנו צריכים לקרוא את כניסה 
+		 i1
 		בטבלה הפנימית.
-		כלומר עליני להצמיד למספר הדף הפנימי את i1 &times; 4.
-		נקבל
-		${inrEntry.toString(16).toUpperCase().padStart(8, "0")}.
-		מקריאת תמונת הזכרון נקבל שהתוכן (4 בתים) בכתובת זו הוא
-		${ram.readD(inrEntry).toString(16).toUpperCase().padStart(8,"0")}.
-		כיון שהתוכן אי-זוגי הכניסה וולידית ולכן מספר הדף הפיזי המבוקש הוא
-		${pp.toString(16).toUpperCase().padStart(5,"0")}.
-		על ידי הצמדת שדה ההיסט של הכתובת הוירטואלית למספר זה
-		נקבל אץ הכתובת הפיזית המבוקשת:
-		${pa.toString(16).toUpperCase().padStart(8,"0")}.
-		<br/>
+		לשם כך יש לחשב את הכתובת של כניסה זו.
+		הכתובת מתקבלת על ידי
+		 הוספת ההיסט
+		 i1 &times; 4
+		 לכתובת התחלה של הדף הפנימי:
+		0x${inrEntry.toString(16).toUpperCase().padStart(8, "0")}.
+		</li>
+		<li>
+		מקריאת תמונת הזכרון נקבל שהתוכן (4 בתים)
+		 בכתובת זו הוא
+		0x${ram.readD(inrEntry).toString(16).toUpperCase().padStart(8,"0")}.
+		</li>
+		<li>
+		כיון שהתוכן אי-זוגי הכניסה וולידית.
+		</li>
+		<li>
+		 ולכן מספר הדף הפיזי המבוקש הוא
+		0x${Math.trunc(pp/4096).toString(16).toUpperCase().padStart(5,"0")}.
+		</li>
+		<li>
+		 ולכן כתובת ההתחלה של  הדף הפיזי המבוקש היא
+		0x${pp.toString(16).toUpperCase().padStart(5,"0")}.
+		</li>
+		<li>
+		על ידי הוספת ההיסט מהתוכבת הוירטואלית
+		  לכתובת תחילת הדף הפיזי
+		  נקבל את הדרוש:
+		0x${pa.toString(16).toUpperCase().padStart(8,"0")}.
+		</li>
+		</ol>
 		<hr>`;
 
 	let eExplanation = document.getElementById("explanation");
