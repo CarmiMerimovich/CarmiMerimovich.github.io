@@ -19,6 +19,8 @@ function fillGarbage(page) {// Garbage looking as legit
 
 
 let va = Math.trunc(Math.random() * (2**32));
+let vp = Math.trunc(va / 4096);
+let offset = va % 4096;
 let pp = Math.trunc(Math.random() * (2**22)) * 4096;
 let pa = pp + (va % 4096);
 
@@ -94,6 +96,80 @@ displayRam.display();
 function displayAnswer() {
 	let eAnswer = document.getElementById("answer");
 	eAnswer.innerHTML = pa.toString(16).toUpperCase().padStart(8, "0");
+
+	let s = `הכתובת הוירטואלית הנתונה היא 
+		${va.toString(16).toUpperCase().padStart(8, "0")}.
+		יש לפרק אותה למספר דף וירטואלי והיסט.
+		כיון שההיסט הוא ברוחב 12 ביטים שזה בדיוק 3 ספרות הקסה אנו מקבלים שההיסט הוא
+			${offset.toString(16).toUpperCase().padStart(3,"0")}
+		ואילו מספר הדף הוירטואלי הוא 
+		${vp.toString(16).toUpperCase().padStart(5, "0")}.<br/>
+		בשלב זה עלינו לפצל את מספר הדף הוירטואלי לשני האינדקסים
+		i0 ו-i1.
+		כל אחד מהשדות הוא ברוחב 10 ביטים והדרך הבטוחה לעבוד
+		היא לתרגם את מספר הדף הוירטואלי לבינרי ואז לפצל לשדות.
+		ובכן.
+		בבינרי מספר הדף הוירטואלי הוא
+		${vp.toString(2).padStart(20,"0")}.
+		ולכן השדה i0 הוא
+		${i0.toString(2).padStart(10, "0")}
+		ואילו השדה i1 הוא
+		${i1.toString(2).padStart(10, "0")}.
+		השדות i0 ו-i1 הינם אינדקסים
+		ולכן חסרי שימוש.
+		יש להפוך אותם להיסטים.
+		כיון שכל כניסה בטבלת התרגום היא ברוחב 4B
+		יש להכפיל את האינדקסים פי 4.
+		בבינרי קל להכפיל פי 4 מוסיפים שני אפסים מימין.
+		אז אנו מקבלים ש-i0 &times; 4
+		הוא
+		${(i0*4).toString(2).padStart(12, "0")}
+		ואילו i1 &times; 4 הוא
+		${(i1*4).toString(2).padStart(12, "0")}.
+		בהקסה נקבל ש-i0 הוא
+		${(i0*4).toString(16).toUpperCase().padStart(3, "0")}
+		ואילו i1 &times; 4 הוא
+		${(i1*4).toString(16).toUpperCase().padStart(3, "0")}.
+		<br/>
+		אחרי ההכנה המפרכת הנ"ל אפשר לגשת לתמונת הזכרון.
+		מספר הדף הפיזי בו נמצאת הטבלה החיצונית
+		(הטבלה ברמה 0)
+		נמצא ב-22 הביטים הימניים של האוגר
+		 satp.
+		 כלומר
+		הוא ${(extTbl/4096).toString(16).toUpperCase().padStart(6, "0")}.
+		על ידי הצמדת ההיסט של כניסה 
+		i0
+		למספר זה נקבל את הכתובת הפיזית של כניסה i0
+		בטבלה החיצונית, משמע:
+		${(extEntry).toString(16).toUpperCase().padStart(8,"0")}.
+			מתמונת הזכרון נקבל שהתוכן (4 בתים) שנמצא בכתובת זו הוא
+		${ram.readD(extEntry).toString(16).toUpperCase().padStart(8,"0")}.
+		התוכן הוא אי-זוגי כלומר הכניסה וולידית.
+		12 הביטים הימניים הם דגלים.
+		12 מתחלק יפה ב-4
+		ולכן חמשת הספרות ההקסה השמאליות הן מספר הדף הפיזי של הטבלה הפנימית (רמה 1)
+		שאנו צריכים.
+		כלומר:
+		${Math.trunc(ram.readD(extEntry)/4096).toString(16).toUpperCase().padStart(5,"0")}.
+
+		אנו צריכים לגשת לאינדקס i1
+		בטבלה הפנימית.
+		כלומר עליני להצמיד למספר הדף הפנימי את i1 &times; 4.
+		נקבל
+		${inrEntry.toString(16).toUpperCase().padStart(8, "0")}.
+		מקריאת תמונת הזכרון נקבל שהתוכן (4 בתים) בכתובת זו הוא
+		${ram.readD(inrEntry).toString(16).toUpperCase().padStart(8,"0")}.
+		כיון שהתוכן אי-זוגי הכניסה וולידית ולכן מספר הדף הפיזי המבוקש הוא
+		${pp.toString(16).toUpperCase().padStart(5,"0")}.
+		על ידי הצמדת שדה ההיסט של הכתובת הוירטואלית למספר זה
+		נקבל אץ הכתובת הפיזית המבוקשת:
+		${pa.toString(16).toUpperCase().padStart(8,"0")}.
+		<br/>
+		<hr>`;
+
+	let eExplanation = document.getElementById("explanation");
+	eExplanation.innerHTML = s;
 }
 
 function displayDump() {
