@@ -37,7 +37,7 @@ function showAnswer() {
 
     e = document.getElementById("tblHeight");
     if (e != null) {
-        e.innerHTML = `${a.length - 1} --- (${a.toReversed().slice(0,-1).join(",")})`;
+        e.innerHTML = `${a.length - 1}`;
     }
 }
 
