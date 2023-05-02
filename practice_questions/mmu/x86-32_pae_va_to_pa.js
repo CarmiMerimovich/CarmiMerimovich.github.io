@@ -108,14 +108,28 @@ displayRam.display();
 function displayAnswer() {
 	let eAnswer = document.getElementById("answer");
 	eAnswer.innerHTML = pa.toString(16).toUpperCase().padStart(9, "0");
-	let s = `הכתובת הוירטואלית הנתונה היא 
-		${va.toString(16).toUpperCase().padStart(8, "0")}.
-		יש לפרק אותה למספר דף וירטואלי והיסט.
-		כיון שההיסט הוא ברוחב 12 ביטים שזה בדיוק 3 ספרות הקסה אנו מקבלים שההיסט הוא
-			${offset.toString(16).toUpperCase().padStart(3,"0")}
-		ואילו מספר הדף הוירטואלי הוא 
-		${vp.toString(16).toUpperCase().padStart(5, "0")}.<br/>
-		בשלב זה עלינו לפצל את מספר הדף הוירטואלי לשלושת האינדקסים
+	let s = `<ol>
+		<li>
+		הכתובת הוירטואלית הנתונה היא 
+		0x${va.toString(16).toUpperCase().padStart(8, "0")}.
+		</li>
+		<li>
+		נפרק אותה למספר דף וירטואלי והיסט.
+		כיון שההיסט הוא ברוחב 12 ביטים
+		 שזה בדיוק 3 ספרות הקסה מקבלים:
+		 <ol>
+		 <li>
+		 	היסט:
+			0x${offset.toString(16).toUpperCase().padStart(3,"0")}.
+		</li>
+		<li>
+		מספר דף וירטואלי:
+		0x${vp.toString(16).toUpperCase().padStart(5, "0")}.
+		</li>
+		</ol>
+		<li>
+		בשלב זה עלינו לפצל
+		 את מספר הדף הוירטואלי לשלושת האינדקסים
 		i0,&rlm; i1,&rlm; ו-i2&rlm;.
 		רוחב השדות הוא 
 		2b,&rlm;
@@ -124,16 +138,21 @@ function displayAnswer() {
 		בהתאמה.
 		הדרך הבטוחה לעבוד
 		היא לתרגם את מספר הדף הוירטואלי לבינרי ואז לפצל לשדות.
-		ובכן.
 		בבינרי מספר הדף הוירטואלי הוא
-		${vp.toString(2).padStart(20,"0")}.
-		ולכן השדה i0 הוא
-		${i0.toString(2).padStart(2, "0")},
-		 השדה i1 הוא
-		${i1.toString(2).padStart(9, "0")},
-		ולסיום
-		השדה i2 הוא
-		${i2.toString(2).padStart(9, "0")}.
+		0b${vp.toString(2).padStart(20,"0")}.
+		<ol>
+		<li>
+		i0 = 0b${i0.toString(2).padStart(2, "0")}.
+		</li>
+		<li>
+		i1 = 0b${i1.toString(2).padStart(9, "0")}.
+		</li>
+		<li>
+		i2 = 0b${i2.toString(2).padStart(9, "0")}.
+		</li>
+		</ol>
+		</li>
+		<li>
 		השדות 
 		i0,&rlm; i1,&rlm; ו-i2&rlm;
 		 הינם אינדקסים
@@ -143,110 +162,185 @@ function displayAnswer() {
 		 8B
 		יש להכפיל את האינדקסים פי 8.
 		בבינרי קל להכפיל פי 8 מוסיפים שלושה אפסים מימין.
-		אז אנו מקבלים ש-i0 &times; 8
-		הוא
-		${(i0*8).toString(2).padStart(12, "0")},
-		i1 &times; 8 הוא
-		${(i1*8).toString(2).padStart(12, "0")},
-		ולסיום i2  &times; 8 הוא
-		${(i2*8).toString(2).padStart(12, "0")}.
-		בהקסה נקבל ש-i0 &times; 8
-		 הוא
-		${(i0*8).toString(16).toUpperCase().padStart(3, "0")},
-		i1 &times; 8 הוא
-		${(i1*8).toString(16).toUpperCase().padStart(3, "0")},
-		ולסיום
-		i2 &times; 8 הוא
-		${(i2*8).toString(16).toUpperCase().padStart(3, "0")}.
-		<br/>
-		אחרי ההכנה המפרכת הנ"ל אפשר לגשת לתמונת הזכרון.
+		<ol>
+		<li>
+		i0 &times; 8 =
+		0b${(i0*8).toString(2).padStart(12, "0")}.
+		</li>
+		<li>
+		i1 &times; 8 = 
+		0b${(i1*8).toString(2).padStart(12, "0")}.
+		</li>
+		<li>
+		i2  &times; 8 =
+		0b${(i2*8).toString(2).padStart(12, "0")}.
+		</li>
+		</ol>
+		</li>
+		<li>
+		נתרגם להקסה עבור הנוחות.
+		<ol>
+		<li>
+		i0 &times; 8 = 
+		0x${(i0*8).toString(16).toUpperCase().padStart(3, "0")},
+		</li>
+		<li>
+		i1 &times; 8 =
+		0x${(i1*8).toString(16).toUpperCase().padStart(3, "0")},
+		</li>
+		<li>
+		i2 &times; 8 =
+		0x${(i2*8).toString(16).toUpperCase().padStart(3, "0")}.
+		</li>
+		</ol>
+		<li>
+		cr3 
+		מכיל
+		0x${lev0Tbl.toString(16).toUpperCase().padStart(8, "0")}.
+		</li>
+		<li>
 		מספר הדף הפיזי בו נמצאת הטבלה החיצונית
 		(הטבלה ברמה 0)
 		נמצא ב-20 הביטים השמאליים של
-		cr3,&rlm;
-		 ${(lev0Tbl/4096).toString(16).toUpperCase().padStart(6, "0")}.
+		cr3&rlm;:
+		 0x${(lev0Tbl/4096).toString(16).toUpperCase().padStart(6, "0")}.
 		(יש לשים לב למוזרות שאין מקום
 			 ב-cr3
 			 ל-6
 				ספרות הקסה עבור מספר דף פיזי.)
-		על ידי הצמדת ההיסט של כניסה 
-		i0
-		למספר זה נקבל את הכתובת הפיזית של כניסה
+		</li>
+		<li>
+		לכן כתובת ההתחלה של הטבלה החיצונית היא
+		0x${lev0Tbl.toString(16).toUpperCase().padStart(9, "0")}.
+		</li>
+		<li>
+		צריך לקרוא את כניסה
 		 i0
-		בטבלה החיצונית, משמע:
-		${(lev0Entry).toString(16).toUpperCase().padStart(9,"0")}.
+		 של הטבלה החיצונית.
+		 לשם כך צריך לחשב את כתובת הכניסה.
+		 זו מושגת על-ידי הוספת ההיסט
+		 i0 &times; 8
+		 לכתובת ההתחלה של הטבלה החיצונית:
+		0x${(lev0Entry).toString(16).toUpperCase().padStart(9,"0")}.
+		</li>
+		<li>
 			מתמונת הזכרון נקבל שהתוכן (8 בתים) שנמצא בכתובת זו הוא
-		${ram.readQ(lev0Entry).toString(16).toUpperCase().padStart(16,"0")}.
+		0x${ram.readQ(lev0Entry).toString(16).toUpperCase().padStart(16,"0")}.
+		</li>
+		<li>
 		התוכן הוא אי-זוגי כלומר הכניסה וולידית.
+		</li>
+		<li>
 		28 
 		הביטים השמאליים בכניסה הם מבזים!
 		ולמזלנו הם אכן אפסים.
-		כיון שהביטים השמאליים הם מבזים נרשום שוב רק את 9 הספרות הקסה הימניות של הכניסה:
-		${ram.readQ(lev0Entry).toString(16).toUpperCase().padStart(9,"0")}.&rlm;
+		כיון שהביטים השמאליים הם מבזים נרשום שוב
+		 רק את 9 הספרות הקסה הימניות של הכניסה:
+		0x${ram.readQ(lev0Entry).toString(16).toUpperCase().padStart(9,"0")}.&rlm;
+		</li>
+		<li>
 		12 
 		הביטים הימניים הם דגלים.
 		12 מתחלק יפה
 		 ב-4
 		ולכן ששת הספרות ההקסה השמאליות הן 
 		מספר הדף הפיזי של הטבלה האמצעית (רמה 1)
-		שאנו צריכים.
-		כלומר:
-		${Math.trunc(lev1Tbl/4096).toString(16).toUpperCase().padStart(6,"0")}.
-
-		אנו צריכים לגשת לאינדקס 
+		שאנו צריכים:
+		0x${Math.trunc(lev1Tbl/4096).toString(16).toUpperCase().padStart(6,"0")}.
+		</li>
+		<li>
+		ולכן כתובת ההתחלה של הטבלה האמצעית היא
+		0x${lev1Tbl.toString(16).toUpperCase().padStart(6,"0")}.
+		</li>
+		<li>
+		אנו צריכים לקרוא את כניסה  
 		i1
 		בטבלה האמצעית 
 		(רמה 1).
-		כלומר עלינו להצמיד למספר הדף ההאמצעי את 
-		i1 &times; 8.
-		נקבל
-		${lev1Entry.toString(16).toUpperCase().padStart(9, "0")}.
-		מקריאת תמונת הזכרון נקבל שהתוכן (8 בתים) בכתובת זו הוא
-		${ram.readQ(lev1Entry).toString(16).toUpperCase().padStart(16,"0")}.&rlm;
+		לכן יש לחשב את הכתובת של כניסה זו.
+		לשם כך נוסיף אם ההיסט
+		i1 &times 8
+		לכתובת ההתחלה של הטבלה הפנימית:
+		0x${lev1Entry.toString(16).toUpperCase().padStart(9, "0")}.
+		</li>
+		<li>
+		מקריאת תמונת הזכרון
+		 נקבל שהתוכן (8 בתים) בכתובת זו הוא
+		0x${ram.readQ(lev1Entry).toString(16).toUpperCase().padStart(16,"0")}.&rlm;
+		</li>
+		<li>
 		כיון שהתוכן אי-זוגי הכניסה וולידית.
+		</li>
+		<li>
 		28 
 		הביטים השמאליים בכניסה הם מבזים!
 		ולמזלנו הם אכן אפסים.
 		כיון שהביטים השמאליים הם מבזים נרשום שוב רק את 9 הספרות הקסה הימניות של הכניסה:
-		${ram.readQ(lev1Entry).toString(16).toUpperCase().padStart(9,"0")}.&rlm;
+		0x${ram.readQ(lev1Entry).toString(16).toUpperCase().padStart(9,"0")}.&rlm;
+		</li>
+		<li>
 		12 
 		הביטים הימניים הם דגלים.
-		12 מתחלק יפה
+		12 
+		מתחלק יפה
 		 ב-4
 		ולכן ששת הספרות ההקסה השמאליות הן 
 		מספר הדף הפיזי של הטבלה הפנימית (רמה 2)
 		שאנו צריכים:
-		${Math.trunc(lev2Tbl/4096).toString(16).toUpperCase().padStart(6,"0")}.
-
-
-		אנו צריכים לגשת לאינדקס 
+		0x${Math.trunc(lev2Tbl/4096).toString(16).toUpperCase().padStart(6,"0")}.
+		</li>
+		<li>
+		לכן כתובת ההתחלה של הטבלה הפנימית היא
+		0x${Math.trunc(lev2Tbl/4096).toString(16).toUpperCase().padStart(6,"0")}.
+		</li>
+		<li>
+		 צריך לקרוא את כניסה  
 		i2
 		בטבלה הפנימית 
 		(רמה 2).
-		כלומר עלינו להצמיד למספר הדף הפנימי את 
-		i2 &times; 8.
-		נקבל
-		${lev2Entry.toString(16).toUpperCase().padStart(9, "0")}.
-		מקריאת תמונת הזכרון נקבל שהתוכן (8 בתים) בכתובת זו הוא
-		${ram.readQ(lev2Entry).toString(16).toUpperCase().padStart(16,"0")}.&rlm;
+		לשם כך צריך לחשב את הכתובת של הכניסה.
+		צריך להוסיף את היסט הכניסה
+		i2 &times 8
+		לכתובת ההתחלה של הטבלה הפנימית:
+		0x${lev2Entry.toString(16).toUpperCase().padStart(9, "0")}.
+		</li>
+		<li>
+		מקריאת תמונת 
+		הזכרון נקבל שהתוכן (8 בתים) בכתובת זו הוא
+		0x${ram.readQ(lev2Entry).toString(16).toUpperCase().padStart(16,"0")}.&rlm;
+		</li>
+		<li>
 		כיון שהתוכן אי-זוגי הכניסה וולידית.
+		</li>
+		<li>
 		28 
 		הביטים השמאליים בכניסה הם מבזים!
 		ולמזלנו הם אכן אפסים.
 		כיון שהביטים השמאליים הם מבזים נרשום שוב רק את 9 הספרות הקסה הימניות של הכניסה:
-		${ram.readQ(lev2Entry).toString(16).toUpperCase().padStart(9,"0")}.&rlm;
+		0x${ram.readQ(lev2Entry).toString(16).toUpperCase().padStart(9,"0")}.&rlm;
+		</li>
+		<li>
 		12 
 		הביטים הימניים הם דגלים.
-		12 מתחלק יפה
+		12 
+		מתחלק יפה
 		 ב-4
 		ולכן ששת הספרות ההקסה השמאליות הן 
 		מספר הדף הפיזי 
 		  המבוקש:
-		${Math.trunc(pp/4096).toString(16).toUpperCase().padStart(6,"0")}.
-		על ידי הצמדת שדה ההיסט של הכתובת הוירטואלית למספר זה
-		נקבל את הכתובת הפיזית המבוקשת:
-		${pa.toString(16).toUpperCase().padStart(9,"0")}.
-		<br/>
+		0x${Math.trunc(pp/4096).toString(16).toUpperCase().padStart(6,"0")}.
+		</li>
+		<li>
+		כלומר כתובת תחילת הדף הפיזי המבוקש היא
+		0x${pp.toString(16).toUpperCase().padStart(9,"0")}.
+		</li>
+		<li>
+		נקבל את הכתובת הפיזית המבוקשת על-ידי
+		הוספת  ההיסט 
+		מהכתובת הוירטואלית לכתובת תחילת הדף הפיזי:
+		0x${pa.toString(16).toUpperCase().padStart(9,"0")}.
+		</li>
+		</ol>
 		<hr>`;
 
 	let eExplanation = document.getElementById("explanation");
