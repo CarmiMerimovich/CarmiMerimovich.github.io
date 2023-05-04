@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 
-<html lang="en" 
-        dir="ltr">
+<html lang="he" 
+        dir="rtl">
 <head>
-    <title>Carmi Merimovich, Personal Site</title>
+    <title>קריאה מהזכרון</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -49,7 +49,7 @@
     </style>
 
     
-        <a href="/" 
+        <a href="/he/" 
          style="display: contents;" 
            class="headerL1">
     
@@ -62,10 +62,10 @@
 				</div>
 				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                    Carmi Merimovich
+                    כרמי מרימוביץ
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						Personal Site
+						אתר אישי
 					</h3>
                     <h3>
 					</h3>
@@ -86,62 +86,26 @@
 
 
     
-<script src="./mano_cache.js" type="module">
+<script src="../memory_content.js" type="module">
 </script>
-<div style="padding-top: 0.5Em;">
-A computer system has memory of size
-<span id = "memorySize"></span>
-words and cache memory of size
-<span id = "cacheSize"></span>
-memory words.
 
-Each word has  width of
-<span id = "memWordWidth"></span>
-bits.
-
-The cache is 
-<span id="cacheSetSize" dir="ltr"></span>-way set associative.
-The block size is one and the replacement policy is LRU.
-
-Each row (from left to right) contains the following
-fields:
-
-valid,
-tag,
-value.
-
-The following memory access list is given,
-	from left to right:
-<div  id="accessList" style="padding-top: 0.5Em; padding-bottom: 0.5Em;"></div>
-
-The cache is empty before the above access list is	attempted.
+<p>
+In a computer system the memory subsystem is byte addressable.
+The memory subsystem is 
+<span id="endian"></span>.
+What is the content of the
+<span id="unit1" style="display: none;">byte</span>
+<span id="unit2" style="display: none;">word (= 2 bytes)</span>
+<span id="unit4" style="display: none;">double word (= 4 bytes)</span>
+ at address
+<span id="address"></span>?
+</p>
+<p>
+<button id="answerButton">Answer</button>
+<span id="answer"></span>
+</p>
+<div id="displayArea">
 </div>
-<div id = "debug" dir="ltr"></div>
-
-<ol>
-<li>
-How many times was there a hit?
- <span id="answerHit" dir="ltr"></span>
-</li>
-<li>
-How many replacements were there in the cache?
-<span id="answerReplace" dir="ltr"></span>
-</li>
-<li>
-What is the width of one cache line?
-<span id="answerCacheLineWidth" dir="ltr"></span>
-</li>
-<li>
-What is the most common value fo the TAG fields	after
-	the access list was attempted?
-</li>
-<li>
-How many valid bits are zero at the end of attempting
-	the above access list?
-<span id="answerNotValid" dir="ltr"></span>
-</li>
-</ol>
-
 
 
 
@@ -161,19 +125,19 @@ How many valid bits are zero at the end of attempting
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;" 
-                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedin </a>
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
         </li>
             <li style="display: inline; margin-right: 20px;">
             
                 <a style="color: #999;"
-                href="/">
-                Carmi Merimovich
+                href="/he/">
+                כרמי מרימוביץ
             </a>
             
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            personal site
+            גריאה מהזכרון
             </span>
         </li>
     </ul>

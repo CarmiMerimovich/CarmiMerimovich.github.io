@@ -1,8 +1,8 @@
 //
 // m e m o r y _ c o n t e n t 
 //
-import {Ram} from "../Ram.mjs";
-import {DisplayRam} from "../DisplayRam.mjs";
+import {Ram} from "./Ram.mjs";
+import {DisplayRam} from "./DisplayRam.mjs";
 
 let unit = Math.pow(2,Math.trunc(Math.random() * 3));
 
