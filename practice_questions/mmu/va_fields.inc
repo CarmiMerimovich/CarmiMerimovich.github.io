@@ -115,6 +115,25 @@ if (vpWidth < indexWidth) {
     </li>
     `
 
+if (document.getElementById("vpFields") != null ||
+    document.getElementById("tblHeight") != null) {
+    explanation += `<li>
+        מבנה השדה דף וירטואלי הוא מבנה
+        כתובת וירטואלית ללא שדה ההיסט,
+        כלומר
+        (${a.toReversed().slice(0,-1).join(",")}).
+    </li>`;
+}
+
+if (document.getElementById("tblHeight") != null) {
+    explanation += `<li>
+        מספר הרמות בטבלת התרגום
+        הוא כמספר האינדקסים במספר דף וירטואלי, כלומר
+        ${a.length - 1}.
+    </li>`;
+}
+
+
 explanation += "</ol>";
 
 function showAnswer() {
