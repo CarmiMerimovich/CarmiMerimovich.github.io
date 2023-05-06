@@ -86,7 +86,7 @@
 
 
     
-<h2>פיענוח קבוע ברוחב 32 ביטים</h2>
+<h2>פיענוח קבוע</h2>
 נתונות שתי הפקודות הבאות:
 <div>
   <div style="direction: ltr;" id="code"></div>
@@ -101,16 +101,18 @@
 <div><button id="nextStepButton" style="display: none" type="clock" onclick="nextStep();">עוד צעד</button></div>
 
 <script>
-  let num = BigInt(Math.trunc(Math.random() * 2**32));
-  if (num & 0x80000000n) num |= 0xFFFFFFFF00000000n;
-  let m = num & 0xFFFn;
-  let n = (num >> 12n) & 0xFFFFFn;
-  let n1 = n;
-  if (m & 0x800n)  n1++;
+  let m = BigInt(Math.trunc(Math.random() * 2**12));
+  let n = BigInt(Math.trunc(Math.random() * 2**20));
+
+  if (m & 0x800n) m |= 0xFFFFFFFFFFFFF000n;
+  if (n & 0x80000n) n |= 0xFFFFFFFF00000n;
+
+  let num = (n << 12n) + m;
+  num = num & (2n**64n - 1n);
 
   let s = `<pre>
-    lui t0, 0x${n1.toString(16).toUpperCase()}
-    addi t0, t0, 0x${m.toString(16).toUpperCase()}
+    lui t0, 0x${(n & 2n**20n-1n).toString(16).toUpperCase()}
+    addi t0, t0, 0x${(m & 4095n).toString(16).toUpperCase()}
   </pre>`;
   let e = document.getElementById("code");
   e.innerHTML = s;
@@ -149,13 +151,9 @@ function firstStep() {
   }
 
   function makeStep() {
-    let m = num & 0xFFFn;
-    let n = (num >> 12n) & 0xFFFFFn;
-    let n1 = n;
-    if (m & 0x800n)  n1++;
 
     {
-      let s = `תשובה<br/>
+      let s = `תשובה (הסבר לא ממש מוצלח!)<br/>
       הערך שיטען הוא
        0x${num.toString(16).toUpperCase()}.`;
       let eAnswer = document.getElementById("answer");
@@ -168,24 +166,26 @@ function firstStep() {
     {
     let s = `<hr/>
     דרך<br/>
-    12 הביטים הימניים של 
-    של התשובה יהיו
-     0x${m.toString(16).toUpperCase().padStart(3, "0")}.
+    12
+     הביטים הימניים של 
+     התשובה יהיו
+     0x${(m & 4095n).toString(16).toUpperCase().padStart(3, "0")}.
      <hr/>`;
     stepHTML[stepCnt++] = s;
     }
     {
       let t;
       if (m & 0x800n) 
-        t = `כיון שהביט השמאלי של החלק הנמוך
+        t = `כיון שהביט השמאלי של 
+        0x${(m & 4095n).toString(16).toUpperCase()}
               הוא 1 אזי 20 הביטים השמאליים:
                 יהיו
-                 0x${n.toString(16).toUpperCase().padStart(5,"0")} = 
-                 0x${n1.toString(16).toUpperCase().padStart(5,"0")} - 1.`;
+                 0x${((num >> 12n) & (2n**20n-1n)).toString(16).toUpperCase().padStart(5,"0")}.`;
         else
-         t = `כיון שהביט השמאלי של החלק הנמוך
+         t = `כיון שהביט השמאלי של
+         0x${(m & 4095n).toString(16).toUpperCase()}
               הוא 0 אזי 20 הביטים השמאליים יהיו
-              0x${n.toString(16).toUpperCase().padStart(5,"0")}.`;
+              0x${((num >> 12n) & (2n**20n-1n)).toString(16).toUpperCase().padStart(5,"0")}.`;
     let s = `${t}<hr/>`;
     
       stepHTML[stepCnt++] = s;
