@@ -101,11 +101,12 @@
 <div><button id="nextStepButton" style="display: none" type="clock" onclick="nextStep();">עוד צעד</button></div>
 
 <script>
-  let num = Math.trunc(Math.random() * 2**20);
-  let m = num & 0xFFF;
-  let n = (num >> 12) & 0xFFFFF;
+  let num = BigInt(Math.trunc(Math.random() * 2**32));
+  if (num & 0x80000000n) num |= 0xFFFFFFFF00000000n;
+  let m = num & 0xFFFn;
+  let n = (num >> 12n) & 0xFFFFFn;
   let n1 = n;
-  if (m & 0x800)  n1++;
+  if (m & 0x800n)  n1++;
 
   let s = `<pre>
     lui t0, 0x${n1.toString(16).toUpperCase()}
@@ -148,10 +149,10 @@ function firstStep() {
   }
 
   function makeStep() {
-    let m = num & 0xFFF;
-    let n = (num >> 12) & 0xFFFFF;
+    let m = num & 0xFFFn;
+    let n = (num >> 12n) & 0xFFFFFn;
     let n1 = n;
-    if (m & 0x800)  n1++;
+    if (m & 0x800n)  n1++;
 
     {
       let s = `תשובה<br/>
@@ -169,12 +170,13 @@ function firstStep() {
     דרך<br/>
     12 הביטים הימניים של 
     של התשובה יהיו
-     0x${m.toString(16).toUpperCase().padStart(3, "0")}.`;
+     0x${m.toString(16).toUpperCase().padStart(3, "0")}.
+     <hr/>`;
     stepHTML[stepCnt++] = s;
     }
     {
       let t;
-      if (m & 0x800) 
+      if (m & 0x800n) 
         t = `כיון שהביט השמאלי של החלק הנמוך
               הוא 1 אזי 20 הביטים השמאליים:
                 יהיו
@@ -184,9 +186,14 @@ function firstStep() {
          t = `כיון שהביט השמאלי של החלק הנמוך
               הוא 0 אזי 20 הביטים השמאליים יהיו
               0x${n.toString(16).toUpperCase().padStart(5,"0")}.`;
-    let s = `<hr/>
-      ${t}`;
+    let s = `${t}<hr/>`;
     
+      stepHTML[stepCnt++] = s;
+    }
+    
+    if (num & 0x80000000n) {
+      let s=`כיון שהביט השמאלי של החלק הגבוה דולק
+        צריך לשים 1 בביטים 32-63. <hr/>`;
       stepHTML[stepCnt++] = s;
     }
 
