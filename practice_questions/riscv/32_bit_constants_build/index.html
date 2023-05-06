@@ -107,15 +107,18 @@
 <div><button id="nextStepButton" style="display: none" type="clock" onclick="nextStep();">עוד צעד</button></div>
 
 <script>
-  let num = BigInt(Math.trunc(Math.random() * 2**32));
-  let m = num & 0xFFFn;
-  let n = (num >> 12n) & 0xFFFFFn;
-  let n1 = n;
-  if (m & 0x800n)  n1++;
+  let m = BigInt(Math.trunc(Math.random() * 2**12));
+  let n = BigInt(Math.trunc(Math.random() * 2**20));
 
-  if (n1 & 0x80000n) num |= 0xFFFFFFFF00000000n;
+
+  if (m & 0x800n) m |= 0xFFFFFFFFFFFFF000n;
+  if (n & 0x80000n) n |= 0xFFFFFFFF00000n;
+
+  let num = (n << 12n) + m;
+  num = num & (2n**64n - 1n);
+
   let e = document.getElementById("constant");
-  e.innerHTML = `0x${num.toString(16).toUpperCase()}`;
+  e.innerHTML = `0x${(num & (2n**64n-1n)).toString(16).toUpperCase()}`;
 
 
 </script>
@@ -155,8 +158,8 @@ function firstStep() {
     {
       let s = `תשובה<br/>
       <div style="direction: ltr;">
-        n = 0x${n1.toString(16).toUpperCase().padStart(5,"0")} <br/>
-        m = 0x${m.toString(16).toUpperCase().padStart(3,"0")} <br/>
+        n = 0x${(n & (2n**20n-1n)).toString(16).toUpperCase().padStart(5,"0")} <br/>
+        m = 0x${(m & 4095n).toString(16).toUpperCase().padStart(3,"0")} <br/>
       </div?`;
       let eAnswer = document.getElementById("answer");
       eAnswer.innerHTML = s;
@@ -172,7 +175,7 @@ function firstStep() {
      הביטים הימניים של 
     0x${(num & 0xFFFFFFFFn).toString(16).toUpperCase()}
     הם
-     0x${m.toString(16).toUpperCase().padStart(3, "0")},
+     0x${(m & 4095n).toString(16).toUpperCase().padStart(3, "0")},
      זה יהיה ערכו של m.`;
     stepHTML[stepCnt++] = s;
     }
@@ -184,8 +187,9 @@ function firstStep() {
               הוא 1 אזי צריך להגדיל ערך זה ב-1:
                n
                 יהיה
-                 0x${n1.toString(16).toUpperCase().padStart(5,"0")} = 
-                 0x${n.toString(16).toUpperCase().padStart(5,"0")} + 1.`;
+                0x${(n & (2n**20n -1n)).toString(16).toUpperCase().padStart(5,"0")}
+                = 
+                  0x${((num >> 12n) & (2n**20n-1n)).toString(16).toUpperCase().padStart(5,"0")} + 1.`;
         else
          t = `כיון שהביט השמאלי של
                m
@@ -194,9 +198,9 @@ function firstStep() {
     let s = `<hr/>
     20
      הביטים השמאליים של 
-    0x${(num & 0xFFFFFFFFn).toString(16).toUpperCase()}
+    0x${(num & (2n**32n-1n)).toString(16).toUpperCase()}
     הם 
-      0x${n.toString(16).toUpperCase().padStart(5, "0")}.
+      0x${((num >> 12n) & (2n**20n-1n)).toString(16).toUpperCase().padStart(5, "0")}.
       ${t}`;
     
       stepHTML[stepCnt++] = s;
