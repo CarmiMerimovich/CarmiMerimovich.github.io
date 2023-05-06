@@ -86,7 +86,7 @@
 
 
     
-<h2>טעינת קבוע ברוחב 32 ביטים</h2>
+<h2>טעינת קבוע ברוחב 32 ביטים (מה לעשות, לאוגר 64 ביט)</h2>
 <div>
 צריך לטעון לאוגר t0
   את הקבוע
@@ -108,7 +108,12 @@
 
 <script>
   let num = BigInt(Math.trunc(Math.random() * 2**32));
-  if (num & 0x80000000n) num |= 0xFFFFFFFF00000000n;
+  let m = num & 0xFFFn;
+  let n = (num >> 12n) & 0xFFFFFn;
+  let n1 = n;
+  if (m & 0x800n)  n1++;
+
+  if (n1 & 0x80000n) num |= 0xFFFFFFFF00000000n;
   let e = document.getElementById("constant");
   e.innerHTML = `0x${num.toString(16).toUpperCase()}`;
 
@@ -146,10 +151,6 @@ function firstStep() {
   }
 
   function makeStep() {
-    let m = num & 0xFFFn;
-    let n = (num >> 12n) & 0xFFFFFn;
-    let n1 = n;
-    if (m & 0x800n)  n1++;
 
     {
       let s = `תשובה<br/>
