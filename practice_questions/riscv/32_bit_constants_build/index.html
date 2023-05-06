@@ -107,7 +107,8 @@
 <div><button id="nextStepButton" style="display: none" type="clock" onclick="nextStep();">עוד צעד</button></div>
 
 <script>
-  let num = Math.trunc(Math.random() * 2**20);
+  let num = BigInt(Math.trunc(Math.random() * 2**32));
+  if (num & 0x80000000n) num |= 0xFFFFFFFF00000000n;
   let e = document.getElementById("constant");
   e.innerHTML = `0x${num.toString(16).toUpperCase()}`;
 
@@ -145,10 +146,10 @@ function firstStep() {
   }
 
   function makeStep() {
-    let m = num & 0xFFF;
-    let n = (num >> 12) & 0xFFFFF;
+    let m = num & 0xFFFn;
+    let n = (num >> 12n) & 0xFFFFFn;
     let n1 = n;
-    if (m & 0x800)  n1++;
+    if (m & 0x800n)  n1++;
 
     {
       let s = `תשובה<br/>
@@ -166,8 +167,9 @@ function firstStep() {
     {
     let s = `<hr/>
     דרך<br/>
-    12 הביטים הימניים של 
-    0x${num.toString(16).toUpperCase()}
+    12
+     הביטים הימניים של 
+    0x${(num & 0xFFFFFFFFn).toString(16).toUpperCase()}
     הם
      0x${m.toString(16).toUpperCase().padStart(3, "0")},
      זה יהיה ערכו של m.`;
@@ -175,7 +177,7 @@ function firstStep() {
     }
     {
       let t;
-      if (m & 0x800) 
+      if (m & 0x800n) 
         t = `כיון שהביט השמאלי של
                m
               הוא 1 אזי צריך להגדיל ערך זה ב-1:
@@ -189,8 +191,9 @@ function firstStep() {
               הוא 0 אזי זה יהיה ערכו של 
               n.`;
     let s = `<hr/>
-    20 הביטים השמאליים של 
-    0x${num.toString(16).toUpperCase()}
+    20
+     הביטים השמאליים של 
+    0x${(num & 0xFFFFFFFFn).toString(16).toUpperCase()}
     הם 
       0x${n.toString(16).toUpperCase().padStart(5, "0")}.
       ${t}`;
