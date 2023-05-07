@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>כרמי מרימוביץ, אוסף אקלקטי של נושאים</title>
+    <title>ארכיטקטורת מחשבים</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -85,7 +85,31 @@
 
 
 
-<h1>חומרים מכל מיני קורסים</h1>
+<h1>פקודות מטיפוס I</h1>
+<p>ככלל מטרת הפקודות במשפחה זו היא לבצע פקודות בין אוגר לבין קבוע
+ואת התוצאה לטעון לאוגר שני.
+בפקודה יש 12 ביטים לקבוע ולכן טווח הערכים של הקבוע יכול להיות
+2048-
+עד 2047.</p>
+<p>הפקודות במשפחה זו משמשות גם עבור פקודות הטעינה מהזיכרון אותן נלמד בהמשך.
+יש מוזרות מסויימת, אבל הגיונית, בפקודות ההזזהה בהן הקבוע הוא בין
+6 ביטים בלבד ושאר הביטים משמשים כחלק מקוד הפעולה.</p>
+<p><img src="I.png" alt="פקןדןת מטיפוס I"></p>
+<ul>
+<li>addi ‏ 000</li>
+<li>slti ‏ 010</li>
+<li>sltiu ‏ 011</li>
+<li>xori ‏ 100</li>
+<li>ori ‏ 110</li>
+<li>andi ‏ 111</li>
+</ul>
+<p>כפי שציינו קודם, פקודות ההזזה קצת שונות:
+<img src="I2.png" alt="פקןדןת הזזה I"></p>
+<ul>
+<li>slli ‏ 001 000000</li>
+<li>srli ‏ 101 000000</li>
+<li>srai ‏ 101 010000</li>
+</ul>
 
     
 
@@ -96,45 +120,7 @@
 
 
 
-
-
- <ol > 
-            <li>
-                
-            <a href="computer_architechture/index.html">ארכיטקטורת מחשבים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="digital_design/index.html">מערכות ספרתיות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="risc_v/index.html">תוכניות rv64</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-         </ol> 
+ <ol >  </ol> 
 
 
  </div>
@@ -165,7 +151,7 @@
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            כל מיני נושאים
+            ארכיטקטורת מחשבים
             </span>
         </li>
     </ul>

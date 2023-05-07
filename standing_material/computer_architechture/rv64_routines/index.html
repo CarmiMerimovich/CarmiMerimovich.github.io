@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+
+<html lang="he" 
+        dir="rtl">
+<head>
+    <title>ארכיטקטורת מחשבים</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+	<header>
+
+    <style>
+        .headerL1, .headerL1:active, .headerL1:visited, .headerL1:link
+            {
+                text-decoration: inherit;
+                color: inherit;
+            }
+    </style>
+
+    
+        <a href="/he/" 
+         style="display: contents;" 
+           class="headerL1">
+    
+        <div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+                        <img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+							src="/me.png">
+				</div>
+				<div style="vertical-align: middle;">
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                    כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						אתר אישי
+					</h3>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+    
+        </a>
+    
+        <div>
+            
+                
+	</header>
+
+
+
+
+
+
+<h1>רוטינות</h1>
+<p>שגרות, פונקציות, רוטינות, הן מילים לתיאור אותו הדבר בשפת סף.
+יש יחידת קוד &quot;שקוראים&quot; לה ממקומות שונים ולכן בסיום היחידה יש &quot;לחזור&quot;
+למקומות שונים.</p>
+<p>מעבדים בני ימינו מספקים פקודות כדי לעזור לנו במימוש &quot;הקריאה&quot; ו-&quot;החזרה&quot;.
+ב-rv64 ישנן שתי פקודות שנועדו לעזור לנו לקרוא לשגרות ולחזור מהן.
+שתי הפקודות הן סוג של קפיצה לא מותנה ביחד עם השמת ערך לאוגר.</p>
+<h2>הפקודה הראשונה הינה Jump And Link</h2>
+<pre><code>jal rd, offset  // jump and link
+``
+פקודה זו מבצעת את שתי הפעולות הבאות:
+</code></pre>
+<p>rd ← pc + 4
+pc ← pc + sext(offset)</p>
+<pre><code>המבנה הבינרי של הפקודה הוא כזה:
+![jal](jal.png)
+ראשית נשים לב ששדה ההיסט הוא ברוחב 20 ביטים.
+אותו טריק כמו בפקודות branch
+מאפשר לנו לקפוץ $2^{20}$ בתים אחורה
+ועד $2^{20}-2$ בתים קדימה.
+אם רוצים לבצע קפיצה לא מותנה עם הפקודה הזו ללא תופעות לוואי אזי נבצע:
+</code></pre>
+<p>jal x0, offset</p>
+<pre><code>^15.wav^אם נרצה לבצע קפיצה מותנית למרחק ש branch לא מאפשר
+אבל jump
+כן מאפשר, נאמר
+</code></pre>
+<pre><code>beq x2, x3, 10000   // אי אפשר
+</code></pre>
+<pre><code>אזי נבצע
+</code></pre>
+<pre><code>bne x2, x3, L
+jal x0, 10000  
+</code></pre>
+<p>L:</p>
+<pre><code>כמובן שנשתמש בתוויות ולא במספרים.
+
+## הפקודה השניה הינה Jump And Link Register
+</code></pre>
+<p>jalr rd, offset(rs1)  // jump and link register</p>
+<pre><code>פקודה זו מבצעת את שתי הפעולות הבאות:
+</code></pre>
+<pre><code>rd ← pc + 4
+pc ← rs1 + sext(offset)
+</code></pre>
+<pre><code>המבנה הבינרי של הפקודה הוא כזה:
+![jalr](jalr.png)
+ישנן שתי סיבות טובות מאוד לכך שצריך פקודה זו.
+ראשית, הקפיצה בפקודה זו אינה מוגבלת במרחק.
+זו אינה קפיצה יחסית אלא קפיצה לכתובת מוחלטת.
+(כמובן שנשאלת השאלה איך נכניס לאוגר כתובת מוחלטת...)
+הסיבה השניה היא כדי לתמוך בפוינטרים לפונקציות.
+כלומר אם יש ב-C
+את הקוד הבא:
+</code></pre>
+<p>(*p)()</p>
+<pre><code>ללא פקודה כמו jalr לא היינו מסוגלים לייצר קוד עם אותה משמעות!
+
+לכן הפקודה jalr נקראת גם קפיצה עקיפה (indirect jump).
+
+### איך כל זה עוזר לנו עם שגרות?
+
+ובכן נסתכל בדוגמא הבאה:
+</code></pre>
+<pre><code>jal x7, fun  // first call
+.
+.
+.
+jal x7, fun  // second call
+.
+.
+.
+jal x7, fun  // third call
+.
+.
+.
+.
+.
+.
+</code></pre>
+<p>fun:
+jalr    x0,0(x7)</p>
+<pre><code>בקוד שלמעלה נגיע שלוש פעמים לקוד בתווית fun
+ובכל פעם נחזור לפקודה שאחרי ה-jal
+שבגלל הגענו ל-fun.
+
+מהדוגמא הנ&quot;ל אנו למדים שצריך להיות תיאום בין הקורא לנקרא.
+בדוגמא הקורא מציב את כתובת החזרה באוגר x7
+ואז הנקרא יודע בסיום העבודה לקפוץ לכתובת שנמצא באוגר x7.
+
+התיאום הזה נקרא *הסכם קריאה* (calling convention).
+והסכם הקריאה הנהוג ב-rv64 הוא שכתובת החזרה תהיה באוגר x1.
+ולכן בשפת סף האוגר x1 נקרא גם ra (return address).
+</code></pre>
+
+    
+
+
+
+
+
+
+
+
+ <ol >  </ol> 
+
+
+ </div>
+
+ 
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            
+                <a style="color: #999;"
+                href="/he/">
+                כרמי מרימוביץ
+            </a>
+            
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            ארכיטקטורת מחשבים
+            </span>
+        </li>
+    </ul>
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
