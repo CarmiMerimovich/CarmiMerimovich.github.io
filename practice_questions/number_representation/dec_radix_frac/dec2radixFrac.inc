@@ -12,7 +12,7 @@ const eRadix = document.getElementById("radix");
 eRadix.innerHTML = radix;
 
 const num = Math.trunc(Math.random() * range).toString();
-const number = num.padEnd(digits, "0");
+const number = num.padStart(digits, "0");
 
 const eNumber = document.getElementById("number");
 eNumber.innerHTML = `0.${number}<sub>10</sub>.`;
@@ -53,29 +53,37 @@ let result = number;
 let s = "";
 let count = 0;
 let allDigits = [];
+let allFracs = [result];
 do {
-    let n = (parseInt(result) * radix).toString();
+    let n = (parseInt(result) * radix).toString().padStart(digits+1, "0");
 
     let digit = n.substring(0, n.length - digits);
-    if (digit == "") digit = "0";
-    allDigits.push(parseInt(digit).toString(radix).toUpperCase());
     let result2 = n.slice(-digits);
 
     s += `<tr>
-        <td style="text-align: right;">0.${result}</td>
-        <td style="text-align: center;">${radix}</td>
+        <td style="text-align: right;">0.${result} &times; ${radix} = </td>
         <td style="text-align: right;">${digit}.${result2}</td>
         <td style="text-align: center;">${parseInt(digit).toString(radix).toUpperCase()}</td></tr>`;
     result = result2;
     count++;
+    allDigits.push(parseInt(digit).toString(radix).toUpperCase());
+    if (allFracs.indexOf(result2) >= 0) {
+        break;
+    }
+    allFracs.push(result2);
 } while (parseInt(result) > 0 && count < step);
 
 const eSolution = document.getElementById("solution");
-eSolution.innerHTML = `0.${allDigits.join("")}<sub>${radix}</sub>`;
+if (parseInt(result) == 0)
+    eSolution.innerHTML = `0&lrm;.${allDigits.join("")}<sub>${radix}</sub>`;
+else {
+    let l = allFracs.indexOf(result);
+    eSolution.innerHTML = `0&lrm;.${allDigits.slice(0,l).join("")}<span style="color:blue;">${allDigits.slice(l).join("")}</span><sub>${radix}</sub>`;
 
+}
 const eCalculation = document.getElementById("calculation");
 eCalculation.innerHTML =
-     `<table> <tr><th>נכפל</th><th>כופל</th><th>תוצאה</th><th>ספרה</th></tr>
+     `<table> <tr><th></th><th></th><th>ספרה</th></tr>
 ${s} </table>`; 
 if (parseInt(result) == 0) 
    eNextStepButton.style.visibility = "hidden";
