@@ -78,7 +78,7 @@ if (parseInt(result) == 0)
     eSolution.innerHTML = `0&lrm;.${allDigits.join("")}<sub>${radix}</sub>`;
 else {
     let l = allFracs.indexOf(result);
-    eSolution.innerHTML = `0&lrm;.${allDigits.slice(0,l).join("")}<span style="color:blue;">${allDigits.slice(l).join("")}</span><sub>${radix}</sub>`;
+    eSolution.innerHTML = `0&lrm;.${allDigits.slice(0,l).join("")}<span style="color:blue;">${allDigits.slice(l).join("")}&lrm;.&lrm;.&lrm;.</span><sub>${radix}</sub>`;
 
 }
 const eCalculation = document.getElementById("calculation");
