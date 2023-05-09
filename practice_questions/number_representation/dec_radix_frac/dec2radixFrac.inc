@@ -2,7 +2,7 @@
 let radix;
 do {
     radix = 2 + Math.trunc(Math.random() * 15);
-} while (radix == 10);
+} while (radix == 10); // Not recommend but working
 const range = radix**digits;
 
 const eRadixHead = document.getElementById("radixHead");
