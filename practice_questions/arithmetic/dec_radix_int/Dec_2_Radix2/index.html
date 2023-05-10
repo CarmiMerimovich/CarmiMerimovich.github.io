@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>כרמי מרימוביץ, תרגול עצמי</title>
+    <title>כרמי מרימוביץ, אריתמטיקה</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -85,80 +85,26 @@
 
 
 
-<h1>תירגול עצמי</h1>
-
     
+<h2>טבעי בבסיס 10 לבסיס <span id="radixHead"></span> - עד 4 ספרות</h2>
+יש להציג בבסיס
+<span id="radix"></span>
+  את המספר 
+<span id="number"></span>
+
+<div><button id="answerButton" type="clock" onclick="makeAnswer();">תשובה</button></div>
+<div><button id="firstStepButton" type="clock" onclick="firstStep();">צעד ראשון</button></div>
+<div><button id="nextStepButton" style="visibility: hidden;" type="clock" onclick="makeStep();">עוד צעד</button></div>
+<div class="hidden" style="visibility: hidden;">תוצאה: <span id="solution" style="direction: ltr;"></span></div>
+<div class="hidden" style="visibility: hidden;">דרך:</div>
+<div class="hidden" id="calculation" style="direction: ltr; visibility: hidden;"></div>
+
+<script>
+    const digits = 4;
+</script>
+<script src="../dec2radix.inc"></script>
 
 
-
-
-
-
-
-
-
-
- <ol > 
-            <li>
-                
-            <a href="number_representation/index.html">יצוג מספרים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="arithmetic/index.html">אריתמטיקה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="memory/index.html">קריאה מהזכרון</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="riscv/index.html">RISC-V</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-        
-            <li>
-                
-            <a href="mmu/index.html">mmu תירגול</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </li>
-         </ol> 
 
 
  </div>
