@@ -232,7 +232,11 @@ function redraw() {
     }
     s += `<tr>${r}</tr>`;
   }
-  s = `<table>${s}</table>`;
+  s = `<style>
+    tr:nth-child(odd) {background: #CCC}
+    td {vertical-align: top}
+    </style>
+  <table>${s}</table>`;
   let e = document.getElementById("content");
   e.innerHTML = s;
 }
