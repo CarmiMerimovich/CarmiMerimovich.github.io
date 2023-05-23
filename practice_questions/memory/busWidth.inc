@@ -4,9 +4,11 @@
     let dataBusWidth = (2 ** logDataBusWidth) * 8;
     let busAddressWidth = cpuAddressWidth - logDataBusWidth;
 
+    let tlbSet = 2 ** Math.trunc(5 * Math.random());
     let indexWidth = 1 + Math.trunc(11 * Math.random());
     let tlbLines = 2 ** indexWidth;
-    let tagWidth = busAddressWidth - indexWidth;
+    let tagWidth = Math.max(busAddressWidth - indexWidth, 0);
+    let tlbEntries = tlbLines * tlbSet;
 
     let cpuReadAddress = 0n;
     for (i = 0; i < cpuAddressWidth; i++) {
@@ -64,11 +66,20 @@
         eAddressBusWidth.innerHTML = busAddressWidth.toString() + "b";
 
     let eTlbLines = document.getElementById("tlbLines");
-    if (eTlbLines)
+    if (eTlbLines) {
+        let s = 'מאורגן בשיטת מפוי ישיר';
+        if (tlbSet > 1)
+            s = `הינו ${tlbSet}-קבוצתי אסוציאטיבי`;
+        let t = `ומספר השורות בו
+             הוא ${tlbLines}`;
+        if (Math.random() < 0.5)
+            t = `ומספר התרגומים בו הוא 
+                ${tlbEntries}`;
         eTlbLines.innerHTML =
              `ה-TLB 
-             מאורגן במפוי ישיר ומספר השורות בו
-             הוא ${tlbLines}.`;
+              ${s}
+              ${t}.`;
+    }
 
 
     let eAnswer0 = document.getElementById("answer0");
