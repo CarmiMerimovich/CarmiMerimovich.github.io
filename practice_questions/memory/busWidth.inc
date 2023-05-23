@@ -38,9 +38,20 @@
             eQuestion1.innerHTML = "כמה בתים יהיו בבס הנתונים?"
         }
     }
+
     let eDataBusWidth = document.getElementById("dataBusWidth");
-    if (eDataBusWidth)
-        eDataBusWidth.innerHTML = dataBusWidth.toString();
+    if (eDataBusWidth) {
+        if (Math.random() < 0.5) {
+            eDataBusWidth.innerHTML = `
+                רוחב בס הנתונים 
+                ${dataBusWidth}b.`;
+        } else {
+            eDataBusWidth.innerHTML = `
+                רוחב בס הנתונים 
+                ${dataBusWidth/8}B.`;
+        }
+    }
+
 
     let eAddressBusWidth = document.getElementById("addressBusWidth");
     if (eAddressBusWidth)
