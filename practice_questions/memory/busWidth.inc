@@ -1,7 +1,6 @@
     let cpuAddressWidth = 16 + Math.trunc(Math.random() * 49);
     let cpuAddressSpace = BigInt(2) ** BigInt(cpuAddressWidth);
     let logDataBusWidth = Math.trunc(Math.random() * 7);
-    logDataBusWidth = 1;
     let dataBusWidth = (2 ** logDataBusWidth) * 8;
 
     let cpuReadAddress = 0n;
