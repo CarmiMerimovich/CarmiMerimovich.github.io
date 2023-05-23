@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>הזכרון</title>
+    <title>ערכי השדות אינדקס וטאג ב-tlb</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -85,90 +85,28 @@
 
 
 
-<h1>הזכרון</h1>
-
     
+<h2>ערכי השדות אינדקס וטאג ב-tlb</h2>
 
+<p dir="rtl">
+    <span id="cpuAddressWidth"></span>
+    <span id="dataBusWidth"></span>
+    המעבד מקבל הוראה לקרוא בית מכתובת פיזית
+    <span id="cpuReadAddress"></span>.
+    <span id="tlbLines"></span>
+    איזה שורה ב-tlb
+    צריך לבדוק ואיזה טאג
+    מצפים למצוא שם?
+<p>
+<button id="answerButton" onclick="showAnswer('answer4');">הצג תשובה</button>
+<span id="answer4" style="display: none;"></span>
+</p>
+<div id="displayArea">
+</div>
 
+<script src="../busWidth.inc">
+</script>
 
-
-
-
-
-
- <ol > 
-            <li><p>
-                
-            <a href="memory_content/index.html">קריאה מהזכרון</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="a_bus_width/index.html">רוחב בס הכתובות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="d_bus_width/index.html">רוחב בס הנתונים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="a_bus_content/index.html">כתובות על הבס</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="index_tag_width/index.html">רוחב השדות אינדקס וטאג ב-tlb</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="index_tag_values/index.html">ערכי השדות אינדקס וטאג ב-tlb</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
 
 
  </div>

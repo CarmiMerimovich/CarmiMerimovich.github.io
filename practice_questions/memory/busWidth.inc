@@ -15,6 +15,9 @@
         cpuReadAddress *= 2n;
         cpuReadAddress += BigInt(Math.trunc(Math.random() * 2));
     }
+    let busReadAddress = cpuReadAddress / (2n ** BigInt(logDataBusWidth));
+    let tlbIndex = busReadAddress & (2n ** BigInt(indexWidth) - 1n);
+    let tlbTag = busReadAddress / (2n ** BigInt(indexWidth));
 
     let eCpuAddressWidth = document.getElementById("cpuAddressWidth");
     if (Math.random() < 0.5) {
@@ -102,6 +105,14 @@
         הוא ברוחב
         ${tagWidth}b.`;
 
+    let eAnswer4 = document.getElementById("answer4");
+    if (eAnswer4)
+        eAnswer4.innerHTML = `
+        צריך לבדוק את שורה
+        0x${tlbIndex.toString(16).toUpperCase()}
+        וה-tag
+        שצריך למצוא הוא
+        0x${tlbTag.toString(16).toUpperCase()}.`;
 
 function showAnswer(field) {
     let eAnswer = document.getElementById(field);
