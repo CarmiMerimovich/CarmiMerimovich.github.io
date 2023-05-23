@@ -36,7 +36,8 @@
         eAddressBusWidth.innerHTML = (cpuAddressWidth - logDataBusWidth).toString() + "b";
 
     let eAnswer0 = document.getElementById("answer0");
-    eAnswer0.innerHTML = (cpuAddressWidth - logDataBusWidth).toString() + "b";
+    if (eAnswer0)
+        eAnswer0.innerHTML = (cpuAddressWidth - logDataBusWidth).toString() + "b";
 
 
 function showAnswer(field) {
