@@ -2,6 +2,11 @@
     let cpuAddressSpace = BigInt(2) ** BigInt(cpuAddressWidth);
     let logDataBusWidth = Math.trunc(Math.random() * 7);
     let dataBusWidth = (2 ** logDataBusWidth) * 8;
+    let busAddressWidth = cpuAddressWidth - logDataBusWidth;
+
+    let indexWidth = 1 + Math.trunc(11 * Math.random());
+    let tlbLines = 2 ** indexWidth;
+    let tagWidth = busAddressWidth - indexWidth;
 
     let cpuReadAddress = 0n;
     for (i = 0; i < cpuAddressWidth; i++) {
@@ -24,7 +29,8 @@
 
     let eCpuReadAddress = document.getElementById("cpuReadAddress");
     if (eCpuReadAddress) {
-        eCpuReadAddress.innerHTML = "0x" + cpuReadAddress.toString(16).toUpperCase();
+        eCpuReadAddress.innerHTML = "0x" +
+             cpuReadAddress.toString(16).toUpperCase();
     }
 
     let eQuestion1 = document.getElementById("question1");
@@ -55,7 +61,15 @@
 
     let eAddressBusWidth = document.getElementById("addressBusWidth");
     if (eAddressBusWidth)
-        eAddressBusWidth.innerHTML = (cpuAddressWidth - logDataBusWidth).toString() + "b";
+        eAddressBusWidth.innerHTML = busAddressWidth.toString() + "b";
+
+    let eTlbLines = document.getElementById("tlbLines");
+    if (eTlbLines)
+        eTlbLines.innerHTML =
+             `ה-TLB 
+             מאורגן במפוי ישיר ומספר השורות בו
+             הוא ${tlbLines}.`;
+
 
     let eAnswer0 = document.getElementById("answer0");
     if (eAnswer0)
@@ -67,6 +81,16 @@
              (cpuReadAddress >>
              BigInt(logDataBusWidth))
                 .toString(16).toUpperCase();
+
+    let eAnswer3 = document.getElementById("answer3");
+    if (eAnswer3)
+        eAnswer3.innerHTML = `
+        האינדקס הוא ברוחב 
+        ${indexWidth}b
+        וה-tag
+        הוא ברוחב
+        ${tagWidth}b.`;
+
 
 function showAnswer(field) {
     let eAnswer = document.getElementById(field);
