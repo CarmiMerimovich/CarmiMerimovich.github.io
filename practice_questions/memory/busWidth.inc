@@ -24,9 +24,7 @@
     }
 
     let eCpuReadAddress = document.getElementById("cpuReadAddress");
-    console.log(eCpuReadAddress);
     if (eCpuReadAddress) {
-        console.log("Entered");
         eCpuReadAddress.innerHTML = "0x" + cpuReadAddress.toString(16).toUpperCase();
     }
 
