@@ -1,7 +1,14 @@
     let cpuAddressWidth = 16 + Math.trunc(Math.random() * 49);
     let cpuAddressSpace = BigInt(2) ** BigInt(cpuAddressWidth);
     let logDataBusWidth = Math.trunc(Math.random() * 7);
+    logDataBusWidth = 1;
     let dataBusWidth = (2 ** logDataBusWidth) * 8;
+
+    let cpuReadAddress = 0n;
+    for (i = 0; i < cpuAddressWidth; i++) {
+        cpuReadAddress *= 2n;
+        cpuReadAddress += BigInt(Math.trunc(Math.random() * 2));
+    }
 
     let eCpuAddressWidth = document.getElementById("cpuAddressWidth");
     if (Math.random() < 0.5) {
@@ -14,6 +21,13 @@
             במערכת byte-addressable
             מרחב הזכרון המקסימלי האפשרי למתכנת הוא 
             ${formattedSize(cpuAddressWidth)}.`;
+    }
+
+    let eCpuReadAddress = document.getElementById("cpuReadAddress");
+    console.log(eCpuReadAddress);
+    if (eCpuReadAddress) {
+        console.log("Entered");
+        eCpuReadAddress.innerHTML = "0x" + cpuReadAddress.toString(16).toUpperCase();
     }
 
     let eQuestion1 = document.getElementById("question1");
@@ -39,6 +53,12 @@
     if (eAnswer0)
         eAnswer0.innerHTML = (cpuAddressWidth - logDataBusWidth).toString() + "b";
 
+    let eAnswer2 = document.getElementById("answer2");
+    if (eAnswer2)
+        eAnswer2.innerHTML = "0x" +
+             (cpuReadAddress >>
+             BigInt(logDataBusWidth))
+                .toString(16).toUpperCase();
 
 function showAnswer(field) {
     let eAnswer = document.getElementById(field);
