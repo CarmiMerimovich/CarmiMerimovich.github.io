@@ -15,9 +15,23 @@
         cpuReadAddress *= 2n;
         cpuReadAddress += BigInt(Math.trunc(Math.random() * 2));
     }
-    let busReadAddress = cpuReadAddress / (2n ** BigInt(logDataBusWidth));
-    let tlbIndex = busReadAddress & (2n ** BigInt(indexWidth) - 1n);
-    let tlbTag = busReadAddress / (2n ** BigInt(indexWidth));
+    let multiByte = 1;
+    let eMultiByte = document.getElementById("multiByte");
+    if (eMultiByte) {
+        let logMultiByte = 1 + Math.trunc(4 * Math.random());
+        multiByte = 2 ** logMultiByte;;
+        eMultiByte.innerHTML = multiByte.toString();
+    }
+
+    let busReadAddress = [];
+    for (let i = 0; i < multiByte; i++) {
+        let a = (cpuReadAddress + BigInt(i)) / (2n ** BigInt(logDataBusWidth));
+        if (!busReadAddress.includes(a))
+            busReadAddress.push(a);
+    }
+
+    let tlbIndex = busReadAddress[0] & (2n ** BigInt(indexWidth) - 1n);
+    let tlbTag = busReadAddress[0] / (2n ** BigInt(indexWidth));
 
     let eCpuAddressWidth = document.getElementById("cpuAddressWidth");
     if (Math.random() < 0.5) {
@@ -90,11 +104,32 @@
         eAnswer0.innerHTML = (cpuAddressWidth - logDataBusWidth).toString() + "b";
 
     let eAnswer2 = document.getElementById("answer2");
-    if (eAnswer2)
-        eAnswer2.innerHTML = "0x" +
-             (cpuReadAddress >>
-             BigInt(logDataBusWidth))
-                .toString(16).toUpperCase();
+    if (eAnswer2) {
+        if (!eMultiByte) {
+            eAnswer2.innerHTML = "0x" +
+                busReadAddress[0].toString(16).toUpperCase();
+        } else {
+            if (busReadAddress.length < 2) {
+                eAnswer2.innerHTML = `
+                0x${busReadAddress[0].toString(16).toUpperCase()}
+                `; 
+            } else {
+                let s = ``;
+                let t = "";
+                for (a of busReadAddress) {
+                    t += `<li>
+                    0x${a.toString(16).toUpperCase()}
+                    </li>`;
+                }
+                eAnswer2.innerHTML = `יהיו על הבס 
+                        ${busReadAddress.length}
+                        תנועות עם הערכים הבאים:
+                        <ol>
+                        ${t}
+                        </ol>`;
+            }
+        }
+    }
 
     let eAnswer3 = document.getElementById("answer3");
     if (eAnswer3)
