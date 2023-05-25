@@ -4,11 +4,11 @@
     let dataBusWidth = (2 ** logDataBusWidth) * 8;
     let busAddressWidth = cpuAddressWidth - logDataBusWidth;
 
-    let tlbSet = 2 ** Math.trunc(5 * Math.random());
+    let cacheSet = 2 ** Math.trunc(5 * Math.random());
     let indexWidth = 1 + Math.trunc(11 * Math.random());
-    let tlbLines = 2 ** indexWidth;
+    let cacheLines = 2 ** indexWidth;
     let tagWidth = Math.max(busAddressWidth - indexWidth, 0);
-    let tlbEntries = tlbLines * tlbSet;
+    let cacheEntries = cacheLines * cacheSet;
 
     let cpuReadAddress = 0n;
     for (i = 0; i < cpuAddressWidth; i++) {
@@ -30,8 +30,8 @@
             busReadAddress.push(a);
     }
 
-    let tlbIndex = busReadAddress[0] & (2n ** BigInt(indexWidth) - 1n);
-    let tlbTag = busReadAddress[0] / (2n ** BigInt(indexWidth));
+    let cacheIndex = busReadAddress[0] & (2n ** BigInt(indexWidth) - 1n);
+    let cacheTag = busReadAddress[0] / (2n ** BigInt(indexWidth));
 
     let eCpuAddressWidth = document.getElementById("cpuAddressWidth");
     if (Math.random() < 0.5) {
@@ -82,17 +82,17 @@
     if (eAddressBusWidth)
         eAddressBusWidth.innerHTML = busAddressWidth.toString() + "b";
 
-    let eTlbLines = document.getElementById("tlbLines");
-    if (eTlbLines) {
+    let ecacheLines = document.getElementById("cacheLines");
+    if (ecacheLines) {
         let s = 'מאורגן בשיטת מפוי ישיר';
-        if (tlbSet > 1)
-            s = `הינו ${tlbSet}-קבוצתי אסוציאטיבי`;
+        if (cacheSet > 1)
+            s = `הינו ${cacheSet}-קבוצתי אסוציאטיבי`;
         let t = `ומספר השורות בו
-             הוא ${tlbLines}`;
+             הוא ${cacheLines}`;
         if (Math.random() < 0.5)
             t = `ומספר התרגומים בו הוא 
-                ${tlbEntries}`;
-        eTlbLines.innerHTML =
+                ${cacheEntries}`;
+        ecacheLines.innerHTML =
              `המטמון
               ${s}
               ${t}.`;
@@ -144,10 +144,10 @@
     if (eAnswer4)
         eAnswer4.innerHTML = `
         צריך לבדוק את שורה
-        0x${tlbIndex.toString(16).toUpperCase()}
+        0x${cacheIndex.toString(16).toUpperCase()}
         וה-tag
         שצריך למצוא הוא
-        0x${tlbTag.toString(16).toUpperCase()}.`;
+        0x${cacheTag.toString(16).toUpperCase()}.`;
 
 function showAnswer(field) {
     let eAnswer = document.getElementById(field);
