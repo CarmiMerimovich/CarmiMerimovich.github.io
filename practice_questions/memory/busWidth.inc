@@ -36,12 +36,12 @@
     let eCpuAddressWidth = document.getElementById("cpuAddressWidth");
     if (Math.random() < 0.5) {
         eCpuAddressWidth.innerHTML = `
-            במערכת byte-addressable
+            נתונה מערכת בה הימ"מ הוא בית.
             מבחינת המתכנת רוחב כתובת 
             ${cpuAddressWidth}b.`
     } else {
         eCpuAddressWidth.innerHTML = `
-            במערכת byte-addressable
+            נתונה מערכת בה הימ"מ הוא בית.
             מרחב הזכרון המקסימלי האפשרי למתכנת הוא 
             ${formattedSize(cpuAddressWidth)}.`;
     }
@@ -93,7 +93,7 @@
             t = `ומספר התרגומים בו הוא 
                 ${tlbEntries}`;
         eTlbLines.innerHTML =
-             `ה-TLB 
+             `המטמון
               ${s}
               ${t}.`;
     }

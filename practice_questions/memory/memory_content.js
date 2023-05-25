@@ -48,13 +48,13 @@ if (unit == 1) {
 
 
 let eAddress = document.getElementById("address");
-eAddress.innerHTML = address.toString(16).padStart(8,"0");
+eAddress.innerHTML = `0x${address.toString(16).padStart(8,"0").toUpperCase()}`;
 
 displayRam.display();
 
 function displayAnswer() {
 	let eAnswer = document.getElementById("answer");
-	eAnswer.innerHTML = value.toString(16);
+	eAnswer.innerHTML = `0x${value.toString(16).toUpperCase()}`;
 }
 
 let eUnit = document.getElementById("unit"+unit);
