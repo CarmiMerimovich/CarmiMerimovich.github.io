@@ -35,6 +35,7 @@
 
     let eCpuAddressWidth = document.getElementById("cpuAddressWidth");
     let tExplain1_1 = "";
+    let tExplain0_1 = "";
     if (Math.random() < 0.5) {
         eCpuAddressWidth.innerHTML = `
             נתונה מערכת בה הימ"מ הוא בית.
@@ -48,6 +49,7 @@
         tExplain1_1 = `<li>
         2<sup>${cpuAddressWidth}</sup>B = ${formattedSize(cpuAddressWidth)}
         </li>`;
+        tExplain0_1 = tExplain1_1;
     }
 
     let eCpuReadAddress = document.getElementById("cpuReadAddress");
@@ -70,10 +72,8 @@
             eQuestion1.innerHTML = "כמה בתים יהיו בבס הנתונים?"
         }
     }
-    let eExplain1 = document.getElementById("explain1");
-    if (eExplain1) {
-        eExplain1.innerHTML = `<ol>
-        ${tExplain1_1}
+
+    let innerExplain1 = `${tExplain1_1}
         <li>
         רוחב כתובת במעבד
         ${cpuAddressWidth}b
@@ -91,6 +91,11 @@
         2<sup>${logDataBusWidth}</sup>=${dataBusWidth/8}
         </li>
         ${tExplain1_2}
+    `;
+    let eExplain1 = document.getElementById("explain1");
+    if (eExplain1) {
+        eExplain1.innerHTML = `<ol>
+        ${innerExplain1}
         </ol>`;
     }
 
@@ -112,8 +117,8 @@
     if (eAddressBusWidth)
         eAddressBusWidth.innerHTML = busAddressWidth.toString() + "b";
 
-    let ecacheLines = document.getElementById("cacheLines");
-    if (ecacheLines) {
+    let eCacheLines = document.getElementById("cacheLines");
+    if (eCacheLines) {
         let s = 'מאורגן בשיטת מפוי ישיר';
         if (cacheSet > 1)
             s = `הינו ${cacheSet}-קבוצתי אסוציאטיבי`;
@@ -122,7 +127,7 @@
         if (Math.random() < 0.5)
             t = `ומספר התרגומים בו הוא 
                 ${cacheEntries}`;
-        ecacheLines.innerHTML =
+        eCacheLines.innerHTML =
              `המטמון
               ${s}
               ${t}.`;
@@ -133,24 +138,19 @@
     if (eAnswer0)
         eAnswer0.innerHTML = (cpuAddressWidth - logDataBusWidth).toString() + "b";
 
-    let eExplain0 = document.getElementById("explain0");
-    if (eExplain0) {
-        eExplain0.innerHTML = `<ol>
+    let innerExplain0 = `        ${tExplain0_1}
         <li>
         רוחב כתובת במעבד
         ${cpuAddressWidth}b
         </li>
         <li>
-        רוחב בס הנתונים
-        ${dataBusWidth}b = ${dataBusWidth/8}B
-        </li>
-        <li>
-        2<sup>${logDataBusWidth}</sup> = ${dataBusWidth/8}
-        </li>
-        <li>
         רוחב בס הכתובות
         ${cpuAddressWidth}b-${logDataBusWidth}b = ${cpuAddressWidth - logDataBusWidth}b
-        </li>
+        </li>`;
+    let eExplain0 = document.getElementById("explain0");
+    if (eExplain0) {
+        eExplain0.innerHTML = `<ol>
+        ${innerExplain0}
         </ol>`
         ;
     }
@@ -173,7 +173,7 @@
                     0x${a.toString(16).toUpperCase()}
                     </li>`;
                 }
-                eAnswer2.innerHTML = `יהיו על הבס 
+                eAnswer2.innerHTML = `תהיינה על הבס 
                         ${busReadAddress.length}
                         תנועות עם הערכים הבאים:
                         <ol>
@@ -181,6 +181,50 @@
                         </ol>`;
             }
         }
+    }
+    let eExplain2 = document.getElementById("explain2");
+    if (eExplain2) {
+        let t = "";
+        if (multiByte > 1) {
+            let c = cpuReadAddress;
+            for (let i = 0; i < busReadAddress.length; i++) {
+                let a = busReadAddress[i];
+                let s = "";
+                while (c < cpuReadAddress + BigInt(multiByte) &&
+                    c / (2n ** BigInt(logDataBusWidth)) == a) {
+                    s += `<li>${c.toString(16).toUpperCase()}</li>`;
+                    c += 1n;
+                }
+                t += `<li>${a.toString(16).toUpperCase()}
+                מהתנועה הזו מחלצים את הבתים בכתובות (המעבד) הבאות:
+                <ul>${s}</ul>
+                </li>`;
+            }
+        }
+        eExplain2.innerHTML = `<ol>
+        <li>
+        רוחב בס הנתונים
+        ${dataBusWidth}b = ${dataBusWidth/8}B
+        </li>
+        <li>
+        2<sup>${logDataBusWidth}</sup> = ${dataBusWidth/8}
+        </li>
+        <li>
+        צריך לסלק את 
+        ${logDataBusWidth}
+        הביטים הימנים מכתובת המעבד.
+        </li>
+        <li>
+        0x${cpuReadAddress.toString(16).toUpperCase()}=0b${cpuReadAddress.toString(2)}
+        </li>
+        <li>
+        אחרי שסילקנו את 
+        ${logDataBusWidth}
+        הביטים הימניים
+        0b${busReadAddress[0].toString(2)} = 0x${busReadAddress[0].toString(16).toUpperCase()} 
+        </lI>
+        ${t}
+        </ol>`;
     }
 
     let eAnswer3 = document.getElementById("answer3");
