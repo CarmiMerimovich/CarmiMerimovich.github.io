@@ -34,6 +34,7 @@
     let cacheTag = busReadAddress[0] / (2n ** BigInt(indexWidth));
 
     let eCpuAddressWidth = document.getElementById("cpuAddressWidth");
+    let tExplain1_1 = "";
     if (Math.random() < 0.5) {
         eCpuAddressWidth.innerHTML = `
             נתונה מערכת בה הימ"מ הוא בית.
@@ -44,6 +45,9 @@
             נתונה מערכת בה הימ"מ הוא בית.
             מרחב הזכרון הפיזי  האפשרי  הוא 
             ${formattedSize(cpuAddressWidth)}.`;
+        tExplain1_1 = `<li>
+        2<sup>${cpuAddressWidth}</sup>B = ${formattedSize(cpuAddressWidth)}
+        </li>`;
     }
 
     let eCpuReadAddress = document.getElementById("cpuReadAddress");
@@ -54,12 +58,12 @@
 
     let eQuestion1 = document.getElementById("question1");
     let eAnswer1 = document.getElementById("answer1");
-    let tExplain1 = "";
+    let tExplain1_2 = "";
     if (eQuestion1) {
         if (Math.random() < 0.5) {
             eAnswer1.innerHTML = ((2 ** logDataBusWidth) * 8).toString() + "b";
             eQuestion1.innerHTML = "כמה קווים יהיו בבס הנתונים?"
-            tExplain1=`<li>רוחב בס הנתונים
+            tExplain1_2=`<li>רוחב בס הנתונים
                 ${dataBusWidth/8}b&times;8=${dataBusWidth}b</li>`;
         } else {
             eAnswer1.innerHTML = (2 ** logDataBusWidth).toString() + "B";
@@ -69,6 +73,7 @@
     let eExplain1 = document.getElementById("explain1");
     if (eExplain1) {
         eExplain1.innerHTML = `<ol>
+        ${tExplain1_1}
         <li>
         רוחב כתובת במעבד
         ${cpuAddressWidth}b
@@ -85,7 +90,7 @@
         מספר הבתים על בס הנתונים
         2<sup>${logDataBusWidth}</sup>=${dataBusWidth/8}
         </li>
-        ${tExplain1}
+        ${tExplain1_2}
         </ol>`;
     }
 
