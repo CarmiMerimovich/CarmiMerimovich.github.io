@@ -42,7 +42,7 @@
     } else {
         eCpuAddressWidth.innerHTML = `
             נתונה מערכת בה הימ"מ הוא בית.
-            מרחב הזכרון המקסימלי האפשרי למתכנת הוא 
+            מרחב הזכרון הפיזי  האפשרי  הוא 
             ${formattedSize(cpuAddressWidth)}.`;
     }
 
@@ -54,14 +54,39 @@
 
     let eQuestion1 = document.getElementById("question1");
     let eAnswer1 = document.getElementById("answer1");
+    let tExplain1 = "";
     if (eQuestion1) {
         if (Math.random() < 0.5) {
             eAnswer1.innerHTML = ((2 ** logDataBusWidth) * 8).toString() + "b";
             eQuestion1.innerHTML = "כמה קווים יהיו בבס הנתונים?"
+            tExplain1=`<li>רוחב בס הנתונים
+                ${dataBusWidth/8}b&times;8=${dataBusWidth}b</li>`;
         } else {
             eAnswer1.innerHTML = (2 ** logDataBusWidth).toString() + "B";
             eQuestion1.innerHTML = "כמה בתים יהיו בבס הנתונים?"
         }
+    }
+    let eExplain1 = document.getElementById("explain1");
+    if (eExplain1) {
+        eExplain1.innerHTML = `<ol>
+        <li>
+        רוחב כתובת במעבד
+        ${cpuAddressWidth}b
+        </li>
+        <li>
+        רוחב בס הכתובות
+        ${busAddressWidth}b
+        </li>
+        <li>
+        כלומר מספר הביטים מהכתובת שהמעבד לא מוציא
+        ${cpuAddressWidth}b-${busAddressWidth}b=${logDataBusWidth}b
+        </li>
+        <li>
+        מספר הבתים על בס הנתונים
+        2<sup>${logDataBusWidth}</sup>=${dataBusWidth/8}
+        </li>
+        ${tExplain1}
+        </ol>`;
     }
 
     let eDataBusWidth = document.getElementById("dataBusWidth");
@@ -102,6 +127,28 @@
     let eAnswer0 = document.getElementById("answer0");
     if (eAnswer0)
         eAnswer0.innerHTML = (cpuAddressWidth - logDataBusWidth).toString() + "b";
+
+    let eExplain0 = document.getElementById("explain0");
+    if (eExplain0) {
+        eExplain0.innerHTML = `<ol>
+        <li>
+        רוחב כתובת במעבד
+        ${cpuAddressWidth}b
+        </li>
+        <li>
+        רוחב בס הנתונים
+        ${dataBusWidth}b = ${dataBusWidth/8}B
+        </li>
+        <li>
+        2<sup>${logDataBusWidth}</sup> = ${dataBusWidth/8}
+        </li>
+        <li>
+        רוחב בס הכתובות
+        ${cpuAddressWidth}b-${logDataBusWidth}b = ${cpuAddressWidth - logDataBusWidth}b
+        </li>
+        </ol>`
+        ;
+    }
 
     let eAnswer2 = document.getElementById("answer2");
     if (eAnswer2) {
@@ -152,6 +199,11 @@
 function showAnswer(field) {
     let eAnswer = document.getElementById(field);
     eAnswer.style.display = "inline";
+}
+
+function showExplain(field) {
+    let eExplain = document.getElementById(field);
+    eExplain.style.display = "inline";
 }
 
 
