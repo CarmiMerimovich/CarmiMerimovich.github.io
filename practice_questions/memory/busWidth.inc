@@ -192,10 +192,10 @@
                 let s = "";
                 while (c < cpuReadAddress + BigInt(multiByte) &&
                     c / (2n ** BigInt(logDataBusWidth)) == a) {
-                    s += `<li>${c.toString(16).toUpperCase()}</li>`;
+                    s += `<li>0x${c.toString(16).toUpperCase()}</li>`;
                     c += 1n;
                 }
-                t += `<li>${a.toString(16).toUpperCase()}
+                t += `<li>0x${a.toString(16).toUpperCase()} - 
                 מהתנועה הזו מחלצים את הבתים בכתובות (המעבד) הבאות:
                 <ul>${s}</ul>
                 </li>`;
@@ -215,7 +215,7 @@
         הביטים הימנים מכתובת המעבד.
         </li>
         <li>
-        0x${cpuReadAddress.toString(16).toUpperCase()}=0b${cpuReadAddress.toString(2)}
+        0x${cpuReadAddress.toString(16).toUpperCase()} = 0b${cpuReadAddress.toString(2)}
         </li>
         <li>
         אחרי שסילקנו את 
