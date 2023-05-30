@@ -100,11 +100,17 @@
     }
 
     let eDataBusWidth = document.getElementById("dataBusWidth");
+    let tExplain0_2 = "";
     if (eDataBusWidth) {
         if (Math.random() < 0.5) {
             eDataBusWidth.innerHTML = `
                 רוחב בס הנתונים 
                 ${dataBusWidth}b.`;
+            tExplain0_2 = `<li>
+                רוחב בס הנתונים בביטים
+                ${dataBusWidth}b
+                </li>
+                `;
         } else {
             eDataBusWidth.innerHTML = `
                 רוחב בס הנתונים 
@@ -138,19 +144,26 @@
     if (eAnswer0)
         eAnswer0.innerHTML = (cpuAddressWidth - logDataBusWidth).toString() + "b";
 
-    let innerExplain0 = `        ${tExplain0_1}
+    let eExplain0 = document.getElementById("explain0");
+    if (eExplain0) {
+        eExplain0.innerHTML = `<ol>
+        ${tExplain0_1}
         <li>
         רוחב כתובת במעבד
         ${cpuAddressWidth}b
         </li>
+        ${tExplain0_2}
+        <li>
+        רוחב בס הנתונים בבתים
+        ${dataBusWidth / 8}B
+        </li>
+        <li>
+        2<sup>${logDataBusWidth}</sup> = ${dataBusWidth/8}
+        </li>
         <li>
         רוחב בס הכתובות
-        ${cpuAddressWidth}b-${logDataBusWidth}b = ${cpuAddressWidth - logDataBusWidth}b
-        </li>`;
-    let eExplain0 = document.getElementById("explain0");
-    if (eExplain0) {
-        eExplain0.innerHTML = `<ol>
-        ${innerExplain0}
+        ${cpuAddressWidth}b - ${logDataBusWidth}b = ${cpuAddressWidth - logDataBusWidth}b
+        </li>
         </ol>`
         ;
     }
