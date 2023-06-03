@@ -4,7 +4,7 @@
 <html lang="en" 
         dir="ltr">
 <head>
-    <title>Carmi Merimovich, Personal Site</title>
+    <title>ארכיטקטורת מחשבים</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -50,6 +50,10 @@
     </style>
 
     
+        <a href="/" 
+         style="display: contents;" 
+           class="headerL1">
+    
         <div class="staffHeader">
 			<div class="photoAndText">
 				<div style="vertical-align: center; padding: 0px;">
@@ -71,10 +75,12 @@
 			</div>
 		</div>
     
+        </a>
+    
         <div>
             
               <p style="font-size: xx-small">
-              <span>personal site</span>
+              <span><a href="../../../index.html">personal site<a></span> >>> <span><a href="../../index.html">שאלות תרגול<a></span> >>> <span><a href="../index.html">ארכיטקטורת מחשבים<a></span> >>> <span>mmu תירגול</span>
               </p>
               
                 
@@ -85,37 +91,88 @@
 
 
 
-<h1>Personal Site</h1>
-<ul>
-<li>
-<p><a href="publications.html">Papers</a></p>
-</li>
-<li>
-<p><a href="teaching/index.html">Teaching</a></p>
-</li>
-<li>
-<p><a href="practice/index.html">Practice Questions</a></p>
-</li>
-<li>
-<p><a href="material/index.html">Standing material</a></p>
-</li>
-<li>
-<p><a href="affiliation.html">Affiliation</a></p>
-</li>
-</ul>
-
     
+<script src="./x86-32_pae_doc_mmu.js" type="module">
+</script>	
+<h2>x86-32 pae basic mmu doc</h2>
+	
+
+
+<h3 style="padding-top: 0.5Em;">cr3</h3>
+Register CR3 points to the active external table.
+<canvas id= "cr3" width="1000" height="30" style="padding-top: 0.5Em;">
+</canvas>
+The external table must be page aligned.
+Loading of CR3 purges the TLB unless
+	we have ASIDs in the TLB.
+
+
+
+<h3 style="padding-top: 0.5Em;">External Page Table Entry</h3>
+An entry in the external table has the following format:
+<canvas id="pee" width="1000" height="130" style="padding-top: 0.5Em;">
+</canvas>
+For our purpose only the rightmost three bits 
+	are	of importance.
+In fact only the P bit is relevant
+since the page size we use is always 4KB and both the U and R
+bit are always one.
+<br/>
+<h3 style="padding-top: 0.5Em;">Middle Page Table Entry</h3>
+An entry in the middle table has the following format:
+<canvas id="pde" width="1000" height="130" style="padding-top: 0.5Em;">
+</canvas>
+For our purpose only the rightmost three bits 
+	are	of importance.
+In fact only the P bit is relevant
+since the page size we use is always 4KB and both the U and R
+bit are always one.
+<br/>
+
+<h3 style="padding-top: 0.5Em;">Internal Page Table Entry</h3>
+The internal table entries are almost identical
+	to the external table entries.
+For our purpose the entries are identical.
+<canvas id="pte" width="1000" height="130" style="padding-top: 0.5Em;">
+</canvas>
+The same comment noted for the external page table entries
+is also relevant here, i.e.,
+ only the rightmost three bits 
+	are	of importance.
+In fact only the P bit is relevant
+since e page size we use is always 4KB and both the U and R
+bit are always one.
+
+
+<h3 style="padding-top: 0.5Em;">Virtual Address</h3>
+The virtual address is considered to have three	
+	fields as follows.
+<canvas id="va" width="1000" height="60" style="padding-top: 0.5Em;">
+</canvas>
+
+
+<h3 style="padding-top: 0.5Em;">References	</h3>
+The definite information on paging on Intel's processsor
+	can be find in reference 1 chapter 4.
+Reference 2 has good information in condensed form.
+<ol>
+<li>
+<a href="https://www.intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-software-developer-vol-3a-part-1-manual.html">Intel® 64 and IA-32 Architectures
+Software Developer’s Manual
+Volume 3A:
+System Programming Guide, Part 1.</a>
+</li>
+<li>
+ <a href="https://wiki.osdev.org/Paging">osdev paging.</a>
+</li>
+</ol>
+	
 
 
 
 
 
 
-
-
-
-
- <ol >  </ol> 
 
 
  </div>
@@ -138,14 +195,15 @@
         </li>
             <li style="display: inline; margin-right: 20px;">
             
-                <span style="color: #999;">
-                    Carmi Merimovich
-                </span>
+                <a style="color: #999;"
+                href="/">
+                Carmi Merimovich
+            </a>
             
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            personal site
+            ארכיטקטורת מחשבים
             </span>
         </li>
     </ul>

@@ -4,7 +4,7 @@
 <html lang="en" 
         dir="ltr">
 <head>
-    <title>Carmi Merimovich, Personal Site</title>
+    <title>Carmi Merimovich, rv32 basic mmu doc</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -50,6 +50,10 @@
     </style>
 
     
+        <a href="/" 
+         style="display: contents;" 
+           class="headerL1">
+    
         <div class="staffHeader">
 			<div class="photoAndText">
 				<div style="vertical-align: center; padding: 0px;">
@@ -71,10 +75,12 @@
 			</div>
 		</div>
     
+        </a>
+    
         <div>
             
               <p style="font-size: xx-small">
-              <span>personal site</span>
+              <span><a href="../../../index.html">personal site<a></span> >>> <span><a href="../../index.html">שאלות תרגול<a></span> >>> <span><a href="../index.html">ארכיטקטורת מחשבים<a></span> >>> <span>mmu תירגול</span>
               </p>
               
                 
@@ -85,37 +91,48 @@
 
 
 
-<h1>Personal Site</h1>
-<ul>
-<li>
-<p><a href="publications.html">Papers</a></p>
-</li>
-<li>
-<p><a href="teaching/index.html">Teaching</a></p>
-</li>
-<li>
-<p><a href="practice/index.html">Practice Questions</a></p>
-</li>
-<li>
-<p><a href="material/index.html">Standing material</a></p>
-</li>
-<li>
-<p><a href="affiliation.html">Affiliation</a></p>
-</li>
-</ul>
-
     
 
+<script src="./rv32_basic_mmu_doc.js" type="module">
+</script>	
+<h2>(rv32) Basic mmu doc</h2>
+<h3 style="padding-top: 0.5Em;">satp</h3>
+Register satp points to the active external table
+	(if the mode bit is one, that is).
+<canvas id= "satp" width="1000" height="60" style="padding-top: 0.5Em;">
+</canvas>
+The external table must be page aligned.
+<br/>
+<h3 style="padding-top: 0.5Em;">Page Table Entry</h3>
+<canvas id="pte" width="1000" height="150" style="padding-top: 0.5Em;">
+</canvas>
+The relation between the X, W, and R bits is
+	somewhat non-trivial.
+For our purpose it is enough to assume
+	in the external table the three bits are zeros
+		and in the internal table all the bits are ones.
+(If in the external table not all the three bits are
+		zeros then we are in the realm of 4MB pages.)
+<h3 style="padding-top: 0.5Em;">Virtual Address</h3>
+The virtual address is considered to have three	
+	fields as follows.
+<canvas id="va" width="1000" height="50" style="padding-top: 0.5Em;">
+</canvas>
+	
+
+<h3 style="padding-top: 0.5Em;">References</h3>
+The information here was compiled from the following
+	document.
+<ol>
+<li>
+<a href="https://riscv.org//wp-content/uploads/2017/05/riscv-privileged-v1.10.pdf">
+The RISC-V Instruction Set Manual
+Volume II: Privileged Architecture.
+</a>
+</li>
+</ol>
 
 
-
-
-
-
-
-
-
- <ol >  </ol> 
 
 
  </div>
@@ -138,14 +155,15 @@
         </li>
             <li style="display: inline; margin-right: 20px;">
             
-                <span style="color: #999;">
-                    Carmi Merimovich
-                </span>
+                <a style="color: #999;"
+                href="/">
+                Carmi Merimovich
+            </a>
             
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            personal site
+            ארכיטקטורת מחשבים
             </span>
         </li>
     </ul>

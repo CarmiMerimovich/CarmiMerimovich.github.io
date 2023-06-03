@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 
-<html lang="en" 
-        dir="ltr">
+<html lang="he" 
+        dir="rtl">
 <head>
-    <title>Carmi Merimovich, Personal Site</title>
+    <title>כרמי מרימוביץ, יצוג מספרים</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -50,6 +50,10 @@
     </style>
 
     
+        <a href="/he/" 
+         style="display: contents;" 
+           class="headerL1">
+    
         <div class="staffHeader">
 			<div class="photoAndText">
 				<div style="vertical-align: center; padding: 0px;">
@@ -60,10 +64,10 @@
 				</div>
 				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                    Carmi Merimovich
+                    כרמי מרימוביץ
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						Personal Site
+						אתר אישי
 					</h3>
                     <h3>
 					</h3>
@@ -71,10 +75,12 @@
 			</div>
 		</div>
     
+        </a>
+    
         <div>
             
               <p style="font-size: xx-small">
-              <span>personal site</span>
+              <span><a href="../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../index.html">שאלות תרגול<a></span>&rlm; >>> <span><a href="../../../index.html">מערכות ספרתיות<a></span>&rlm; >>> <span><a href="../../index.html">יצוג מספרים<a></span>&rlm; >>> <span><a href="../index.html">נקודה צפה<a></span>&rlm;
               </p>
               
                 
@@ -85,37 +91,48 @@
 
 
 
-<h1>Personal Site</h1>
-<ul>
-<li>
-<p><a href="publications.html">Papers</a></p>
-</li>
-<li>
-<p><a href="teaching/index.html">Teaching</a></p>
-</li>
-<li>
-<p><a href="practice/index.html">Practice Questions</a></p>
-</li>
-<li>
-<p><a href="material/index.html">Standing material</a></p>
-</li>
-<li>
-<p><a href="affiliation.html">Affiliation</a></p>
-</li>
-</ul>
-
     
+<h1>נקודה צפה 32-ביט לעשרוני</h1>
+Sign: <span id="sign"></span>
+Exponent: <span id="exponent"></span>
+Mantissa: <span id="mantissa"></span>
+<div>
+    value binary: <span id="valueBinary"></span>
+</div>
+<div>
+    value half binary: <span id="valueHalfBinary"></span>
+</div>
+ <script>
+    const sign = Math.random() < 0.5 ? 0: 1;
+    const exponent = Math.trunc(Math.random() * 253 + 1); // For Normal
+    const mantissa = Math.trunc(Math.random() * 1024);
 
+    let eSign = document.getElementById("sign");
+    eSign.innerText = sign.toString();
 
+    let eExponent = document.getElementById("exponent");
+    eExponent.innerText = exponent.toString();
 
+    let eMantissa = document.getElementById("mantissa");
+    eMantissa.innerText = mantissa.toString(2);
 
+    let s = `1.${mantissa.toString(2)}<sub>2</sub> &times; 
+            2<sup>${exponent - 127}</sup>`; 
 
+    let eValueBinary = document.getElementById("valueBinary");
+    eValueBinary.innerHTML = s;
 
+    let ms = "1" + mantissa.toString(2);
+    let m  = parseInt(ms, 2);
+    let exp = (exponent - 127) - (ms.length - 1);
 
+    s = `${m} &times; 
+            2<sup>${exp}</sup>`; 
+    let eValueHalfBinary = document.getElementById("valueHalfBinary");
+    eValueHalfBinary.innerHTML = s;
 
+</script>
 
-
- <ol >  </ol> 
 
 
  </div>
@@ -134,18 +151,19 @@
         </li>
             <li style="display: inline; margin-right: 20px;">
             <a style="color: #999;" 
-                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> linkedin </a>
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
         </li>
             <li style="display: inline; margin-right: 20px;">
             
-                <span style="color: #999;">
-                    Carmi Merimovich
-                </span>
+                <a style="color: #999;"
+                href="/he/">
+                כרמי מרימוביץ
+            </a>
             
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            personal site
+            מערכות ספרתיות
             </span>
         </li>
     </ul>
