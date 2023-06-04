@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>נושאים בארכיטקטורת מחשבים</title>
+    <title>עולם הקבוצות הבנויות</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -36,6 +36,19 @@
         }
 </style>
 
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 </head>
 <body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "304aabe1863548458b5040660f66e91d"}'></script><!-- End Cloudflare Web Analytics -->
@@ -64,10 +77,10 @@
 				</div>
 				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                    נושאים בארכיטקטורת מחשבים
+                    כרמי מרימוביץ
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						כרמי מרימוביץ
+						אתר אישי
 					</h3>
                     <h3>
 					</h3>
@@ -80,7 +93,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../index.html">personal site<a></span>&rlm; >>> <span><a href="../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>נושאים בארכיטקטורת מחשבים</span>&rlm;
+              <span><a href="../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../index.html">עולם הקבוצות הבנויות<a></span>&rlm; >>> <span>סגור $\text{rud}$</span>&rlm;
               </p>
               
                 
@@ -91,7 +104,59 @@
 
 
 
-    <h1>נושאים בארכיטקטורת מחשבים</h1>
+    <h1>סגור $\text{rud}$</h1>
+<p><strong>הגדרה</strong>
+קבוצה $X$
+תקרא סגורה-$\text{rud}$
+אם לכל $f$
+פונקציה-$\text{rud}$
+ולכל $x_0,\dotsc,x_{n-1} \in X$
+מתקיים
+$f(x_0,\dotsc,x_{n-1}) \in X$.</p>
+<p><strong>הגדרה</strong>
+תהי $X$
+קבוצה.
+$\text{rud}(X)$
+הסגור-$\text{rud}$
+של $X$
+היא הקבוצה המינימלית המכילה את $X$
+שהיא סגורה-$\text{rud}$.</p>
+<p><strong>למה</strong>
+תהי $X$
+קבוצה.
+אזי:
+\begin{align}
+rud(X) = \set{f(x_0,\dotsc,x_{n-1})\mid x_0,\dotsc, x_{n-1} \in X,
+\ f \text{ is rud}}.
+\end{align}
+כדאי לשים לב שהקבוצה הנ&quot;ל היא לא משהו כיון
+שהפונקציות $f$
+הינן נוסחאות ויש לנו מספר לא סופי של נוסחאות.</p>
+<p>ישנם שני פתרונות אפשריים לבעיית המספר הגדול של נוסחאות.
+פתרון אחד הוא לקודד את הנוסחאות כקבוצות , כמו בספיקות,
+והבעיה נעלמת.
+הדרך השניה היא למצוא מספר סופי של נוסחאות שהרכבה שלהן יוצרת
+את כל הנוסחאות.
+שתי הדרכים שימושיות ונראה את שתיהן.</p>
+<p>ההגדרה הנ&quot;ל מייצרת קבוצה סגורה לפונקציות-$\text{rud}$
+כיון שהרכבה של פונקציות-$\text{rud}$
+היא $\text{rud}$.</p>
+<p><strong>למה</strong>
+תהי $X$
+טרנזיטיבית.
+אז $\text{rud}(X)$
+טרנזיטיבית.</p>
+<p><strong>הוכחה</strong>
+$\square$</p>
+<p>אם $f$
+נוסחה המתארת פונקציה ו-$X$
+קבוצה, אזי אקסימות ההחלפה נותנת לנו
+שקיימת הקבוצה:
+\begin{equation}
+\set{ y |
+x_0, \dotsc, x_{n-1} \in X,
+\ y = f(x_0, \dotsc, f_{x_{n-1}})}
+\end{equation}</p>
 
 
 
@@ -104,155 +169,7 @@
 
 
 
-
-
- <ol > 
-            <li><p>
-                
-            <a href="processor_loop/index.html">לולאת המעבד</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="load_store_machine/index.html">מכונות טען-אחסן</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-                
-                תוויות
-                
-            
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="registers/index.html">אוגרים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_machine_instructions/index.html">rv64: רשימת פקודות מכונה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_conditional_branches/index.html">קפיצות מותנות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_routines/index.html">שגרות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv_calling_convention/index.html">הסכם קריאה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64/index.html">תוכניות rv64</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="memory/index.html">הזכרון הראשי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="mmu/index.html">Memory Management Unit (MMU)</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="virtual_memory/index.html">Virtual Memory</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
@@ -282,7 +199,7 @@
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            נושאים ארכיטקטורת מחשבים
+            הקבוצות הבנויות
             </span>
         </li>
     </ul>

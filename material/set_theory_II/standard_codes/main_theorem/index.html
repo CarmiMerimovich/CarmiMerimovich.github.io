@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>נושאים בארכיטקטורת מחשבים</title>
+    <title>עולם הקבוצות הבנויות</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -36,6 +36,19 @@
         }
 </style>
 
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 </head>
 <body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "304aabe1863548458b5040660f66e91d"}'></script><!-- End Cloudflare Web Analytics -->
@@ -64,10 +77,10 @@
 				</div>
 				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                    נושאים בארכיטקטורת מחשבים
+                    כרמי מרימוביץ
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						כרמי מרימוביץ
+						אתר אישי
 					</h3>
                     <h3>
 					</h3>
@@ -80,7 +93,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../index.html">personal site<a></span>&rlm; >>> <span><a href="../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>נושאים בארכיטקטורת מחשבים</span>&rlm;
+              <span><a href="../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../index.html">עולם הקבוצות הבנויות<a></span>&rlm; >>> <span><a href="../index.html">קודים סטנדרטיים<a></span>&rlm; >>> <span>קודים ופרמטרים סטדנרטיים</span>&rlm;
               </p>
               
                 
@@ -91,7 +104,32 @@
 
 
 
-    <h1>נושאים בארכיטקטורת מחשבים</h1>
+    <p><strong>הגדרה</strong>
+נגדיר באינדוקציה את
+$p^n_M$ ו-$A^n_m$,
+הפרמטר הסטנדרטי והקוד הסטנדרטי.</p>
+<ul>
+<li>$n = 0$:
+$A^n_M = p^n_M = \emptyset$.</li>
+<li>$n + 1$:
+$p^{n+1}_M \in L_{\rho_{n}}$
+הוא
+$\lt_{L_{\rho_n}}$-מינימלי
+כך שכל איבר $x \in L_{\rho_n}$
+הוא
+$\Sigma_1^{\langle L_{\rho_n}, A^n_M \rangle}
+(L_{\rho_{n+1}} \cup \set{p})$.
+\begin{equation}
+A^{n+1}_M = \set{\langle i, x\rangle \mid
+x \in L_{\rho_{n+1}},\ 
+\langle L_{\rho_n}, A^n_M\rangle \models
+\models^{\Sigma_1} \langle i, \langle x, p^{n+1}_M\rangle\rangle
+}.
+\end{equation}</li>
+</ul>
+<p><strong>טענה</strong>
+$A^{n}_{M}$
+הוא קוד מאסטר עבור $M$.</p>
 
 
 
@@ -104,155 +142,7 @@
 
 
 
-
-
- <ol > 
-            <li><p>
-                
-            <a href="processor_loop/index.html">לולאת המעבד</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="load_store_machine/index.html">מכונות טען-אחסן</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-                
-                תוויות
-                
-            
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="registers/index.html">אוגרים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_machine_instructions/index.html">rv64: רשימת פקודות מכונה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_conditional_branches/index.html">קפיצות מותנות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_routines/index.html">שגרות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv_calling_convention/index.html">הסכם קריאה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64/index.html">תוכניות rv64</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="memory/index.html">הזכרון הראשי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="mmu/index.html">Memory Management Unit (MMU)</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="virtual_memory/index.html">Virtual Memory</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
@@ -282,7 +172,7 @@
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            נושאים ארכיטקטורת מחשבים
+            הקבוצות הבנויות
             </span>
         </li>
     </ul>

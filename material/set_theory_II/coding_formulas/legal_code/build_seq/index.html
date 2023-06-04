@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>נושאים בארכיטקטורת מחשבים</title>
+    <title>עולם הקבוצות הבנויות</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -36,6 +36,19 @@
         }
 </style>
 
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 </head>
 <body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "304aabe1863548458b5040660f66e91d"}'></script><!-- End Cloudflare Web Analytics -->
@@ -64,10 +77,10 @@
 				</div>
 				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                    נושאים בארכיטקטורת מחשבים
+                    כרמי מרימוביץ
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						כרמי מרימוביץ
+						אתר אישי
 					</h3>
                     <h3>
 					</h3>
@@ -80,7 +93,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../index.html">personal site<a></span>&rlm; >>> <span><a href="../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>נושאים בארכיטקטורת מחשבים</span>&rlm;
+              <span><a href="../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../index.html">עולם הקבוצות הבנויות<a></span>&rlm; >>> <span><a href="../../index.html">קידוד נוסחאות על ידי מבנים<a></span>&rlm; >>> <span><a href="../index.html">קוד נוסחה<a></span>&rlm; >>> <span>סדרת בניה של נוסחה</span>&rlm;
               </p>
               
                 
@@ -91,7 +104,66 @@
 
 
 
-    <h1>נושאים בארכיטקטורת מחשבים</h1>
+    <h1>סדרת בניה</h1>
+<p>הנוסחה $\text{buildSeq}(xs, x)$
+מתקיימת אם $x$
+קוד של נוסחה ואם $xs$
+היא סדרת הבניה של $x$.</p>
+<p>\begin{align}
+&amp; \text{function}(xs) \wedge \\
+&amp; \text{natural}(\text{dom}(xs))  \wedge \\
+&amp; \forall k \in \text{dom } xs\  ( \\
+&amp;    xs(k) = \ulcorner v_i = v_j \urcorner \vee \\
+&amp;    xs(k) = \ulcorner v_i \in v_j \urcorner \vee \\
+&amp; \exists l &lt; k\  xs(k) =
+\ulcorner \neg xs(l)  \urcorner \vee \\
+&amp; \exists l_0, l_1 &lt; k\  xs(k) =
+\ulcorner xs(l_0) \wedge xs(l_1) \urcorner \vee \\
+&amp; \exists l_0, l_1 &lt; k\  xs(k) =
+\ulcorner xs(l_0) \vee xs(l_1)  \urcorner \vee \\
+&amp; \exists l_0, l_1 &lt; k\  xs(k) =
+\ulcorner xs(l_0) \to xs(l_1) \urcorner \vee \\
+&amp; \exists l_0, l_1 &lt; k\  xs(k) =
+\ulcorner xs(l_0) \leftrightarrow
+xs(l_1) \urcorner \vee \\
+&amp; \exists l &lt; k\  xs(k) =
+\ulcorner \exists v_i\  xs(l) \urcorner \vee \\
+&amp; \exists l &lt; k\  xs(k) =
+\ulcorner \forall v_i\  xs(l) \urcorner \vee \\
+&amp; \exists l &lt; k\  xs(k) =
+\ulcorner \exists v_i \in v_j\  xs(l) \urcorner \vee \\
+&amp; \exists l &lt; k\  xs(k) =
+\ulcorner \forall v_i \in v_j\  xs(l) \urcorner \\
+&amp;) \wedge \\
+&amp; xs(\max \text{dom}(xs)) = x.
+\end{align}</p>
+<hr>
+<p>הנוסחה הנ&quot;ל מזכירה קצת הרכבות אך אין צורך להיבהל מהן.
+לדוגמא נטפל ב-$\text{natural}(\text{dom} (xs))$.
+לשם כך נזכר בהגדרה של $\text{natural}(n)$:
+\begin{align}
+&amp; n = \emptyset \vee \\
+&amp; \exists m \in n\ \forall k \in n\ k \leq m \wedge \\
+&amp; \forall k \in n \ k = \emptyset \vee
+\exists l \in n\ k = l \cap \set{l}.
+\end{align}
+לתוך ההגדרה הנ&quot;ל נכניס את ההגדרה של $\text{dom}(xs)$
+ונקבל את הנוסחה הבאה:
+\begin{align}
+&amp; xs = \emptyset \vee \\
+&amp; \exists mp \in xs\ 
+\forall kp \in xs \ (kp)_0 \leq (mp)_0 \wedge \\
+&amp; \forall kp \in xs \ (kp)_0 = \emptyset \vee
+\exists lp \in xs\ (kp)_0 = (lp)_0 \cup \set{(lp)_0}).
+\end{align}</p>
+<hr>
+<p>ניתן עוד דוגמא עבור
+$xs(\max \text{dom}(xs)) = x$:
+\begin{align}
+&amp; \exists mp \in xs\ 
+\forall kp \in xs \ (kp)_0 \leq (mp)_0 \wedge \\
+&amp; \exists p \in xs\ (p)_0 = (mp)_0 \wedge (p)_1 = x.
+\end{align}</p>
 
 
 
@@ -104,155 +176,7 @@
 
 
 
-
-
- <ol > 
-            <li><p>
-                
-            <a href="processor_loop/index.html">לולאת המעבד</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="load_store_machine/index.html">מכונות טען-אחסן</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-                
-                תוויות
-                
-            
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="registers/index.html">אוגרים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_machine_instructions/index.html">rv64: רשימת פקודות מכונה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_conditional_branches/index.html">קפיצות מותנות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_routines/index.html">שגרות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv_calling_convention/index.html">הסכם קריאה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64/index.html">תוכניות rv64</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="memory/index.html">הזכרון הראשי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="mmu/index.html">Memory Management Unit (MMU)</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="virtual_memory/index.html">Virtual Memory</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
@@ -282,7 +206,7 @@
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            נושאים ארכיטקטורת מחשבים
+            הקבוצות הבנויות
             </span>
         </li>
     </ul>

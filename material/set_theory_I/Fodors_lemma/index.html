@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>נושאים בארכיטקטורת מחשבים</title>
+    <title>משפטים אקראיים בתורת הקבוצות</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -36,6 +36,19 @@
         }
 </style>
 
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 </head>
 <body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "304aabe1863548458b5040660f66e91d"}'></script><!-- End Cloudflare Web Analytics -->
@@ -64,10 +77,10 @@
 				</div>
 				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                    נושאים בארכיטקטורת מחשבים
+                    כרמי מרימוביץ
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						כרמי מרימוביץ
+						אתר אישי
 					</h3>
                     <h3>
 					</h3>
@@ -80,7 +93,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../index.html">personal site<a></span>&rlm; >>> <span><a href="../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>נושאים בארכיטקטורת מחשבים</span>&rlm;
+              <span><a href="../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../index.html">משפטים אקראיים בתורת הקבוצות<a></span>&rlm; >>> <span>הלמה של פודור</span>&rlm;
               </p>
               
                 
@@ -91,7 +104,81 @@
 
 
 
-    <h1>נושאים בארכיטקטורת מחשבים</h1>
+    <h1>הלמה של פודור (Fodor's lemma)</h1>
+<p><strong>הגדרה</strong>
+יהי
+$\tau$
+סודר
+ו-$A \subseteq \tau$
+קבוצה.
+פונקציה
+$f : A \to \tau$
+נקראת פונקציה דוחסת אם לכל
+$\alpha \in A$
+מתקיים
+$f(\alpha) &lt; \alpha$.</p>
+<p><strong>למה
+(פודור</strong>)
+יהיה
+$\kappa$
+מונה סדיר,
+$S \subseteq \kappa$
+קבוצת שבת
+ו-$f : S \to \kappa$
+פונקציה דוחסת.
+אזי יש קבוצת שבת
+$T \subseteq S$
+כך שהפונקציה
+$f$
+קבועה על
+$T$.
+(כלומר יש סודר
+$\alpha &lt; \kappa$
+כך ש-$f''T = \set{\alpha}$).</p>
+<p><strong>הוכחה</strong>
+בשלילה, נניח שהלמה אינה נכונה.
+כלומר יש קבוצת שבת
+$S \subseteq \kappa$
+ופונקציה דוחסת
+$f : S \to \kappa$
+כך שלכל
+$\alpha &lt; \kappa$
+הקבוצה
+$N_\alpha = f^{-1}(\set{\alpha})$
+אינה קבוצת שבת.
+מהגדרת המושג קבוצת שבת נובע שלכל
+$\alpha &lt; \kappa$
+יש סלח
+$C_\alpha \subseteq \kappa$
+זר
+ל-$N_\alpha$.
+תהי
+$C$
+החיתוך האלכסוני של המשפחה
+$\set{C_\alpha \mid \alpha &lt; \kappa}$.
+אזי
+$C$
+סלח.
+ולכן יש
+$\alpha \in S \cap C$.
+כיון
+ש-$\alpha \in C$
+אז
+לכל $\beta &lt; \alpha$
+מתקיים
+$\alpha \in C_\beta$.
+ולכן לכל
+$\beta &lt; \alpha$
+מתקיים
+$\alpha \notin N_\beta$.
+כלומר לכל
+$\beta &lt; \alpha$
+מתקיים
+$f(\beta) \neq \alpha$.
+ולכן
+$f$
+אינה פונקציה דוחסת.
+סתירה.</p>
 
 
 
@@ -104,155 +191,7 @@
 
 
 
-
-
- <ol > 
-            <li><p>
-                
-            <a href="processor_loop/index.html">לולאת המעבד</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="load_store_machine/index.html">מכונות טען-אחסן</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-                
-                תוויות
-                
-            
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="registers/index.html">אוגרים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_machine_instructions/index.html">rv64: רשימת פקודות מכונה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_conditional_branches/index.html">קפיצות מותנות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_routines/index.html">שגרות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv_calling_convention/index.html">הסכם קריאה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64/index.html">תוכניות rv64</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="memory/index.html">הזכרון הראשי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="mmu/index.html">Memory Management Unit (MMU)</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="virtual_memory/index.html">Virtual Memory</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
@@ -282,7 +221,7 @@
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            נושאים ארכיטקטורת מחשבים
+            משפטים בתורת הקבוצות
             </span>
         </li>
     </ul>

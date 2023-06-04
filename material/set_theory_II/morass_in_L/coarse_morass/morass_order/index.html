@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>נושאים בארכיטקטורת מחשבים</title>
+    <title>עולם הקבוצות הבנויות</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -36,6 +36,19 @@
         }
 </style>
 
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 </head>
 <body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "304aabe1863548458b5040660f66e91d"}'></script><!-- End Cloudflare Web Analytics -->
@@ -64,10 +77,10 @@
 				</div>
 				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                    נושאים בארכיטקטורת מחשבים
+                    כרמי מרימוביץ
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						כרמי מרימוביץ
+						אתר אישי
 					</h3>
                     <h3>
 					</h3>
@@ -80,7 +93,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../index.html">personal site<a></span>&rlm; >>> <span><a href="../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>נושאים בארכיטקטורת מחשבים</span>&rlm;
+              <span><a href="../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../index.html">עולם הקבוצות הבנויות<a></span>&rlm; >>> <span><a href="../../index.html">סבך (Morass) ב-$L$<a></span>&rlm; >>> <span><a href="../index.html">סבך גס (Coarse Morass)<a></span>&rlm; >>> <span>סדר העץ $\unicode{x297D}$ בסבך</span>&rlm;
               </p>
               
                 
@@ -91,7 +104,28 @@
 
 
 
-    <h1>נושאים בארכיטקטורת מחשבים</h1>
+    <h1>סדר העץ $\unicode{x297D}$ בסבך</h1>
+<p><strong>הגדרה</strong>
+נניח $\nu_0, \nu_1 \in S^1$.</p>
+<ul>
+<li>
+<p>שיכון אלמנטרי $\pi : J_{\nu_0} \to J_{\nu_1}$
+נקרא יפה אם $\nu_0 &lt; \nu_1$
+ו-$\pi(p_{\nu_0}) = p_{\nu_1}$.</p>
+</li>
+<li>
+<p>$\nu_0 \unicode{x297D} \nu_1$
+אם יש שיכון יפה $\pi : J_{\nu_0} \to J_{\nu_1}$.
+נסכים ש-$\pi(\nu_0) = \nu_1$.</p>
+</li>
+<li>
+<p>אם $\nu_0 \unicode{x297D} \nu_1$
+אז נקרא לשיכון היפה
+$\pi_{\nu_0,\nu_1} : J_{\nu_0} \to J_{\nu_1}$.
+מיד נראה שאם יש שיכון יפה אז הוא יחיד
+ולכן אין דילמה איזה שיכון לבחור אם יש כמה.</p>
+</li>
+</ul>
 
 
 
@@ -104,155 +138,7 @@
 
 
 
-
-
- <ol > 
-            <li><p>
-                
-            <a href="processor_loop/index.html">לולאת המעבד</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="load_store_machine/index.html">מכונות טען-אחסן</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-                
-                תוויות
-                
-            
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="registers/index.html">אוגרים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_machine_instructions/index.html">rv64: רשימת פקודות מכונה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_conditional_branches/index.html">קפיצות מותנות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_routines/index.html">שגרות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv_calling_convention/index.html">הסכם קריאה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64/index.html">תוכניות rv64</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="memory/index.html">הזכרון הראשי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="mmu/index.html">Memory Management Unit (MMU)</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="virtual_memory/index.html">Virtual Memory</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
@@ -282,7 +168,7 @@
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            נושאים ארכיטקטורת מחשבים
+            הקבוצות הבנויות
             </span>
         </li>
     </ul>

@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>נושאים בארכיטקטורת מחשבים</title>
+    <title>עולם הקבוצות הבנויות</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -36,6 +36,19 @@
         }
 </style>
 
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 </head>
 <body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "304aabe1863548458b5040660f66e91d"}'></script><!-- End Cloudflare Web Analytics -->
@@ -64,10 +77,10 @@
 				</div>
 				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                    נושאים בארכיטקטורת מחשבים
+                    כרמי מרימוביץ
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						כרמי מרימוביץ
+						אתר אישי
 					</h3>
                     <h3>
 					</h3>
@@ -80,7 +93,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../index.html">personal site<a></span>&rlm; >>> <span><a href="../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>נושאים בארכיטקטורת מחשבים</span>&rlm;
+              <span><a href="../../index.html">personal site<a></span>&rlm; >>> <span><a href="../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>עולם הקבוצות הבנויות</span>&rlm;
               </p>
               
                 
@@ -91,7 +104,12 @@
 
 
 
-    <h1>נושאים בארכיטקטורת מחשבים</h1>
+    <h1>עולם הקבוצות הבנויות (The Constructible Universe)</h1>
+<p>העברה לצורה קריאה של רשימות די עתיקות שיש לי.
+היעד המקורי היה להבין את היצור הקרוי
+Morass
+שתרגום סביר לעברית שלו זה סבך.</p>
+<p>(אגב, לא הגעתי ליעד)</p>
 
 
 
@@ -109,19 +127,7 @@
  <ol > 
             <li><p>
                 
-            <a href="processor_loop/index.html">לולאת המעבד</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="load_store_machine/index.html">מכונות טען-אחסן</a>
+            <a href="intro/index.html">מבוא</a>
         
             
             
@@ -134,7 +140,7 @@
             <li><p>
                 
                 
-                תוויות
+                דרישות קדם
                 
             
             
@@ -147,7 +153,21 @@
         
             <li><p>
                 
-            <a href="registers/index.html">אוגרים</a>
+                
+                נוסחאות $\Sigma_0$ שימושיות
+                
+            
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="coding_formulas/index.html">קידוד נוסחאות על ידי מבנים</a>
         
             
             
@@ -159,7 +179,7 @@
         
             <li><p>
                 
-            <a href="rv64_machine_instructions/index.html">rv64: רשימת פקודות מכונה</a>
+            <a href="Satisfying/index.html">ספיקות נוסחה</a>
         
             
             
@@ -171,7 +191,7 @@
         
             <li><p>
                 
-            <a href="rv64_conditional_branches/index.html">קפיצות מותנות</a>
+            <a href="Godel_well_ordering/index.html">סדר Godel על זוגות סדורים</a>
         
             
             
@@ -183,7 +203,7 @@
         
             <li><p>
                 
-            <a href="rv64_routines/index.html">שגרות</a>
+            <a href="condensation/index.html">למת העיבוי</a>
         
             
             
@@ -195,7 +215,21 @@
         
             <li><p>
                 
-            <a href="rv_calling_convention/index.html">הסכם קריאה</a>
+                
+                מבנים ברי-האחדה ופונקציות סקולם
+                
+            
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="p_r_functions/index.html">פונקציות רקורסיביות פרימיטיביות (Primitive Recursive Functions)</a>
         
             
             
@@ -207,7 +241,7 @@
         
             <li><p>
                 
-            <a href="rv64/index.html">תוכניות rv64</a>
+            <a href="rud_functions/index.html">פונקציות רודימנטריות (Rudimentary functions)</a>
         
             
             
@@ -219,7 +253,7 @@
         
             <li><p>
                 
-            <a href="memory/index.html">הזכרון הראשי</a>
+            <a href="rud_closure/index.html">סגור $\text{rud}$</a>
         
             
             
@@ -231,7 +265,7 @@
         
             <li><p>
                 
-            <a href="mmu/index.html">Memory Management Unit (MMU)</a>
+            <a href="rud_codes/index.html">קידוד פונקציות  $\text{rud}$</a>
         
             
             
@@ -243,7 +277,61 @@
         
             <li><p>
                 
-            <a href="virtual_memory/index.html">Virtual Memory</a>
+            <a href="J_hierarcy/index.html">הירארכיית-$J$</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+                
+                פרוג&#39;קטום-$\Sigma_n$ והאחדה-$\Sigma_n$
+                
+            
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+                
+                קודים סטנדרטיים
+                
+            
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+                
+                תכונות קומבינטוריות ב-$L$
+                
+            
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="morass_in_L/index.html">סבך (Morass) ב-$L$</a>
         
             
             
@@ -282,7 +370,7 @@
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            נושאים ארכיטקטורת מחשבים
+            הקבוצות הבנויות
             </span>
         </li>
     </ul>

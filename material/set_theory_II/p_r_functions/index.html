@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>נושאים בארכיטקטורת מחשבים</title>
+    <title>עולם הקבוצות הבנויות</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -36,6 +36,19 @@
         }
 </style>
 
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 </head>
 <body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "304aabe1863548458b5040660f66e91d"}'></script><!-- End Cloudflare Web Analytics -->
@@ -64,10 +77,10 @@
 				</div>
 				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                    נושאים בארכיטקטורת מחשבים
+                    כרמי מרימוביץ
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						כרמי מרימוביץ
+						אתר אישי
 					</h3>
                     <h3>
 					</h3>
@@ -80,7 +93,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../index.html">personal site<a></span>&rlm; >>> <span><a href="../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>נושאים בארכיטקטורת מחשבים</span>&rlm;
+              <span><a href="../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../index.html">עולם הקבוצות הבנויות<a></span>&rlm; >>> <span>פונקציות רקורסיביות פרימיטיביות (Primitive Recursive Functions)</span>&rlm;
               </p>
               
                 
@@ -91,7 +104,48 @@
 
 
 
-    <h1>נושאים בארכיטקטורת מחשבים</h1>
+    <h1>פונקציות רקורסיביות פרימיטיביות (Primitive Recursive Functions)</h1>
+<p>את הפונקציות הרקורסיביות הפרימיטיביות שתחומן הטבעיים
+ניתן להכליל בשתי צורות.
+צורה אחת היא הכללה לפונקציות שתחומן סודרים.
+הצורה השניה להכליל היא לפונקציות שתחומן כל הקבוצות.</p>
+<p><strong>הגדרה</strong>
+פונקציה    $f : V^n \to V$
+היא רקורסיבית פרימיטיבית אם היא נוצרת על-ידי
+אחת מהסכמות הבאות:</p>
+<ol>
+<li>$f(x_0,\dotsc,x_{n-1}) = x_i$.</li>
+<li>$f(x_0,\dotsc,x_{n-1}) = \set{x_i,x_j}$.</li>
+<li>$f(x_0,\dotsc,x_{n-1}) = x_i \setminus x_j$.</li>
+<li>$f(x_0,\dotsc,x_{n-1}) = g(h_0(x_0,\dotsc,x_{n-1}), \dotsc
+h_{m-1}(x_0, \dotsc, x_{n-1}))$
+כאשר $g, h_0, \dotsc, h_{m-1}$
+הן פונקציות רקורסיביות פרימיטיביות.</li>
+<li>$f(x_0,\dotsc,x_{n-1}) =
+\bigcup_{x \in x_0}
+g(x, x_1,\dotsc,x_{n-1})$
+כאשר $g$
+פונקציה רקורסיבית פרימיטיבית.</li>
+<li>$f(x_0,\dotsc,x_{n-1}) = \omega$.</li>
+<li>$f(y, x_1, \dotsc, x_n) = g(y, x_1, \dotsc, x_n,
+\langle f(z, x_1,\dotsc, x_n) \mid z \in h(y) \rangle)$,
+כאשר $h$ ו-$g$
+הן רקורסיביות פרימיטיביות ויתר על כן מתקיים
+\begin{equation}
+z \in h(y) \xrightarrow{} \text{rank}(z) &lt; \text{rank}(y).
+\end{equation}</li>
+</ol>
+<p><strong>הגדרה</strong>
+סודר $\alpha$
+יקרא סגור לפונקציות רקורסיביות פרימיטיביות
+אם הפעלת פונקציה רקורסיבית פרימיטיבית על    פרמטרים
+קטנים מ-$\alpha$
+נותנת תוצאה קטנה מ-$\alpha$.</p>
+<p><strong>משפט</strong> (<a href="https://doi.org/10.1090/pspum/013.1">Jensen, Karp</a>)</p>
+<p>$\alpha$
+סגור תחת פונקציות רקורסיביות פרימיטיביות אם
+$L_\alpha$
+סגור תחת פונקציות רקורסיביות פרימיטיביות (על קבוצות).</p>
 
 
 
@@ -104,155 +158,7 @@
 
 
 
-
-
- <ol > 
-            <li><p>
-                
-            <a href="processor_loop/index.html">לולאת המעבד</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="load_store_machine/index.html">מכונות טען-אחסן</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-                
-                תוויות
-                
-            
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="registers/index.html">אוגרים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_machine_instructions/index.html">rv64: רשימת פקודות מכונה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_conditional_branches/index.html">קפיצות מותנות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_routines/index.html">שגרות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv_calling_convention/index.html">הסכם קריאה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64/index.html">תוכניות rv64</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="memory/index.html">הזכרון הראשי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="mmu/index.html">Memory Management Unit (MMU)</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="virtual_memory/index.html">Virtual Memory</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
@@ -282,7 +188,7 @@
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            נושאים ארכיטקטורת מחשבים
+            הקבוצות הבנויות
             </span>
         </li>
     </ul>

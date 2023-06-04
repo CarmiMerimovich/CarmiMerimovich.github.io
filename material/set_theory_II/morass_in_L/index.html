@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>נושאים בארכיטקטורת מחשבים</title>
+    <title>עולם הקבוצות הבנויות</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -36,6 +36,19 @@
         }
 </style>
 
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 </head>
 <body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "304aabe1863548458b5040660f66e91d"}'></script><!-- End Cloudflare Web Analytics -->
@@ -64,10 +77,10 @@
 				</div>
 				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                    נושאים בארכיטקטורת מחשבים
+                    כרמי מרימוביץ
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						כרמי מרימוביץ
+						אתר אישי
 					</h3>
                     <h3>
 					</h3>
@@ -80,7 +93,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../index.html">personal site<a></span>&rlm; >>> <span><a href="../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>נושאים בארכיטקטורת מחשבים</span>&rlm;
+              <span><a href="../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../index.html">עולם הקבוצות הבנויות<a></span>&rlm; >>> <span>סבך (Morass) ב-$L$</span>&rlm;
               </p>
               
                 
@@ -91,9 +104,7 @@
 
 
 
-    <h1>נושאים בארכיטקטורת מחשבים</h1>
-
-
+    <h1>סבך (Morass) ב-$L$</h1>
 
 
 
@@ -109,7 +120,16 @@
  <ol > 
             <li><p>
                 
-            <a href="processor_loop/index.html">לולאת המעבד</a>
+            <a href="more_L_facts/index.html">מספר עובדות על $L$</a>
+        
+            
+            
+            
+            
+             <ol > 
+            <li><p>
+                
+            <a href="more_L_facts/proposition/index.html">טענה</a>
         
             
             
@@ -121,7 +141,7 @@
         
             <li><p>
                 
-            <a href="load_store_machine/index.html">מכונות טען-אחסן</a>
+            <a href="more_L_facts/non_projectible/index.html">סודר שאינו ניתן להטלה (non-projectible ordinal)</a>
         
             
             
@@ -133,21 +153,7 @@
         
             <li><p>
                 
-                
-                תוויות
-                
-            
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="registers/index.html">אוגרים</a>
+            <a href="more_L_facts/proposition_3.3/index.html">טענה</a>
         
             
             
@@ -156,22 +162,22 @@
              <ol >  </ol> 
         
         </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_machine_instructions/index.html">rv64: רשימת פקודות מכונה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
+         </ol> 
         
         </p></li>
         
             <li><p>
                 
-            <a href="rv64_conditional_branches/index.html">קפיצות מותנות</a>
+            <a href="coarse_morass/index.html">סבך גס (Coarse Morass)</a>
+        
+            
+            
+            
+            
+             <ol > 
+            <li><p>
+                
+            <a href="coarse_morass/S/index.html">$S$</a>
         
             
             
@@ -183,7 +189,7 @@
         
             <li><p>
                 
-            <a href="rv64_routines/index.html">שגרות</a>
+            <a href="coarse_morass/M0/index.html">M0</a>
         
             
             
@@ -195,7 +201,7 @@
         
             <li><p>
                 
-            <a href="rv_calling_convention/index.html">הסכם קריאה</a>
+            <a href="coarse_morass/morass_order/index.html">סדר העץ $\unicode{x297D}$ בסבך</a>
         
             
             
@@ -207,7 +213,7 @@
         
             <li><p>
                 
-            <a href="rv64/index.html">תוכניות rv64</a>
+            <a href="coarse_morass/M1/index.html">M1</a>
         
             
             
@@ -219,7 +225,31 @@
         
             <li><p>
                 
-            <a href="memory/index.html">הזכרון הראשי</a>
+            <a href="coarse_morass/M2-M5/index.html">M2 - M5</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+         </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="morass/index.html">סבך (Morass)</a>
+        
+            
+            
+            
+            
+             <ol > 
+            <li><p>
+                
+            <a href="morass/S/index.html">$S$</a>
         
             
             
@@ -231,7 +261,7 @@
         
             <li><p>
                 
-            <a href="mmu/index.html">Memory Management Unit (MMU)</a>
+            <a href="morass/M0/index.html">$M0&#39;$</a>
         
             
             
@@ -243,13 +273,100 @@
         
             <li><p>
                 
-            <a href="virtual_memory/index.html">Virtual Memory</a>
+            <a href="morass/M5/index.html">$M5$</a>
         
             
             
             
             
              <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="morass/defs/index.html">$\beta(\nu)$, $n(\nu)$, $A$ ו-$\rho$</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="morass/020000/index.html">$\rho_{n + 1} \leq \alpha_\nu &lt; \nu &lt; \rho_n$</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="morass/a_nu/index.html">$p(\nu), \mathfrak{a}_\nu$</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="morass/Q_quantifier/index.html">כמת $Q$</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="morass/morass_order/index.html">הסדר $\unicode{x22B0}$ על הסבך</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="morass/pretty_is_unique/index.html">שיכון יפה הוא יחיד</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="morass/lemma/index.html">למה</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+         </ol> 
         
         </p></li>
          </ol> 
@@ -282,7 +399,7 @@
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            נושאים ארכיטקטורת מחשבים
+            הקבוצות הבנויות
             </span>
         </li>
     </ul>

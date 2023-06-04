@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>נושאים בארכיטקטורת מחשבים</title>
+    <title>עולם הקבוצות הבנויות</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -36,6 +36,19 @@
         }
 </style>
 
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 </head>
 <body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "304aabe1863548458b5040660f66e91d"}'></script><!-- End Cloudflare Web Analytics -->
@@ -64,10 +77,10 @@
 				</div>
 				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                    נושאים בארכיטקטורת מחשבים
+                    כרמי מרימוביץ
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						כרמי מרימוביץ
+						אתר אישי
 					</h3>
                     <h3>
 					</h3>
@@ -80,7 +93,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../index.html">personal site<a></span>&rlm; >>> <span><a href="../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>נושאים בארכיטקטורת מחשבים</span>&rlm;
+              <span><a href="../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../index.html">עולם הקבוצות הבנויות<a></span>&rlm; >>> <span><a href="../../index.html">קידוד נוסחאות על ידי מבנים<a></span>&rlm; >>> <span><a href="../index.html">קוד נוסחה<a></span>&rlm; >>> <span>ההצבות האפשריות</span>&rlm;
               </p>
               
                 
@@ -91,7 +104,52 @@
 
 
 
-    <h1>נושאים בארכיטקטורת מחשבים</h1>
+    <h1>ההצבות האפשריות</h1>
+<p>$\text{buildAssignments(as, N, frs, xs)}$</p>
+<p>\begin{align}
+&amp; \text{function}(frs) \wedge \text{dom}(frs) = \text{dom}(xs)
+\wedge \\
+&amp; \forall k &lt; \text{dom}(xs)\  ( \\
+&amp; \text{dom } as(k) = \text{dom } frs(k) \wedge    \\
+&amp; \text{ran } as(k) \subseteq N \wedge    \\
+&amp;   (xs(k) = \ulcorner v_i \in v_j \urcorner \wedge
+\forall b \in N\ \forall a \in b
+\set{\langle \ulcorner v_i\urcorner, a\rangle,
+\langle \ulcorner v_j\urcorner, b \rangle} \in as(k) \vee \\
+&amp;  (xs(k) = \ulcorner v_i = v_j \urcorner \wedge
+\forall a \in N\ 
+\set{\langle \ulcorner v_i\urcorner, a\rangle,
+\langle \ulcorner v_j\urcorner, a \rangle} \in as(k)) \vee \\
+&amp;   (\exists l&lt;k\ xs(k) =
+\ulcorner \neg xs(l) \urcorner \wedge
+frs(k) = frs(l)) \vee \\
+&amp;   (\exists l_0, l_1 &lt; k\ xs(k) =
+\ulcorner xs(l_0) \wedge xs(l_1) \urcorner \wedge
+frs(k) = frs(l_0) \cup frs(l_1)) \vee \\
+&amp;   (\exists l_0, l_1 &lt; k\ xs(k) =
+\ulcorner xs(l_0) \vee xs(l_1) \urcorner \wedge
+frs(k) = frs(l_0) \cup frs(l_1)) \vee \\
+&amp;   (\exists l_0, l_1 &lt; k\ xs(k) =
+\ulcorner xs(l_0) \to xs(l_1) \urcorner \wedge
+frs(k) = frs(l_0) \cup frs(l_1)) \vee \\
+&amp;   (\exists l&lt;k\ xs(k) =
+\ulcorner \exists v_i \ xs(l) \urcorner \wedge
+frs(k) = frs(l) \setminus
+\set{\ulcorner v_i \urcorner} ) \vee \\
+&amp;   (\exists l&lt;k\ xs(k) =
+\ulcorner \forall v_i \ xs(l) \urcorner \wedge
+frs(k) = frs(l) \setminus
+\set{\ulcorner v_i \urcorner} ) \vee \\
+&amp;   (\exists l&lt;k\ xs(k) =
+\ulcorner \exists v_i \in v_j\ xs(l) \urcorner \wedge
+frs(k) = frs(l) \setminus
+\set{\ulcorner v_i \urcorner} ) \vee \\
+&amp;   (\exists l&lt;k\ xs(k) =
+\ulcorner \forall v_i \in v_j\ xs(l) \urcorner \wedge
+frs(k) = frs(l) \setminus
+\set{\ulcorner v_i \urcorner} ) \\
+).
+\end{align}</p>
 
 
 
@@ -104,155 +162,7 @@
 
 
 
-
-
- <ol > 
-            <li><p>
-                
-            <a href="processor_loop/index.html">לולאת המעבד</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="load_store_machine/index.html">מכונות טען-אחסן</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-                
-                תוויות
-                
-            
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="registers/index.html">אוגרים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_machine_instructions/index.html">rv64: רשימת פקודות מכונה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_conditional_branches/index.html">קפיצות מותנות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_routines/index.html">שגרות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv_calling_convention/index.html">הסכם קריאה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64/index.html">תוכניות rv64</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="memory/index.html">הזכרון הראשי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="mmu/index.html">Memory Management Unit (MMU)</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="virtual_memory/index.html">Virtual Memory</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
@@ -282,7 +192,7 @@
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            נושאים ארכיטקטורת מחשבים
+            הקבוצות הבנויות
             </span>
         </li>
     </ul>

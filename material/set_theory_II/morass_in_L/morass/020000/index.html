@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>נושאים בארכיטקטורת מחשבים</title>
+    <title>עולם הקבוצות הבנויות</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -36,6 +36,19 @@
         }
 </style>
 
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 </head>
 <body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "304aabe1863548458b5040660f66e91d"}'></script><!-- End Cloudflare Web Analytics -->
@@ -64,10 +77,10 @@
 				</div>
 				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                    נושאים בארכיטקטורת מחשבים
+                    כרמי מרימוביץ
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						כרמי מרימוביץ
+						אתר אישי
 					</h3>
                     <h3>
 					</h3>
@@ -80,7 +93,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../index.html">personal site<a></span>&rlm; >>> <span><a href="../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>נושאים בארכיטקטורת מחשבים</span>&rlm;
+              <span><a href="../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../index.html">עולם הקבוצות הבנויות<a></span>&rlm; >>> <span><a href="../../index.html">סבך (Morass) ב-$L$<a></span>&rlm; >>> <span><a href="../index.html">סבך (Morass)<a></span>&rlm; >>> <span>$\rho_{n + 1} \leq \alpha_\nu < \nu < \rho_n$</span>&rlm;
               </p>
               
                 
@@ -91,7 +104,56 @@
 
 
 
-    <h1>נושאים בארכיטקטורת מחשבים</h1>
+    <p><strong>טענה</strong>
+יהי $\nu \in S^1$.
+אז $\rho^{n(\nu)+1}_{J_{\beta(\nu)}} \leq \alpha_{\nu} &lt; \nu \leq \rho$.</p>
+<p><strong>הוכחה</strong>
+נסמן   $\beta = \beta(\nu)$,
+$n = n(\nu)$,
+ולכל $k \leq n+1$,
+$\rho^k = \rho^k_{J_\beta}$,
+$A^k = A^k_{J_\beta}$
+ו-$p^k = p^k_{J_\beta}$.</p>
+<p>ראשית נראה ברקורסיה שלכל $k \leq n$,
+$\nu \leq \rho^k$.</p>
+<p>המקרה  $k = 0$
+מיידי:
+$\nu \leq \beta =\rho^0$
+וסיימנו.</p>
+<p>יהי $0 \leq k &lt;  n$.
+$J_{\rho^k} = h''_{\langle J_{\rho^k}, A^k \rangle}
+(\omega \times (\rho^{k+1} \times \set{p^{k}}))$.
+בפרט יש פונקציה-$\Sigma_1^{\langle J_{\rho^k}, A^k\rangle}$
+חלקית
+מ-$\rho^{k+1}$
+על $J_{\rho^k}$.
+ברקורסיה ידוע ש-$\nu \leq \rho^k$
+ולכן
+בפרט יש פונקציה-$\Sigma_1^{\langle J_{\rho^k}, A^k\rangle}$
+חלקית
+מ-$\rho^{k+1}$
+על $\nu$.
+פונקציה זו היא $\Sigma_{k+1}^{J_\beta}$.
+כיון ש-$k + 1 &lt; n + 1$
+חייב להתקיים $\nu \leq \rho^{k+1}$,
+אחרת נהיה בסתירה למינימליות $n$.</p>
+<p>נשאר להראות ש-$\rho^{n+1} \leq \alpha_\nu &lt; \nu$.
+מהגדרת $S$
+נובע ש-$\alpha_\nu &lt; \nu$.
+נניח בשלילה ש-$\alpha_\nu &lt; \rho^{n+1}$.
+כיון ש-$\alpha_\nu$
+מונה אחרון ב-$J_\nu$,
+יש ב-$J_\nu$
+פונקציה חלקית
+$g : \alpha_\nu \xrightarrow{\text{לע}} \rho^{n + 1}$
+ולכן $h \circ g : \alpha_\nu \xrightarrow{\text{לע}}
+\rho^n$
+היא פונקציה-$\Sigma_1^{J_{\rho_n}}$ חלקית,
+בסתירה להגדרת $\rho_{n+1}$.
+$\square$</p>
+<p><strong>מסקנונת</strong>
+$J_{\rho^n} = h''_{\rho^n,A^n}(\omega \times
+(\alpha_\nu \times \set{p^{n + 1}}))$.</p>
 
 
 
@@ -104,155 +166,7 @@
 
 
 
-
-
- <ol > 
-            <li><p>
-                
-            <a href="processor_loop/index.html">לולאת המעבד</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="load_store_machine/index.html">מכונות טען-אחסן</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-                
-                תוויות
-                
-            
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="registers/index.html">אוגרים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_machine_instructions/index.html">rv64: רשימת פקודות מכונה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_conditional_branches/index.html">קפיצות מותנות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_routines/index.html">שגרות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv_calling_convention/index.html">הסכם קריאה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64/index.html">תוכניות rv64</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="memory/index.html">הזכרון הראשי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="mmu/index.html">Memory Management Unit (MMU)</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="virtual_memory/index.html">Virtual Memory</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
@@ -282,7 +196,7 @@
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            נושאים ארכיטקטורת מחשבים
+            הקבוצות הבנויות
             </span>
         </li>
     </ul>

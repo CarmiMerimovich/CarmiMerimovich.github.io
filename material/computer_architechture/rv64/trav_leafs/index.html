@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>נושאים בארכיטקטורת מחשבים</title>
+    <title>כרמי מרימוביץ, תוכניות rv64</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -80,7 +80,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../index.html">personal site<a></span>&rlm; >>> <span><a href="../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>נושאים בארכיטקטורת מחשבים</span>&rlm;
+              <span><a href="../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../index.html">נושאים בארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../index.html">תוכניות rv64<a></span>&rlm; >>> <span>קריאה לפונקציה עבור כל עלה</span>&rlm;
               </p>
               
                 
@@ -91,7 +91,60 @@
 
 
 
-    <h1>נושאים בארכיטקטורת מחשבים</h1>
+    <h1>קריאה לפונקציה עבור כל עלה</h1>
+<pre><code>struct node {
+    struct node *left;
+    struct node *right;
+    long long value;
+};
+
+void trav(struct node *node, (*func)()) {
+    if (node == NULL)
+        return (0);
+
+    if (node-&gt;left == NULL  &amp;&amp;  node-&gt;right == NULL) {
+        (*func)(node);
+        return;
+    }   
+
+    trav(node-&gt;left);
+    trav(node-&gt;right);
+    return;
+</code></pre>
+<p>trav:
+bne a0, x0, work
+jalr  x0, 0(ra)
+work:
+addi  sp, sp, -24
+sd    ra, 0(sp)</p>
+<pre><code>ld  t0, 0(a0)
+bne  t0, x0, work2
+ld  t0, 8(a0)
+bne  t0, x0 work2
+
+jalr  ra, 0(a1)
+
+ld     ra, 0(sp)
+addi  sp, sp, 24
+jalr  x0, 0(ra)
+</code></pre>
+<p>work2:
+sd    a0, 8(sp)
+sd    a1, 16(sp)</p>
+<pre><code>ld    a0,0(a0)
+jalr  ra, trav
+
+ld    a0, 8(sp)
+ld    a1, 16(sp)
+
+ld    a0, 8(a0)
+jal   ra, tav
+
+ld     ra, 0(sp)
+addi  sp, sp, 24
+jalr  x0, 0(ra)
+</code></pre>
+<pre><code></code></pre>
 
 
 
@@ -104,155 +157,7 @@
 
 
 
-
-
- <ol > 
-            <li><p>
-                
-            <a href="processor_loop/index.html">לולאת המעבד</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="load_store_machine/index.html">מכונות טען-אחסן</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-                
-                תוויות
-                
-            
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="registers/index.html">אוגרים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_machine_instructions/index.html">rv64: רשימת פקודות מכונה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_conditional_branches/index.html">קפיצות מותנות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_routines/index.html">שגרות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv_calling_convention/index.html">הסכם קריאה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64/index.html">תוכניות rv64</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="memory/index.html">הזכרון הראשי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="mmu/index.html">Memory Management Unit (MMU)</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="virtual_memory/index.html">Virtual Memory</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
@@ -282,7 +187,7 @@
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            נושאים ארכיטקטורת מחשבים
+            תוכניות rv64
             </span>
         </li>
     </ul>

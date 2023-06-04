@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>כרמי מרימוביץ, אוסף אקלקטי של נושאים</title>
+    <title>עולם הקבוצות הבנויות</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -35,6 +35,19 @@
             direction: ltr;
         }
 </style>
+
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 
 </head>
 <body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
@@ -80,7 +93,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../index.html">personal site<a></span>&rlm; >>> <span>חומרים מכל מיני קורסים</span>&rlm;
+              <span><a href="../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../index.html">עולם הקבוצות הבנויות<a></span>&rlm; >>> <span><a href="../index.html">סבך (Morass) ב-$L$<a></span>&rlm; >>> <span>סבך גס (Coarse Morass)</span>&rlm;
               </p>
               
                 
@@ -91,9 +104,98 @@
 
 
 
-    <h1>חומרים מכל מיני קורסים</h1>
-
-
+    <h1>סבך גס (Coarse Morass)</h1>
+<p>היעד שלנו הוא לבנות סבך ב-$L$.
+כשלב ביניים נבנה את הסבך הגס (Coarse Morass).
+יש שימושים גם לסבך זה.</p>
+<p>המבנה
+$\langle S,  \unicode{x22B0}, \langle \pi_{\nu_0,\nu_1} \mid
+\nu_0 \unicode{x22B0} \nu_1 \rangle \rangle$
+יקרא סבך גס
+אם הוא מקיים את תכונות
+M0-M5
+המופיעות להלן עם הסימונים הבאים:
+\begin{align}
+&amp; S^0 = \set{\alpha \mid \exists \nu\ \langle \alpha, \nu \rangle \in S}, \\
+&amp; S^1 = \set{\nu \mid \exists \alpha\ \langle \alpha, \nu \rangle \in S}, \\
+&amp; S_\alpha = \set{\nu \mid \langle \alpha, \nu \rangle \in S}
+\end{align}</p>
+<hr>
+<p><strong>M0</strong></p>
+<p>$S$
+היא קבוצת זוגות סודרים סגורים תחת פונקציות
+רקורסיביות פרימיטיביות כך שמתקיימים הדברים הבאים:</p>
+<ol>
+<li>אם $\langle \alpha, \nu\rangle  \in S$
+אזי $\alpha &lt; \nu &lt; \omega_2$.</li>
+<li>אם $\langle \alpha_0, \nu_0\rangle,
+\langle \alpha_1, \nu_1\rangle \in S$
+ו-$\alpha_0 &lt; \alpha_1$
+אזי $\nu_0 &lt; \alpha_1$.</li>
+<li>$\omega_1 = \max S^0 = \sup (S^0 \cap \omega_1)$
+ו-$\omega_2 = \sup S^1 = \sup S_{\omega_1}$.</li>
+</ol>
+<hr>
+<p><strong>M1</strong></p>
+<ol>
+<li>
+<p>$\unicode{x297D}$
+הוא סדר עץ על $S^1$
+כך שאם $\nu_0 \unicode{x297D} \nu_1$
+אז $\alpha_{\nu_0} &lt; \alpha_{\nu_1}$.</p>
+</li>
+<li>
+<p>$\langle \pi_{\nu_0, \nu_1} \mid \nu_0 \unicode{x297D} \nu_1 \rangle$
+היא מערכת קומוטטיבית.
+$\langle \pi_{\nu_0, \nu_1}| \nu_0 \mid \nu_0 \unicode{x297D} \nu_1 \rangle$
+היא מערכת קומוטטיבית של פונקציות שומרות סדר.</p>
+</li>
+<li>
+<p>$\pi_{\nu_0,\nu_1} | \alpha_{\nu_0} = \text{id}$
+ו-$\pi_{\nu_0,\nu_1}(\alpha_{\nu_0}) = \alpha_{\nu_1}$.</p>
+</li>
+<li>
+<p>נניח $\nu_0  \unicode{x22B0} \nu_1$.
+נקבע $\alpha_i = \alpha_{\nu_i}$
+ו-$S_i = S_{\alpha_i} \cap (\nu_i + 1)$,
+עבור $i &lt; 2$.
+אז:</p>
+<ul>
+<li>$\nu_0 = \min S_0 \iff \nu_1 = \min S_1$.</li>
+<li>אם $\pi_{\nu_0, \nu_1}(\tau_0) = \tau_1$
+ו-$\nu_0$
+הוא העוקב המיידי
+ב-$S_0$
+של $\tau_0$, אז $\nu_1$
+הוא העוקב המיידי ב-$S_1$
+של $\tau_1$.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p><strong>M2</strong></p>
+<p>אם $\nu_0 \unicode{x297D} \nu_1$,
+$\tau_0 \in S_{\alpha_{\nu_0}}$
+ו-$\tau_1 = \pi_{\nu_0,\nu_1}(\tau_0)$
+אז
+$\tau_0 \unicode{x297D} \tau_1$
+ו-$\pi_{\nu_0, \nu_1}|J_{\tau_0} = \pi_{\tau_0,\tau_1}$.</p>
+<hr>
+<p><strong>M3</strong></p>
+<p>$\set{\alpha_\tau | \tau \unicode{x297D} \nu} \subseteq \alpha_\nu$
+היא קבוצה סגורה.</p>
+<hr>
+<p><strong>M4</strong></p>
+<p>אם $\nu \in S_{\alpha_\nu} \setminus \set{\max S_{\alpha_\nu}}$
+אזי $\set{\alpha_\tau | \tau \unicode{x297D} \nu} \subseteq \alpha_\nu$
+אינה חסומה.</p>
+<hr>
+<p><strong>M5</strong></p>
+<p>אם הקבוצה $\set{\alpha_\tau | \tau \unicode{x297D} \nu} \subseteq \alpha_\nu$
+אינה חסומה אזי
+$J_\nu = \bigcup_{\tau \unicode{x297D} \nu} \pi_{\tau,\nu}''J_\tau$.</p>
+<hr>
+<p>הבניה של הסבך הגס מתבצעת לאורך השלבים הבאים:</p>
 
 
 
@@ -109,7 +211,7 @@
  <ol > 
             <li><p>
                 
-            <a href="computer_architechture/index.html">נושאים בארכיטקטורת מחשבים</a>
+            <a href="S/index.html">$S$</a>
         
             
             
@@ -121,7 +223,7 @@
         
             <li><p>
                 
-            <a href="digital_design/index.html">נושאים במערכות ספרתיות</a>
+            <a href="M0/index.html">M0</a>
         
             
             
@@ -133,7 +235,7 @@
         
             <li><p>
                 
-            <a href="analysis_and_algebra/index.html">(הדגמה) אנליזה ואלגברה לינארית</a>
+            <a href="morass_order/index.html">סדר העץ $\unicode{x297D}$ בסבך</a>
         
             
             
@@ -145,7 +247,7 @@
         
             <li><p>
                 
-            <a href="set_theory_I/index.html">משפטים אקראיים בתורת הקבוצות</a>
+            <a href="M1/index.html">M1</a>
         
             
             
@@ -157,7 +259,7 @@
         
             <li><p>
                 
-            <a href="set_theory_II/index.html">עולם הקבוצות הבנויות</a>
+            <a href="M2-M5/index.html">M2 - M5</a>
         
             
             
@@ -196,7 +298,7 @@
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            כל מיני נושאים
+            הקבוצות הבנויות
             </span>
         </li>
     </ul>

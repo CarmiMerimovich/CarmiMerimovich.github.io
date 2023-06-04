@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>נושאים בארכיטקטורת מחשבים</title>
+    <title>עולם הקבוצות הבנויות</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -36,6 +36,19 @@
         }
 </style>
 
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 </head>
 <body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "304aabe1863548458b5040660f66e91d"}'></script><!-- End Cloudflare Web Analytics -->
@@ -64,10 +77,10 @@
 				</div>
 				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                    נושאים בארכיטקטורת מחשבים
+                    כרמי מרימוביץ
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						כרמי מרימוביץ
+						אתר אישי
 					</h3>
                     <h3>
 					</h3>
@@ -80,7 +93,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../index.html">personal site<a></span>&rlm; >>> <span><a href="../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>נושאים בארכיטקטורת מחשבים</span>&rlm;
+              <span><a href="../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../index.html">עולם הקבוצות הבנויות<a></span>&rlm; >>> <span><a href="../../index.html">סבך (Morass) ב-$L$<a></span>&rlm; >>> <span><a href="../index.html">סבך (Morass)<a></span>&rlm; >>> <span>$M0'$</span>&rlm;
               </p>
               
                 
@@ -91,7 +104,71 @@
 
 
 
-    <h1>נושאים בארכיטקטורת מחשבים</h1>
+    <h1>$M0'$</h1>
+<p><strong>טענה</strong>
+$S$
+מקיים את $M0'$.</p>
+<ol>
+<li>אם $\langle \alpha, \nu\rangle  \in S$
+אזי $\alpha &lt; \nu &lt; \omega_2$.</li>
+<li>אם $\langle \alpha_0, \nu_0\rangle,
+\langle \alpha_1, \nu_1\rangle \in S$
+ו-$\alpha_0 &lt; \alpha_1$
+אזי $\nu_0 &lt; \alpha_1$.</li>
+<li>$S_\alpha \subseteq \sup S_\alpha$
+קבוצה סגורה.</li>
+<li>$\omega_1 = \max S^0 = \sup (S^0 \cap \omega_1)$
+ו-$\omega_2 = \sup S^1 = \sup S_{\omega_1}$.</li>
+</ol>
+<p><strong>הוכחה</strong></p>
+<ol>
+<li>
+<p>כיון שב-$J_\nu$
+יש מונה יחיד שאינו בן-מניה חייב להתקיים $\nu \leq \omega_2$.
+מהגדרת $S$
+ידוע ש-$\nu$
+אינו מונה ולכן $\nu &lt; \omega_2$.</p>
+<p>כיון ש-$\alpha \in J_\nu$
+חייב להתקיים $\alpha &lt; \nu$.</p>
+</li>
+<li>
+<p>כיון ש-$\alpha_0 &lt; \alpha_1$
+נובע $J_{\nu_1} \models \ulcorner
+\text{הנומ וניא }  \alpha_0 \ \urcorner$,
+ולכן $\nu_0 &lt; \nu_1$.
+אם $\nu_0 &gt; \alpha_1$
+אזי ב-$J_{\nu_0}$
+יש שני מונים שאינם בני מניה. סתירה.
+ולכן $\nu_0 \leq \alpha_1$.
+<strong>למה $&lt;$ מתקיים?</strong></p>
+</li>
+<li>
+<p>נניח $\nu &lt; \omega_2$
+נקודת הצטברות של $S_\alpha$.
+מיידי ש-$\nu$
+גבול של סודרים שאינם ברי-הטלה.
+גם מיידי ש-$\alpha$
+הוא המונה היחיד שאינן בן-מניה ב-$J_\nu$.</p>
+</li>
+<li>
+<p>כיון שהקבוצה
+$\set{N \cap \omega_2 \mid N \prec L_{\omega_2},\ 
+N \cap \omega_2 \in \text{On}}$
+מכילה סל&quot;ח ברור ש-$\sup S_{\omega_1} = \omega_2$.</p>
+<p>לסיום.
+יהי $N \in S_{\omega_1}$
+מינימלי.
+ניקח סדרה $\in$-עולה
+של תת-מודלים אלמנטריים בני מניה
+$\langle X_\xi \prec J_{\omega_2} \mid
+X_\xi \cap \omega_1 \in \omega_1,\ 
+\xi &lt; \omega_1\rangle$
+כך ש-$N \in X_0$.
+המיטוט הטרנזיטיבי של כל אחד מהמודלים  בסדרה
+$\langle N \cap X_\xi \mid \xi &lt; \omega_1\rangle$
+מוכיח ש-$\sup (S^0 \cap \omega_1) = \omega_1$.</p>
+</li>
+</ol>
 
 
 
@@ -104,155 +181,7 @@
 
 
 
-
-
- <ol > 
-            <li><p>
-                
-            <a href="processor_loop/index.html">לולאת המעבד</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="load_store_machine/index.html">מכונות טען-אחסן</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-                
-                תוויות
-                
-            
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="registers/index.html">אוגרים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_machine_instructions/index.html">rv64: רשימת פקודות מכונה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_conditional_branches/index.html">קפיצות מותנות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64_routines/index.html">שגרות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv_calling_convention/index.html">הסכם קריאה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="rv64/index.html">תוכניות rv64</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="memory/index.html">הזכרון הראשי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="mmu/index.html">Memory Management Unit (MMU)</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="virtual_memory/index.html">Virtual Memory</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
@@ -282,7 +211,7 @@
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            נושאים ארכיטקטורת מחשבים
+            הקבוצות הבנויות
             </span>
         </li>
     </ul>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+
+<html lang="he" 
+        dir="rtl">
+<head>
+    <title>עולם הקבוצות הבנויות</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "304aabe1863548458b5040660f66e91d"}'></script><!-- End Cloudflare Web Analytics -->
+<header>
+
+    <style>
+        .headerL1, .headerL1:active, .headerL1:visited, .headerL1:link
+            {
+                text-decoration: inherit;
+                color: inherit;
+            }
+    </style>
+
+    
+        <a href="/he/" 
+         style="display: contents;" 
+           class="headerL1">
+    
+        <div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+                        <img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+                            srcset = "/me_512.png 512w, /me_1024.png 1024w, /me_2048.png 2048w"
+							src="/me.png">
+				</div>
+				<div style="vertical-align: middle;">
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                    כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						אתר אישי
+					</h3>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+    
+        </a>
+    
+        <div>
+            
+              <p style="font-size: xx-small">
+              <span><a href="../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../index.html">עולם הקבוצות הבנויות<a></span>&rlm; >>> <span><a href="../../index.html">פרוג'קטום-$\Sigma_n$ והאחדה-$\Sigma_n$<a></span>&rlm; >>> <span><a href="../index.html">יחסים פשוטים על הפרוג'קטום הם מסובכים על $M$<a></span>&rlm; >>> <span>הוכחה מפוקפקת שלי</span>&rlm;
+              </p>
+              
+                
+	</header>
+
+
+
+
+
+
+    <h1>הוכחה מפוקפקת שלי</h1>
+<h2>כמו שרשום זו שגיאה, לא הוכחה</h2>
+<p><strong>הוכחה</strong>
+תהי $\varphi(x)$
+נוסחה-$\Sigma_1^{\langle J_\rho, B\rangle}$.
+אז יש
+$\varphi_0(y,x)$
+נוסחה-$\Delta^{\langle J_\rho, B\rangle}_0$
+כך שמתקיים
+$\varphi(x) = \exists y\ \varphi_0(y,x)$.
+מטעמי מוטיבציה נניח לרגע שהנוסחה $\varphi_0(y,x)$
+לא משתמשת ביחס $B$.
+אזי ממוחלטות נוסחאות $\Delta_0$
+עבור מבנים טרנזיטייבים נקבל שמתקיים לכל
+$y,x \in M_1$:
+\begin{equation}
+M_1 \models \varphi_0(y, x) \iff
+M \models \varphi_0(y,x).
+\end{equation}
+אם
+$\rho = \alpha$
+נקבע
+\begin{equation}
+\psi(x) =  \exists y\ \varphi_0(y,x).
+\end{equation}
+אם
+$\rho &lt; \alpha$
+נקבע
+\begin{equation}
+\psi(x) =  x \in J_\rho \wedge \exists y \in J_\rho\ \varphi_0(y,x).
+\end{equation}
+בכל מקרה נקבל:
+\begin{equation}
+\set{x \in J_\rho \mid \langle J_\rho, B\rangle \models \varphi(x)} =
+\set{x \in M \mid M   \models  \psi(x)}.
+\end{equation}
+כיון ש-$\psi$
+(שקולה ל-) נוסחה-$\Sigma_1^M$,
+סיימנו מקרה זה.</p>
+<p>כלומר סיבוך, אם יש, נוצר כשהנוסחה $\varphi_0$
+מזכירה את היחס $B$.</p>
+<p>נטפל במקרה שהנוסחה $\varphi_0$
+מזכירה את היחס $B$.
+תהי $\sigma(x)$
+נוסחה $\Sigma^M_1$
+שמגדירת את $B$:
+$B(x) \iff M \models \sigma(x)$.
+תהי $\sigma_0(z, x)$
+נוסחה-$\Delta^M_0$
+כך שמתקיים
+$\sigma(x) = \exists z \  \sigma_0(z, x)$.
+נשים לב שמתקיים
+$\neg B(x) \iff M \models \forall z\ \neg \sigma_0(z, x)$.
+ברור ש-$\forall z\ \neg \sigma_0(z, x)$
+היא נוסחה-$\Pi^M_1$.</p>
+<p>בנוסחה $\varphi_0$
+נדאג ששלילה, $\neg$,
+תופעל רק על התת-נוסחאות האטומיות.
+את הדבר הבא פורמלית צריך לבצע באינדוקציה על מבנה הנוסחה $\varphi_0$,
+אבל נראה שזה די ברור גם מתיאור פשוט.
+נבנה את הנוסחה $\psi_0$
+מהנוסחה $\varphi_0$
+באופן הבא.
+נמצא שני משתנים שאינם מופיעים בנוסחה $\varphi_0$,
+נאמר $z_0$ ו-$z_1$.
+הנוסחה $\psi_0(z_0, z_1, y, x)$
+תהיה הנוסחה $\varphi_0(y,x)$
+בה החלפנו את $B(x)$ ו-$\neg B(x)$
+בנוסחאות $\sigma_0(z_0,x)$ ו-$\neg \sigma_0(z_1,x)$,
+בהתאמה.</p>
+<p>אם $\rho = \alpha$
+נקבע
+\begin{equation}
+\psi(x) = \exists y\ \exists z_0 \forall z_1 \psi_0(z_0, z_1, y, x).
+\end{equation}</p>
+<p>אם $\rho &lt; \alpha$
+נקבע
+\begin{equation}
+\psi(x) = x \in M_1 \wedge \exists y \in M_1\ \exists z_0 \forall z_1 \psi_0(z_0, z_1, y, x).
+\end{equation}
+בשני המקרים נקבל
+\begin{equation}
+\set{x \in M_1 \mid M_1 \models \varphi(x)} =
+\set{x \in M \mid M \models \psi(x)}.
+\end{equation}
+כיון ש-$\psi$
+(שקולה ל-) נוסחה-$\Sigma^M_2$,
+סיימנו.
+$\square$</p>
+
+
+
+
+
+
+
+
+
+
+
+
+ <ol >  </ol> 
+
+ </div>
+
+ 
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            
+                <a style="color: #999;"
+                href="/he/">
+                כרמי מרימוביץ
+            </a>
+            
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            הקבוצות הבנויות
+            </span>
+        </li>
+    </ul>
+</footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

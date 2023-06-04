@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+
+<html lang="he" 
+        dir="rtl">
+<head>
+    <title>עולם הקבוצות הבנויות</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "304aabe1863548458b5040660f66e91d"}'></script><!-- End Cloudflare Web Analytics -->
+<header>
+
+    <style>
+        .headerL1, .headerL1:active, .headerL1:visited, .headerL1:link
+            {
+                text-decoration: inherit;
+                color: inherit;
+            }
+    </style>
+
+    
+        <a href="/he/" 
+         style="display: contents;" 
+           class="headerL1">
+    
+        <div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+                        <img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+                            srcset = "/me_512.png 512w, /me_1024.png 1024w, /me_2048.png 2048w"
+							src="/me.png">
+				</div>
+				<div style="vertical-align: middle;">
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                    כרמי מרימוביץ
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						אתר אישי
+					</h3>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+    
+        </a>
+    
+        <div>
+            
+              <p style="font-size: xx-small">
+              <span><a href="../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../index.html">עולם הקבוצות הבנויות<a></span>&rlm; >>> <span><a href="../../index.html">סבך (Morass) ב-$L$<a></span>&rlm; >>> <span><a href="../index.html">סבך גס (Coarse Morass)<a></span>&rlm; >>> <span>M0</span>&rlm;
+              </p>
+              
+                
+	</header>
+
+
+
+
+
+
+    <h1>M0</h1>
+<p><strong>טענה</strong></p>
+<ol>
+<li>נניח  $\langle \alpha, \nu\rangle \in S$.
+אזי $\alpha &lt; \nu &lt; \omega_2$
+והסודרים $\alpha$
+ו-$\nu$
+סגורים תחת פונקציות
+רקורסיביות פרימיטיביות.</li>
+<li>נניח  $\langle \alpha_0, \nu_0\rangle,
+\langle \alpha_1, \nu_1\rangle \in S$
+ו-$\alpha_0 &lt; \alpha_1$.
+אזי $\nu_0 &lt; \alpha_1$.</li>
+<li>
+<ul>
+<li>$\omega_1 = \max S^0 = \sup (S^0 \cap \omega_1)$.</li>
+<li>$\omega_2 = \sup S^1 = \sup S_{\omega_1}$.</li>
+</ul>
+</li>
+</ol>
+<p><strong>הוכחה</strong></p>
+<ol>
+<li>
+<p>אם $\nu &gt; \omega_2$ אזי $\omega_1, \omega_2 \in J_\nu$
+ואז יש לנו לפחות שני מונים שאינם בני-מניה ב-$J_\nu$,
+ולכן $\nu \notin S^1$.</p>
+<p>כיון ש-$\nu \leq \omega_2$
+אזי $\alpha \leq \omega_1$.
+כל אבר ב-$J_\nu$
+אמור להיו גדיר עם פרמטרים מ-$\alpha \cup \set{p}$,
+ויש פה פחות מ-$\omega_2$
+פרמטרים ולכן
+$\mid J_\nu \mid &lt; \omega_2$
+ולכן $\nu &lt; \omega_2$.</p>
+<p>כיון ש$\alpha \in J_\nu$
+ברור ש-$\alpha &lt; \nu$.</p>
+</li>
+<li>
+<p>המשמעות של $\alpha_0 &lt; \alpha_1$
+היא ש-$\omega_1^{J_{\nu_0}} &lt; \omega_1^{J_{\nu_1}}$.
+אם $\nu_0 = \nu_1$
+אזי $\omega_1^{J_{\nu_0}} = \omega_1^{J_{\nu_1}}$,
+ולכן $\nu_0 \neq \nu_1$.
+אם $\nu_0 &gt; \nu_1$
+אזי $\omega_1^{J_{\nu_0}} \geq \omega_1^{J_{\nu_1}}$,
+ולכן $\nu_0 &lt; \nu_1$.</p>
+<p>אם $\nu_0 &gt; \alpha_1$
+אזי ב-$J_{\nu_0}$
+בנוסף ל-$\alpha_0$
+יש עוד מונה $\alpha_1$
+ולכן $\nu_0$
+אינו דמוי-$\omega_2$.</p>
+</li>
+<li>
+<p>מסעיף 1 נובע ש-$\sup S^1 \leq \omega_2$.
+נראה $\sup S^1 = \omega_2$.</p>
+<p>יהי $\beta &lt; \omega_2$.
+נקח $\beta \leq \beta' &lt; \omega_2$
+כך ש-$\beta'$
+סגור תחת זוגות גדל.
+נקבעי $X = h_{J_{\omega_2}}'' (\omega \times \beta')$.
+אז $X \prec J_{\omega_2}$.
+תהי $\pi : X \simeq L_\gamma$
+ההפלה הטרנזיטיבית.
+אזי $\gamma &gt; \beta$
+ו-$\gamma$ יפה.</p>
+<p>ביחס ל-$S^0$
+נעבוד כלהלן.
+ראשית אם-$\nu \in S^1$
+אזי $\alpha_\nu \leq \omega_1$,
+ולכן $\sup S^0 \leq \omega_1$.
+נקבע $X = h_{J_{\omega_2}}'' (\omega \times (\omega_1 + 1))$.
+אז $X \prec J_{\omega_2}$
+ו-$X \supseteq \omega_1 + 1$.
+תהי $\pi : X \simeq L_\gamma$
+ההפלה הטרנזיטיבית.
+אזי $\gamma &gt; \omega_1$
+ולכן $\alpha_{\gamma} = \omega_1$.
+כלומר $\max S^0 = \omega_1$.</p>
+<p>אחרון חביב.
+יהי $\alpha &lt; \omega_1$.
+נקח תת-מודל אלמנטרי $X \prec J_{\omega_2}$
+בגודל קטן מ-$\omega_1$,
+כך ש-$X \cap \omega_1 \supseteq \alpha$.
+תהי $\pi : X \simeq J_\gamma$
+ההפלה הטרנזיטיבית.
+אזי $\omega_1^{J_\gamma} &gt; \alpha$.
+ניקח $\nu \in S^1$
+כך ש-$\nu &gt; \gamma$.
+אז $\alpha_\nu &gt; \alpha$,
+ולכן $\sup (S^0 \cap \omega_1) = \omega_1$.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+ <ol >  </ol> 
+
+ </div>
+
+ 
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            
+                <a style="color: #999;"
+                href="/he/">
+                כרמי מרימוביץ
+            </a>
+            
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            הקבוצות הבנויות
+            </span>
+        </li>
+    </ul>
+</footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
