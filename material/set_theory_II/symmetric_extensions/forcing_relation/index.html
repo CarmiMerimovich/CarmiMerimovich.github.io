@@ -93,7 +93,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../index.html">משפטים אקראיים בתורת הקבוצות II -- כפיות<a></span>&rlm; >>> <span><a href="../index.html">מודלים סימטריים<a></span>&rlm; >>> <span>מסנן גנרי ויחס הכפיה</span>&rlm;
+              <span><a href="../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../index.html">משפטים אקראיים בתורת הקבוצות II -- כפיות<a></span>&rlm; >>> <span><a href="../index.html">מודלים סימטריים<a></span>&rlm; >>> <span>יחס הכפיה</span>&rlm;
               </p>
               
                 
@@ -104,25 +104,97 @@ MathJax = {
 
 
 
-    <h1>מסנן גנרי ויחס הכפיה</h1>
-<p><strong>משפט</strong>
-הטענות הבאות שקולות:</p>
-<ol>
-<li>$p \Vdash^{\tiny \text{HS}} \varphi$.</li>
-<li>לכל מסנן גנרי
-$G$,
-אם
-$p \in G$
-אז
-$HS[G] \models \varphi$.</li>
-</ol>
-<p><strong>הוכחה</strong>
-($(2) \Leftarrow (1)$)
-יהי $G$
-מסנן גנרי כך
-ש-$p \in G$.</p>
+    <h1>יחס הכפיה</h1>
+<p>כמו שבכפיות רגילות יש יחס כפיה גם בכפיות סימטריות
+יש יחס כפיה.
+מעשית מדובר ביחס הכפיה הרגיל מצומצם לשמות סימטריים.</p>
+<p>על נוסחאות אטומיות מדובר בצימצום יחס הכפיה הרגיל
+כל שיוגדר על שמות סימטריים בלבד.</p>
+<p>את הכמתים
+$\forall$
+ו-$\exists$
+נצמצם כך שיכללו רק שמות
+מ-$HS_{\mathcal{F}}$.</p>
+<p>להלן ההגדרה המלאה.</p>
+<p><strong>הגדרה</strong>
+תהי
+$\langle
+\mathbb{P}, \mathcal{G}, \mathcal{F}
+\rangle$
+מערכת סימטרית.
+יהי
+$p \in \mathbb{P}$
+תנאי,
+$\varphi$
+נוסחה בשפה של תורת הקבוצות,
+ויהיו
+$\dot{x}_0, \dotsc, \dot{x}_{n-1}
+\in HS_{\mathcal{F}}$
+שמוות סימטריים.
+נגדיר ברקורסיה מתי
+\begin{align}
+p \Vdash^{\tiny HS_{\mathcal{F}}}
+\varphi(\dot{x}_0, \dotsc, \dot{x}_{n-1})
+\end{align}
+ובשפת בני אדם,
+מתי התנאי $p$
+כופה סימטרית את הנוסחה
+$\varphi(\dot{x}_0, \dotsc, \dot{x}_{n-1})$
+באופן הבא:</p>
 <ul>
-<li>$\varphi = \dot{x} \in \dot{y}$:</li>
+<li>$p \Vdash^{\tiny HS_{\mathcal{F}}} \dot{y}
+\in \dot{x}$ אם
+הקבוצה
+$\set{q \mid
+\exists \dot{z} \in HS_{\mathcal{f}}\ 
+\langle q, \dot{z}\rangle \in \dot{x},
+q \Vdash^{\tiny HS_{\mathcal{F}}}
+\dot{y} = \dot{z}}$
+צפופה מתחת ל-$p$.</li>
+<li>$p \Vdash^{\tiny HS_{\mathcal{F}}}
+(\varphi_0 \wedge \varphi_1)
+(\dot{x}_0,\dotsc,\dot{x}_{n-1})$
+אם
+$p \Vdash^{\tiny HS_{\mathcal{F}}}
+\varphi_0(\dot{x}_0,\dotsc,\dot{x}_{n-1})$
+ו-$p \Vdash^{\tiny HS_{\mathcal{F}}}
+\varphi_1(\dot{x}_0,\dotsc,\dot{x}_{n-1})$.</li>
+<li>$p \Vdash^{\tiny HS_{\mathcal{F}}}
+(\varphi_0 \vee \varphi_1)
+(\dot{x}_0,\dotsc,\dot{x}_{n-1})$
+אם
+$p \Vdash^{\tiny HS_{\mathcal{F}}}
+\varphi_0(\dot{x}_0,\dotsc,\dot{x}_{n-1})$
+או $p \Vdash^{\tiny HS_{\mathcal{F}}}
+\varphi_1(\dot{x}_0,\dotsc,\dot{x}_{n-1})$.</li>
+<li>$p \Vdash^{\tiny HS_{\mathcal{F}}}
+\lnot\varphi(\dot{x}_0,\dotsc,\dot{x}_{n-1})$
+אם הקבוצה
+$\set{q \in \mathbb{P} \mid
+q \not\Vdash^{\tiny HS_{\mathcal{F}}}
+\varphi(
+\dot{x}_0,\dotsc,\dot{x}_{n-1}
+)}$
+צפופה מתחת ל-$p$.</li>
+<li>$p \Vdash^{\tiny HS_{\mathcal{F}}}
+\exists x\ \varphi(x,\dot{x}_1,\dotsc,\dot{x}_{n-1})$
+אם הקבוצה
+$\set{q \in \mathbb{P} \mid
+\exists \dot{x}_0 \in HS_{\mathcal{F}}
+\ 
+q \Vdash^{\tiny HS_{\mathcal{F}}}
+\varphi(
+\dot{x}_0,\dotsc,\dot{x}_{n-1}
+)}$
+צפופה מתחת ל-$p$.</li>
+<li>$p \Vdash^{\tiny HS_{\mathcal{F}}}
+\forall x\ \varphi(x,\dot{x}_1,\dotsc,\dot{x}_{n-1})$
+אם לכל $\dot{x} \in HS_{\mathcal{F}}$
+מתקיים
+$p \Vdash^{\tiny HS_{\mathcal{F}}}
+\varphi(
+\dot{x}_0,\dotsc,\dot{x}_{n-1}
+)$.</li>
 </ul>
 
 
