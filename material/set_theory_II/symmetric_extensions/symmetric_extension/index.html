@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+
+<html lang="he" 
+        dir="rtl">
+<head>
+    <title>משפטים אקראיים בתורת הקבוצות II -- כפיות</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "304aabe1863548458b5040660f66e91d"}'></script><!-- End Cloudflare Web Analytics -->
+<header>
+
+    <style>
+        .headerL1, .headerL1:active, .headerL1:visited, .headerL1:link
+            {
+                text-decoration: inherit;
+                color: inherit;
+            }
+    </style>
+
+    
+        <a href="/he/" 
+         style="display: contents;" 
+           class="headerL1">
+    
+        <div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+                        <img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+                            srcset = "/me_512.png 512w, /me_1024.png 1024w, /me_2048.png 2048w"
+							src="/me.png">
+				</div>
+				<div style="vertical-align: middle;">
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                    תורת הקבוצות II
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ
+					</h3>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+    
+        </a>
+    
+        <div>
+            
+              <p style="font-size: xx-small">
+              <span><a href="../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../index.html">משפטים אקראיים בתורת הקבוצות II -- כפיות<a></span>&rlm; >>> <span><a href="../index.html">מודלים סימטריים<a></span>&rlm; >>> <span>הרחבה סימטרית</span>&rlm;
+              </p>
+              
+                
+	</header>
+
+
+
+
+
+
+    <h1>הרחבה סימטרית</h1>
+<p>ניתן סדרת הגדרות מהירה שתביא אותנו אל המושג
+הרחבה סימטרית.</p>
+<p><strong>הגדרה</strong>
+תהי
+$\mathcal{G}$
+חבורה.</p>
+<ul>
+<li>$\mathcal{F}$,
+קבוצת תת-חבורות של
+$\mathcal{G}$,
+תקרא מסנן תת-חבורות על
+$\mathcal{G}$
+אם התנאים הבאים מתקיימים:
+<ol>
+<li>$\mathcal{F} \neq \emptyset$.</li>
+<li>אם
+$\mathcal{H}_0,\mathcal{H}_1 \in \mathcal{F}$
+אז
+$\mathcal{H}_0 \cap\mathcal{H}_1 \in
+\mathcal{F}$.</li>
+<li>אם
+$\mathcal{H}_0 \in \mathcal{F}$,
+$\mathcal{H}_1  \supseteq \mathcal{H}_0$
+ו-$\mathcal{H}_1$ תת-חבורה של
+$\mathcal{G}$
+אז
+$\mathcal{H}_1 \in \mathcal{F}$,</li>
+</ol>
+</li>
+<li>המסנן $\mathcal{F}$
+יקרא נורמלי אם לכל
+$\pi \in \mathcal{G}$
+ו-$\mathcal{H} \in \mathcal{F}$
+מתקיים
+$\pi \mathcal{H} \pi^{-1} \in \mathcal{F}$.</li>
+</ul>
+<p><strong>הגדרה</strong>
+תהי $\mathbb{P}$
+מושג כפיה.</p>
+<ul>
+<li>פונקציה $\pi : \mathbb{P}
+\xrightarrow[\text{onto}]{\text{1-1}}
+\mathbb{P}$
+תקרא אוטומורפיזם
+אם
+$p \leq q \Leftrightarrow
+\pi(p) \leq \pi(q)$.</li>
+<li>בהינתן אוטומורפיזם
+$\pi : \mathbb{P} \rightarrow \mathbb{P}$
+נגדיר ברקורסיה פונקציה על מחלקת השמות
+$\pi : V^{\mathbb{P}} \rightarrow
+V^{\mathbb{P}}$
+על ידי
+$\pi(\dot{x}) = \set{
+\langle \pi(p), \pi(\dot{y})\rangle
+\mid
+\langle p, \dot{y}\rangle
+\in \dot{x}
+}$.</li>
+</ul>
+<p><strong>הגדרה</strong>
+יהי $\mathbb{P}$
+מושג כפיה ותהי $\mathcal{G}$
+חבורת אוטומורפיזמים של
+$\mathbb{P}$.
+אז $\text{sym}(\dot{x}) = \set{\pi \in \mathcal{G}
+\mid
+\pi(\dot{x}) = \dot{x}}$.</p>
+<p><strong>הגדרה</strong>
+המבנה
+$\langle \mathbb{P}, \mathcal{G},
+\mathcal{F}\rangle$
+יקרא מערכת סימטרית אם
+$\mathbb{P}$
+מושג כפיה,
+$\mathcal{G}$
+חבורת אוטומורפיזמים על $\mathbb{P}$
+ו-$\mathcal{F}$
+מסנן תת-חבורות על
+$\mathcal{G}$.</p>
+<p><strong>הגדרה</strong>
+תהי
+$\langle \mathbb{P}, \mathcal{G},
+\mathcal{F}\rangle$
+מערכת סימטרית.</p>
+<ul>
+<li>$\mathbb{P}$-שם
+$\dot{x}$
+יקרא $\mathcal{F}$-סימטרי
+אם
+$\text{sym}(\dot{x}) \in \mathcal{F}$.</li>
+<li>$\mathbb{P}$-שם
+$\dot{x}$
+יקרא $\mathcal{F}$-סימטרי
+בירושה אם
+$\dot{x}$
+הוא שם
+$\mathcal{F}$-סימטרי
+ו-$\dot{y}$
+הוא שם
+$\mathcal{F}$-סימטרי
+בירושה לכל
+$\langle r,\dot{y} \rangle \in \dot{x}$.</li>
+<li>$HS_{\mathcal{F}} = \set{\dot{x} \in
+V^{\mathbb{P}} \mid
+\dot{x} \text{ is $\mathcal{F}$ hereditarily symmetric}}$</li>
+</ul>
+<p><strong>הגדרה</strong>
+יהי
+$G \subseteq \mathbb{P}$
+מסנן גנרי מעל $V$.
+נגדיר את ההרחבה הסימטרית באופן הבא:
+\begin{align*}
+HS_{\mathcal{F}}[G] = \set{\dot{x}[G] \mid
+\dot{x} \in HS_{\mathcal{F}}}.
+\end{align*}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+ <ol >  </ol> 
+
+ </div>
+
+ 
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            
+                <a style="color: #999;"
+                href="/he/">
+                כרמי מרימוביץ
+            </a>
+            
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            משפטים אקראיים בתורת הקבוצות II -- כפיות
+            </span>
+        </li>
+    </ul>
+</footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

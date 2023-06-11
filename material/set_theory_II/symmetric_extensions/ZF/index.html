@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>כרמי מרימוביץ, אוסף אקלקטי של נושאים</title>
+    <title>משפטים אקראיים בתורת הקבוצות II -- כפיות</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -36,6 +36,19 @@
         }
 </style>
 
+<script>
+MathJax = {
+    loader: {load: ['[tex]/unicode']},
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['unicode']}
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script"
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 </head>
 <body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "304aabe1863548458b5040660f66e91d"}'></script><!-- End Cloudflare Web Analytics -->
@@ -64,10 +77,10 @@
 				</div>
 				<div style="vertical-align: middle;">
 					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-                    כרמי מרימוביץ
+                    תורת הקבוצות II
 					</h2>
 					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
-						אתר אישי
+						כרמי מרימוביץ
 					</h3>
                     <h3>
 					</h3>
@@ -80,7 +93,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../index.html">personal site<a></span>&rlm; >>> <span>חומרים מכל מיני קורסים</span>&rlm;
+              <span><a href="../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../index.html">משפטים אקראיים בתורת הקבוצות II -- כפיות<a></span>&rlm; >>> <span><a href="../index.html">מודלים סימטריים<a></span>&rlm; >>> <span>ההרחבה הסימטרית והאקסיומות</span>&rlm;
               </p>
               
                 
@@ -91,7 +104,52 @@
 
 
 
-    <h1>חומרים מכל מיני קורסים</h1>
+    <h1>ההרחבה הסימטרית והאקסיומות</h1>
+<p><strong>משפט</strong>
+יהי
+$G \subseteq \mathbb{P}$
+מסנן גנרי מעל $V$.
+אז:</p>
+<ol>
+<li>$V \subseteq HS_{\mathcal{F}}[G] \subseteq V[G]$.</li>
+<li>$HS_{\mathcal{F}}[G]$ טרנזיטיבי.</li>
+<li>$HS_{\mathcal{F}}[G] \models \text{ZF}$.</li>
+</ol>
+<p><strong>הוכחה</strong></p>
+<ol>
+<li>
+<p>מיידי מההגדרה
+ש-$HS_{\mathcal{F}}[G] \subseteq V[G]$.</p>
+<p>אם $x \in V$ אזי
+$\pi(\check{x}) = \check{x}$
+לכל $\pi \in \mathcal{G}$.
+כלומר $\text{sym}(\check{x}) = \mathcal{G}$.
+כיון שתמיד
+$\mathcal{G} \in \mathcal{F}$
+נקבל
+ש-$x = \check{x}[G] \in
+HS_\mathcal{F}[G]$.
+כלומר $V \subseteq HS_{\mathcal{F}}[G]$.</p>
+</li>
+<li>
+<p>יהי
+$y \in x \in HS_{\mathcal{F}}[G]$.
+אז יש
+$\dot{x} \in HS_{\mathcal{F}}$
+כך
+ש-$\dot{x}[G] = x$.
+כמו כן יש
+$\langle p, \dot{y} \rangle$
+כך ש-$\dot{y}[G] = y$,
+ו-$p \in G$.
+מהגדרת $HS_{\mathcal{F}}$
+מתחייב ש-$y \in HS_{\mathcal{F}}$
+ולכן
+$y = \dot{y}[G] \in HS_{\mathcal{F}}[G]$.
+3.
+□</p>
+</li>
+</ol>
 
 
 
@@ -104,81 +162,7 @@
 
 
 
-
-
- <ol > 
-            <li><p>
-                
-            <a href="archi/index.html">נושאים בארכיטקטורת מחשבים</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="dd/index.html">נושאים במערכות ספרתיות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="analysis_and_algebra/index.html">(הדגמה) אנליזה ואלגברה לינארית</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="set_theory_I/index.html">משפטים אקראיים בתורת הקבוצות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="set_theory_II/index.html">משפטים אקראיים בתורת הקבוצות II -- כפיות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="set_theory_III/index.html">כמה משפטים תעולם הקבוצות הבנויות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
@@ -208,7 +192,7 @@
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            כל מיני נושאים
+            משפטים אקראיים בתורת הקבוצות II -- כפיות
             </span>
         </li>
     </ul>
