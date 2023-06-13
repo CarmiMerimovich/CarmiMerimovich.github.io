@@ -93,7 +93,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../index.html">משפטים אקראיים בתורת הקבוצות II -- כפיות<a></span>&rlm; >>> <span><a href="../index.html">מודלים סימטריים<a></span>&rlm; >>> <span>מודל כהן הראשון</span>&rlm;
+              <span><a href="../../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../../index.html">משפטים אקראיים בתורת הקבוצות II -- כפיות<a></span>&rlm; >>> <span><a href="../../../index.html">מודלים סימטריים<a></span>&rlm; >>> <span><a href="../../index.html">מודל כהן הראשון<a></span>&rlm; >>> <span><a href="../index.html">הגדרת המערכת הסימטרית<a></span>&rlm; >>> <span>$\mathcal{F}$ מסנן נורמלי</span>&rlm;
               </p>
               
                 
@@ -104,7 +104,69 @@ MathJax = {
 
 
 
-    <h1>מודל כהן הראשון</h1>
+    <h1>$\mathcal{F}$ מסנן נורמלי</h1>
+<ol>
+<li>
+<p>המסנן לא ריק:
+$\mathcal{G} = \text{fix}(\emptyset) \in \mathcal{F}$.</p>
+</li>
+<li>
+<p>סגירות כלפי מעלה מיידית מהגדרת $\mathcal{F}$.</p>
+</li>
+<li>
+<p>סגירות לחיתוכים:
+נניח
+$\mathcal{H}_0, \mathcal{H}_1
+\in \mathcal{F}$.
+אזי יש $E_0, E_1 \in [\omega]^{&lt;\omega}$
+כך ש-$\mathcal{H_0} \supseteq
+\text{fix}(E_0)$
+ו-$\mathcal{H_1} \supseteq
+\text{fix}(E_1)$.
+נקבע $E = E_0 \cup E_1$.
+אזי
+$\mathcal{F} \ni \text{fix}(E) \subseteq \text{fix}(E_0)
+\cap
+\text{fix}(E_1) \subseteq
+\mathcal{H}_0 \cap \mathcal{H}_1$.
+מסגירות כלפי מעלה נקבל
+$\mathcal{H}_0 \cap\mathcal{H}_1
+\in \mathcal{F}$.</p>
+</li>
+<li>
+<p>נורמליות:
+נניח
+$\mathcal{H}_0 \in \mathcal{F}$
+ו-$\pi \in \mathcal{G}$.
+עלינו להראות
+ש-$\mathcal{H}_1 = \pi\mathcal{H}_0\pi^{-1}
+\in
+\mathcal{F}$.
+לשם כך מספיק למצוא
+$E_1 \in [\omega]^{&lt;\omega}$
+כך
+ש-$\mathcal{H}_1 \supseteq
+\text{fix}(E_1)$.</p>
+<p>מהגדרה יש $E_0 \in [\omega]^{&lt;\omega}$
+כך ש-$\mathcal{H}_0 \supseteq
+\text{fix}(E_0)$.
+נקבע
+$E_1 = \pi'' E_0$.
+נראה
+ש-$\mathcal{H}_1 \supseteq \text{fix}(E_1)$.</p>
+<p>יהי
+$\sigma \in \mathcal{H}_0$
+ו-$n_1 \in E_1$.
+אזי יש
+$n_0 \in E_0$
+כך ש-$n_1 = \pi(n_0)$.</p>
+<p>\begin{align}
+\pi\circ\sigma\circ\pi^{-1}(n_1) =
+\pi\circ\sigma(\pi^{-1}(\pi(n_0))) =
+\pi\circ\sigma(n_0) = \pi(n_0) = n_1.
+\end{align}</p>
+</li>
+</ol>
 
 
 
@@ -117,43 +179,7 @@ MathJax = {
 
 
 
- <ol > 
-            <li><p>
-                
-            <a href="symmetric_system/index.html">הגדרת המערכת הסימטרית</a>
-        
-            
-            
-            
-            
-             <ol > 
-            <li><p>
-                
-            <a href="symmetric_system/normal_filter/index.html">$\mathcal{F}$ מסנן נורמלי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="AC_fails/index.html">אקסיומת הבחירה נכשלת</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
