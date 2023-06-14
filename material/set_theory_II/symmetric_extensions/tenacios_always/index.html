@@ -93,7 +93,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../index.html">personal site<a></span>&rlm; >>> <span><a href="../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span>משפטים אקראיים בתורת הקבוצות II -- כפיות</span>&rlm;
+              <span><a href="../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../index.html">משפטים אקראיים בתורת הקבוצות II -- כפיות<a></span>&rlm; >>> <span><a href="../index.html">מודלים סימטריים<a></span>&rlm; >>> <span>מערכת סימטרית תמיד שקולה למערכת עקשנית</span>&rlm;
               </p>
               
                 
@@ -104,7 +104,98 @@ MathJax = {
 
 
 
-    <h1>משפטים אקראיים בתורת הקבוצות II -- כפיות</h1>
+    <h1>מערכת סימטרית תמיד שקולה למערכת עקשנית</h1>
+<p><strong>משפט</strong>
+כל מערכת סימטרית שקולה
+למערכת סימטרית עקשנית.</p>
+<p><strong>הוכחה</strong>
+בלי הגבלת הכלליות נניח שהכפיה
+$\mathbb{P}$
+היא אלגברה בוליאנית שלמה.
+תהי
+$\mathbb{B} \subseteq \mathbb{P}$
+קבוצת התנאים העקשנים.
+ראשית נוודא שהמבנה
+$\langle
+\mathbb{B}, \mathcal{G}, \mathcal{F}
+\rangle$
+הוא מערכת סימטרית.
+מה שצריך להראות זה שהחבורה
+$\mathcal{G}$
+היא חבורת אוטומורפיזמים על
+$\mathbb{B}$.
+ולשם כך מספיק להראות שהחבורה
+$\mathcal{G}$
+פועלת על $\mathbb{B}$.</p>
+<p>יהי $p \in \mathbb{B}$.
+כלומר
+$p \in \mathbb{P}$
+ו-$\text{fix}(p) \in \mathcal{F}$.
+$\text{fix}(\pi(p)) =
+\pi\text{fix}( p )\pi^{-1}$.
+לכן מנורמליות $\mathcal{F}$
+מקבלים
+$\text{fix}(\pi(p)) \in
+\mathcal{F}$,
+משמע $\pi(p) \in \mathbb{B}$.</p>
+<p>כלומר המערכת
+$\langle
+\mathbb{B}, \mathcal{G}, \mathcal{F}
+\rangle$
+היא מערכת סימטרית שכל תנאיה עקשנים.</p>
+<p>נסיים על יד כך שנראה שהמערכת
+$\langle
+\mathbb{P}, \mathcal{G}, \mathcal{F}
+\rangle$
+שקולה למערכת
+$\langle
+\mathbb{B}, \mathcal{G}, \mathcal{F}
+\rangle$.
+נקלקל קצת את הסימון שלנו על-ידי כך שנקרא לשמות
+$\text{HS}_{\mathbb{P}}$
+ו-$\text{HS}_{\mathbb{B}}$.
+ברור
+ש-$\text{HS}_{\mathbb{B}} \subseteq
+\text{HS}_{\mathbb{P}}$.
+בעוד מחלקת שמות אחת חלקית לשניה
+יש לנו זהות בפירושים.
+כלומר נראה שאם
+$\dot{x} \in \text{HS}_{\mathbb{P}}$
+אז יש
+$\dot{x}' \in \text{HS}_{\mathbb{B}}$
+כך
+ש-$\Vdash^{\tiny\text{HS}_{\mathbb{P}}}
+\dot{x} = \dot{x}'$.</p>
+<p>לכל
+$\langle \dot{y}, p\rangle \in \dot{x}$
+נקבע
+$p_{\dot{y}} = \sup\set{\pi(p) \mid
+\pi \in \text{sym}(\dot{x}) \cap
+\text{sym}(\dot{y})}$.
+$p_{\dot{y}}$
+תנאי עיקש
+ו-$p_{\dot{y}} \Vdash
+\dot{y} \in \dot{x}$.
+נקבע
+$\dot{x}' = \set{
+\langle \dot{y}, p_y\rangle \mid
+\langle \dot{y}, p\rangle \in \dot{x}}$.</p>
+<p>נסיים לפי הגדרת השקילות.
+יהי
+$G \subseteq \mathbb{P}$
+מסנן גנרי מעל
+$V$.
+ברור
+ש-$\text{HS}_{\mathbb{P}}[G] =
+\text{HS}_{\mathbb{B}}[G]$.</p>
+<p>יהי
+$G \subseteq \mathbb{B}$
+מסנן גנרי מעל
+$V$.
+יהי
+$G' \subseteq \mathbb{P}$
+המסנן הנוצר על-ידי $G$.</p>
+<p>$\square$</p>
 
 
 
@@ -117,153 +208,7 @@ MathJax = {
 
 
 
-
-
- <ol > 
-            <li><p>
-                
-            <a href="symmetric_extensions/index.html">מודלים סימטריים</a>
-        
-            
-            
-            
-            
-             <ol > 
-            <li><p>
-                
-            <a href="symmetric_extensions/automorphisms/index.html">אוטומורפיזם של כפיות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="symmetric_extensions/symmetric_extension/index.html">הרחבה סימטרית</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="symmetric_extensions/ZF/index.html">ההרחבה הסימטרית והאקסיומות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="symmetric_extensions/forcing_relation/index.html">יחס הכפיה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="symmetric_extensions/relation_and_extension/index.html">מסנן גנרי ויחס הכפיה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="symmetric_extensions/Cohen_I/index.html">מודל כהן הראשון</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="symmetric_extensions/tenacious/index.html">עיקשות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="symmetric_extensions/equiv/index.html">מערכות סימטריות שקולות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="symmetric_extensions/symmetric_forcing_relation/index.html">תת-קבוצות סימטריות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="symmetric_extensions/symmetric_subsets/index.html">תת-קבוצות סימטריות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="symmetric_extensions/tenacios_always/index.html">מערכת סימטרית תמיד שקולה למערכת עקשנית</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
@@ -293,7 +238,7 @@ MathJax = {
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            משפטים אקראיים בתורת הקבוצות II -- כפיות
+            הרחבות סימטריות
             </span>
         </li>
     </ul>
