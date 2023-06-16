@@ -146,7 +146,7 @@ rv64.types.push({ // S
           memory: true,
           type: "S",
           idFieldName: ["opcode", "fnc3"],   // CPU identifies instruction
-          operandsFieldName:  ["rs1", "rs2", "imm12"],
+          operandsFieldName:  ["rs2", "rs1", "imm12"],
           miFieldName: [ // machine instruction format
                "imm12[11:5]",
                "rs2",
