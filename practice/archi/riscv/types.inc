@@ -82,8 +82,8 @@ rv64.types.push({        // B
           miFieldName: [ // machine instruction format
                "imm13[12]",
                "imm13[10:5]",
-               "rs1",
                "rs2",
+               "rs1",
                "fnc3",
                "imm13[4:1]",
                "imm13[11]",
@@ -118,7 +118,7 @@ rv64.types.push({ // U
 });
 
 
-rv64.types.push({ //J
+rv64.types.push({ // J
      machineInstructions: {
           opCode: 0b1101111,
           type: "J",
