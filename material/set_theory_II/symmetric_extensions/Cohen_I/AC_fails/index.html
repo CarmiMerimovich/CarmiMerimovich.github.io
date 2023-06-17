@@ -106,66 +106,75 @@ MathJax = {
 
     <h1>אקסיומת הבחירה נכשלת</h1>
 <p><strong>טענה</strong>
-אם $n \neq m$ אזי
-$\Vdash^{\tiny HS_{\mathcal{F}}}
+אם
+$n \neq m$
+אזי
+$\Vdash^{\tiny\text{HS}}
 \dot{a}_n \neq \dot{a}_m$.
-בפרט, $\Vdash^{\tiny HS_{\mathcal{F}}}
+בפרט, $\Vdash^{\tiny\text{HS}}
 \dot{A} \text{ יפוסניא}$.</p>
 <p><strong>משפט</strong>
 אין סדר טוב על
 $\dot{A}$
-$\Vdash^{\tiny HS_{\mathcal{F}}}$.</p>
+$\Vdash^{\tiny\text{HS}}$.</p>
 <p><strong>הוכחה</strong>
 יהי
 $\dot{f}\in \text{HS}$
 שם סימטרי
 ו-$p \in \mathbb{P}$
 תנאי
-כך ש-$p\Vdash^{\tiny HS} \dot{f} : \omega \to
+כך ש-$p\Vdash^{\tiny\text{HS}} \dot{f} : \omega \to
 \dot{A}$.
 נראה ש-$\dot{f}$
 אינה 1-1.
 יהי $E \in [\omega]^{&lt;\omega}$
 תומך של
 $\dot{f}$
-ו-$p$.
-אם אפשר נבחר הרחבה
-$q \leq p$, $n \in \omega \setminus E$
-ו-$i&lt;\omega$
+ו-$p$.</p>
+<p>בשלילה נניח
+שיש
+הרחבה
+$q \leq p$, $n_0 \in \omega \setminus E$
+ו-$i &lt; \omega$
 כך
-ש-$q \Vdash \dot{f}(i) = \dot{a}_n$.
-אם אי אפשר לבצע בחירה כזו אזי
-$p \Vdash \text{ran}(\dot{f}) \subseteq
-\set{\dot{a}_n \mid n \in E}^{\bullet}$
-ואז מיידית
-$\dot{f}$
-אינה 1-1.</p>
-<p>נבחר
-$m \in \omega \setminus (E \cup \set{n}
+ש-$q \Vdash^{\tiny\text{HS}} \dot{f}(i) =
+\dot{a}_{n_0}$.
+נבחר
+$n_1 \in \omega \setminus (E \cup \set{n_0}
 \cup \text{supp}(q))$.
 תהי
 $\pi \in \mathcal{G}$
 הפרמוטציה
-$n \leftrightarrow m$
+$n_0 \leftrightarrow n_1$
 וזהות בכל מקום אחר.
 מיידי
 ש-$\pi \in \text{fix}(E)$.
 לכן
-$\pi(\dot{a}_n) = \dot{a}_m$.
+$\pi(\dot{a}_{n_0}) = \dot{a}_{n_1}$.
 מלמת הסימטריות נקבל
-$\pi(q) \Vdash \dot{f}(i) = \dot{a}_m$.</p>
-<p>הבחירה של $m$
+$\pi(q) \Vdash^{\tiny\text{HS}} \dot{f}(i) =
+\dot{a}_{n_1}$.</p>
+<p>הבחירה של
+$n_1$
 מביאה לכך שהאיחוד
 $q \cup \pi(q)$
 תנאי
 ו-$q \cup \pi(q) \leq q, \pi(q)$.
 ולכן
-$q \cup \pi(q) \Vdash \dot{f}(i) = n
-\neq m = \dot{f}(i)$.
-סתירה.
-משמע אי אפשר לבחור תנאי
+$q \cup \pi(q) \Vdash^{\tiny\text{HS}} \dot{f}(i) =
+n_0
+\neq n_1 = \dot{f}(i)$.
+סתירה.</p>
+<p>משמע אי אפשר לבחור תנאי
 $q$
 כנ&quot;ל.
+אם אי אפשר לבצע בחירה כזו אזי
+$p \Vdash^{\tiny\text{HS}}
+\text{ran}(\dot{f}) \subseteq
+\set{\dot{a}_n \mid n \in E}^{\bullet}$
+ואז מיידית
+$\dot{f}$
+אינה 1-1.
 $\square$</p>
 <p>כדאי לשים לב לכך שהמשפט הקודם יותר חזק
 מסתם כישלון של אקסיומת הבחירה.
