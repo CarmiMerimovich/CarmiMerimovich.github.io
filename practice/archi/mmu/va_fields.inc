@@ -121,7 +121,7 @@ if (document.getElementById("vpFields") != null ||
         מבנה השדה דף וירטואלי הוא מבנה
         כתובת וירטואלית ללא שדה ההיסט,
         כלומר
-        (${a.toReversed().slice(0,-1).join(",")}).
+        (${[...a].reverse().slice(0,-1).join(",")}).
     </li>`;
 }
 
@@ -139,11 +139,11 @@ explanation += "</ol>";
 function showAnswer() {
     let e = document.getElementById("vaFields");
     if (e != null)
-        e.innerHTML = `(${a.toReversed().join(",")})`; 
+        e.innerHTML = `(${[...a].reverse().join(",")})`; 
 
     e = document.getElementById("vpFields");
     if (e != null) {
-        e.innerHTML = `(${a.toReversed().slice(0,-1).join(",")})`;
+        e.innerHTML = `(${[...a].reverse().slice(0,-1).join(",")})`;
     }
 
     e = document.getElementById("tblHeight");
