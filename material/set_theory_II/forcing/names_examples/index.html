@@ -105,34 +105,42 @@ MathJax = {
 
 
     <h1>דוגמא לשמות</h1>
+<p>יהי
+$\mathbb{P}$
+מושג כפיה.
+יהי
+$G \subseteq \mathbb{P}$
+מסנן גנרי מעל
+$V$.</p>
 <ul>
 <li>
 <p>יהי
 $\dot{y}$
 שם.
-רוצים את השם של הקבוצה שהאיבר היחיד בה אם
-$\dot{y}[G]$:
+נרצה את השם
+$\dot{s}$
+כך שיתקיים:
+$\dot{s}[G] = \set{\dot{y}[G]}$:
 \begin{align}
-\set{\dot{y}}^\bullet = \set{
+\dot{s} = \set{\dot{y}}^\bullet = \set{
 \langle \dot{y}, \mathbb{1}
 \rangle}.
-\end{align}
-השם של הקבוצה
-$\set{\dot{y}}$</p>
+\end{align}</p>
 </li>
 <li>
 <p>נניח
 $\dot{x}_0$, $\dot{x}_1$
 שמות.
-נרצה את השם של הקבוצה שהיא הזוג הסדור
-כף שהאיבר הראשון יהיה
-$\dot{x}_0$
-והשני
-$\dot{x}_1$.
+נרצה את השם
+$s$
+כך שיתקיים
+$\dot{s}[G] = \langle \dot{x_0}[G],
+\dot{x}_1[G]\rangle$:
 נשתמש בהסכם
 $\langle a, b \rangle =
 \set{\set{a}, \set{a,b}}$.
 \begin{align}
+\dot{s} =
 \langle \dot{x}_0, \dot{x}_1\rangle^\bullet =
 \set{
 \langle
@@ -149,6 +157,28 @@ $\langle a, b \rangle =
 \rangle
 }
 \end{align}</p>
+</li>
+<li>
+<p>נניח
+$\dot{X}$, $\dot{Y}$
+שמות.
+רוצים את השם
+$\dot{s}$
+כך שיתקיים
+$\dot{s}[G] = \dot{X}[G] \times \dot{Y}[G]$:
+\begin{align*}
+\dot{s} = (\dot{X} \times \dot{Y})^\bullet =
+\set{
+\langle
+\langle\dot{x}, \dot{y}\rangle^\bullet,
+r
+\rangle
+\mid
+\langle \dot{x}, p \rangle \in \dot{X},
+\langle \dot{y}, q \rangle \in \dot{y},
+r \leq p,q
+}.
+\end{align*}</p>
 </li>
 </ul>
 
