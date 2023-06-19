@@ -127,7 +127,8 @@ $\mathbb{B}$.
 ולשם כך מספיק להראות שהחבורה
 $\mathcal{G}$
 פועלת על $\mathbb{B}$.</p>
-<p>יהי $p \in \mathbb{B}$.
+<p>יהי $p \in \mathbb{B}$
+ו-$\pi \in \mathcal{G}$.
 כלומר
 $p \in \mathbb{P}$
 ו-$\text{fix}(p) \in \mathcal{F}$.
@@ -151,9 +152,14 @@ $\langle
 $\langle
 \mathbb{B}, \mathcal{G}, \mathcal{F}
 \rangle$.
-נקלקל קצת את הסימון שלנו על-ידי כך שנקרא לשמות
+כיון שיש לנו את אותה חבורה ואותו מסנן חבורות
+נורמלי,
+נשנה קצת את הסימון של מחלקת השמוץ.
+נקרא לשמות
+הסימטריים
 $\text{HS}_{\mathbb{P}}$
-ו-$\text{HS}_{\mathbb{B}}$.
+ו-$\text{HS}_{\mathbb{B}}$
+כשהכוונה ברורה.
 ברור
 ש-$\text{HS}_{\mathbb{B}} \subseteq
 \text{HS}_{\mathbb{P}}$.
@@ -166,34 +172,56 @@ $\dot{x}' \in \text{HS}_{\mathbb{B}}$
 כך
 ש-$\Vdash^{\tiny\text{HS}_{\mathbb{P}}}
 \dot{x} = \dot{x}'$.</p>
-<p>לכל
+<p>ההוכחה היא באינדוקציה על דרגת השם.
+נניח
+$\dot{x} \in HS_{\mathbb{P}}$
+ולכל
+$\langle \dot{y}, p \rangle \in \dot{x}$
+מתקיים
+$\dot{y} \in HS_{\mathbb{B}}$.
+לכל
 $\langle \dot{y}, p\rangle \in \dot{x}$
 נקבע
 $p_{\dot{y}} = \sup\set{\pi(p) \mid
 \pi \in \text{sym}(\dot{x}) \cap
 \text{sym}(\dot{y})}$.
-$p_{\dot{y}}$
+נקבל
+ש-$p_{\dot{y}}$
 תנאי נחוש
-ו-$p_{\dot{y}} \Vdash
+ו-$p_{\dot{y}}
+\Vdash^{\tiny\text{HS}_{\mathbb{P}}}
 \dot{y} \in \dot{x}$.
 נקבע
 $\dot{x}' = \set{
 \langle \dot{y}, p_y\rangle \mid
-\langle \dot{y}, p\rangle \in \dot{x}}$.</p>
+\langle \dot{y}, p\rangle \in \dot{x}}$
+וברור
+$\dot{x}' \in \text{HS}_{\mathbb{B}}$.</p>
 <p>נסיים לפי הגדרת השקילות.
 יהי
 $G \subseteq \mathbb{P}$
 מסנן גנרי מעל
 $V$.
-ברור
+אזי
+$G' = G \cap \mathbb{B}$
+הוא מסנן מעל
+$\mathbb{B}$
+וברור
 ש-$\text{HS}_{\mathbb{P}}[G] =
-\text{HS}_{\mathbb{B}}[G]$.</p>
+\text{HS}_{\mathbb{B}}[G']$.</p>
 <p>יהי
 $G \subseteq \mathbb{B}$
 מסנן גנרי מעל
 $V$.
+יהי
 $G' \subseteq \mathbb{P}$
-המסנן הנוצר על-ידי $G$.</p>
+המסנן הנוצר על-ידי $G$.
+אם
+$p \Vdash^{\tiny\text{HS}_{\mathbb{P}}}
+\dot{y} \in \dot{x} $
+אזי אפשר להניח
+ש-$p \in \mathbb{B}$
+ו-$\dot{y} \in \text{HS}_{\mathbb{P}}$.</p>
 <p>$\square$</p>
 
 

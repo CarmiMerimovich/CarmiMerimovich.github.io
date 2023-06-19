@@ -37,6 +37,7 @@ rv64.registerName = [
 
 rv64.randomInstruction = function () {
      let i = Math.trunc(Math.random() * rv64.types.length);
+      i = 0; // for exams
      let mi = rv64.types[i].machineInstructions;
      
      let ret = {};
@@ -324,6 +325,7 @@ function fillRandomInstruction(ret) {
 
           case "imm13":
                ret.a.imm13 = (-2048 + Math.trunc(Math.random() * 4096)) * 2;
+               ret.a.imm13 = (-64 + Math.trunc(Math.random() * 128)) * 2; // exams
                break;
 
           case "imm12":
