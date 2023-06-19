@@ -110,41 +110,42 @@ void trav(struct node *node, (*func)()) {
     trav(node-&gt;left);
     trav(node-&gt;right);
     return;
-</code></pre>
-<p>trav:
-bne a0, x0, work
-jalr  x0, 0(ra)
+
+
+trav:
+    bne a0, x0, work
+    jalr  x0, 0(ra)
 work:
-addi  sp, sp, -24
-sd    ra, 0(sp)</p>
-<pre><code>ld  t0, 0(a0)
-bne  t0, x0, work2
-ld  t0, 8(a0)
-bne  t0, x0 work2
+    addi  sp, sp, -24
+    sd    ra, 0(sp)
 
-jalr  ra, 0(a1)
+    ld  t0, 0(a0)
+    bne  t0, x0, work2
+    ld  t0, 8(a0)
+    bne  t0, x0 work2
 
-ld     ra, 0(sp)
-addi  sp, sp, 24
-jalr  x0, 0(ra)
+    jalr  ra, 0(a1)
+
+    ld     ra, 0(sp)
+    addi  sp, sp, 24
+    jalr  x0, 0(ra)
+work2:
+    sd    a0, 8(sp)
+    sd    a1, 16(sp)
+
+    ld    a0,0(a0)
+    jalr  ra, trav
+
+    ld    a0, 8(sp)
+    ld    a1, 16(sp)
+
+    ld    a0, 8(a0)
+    jal   ra, tav
+
+    ld     ra, 0(sp)
+    addi  sp, sp, 24
+    jalr  x0, 0(ra)
 </code></pre>
-<p>work2:
-sd    a0, 8(sp)
-sd    a1, 16(sp)</p>
-<pre><code>ld    a0,0(a0)
-jalr  ra, trav
-
-ld    a0, 8(sp)
-ld    a1, 16(sp)
-
-ld    a0, 8(a0)
-jal   ra, tav
-
-ld     ra, 0(sp)
-addi  sp, sp, 24
-jalr  x0, 0(ra)
-</code></pre>
-<pre><code></code></pre>
 
 
 
