@@ -80,7 +80,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../index.html">נושאים בארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../index.html">תוכניות rv64<a></span>&rlm; >>> <span>strcpy - מערכים</span>&rlm;
+              <span><a href="../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../index.html">נושאים בארכיטקטורת מחשבים<a></span>&rlm; >>> <span>תוכניות rv64</span>&rlm;
               </p>
               
                 
@@ -91,25 +91,7 @@
 
 
 
-    <h1>strcpy - מערכים</h1>
-<pre><code>void strcpy(char y[], char x[]) {
-    unsigned long long i = 0;
-    while ((y[i] = x[i]) != 0) i++;
-}
-</code></pre>
-<pre><code>strcpy:
-    addi    t0, x0, 0
-loop:
-    add     t1, t0, a0
-    lb      t1, 0(t1)
-    add     t2, t0, a1
-    sb      t1, 0(t2)
-    beq     t1, x0, done
-    addi    t0, t0, 1
-    beq     x0, x0, loop
-done:
-    jalr    x0, 0(ra)
-</code></pre>
+    <h1>תוכניות rv64</h1>
 
 
 
@@ -122,7 +104,141 @@ done:
 
 
 
- <ol >  </ol> 
+
+
+ <ol > 
+            <li><p>
+                
+            <a href="strcpy_array/index.html">strcpy - מערכים (עם אינדקסים)</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="strcpy_pointers/index.html">strcpy - מערכים (עם פונטרים)</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="sum_indices_short/index.html">סכום אברי ווקטור short  (אינדקסים)</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="sum_indices_long_long/index.html">סכום אברי ווקטור long long  (אינדקסים)</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="sum_pointers/index.html">סכום אברי ווקטור (מצביעים)</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="sum2_indices/index.html">סכום אברי ווקטור (אינדקסים וטריק)</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="sum_even_indices/index.html">סכום האברים הזוגיים בווקטור long long  (אינדקסים)</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="sum_bintree/index.html">סכום אברי עץ בינרי</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="factorial/index.html">חישוב עצרת רקורסיבי</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="trav_leafs/index.html">קריאה לפונקציה עבור כל עלה</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+        
+            <li><p>
+                
+            <a href="popular/index.html">לפי דרישת הקהל</a>
+        
+            
+            
+            
+            
+             <ol >  </ol> 
+        
+        </p></li>
+         </ol> 
 
  </div>
 
