@@ -93,7 +93,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../index.html">משפטים אקראיים בתורת הקבוצות II -- כפיות<a></span>&rlm; >>> <span>הרחבות גנריות</span>&rlm;
+              <span><a href="../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../index.html">משפטים אקראיים בתורת הקבוצות II -- כפיות<a></span>&rlm; >>> <span><a href="../index.html">הרחבות גנריות<a></span>&rlm; >>> <span>אלגברה בוליאנית</span>&rlm;
               </p>
               
                 
@@ -104,7 +104,110 @@ MathJax = {
 
 
 
-    <h1>הרחבות גנריות</h1>
+    <h1>אלגברה בוליאנית</h1>
+<p><strong>הגדרה</strong></p>
+<ul>
+<li>אלגברה בוליאנית
+תקרא שלמה אם
+$\bigvee A$
+ו-$\bigwedge A$
+קיימים לכל
+$A \subseteq \mathbb{B}$.
+במקום לכתוב אלגברה בוליאנית שלמה
+נכתוב אב&quot;ש.</li>
+</ul>
+<p>המשפט הבא הוא טופולוגי במהותו.
+אנחנו נעבוד בתורת הקבוצות
+אבל המושג קבוצה פתוחה וקבוצה רגולרית
+הם מושגים טופולוגיים כך
+שמי שיודע טופולוגיה יהיה לו יותר קל
+אם יתרגם לשפה טופולוגית.</p>
+<p><strong>משפט</strong>
+יהי
+$\mathbb{P}$
+סדר חלקי מפריד.
+אזי יש אב&quot;ש יחידה
+$B(\mathbb{P})$
+כך
+ש-$\mathbb{P}$
+משוכן בצפיפות לתוך
+$B(\mathbb{P})$.</p>
+<p><strong>הוכחה</strong>
+מתחיל בלהראות קיום אב&quot;ש
+$\mathbb{B}$.</p>
+<p>לכל
+$p \in \mathbb{P}$
+נקבע
+$U_p = \set{
+q \in \mathbb{{P}}
+\mid
+q \leq p
+}$.
+נאמר שקבוצה
+$U \subseteq \mathbb{P}$
+היא קבוצה פתוחה רגולרית אם לכל
+$p \in \mathbb{P}$
+מתקיים
+\begin{align}
+p \in U \Leftrightarrow
+U \cap U_p
+\text{ dense open below }p.
+\end{align}</p>
+<ul>
+<li>כיון שהסדר על
+$\mathbb{P}$
+הוא מפריד נקבל
+ש-$U_p$
+פתוחה רגולרית לכל
+$p \in \mathbb{P}$.</li>
+<li>אם
+$U \cap U_p$
+צפוף פתוח מתחת
+ל-$p$
+ו-$q \leq p$
+אזי
+$U \cap U_q$
+צפוף פתוח מתחת
+ל-$q$.</li>
+<li>ולכן אם
+$p \in U$
+ו-$q \leq p$
+אזי $q \in U$.</li>
+<li>ולכן אם
+$U$
+פתוחה רגולרית
+ו-$p \in U$
+אז
+$U_p \subseteq U$.</li>
+</ul>
+<p>נגדיר
+$\mathbb{B} = \set{U \subseteq \mathbb{P}
+\mid
+U \text{ regular open}}$.
+נראה
+ש-$\langle \mathbb{B}, \subseteq \rangle$
+אב&quot;ש.</p>
+<p>עבור הקבועים נקבע
+$\mathbb{0} = \emptyset$
+ו-$\mathbb{1} = \mathbb{P}$.</p>
+<p>עבור הפעולות נקבע</p>
+<ul>
+<li>$U \cdot V = U \cap V$.</li>
+</ul>
+<p>נגדיחר פונקציה
+$e : \mathbb{P} \to \mathbb{B}$
+על-ידי
+$e(p) = U_p$
+ונראה שהיא שיכון צפוף.</p>
+<ul>
+<li>צפיפות:
+נקח
+$U \in \mathbb{B} \setminus \mathbb{0}$.
+אז יש
+$p \in U$.
+לכן
+$e(p) = U_p \subseteq U$.</li>
+</ul>
 
 
 
@@ -117,105 +220,7 @@ MathJax = {
 
 
 
-
-
- <ol > 
-            <li><p>
-                
-            <a href="forcing_notion/index.html">מושג כפיה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="names/index.html">מחלקת השמות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="interpretation/index.html">פירוש שמות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="names_examples/index.html">דוגמא לשמות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="forcing_relation/index.html">יחס הכפיה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="forcing_theorem/index.html">משפט הכפיה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="boolean_algebra/index.html">אלגברה בוליאנית</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="homogeneity/index.html">הומוגניות</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
