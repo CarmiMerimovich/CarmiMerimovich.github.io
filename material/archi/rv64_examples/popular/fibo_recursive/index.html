@@ -80,7 +80,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../index.html">נושאים בארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../index.html">תוכניות rv64<a></span>&rlm; >>> <span>לפי דרישת הקהל</span>&rlm;
+              <span><a href="../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../index.html">נושאים בארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../../index.html">תוכניות rv64<a></span>&rlm; >>> <span><a href="../index.html">לפי דרישת הקהל<a></span>&rlm; >>> <span>סדרת פיבונצ'י רקורסיבי</span>&rlm;
               </p>
               
                 
@@ -91,7 +91,33 @@
 
 
 
-    <h1>לפי דרישת הקהל</h1>
+    <h1>סדרת פיבונצ'י רקורסיבי</h1>
+<pre><code>fibo::
+    addi    t2, x0, 2
+    bge     a0, t2, work // n &gt; 1
+    addi    a0, x0, 1   // f(0) = f(1) = 1
+    jalr    x0, 0(ra)
+
+work:
+    addi    sp, sp, -24
+    sd      ra, 0(sp)
+    sd      a0, 8(sp)   // n
+
+    addi    a0, a0, -1  // n-1
+    jal     ra, fibo    // f(n-1)
+    sd      a0, 16(sp)  // f(n-1)
+
+    ld      a0, 8(sp)   // n
+    addi    a0, a0, -2  // n-2
+    jal     ra, fibo    // f(n-2)
+
+    ld      t0, 16(sp)  // f(n-1)
+    add     a0, a0, t0  // f(n-2) + f(n-1)
+
+    ld      ra, 0(sp)
+    addi    sp, sp, 16
+    jalr    x0, 0(ra)
+</code></pre>
 
 
 
@@ -104,31 +130,7 @@
 
 
 
- <ol > 
-            <li><p>
-                
-            <a href="parse/index.html">תרגום מחרוזת ascii למספר</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="fibo_recursive/index.html">סדרת פיבונצ&#39;י רקורסיבי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
