@@ -80,7 +80,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../index.html">נושאים בארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../index.html">תוכניות rv64<a></span>&rlm; >>> <span>לפי דרישת הקהל</span>&rlm;
+              <span><a href="../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../index.html">נושאים בארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../../index.html">תוכניות rv64<a></span>&rlm; >>> <span><a href="../index.html">לפי דרישת הקהל<a></span>&rlm; >>> <span>סדרת פיבונצ'י לולאה</span>&rlm;
               </p>
               
                 
@@ -91,7 +91,27 @@
 
 
 
-    <h1>לפי דרישת הקהל</h1>
+    <h1>סדרת פיבונצ'י לולאה</h1>
+<pre><code>fibo::
+    addi    t2, x0, 2   // 2
+    bge     a0, t2, work // n &gt; 1
+    addi    a0, x0, 1   // f(0) = f(1) = 1
+    jalr    x0, 0(ra)
+
+work:
+    addi    t0, x0, 1   // f(0)
+    addi    t1, x0, 1   // f(1)
+loop:
+    add     t3, t0, t1  // f(k-1) + f(k-2)
+    add     t0, t1, 0
+    add     t1, t3, 0
+    addi    a0, a0, -1  // n--
+    bge     a0, t2, loop
+
+done:    
+    add     a0, t3, x0  // return value
+    jalr    x0, 0(ra)
+</code></pre>
 
 
 
@@ -104,43 +124,7 @@
 
 
 
- <ol > 
-            <li><p>
-                
-            <a href="parse/index.html">תרגום מחרוזת ascii למספר</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="fibo_recursive/index.html">סדרת פיבונצ&#39;י רקורסיבי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="fibo_loop/index.html">סדרת פיבונצ&#39;י לולאה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
