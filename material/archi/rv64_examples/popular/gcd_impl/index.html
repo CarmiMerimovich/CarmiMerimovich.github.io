@@ -80,7 +80,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../index.html">נושאים בארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../index.html">תוכניות rv64<a></span>&rlm; >>> <span>לפי דרישת הקהל</span>&rlm;
+              <span><a href="../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../index.html">נושאים בארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../../index.html">תוכניות rv64<a></span>&rlm; >>> <span><a href="../index.html">לפי דרישת הקהל<a></span>&rlm; >>> <span>מימוש פונקצית C בשם gcd</span>&rlm;
               </p>
               
                 
@@ -91,7 +91,38 @@
 
 
 
-    <h1>לפי דרישת הקהל</h1>
+    <h1>מימוש פונקצית C בשם gcd</h1>
+<pre><code>unsigned long long gcd(unsigned long long a, unsigned long long b) {
+	if (b == 0)
+		return (a);
+	if (a  &gt;=  b)
+		return gcd(a, a - b);
+	return gcd(b, b - a);
+}
+</code></pre>
+<p>מה זה כבר יכול להיות</p>
+<pre><code>gcd::
+    bne     a1, x0, l1
+    jalr    x0, 0(ra)
+l1:
+    addi    sp, sp, -8
+    sd      ra, 0(sp)
+
+    sub     t0, a0, a1
+    blt     t0, l2
+    sub     a1, a0, a1
+    jal     ra, gcd
+    beq     x0, x0, done
+l2:
+    sub     t0, a1, a0
+    add     a0, a1, x0
+    add     a1, t0, x0
+    jal     ra, gcd
+done:
+    ld      ra, 0(sp)
+    addi    sp, sp, 8
+    jalr    x0, 0(ra)
+</code></pre>
 
 
 
@@ -104,67 +135,7 @@
 
 
 
- <ol > 
-            <li><p>
-                
-            <a href="parse/index.html">תרגום מחרוזת ascii למספר</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="fibo_recursive/index.html">סדרת פיבונצ&#39;י רקורסיבי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="fibo_loop/index.html">סדרת פיבונצ&#39;י לולאה</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="gcd_impl/index.html">מימוש פונקצית C בשם gcd</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="M_impl/index.html">מימוש פונקצית C בשם M</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
