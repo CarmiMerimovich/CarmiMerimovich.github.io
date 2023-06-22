@@ -93,7 +93,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../index.html">משפטים אקראיים בתורת הקבוצות II -- כפיות<a></span>&rlm; >>> <span><a href="../../index.html">כפיות<a></span>&rlm; >>> <span><a href="../index.html">מורפיזמים<a></span>&rlm; >>> <span>שיכון שלם</span>&rlm;
+              <span><a href="../../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../../index.html">משפטים אקראיים בתורת הקבוצות II -- כפיות<a></span>&rlm; >>> <span><a href="../../../index.html">כפיות<a></span>&rlm; >>> <span><a href="../../index.html">מורפיזמים<a></span>&rlm; >>> <span><a href="../index.html">הטלה<a></span>&rlm; >>> <span>משיכת קבוצות צפופות, אש"מ, קדם-צפופות</span>&rlm;
               </p>
               
                 
@@ -104,37 +104,46 @@ MathJax = {
 
 
 
-    <h1>שיכון שלם</h1>
-<p><strong>הגדרה</strong>
-יהיו
-$\mathbb{P}$
-ו-$\mathbb{Q}$
-מושגי כפיה.
-נאמר שפונקציה
+    <h1>משיכת קבוצות צפופות, אש&quot;מ, קדם-צפופות</h1>
+<p><strong>טענה</strong>
+תהי
 $\pi : \mathbb{P} \to \mathbb{Q}$
-היא  שיכון שלם אם:</p>
-<ol>
-<li>$p_0 \leq_{\mathbb{P}} p_1 \Leftrightarrow
-\pi(p_0) \leq_{\mathbb{Q}} \pi(p_1)$.</li>
-<li>$p_0 \perp_{\mathbb{P}} p_1 \Leftrightarrow
-\pi(p_0) \perp_{\mathbb{Q}} \pi(p_1)$.</li>
-<li>לכל
-$q \in \mathbb{Q}$
-יש
-$p \in \mathbb{P}$
-כך שאם
+הטלה.
+תהי
+$D \subseteq \mathbb{Q}$
+קבוצה צפופה פתוחה.
+אזי
+$\pi^{-1\prime\prime} D$
+קבוצה צפופה פתוחח.</p>
+<p><strong>הוכחה</strong></p>
+<ul>
+<li>
+<p>פתוחה:
+יהי $p_0 \in \pi^{-1\prime\prime} D$
+ו-$p_1 \leq p_0$.
+אז $\pi(p_1) \leq \pi(p_0) \in D$
+ומפתיחות
+$D$
+נובע
+$\pi(p_1) \in D$.
+ולכן
+$p_1 = \pi^{-1}(\pi(p1)) \in
+\pi^{-1\prime\prime}D$.</p>
+</li>
+<li>
+<p>צפיפות: יהי
+$p \in \mathbb{P}$.
+כיון
+ש-$D$
+צפופה יש
+$q \in D$
+כך ש-$q \leq \pi(p)$.
+מהגדרת הטלה יש
 $\bar{p} \leq p$
-אז
-$\pi(\bar{p}) \parallel q$.</li>
-</ol>
-<p>בסימון החביב עלינו מההגדרה הקודמת אפשר לרשום
-את סעיף 3 כך:
-לכל
-$q \in \mathbb{Q}$
-יש
-$p \in \mathbb{P}$
-כך ש-$U_{q}$
-צפוף ב-$U_{\pi(p)}$.</p>
+כך ש-$\pi(\bar{p}) \leq q$.
+$\square$</p>
+</li>
+</ul>
 
 
 
