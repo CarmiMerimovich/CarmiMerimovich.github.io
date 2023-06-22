@@ -93,7 +93,7 @@ MathJax = {
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../index.html">משפטים אקראיים בתורת הקבוצות II -- כפיות<a></span>&rlm; >>> <span><a href="../../index.html">כפיות<a></span>&rlm; >>> <span><a href="../index.html">מורפיזמים<a></span>&rlm; >>> <span>הטלה</span>&rlm;
+              <span><a href="../../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../../index.html">משפטים אקראיים בתורת הקבוצות II -- כפיות<a></span>&rlm; >>> <span><a href="../../../index.html">כפיות<a></span>&rlm; >>> <span><a href="../../index.html">מורפיזמים<a></span>&rlm; >>> <span><a href="../index.html">הטלה<a></span>&rlm; >>> <span>דחיפת גנרי מ-$\mathbb{P}$ ל-$\mathbb{Q}$</span>&rlm;
               </p>
               
                 
@@ -104,41 +104,94 @@ MathJax = {
 
 
 
-    <h1>הטלה</h1>
-<p><strong>הגדרה</strong>
-יהיו
-$\mathbb{P}$
-ו-$\mathbb{Q}$
-מושגי כפיה.
-נאמר שפונקציה
+    <h1>דחיפת גנרי מ-$\mathbb{P}$ ל-$\mathbb{Q}$</h1>
+<p><strong>טענה</strong>
+תהי
 $\pi : \mathbb{P} \to \mathbb{Q}$
-היא הטלה אם:</p>
-<ol>
-<li>$\pi(\mathbb{1}_{\mathbb{P}}) =
-\mathbb{1}_{\mathbb{Q}}$.</li>
-<li>$p_0 \leq_{\mathbb{P}} p_1 \Rightarrow
-\pi(p_0) \leq_{\mathbb{Q}} \pi(p_1)$.</li>
-<li>לכל
-$p \in \mathbb{P}$
-ו-$q \in \mathbb{Q}$,
-אם
-$q \leq \pi(p)$
-אז יש
+הטלה.
+תהי
+$D \subseteq \mathbb{Q}$
+קבוצה צפופה פתוחה.
+אזי
+$\pi^{-1\prime\prime} D$
+קבוצה צפופה פתוחח.</p>
+<p><strong>הוכחה</strong></p>
+<ul>
+<li>
+<p>פתוחה:
+יהי $p_0 \in \pi^{-1\prime\prime} D$
+ו-$p_1 \leq p_0$.
+אז $\pi(p_1) \leq \pi(p_0) \in D$
+ומפתיחות
+$D$
+נובע
+$\pi(p_1) \in D$.
+ולכן
+$p_1 = \pi^{-1}(\pi(p1)) \in
+\pi^{-1\prime\prime}D$.</p>
+</li>
+<li>
+<p>צפיפות: יהי
+$p \in \mathbb{P}$.
+כיון
+ש-$D$
+צפופה יש
+$q \in D$
+כך ש-$q \leq \pi(p)$.
+מהגדרת הטלה יש
 $\bar{p} \leq p$
-כך
-ש-$\pi(\bar{p}) \leq q$.</li>
-</ol>
-<p>בשפת בני אדם הטלה היא פונקציה שומרת סדר
-כך
-ש-$\pi''\mathbb{P}$
-צפוף
-ב-$\mathbb{Q}$.</p>
-<p>הטלה מאפשרת ליצור מסנן גנרי עבור
-$\mathbb{Q}$
-ממסנן גנרי עבור
-$\mathbb{P}$.</p>
-<p>הודות לדרישה 3 מתקיים שהטלה שומרת על
-אי-התיישבות.</p>
+כך ש-$\pi(\bar{p}) \leq q$.
+$\square$</p>
+</li>
+</ul>
+<p><strong>מסקנה</strong>
+תהי
+$\pi : \mathbb{P} \to \mathbb{Q}$
+הטלה
+ו-$G \subseteq \mathbb{P}$
+מסנן גנרי.
+אזי המסנן
+הנוצר על-ידי
+$\pi''G$
+הוא
+$\mathbb{Q}$-גנרי/
+<strong>הוכחה</strong>
+יהי $H$
+המסנן הנוצר על-ידי $\pi''G$,
+כלומר
+$H = \set{q \in \mathbb{Q}
+\mid
+\exists p \in G\ \pi(p) \leq q
+}$.</p>
+<ul>
+<li>$H$ מסנן:
+יהיו $q_0, q_1 \in H$.
+אז יש
+$p_0, p_1 \in G$
+כך ש-$\pi(p_0) \leq q_0$
+ו-$\pi(p_1) \leq q_1$.
+כיון ש-$G$
+מסנן יש
+$p \in G$
+כך ש-$p \leq p_0, p_1$.
+קיבלנו $\pi(p) \in H$
+ו-$\pi \leq \pi(p_0), \pi(p_1)$.
+סיימנו כי
+$\pi(p) \leq \pi(p_0) \leq q_0 $<br>
+ו-$\pi(p) \leq \pi(p_1) \leq q_1 $.</li>
+<li>$H$ גנרית.
+יהי
+$D \subseteq \mathbb{Q}$
+צפופה פתוחה.
+אזי $\pi^{-1\prime\prime} D \subseteq
+\mathbb{P}$
+צפופה פתוחה.
+לכן יש
+$p \in G \cap \pi^{-1\prime\prime} D$.
+ולכן
+$\pi(p) \in H \cap D$.
+$\square$</li>
+</ul>
 
 
 
@@ -151,31 +204,7 @@ $\mathbb{P}$.</p>
 
 
 
- <ol > 
-            <li><p>
-                
-            <a href="pushing_generic/index.html">יצירת $\mathbb{Q}$-גנרי מ-$\mathbb{P}$-גנרי</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-        
-            <li><p>
-                
-            <a href="example/index.html">דוגמא</a>
-        
-            
-            
-            
-            
-             <ol >  </ol> 
-        
-        </p></li>
-         </ol> 
+ <ol >  </ol> 
 
  </div>
 
