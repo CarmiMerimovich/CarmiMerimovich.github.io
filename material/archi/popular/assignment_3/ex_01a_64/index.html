@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+
+
+<html lang="he" 
+        dir="rtl">
+<head>
+    <title>נושאים בארכיטקטורת מחשבים</title>
+    <link rel="icon" href="/me.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<style>
+        .staffHeader {
+            display: flex;
+            border: 1px solid black;
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+        }
+    
+        .photoAndText {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .staffPhoto {
+            height: 6Em;
+            margin-top: 5px;
+            margin-inline-start: 5px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                            rgba(0,0,0,0.15) 100%),
+                             radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                              rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply;'
+        }
+
+        pre {
+            direction: ltr;
+        }
+</style>
+
+</head>
+<body style="font-family: Verdana, Arial, Helvetica, sans-seif; background-color: gainsboro">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "304aabe1863548458b5040660f66e91d"}'></script><!-- End Cloudflare Web Analytics -->
+<header>
+
+    <style>
+        .headerL1, .headerL1:active, .headerL1:visited, .headerL1:link
+            {
+                text-decoration: inherit;
+                color: inherit;
+            }
+    </style>
+
+    
+        <a href="/he/" 
+         style="display: contents;" 
+           class="headerL1">
+    
+        <div class="staffHeader">
+			<div class="photoAndText">
+				<div style="vertical-align: center; padding: 0px;">
+                        <img class="staffPhoto" 
+							alt = "Carmi Merimovich"
+                            srcset = "/me_512.png 512w, /me_1024.png 1024w, /me_2048.png 2048w"
+							src="/me.png">
+				</div>
+				<div style="vertical-align: middle;">
+					<h2 style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+                    נושאים בארכיטקטורת מחשבים
+					</h2>
+					<h3  style="padding: 0px 2px 0px 2px; margin: 0 0 0 0;">
+						כרמי מרימוביץ
+					</h3>
+                    <h3>
+					</h3>
+                </div>
+			</div>
+		</div>
+    
+        </a>
+    
+        <div>
+            
+              <p style="font-size: xx-small">
+              <span><a href="../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../index.html">נושאים בארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../../index.html">לפי דרישת הקהל<a></span>&rlm; >>> <span><a href="../index.html">חלק מעבודה 3<a></span>&rlm; >>> <span>שאלה 1 סעיף א עם 64 ביטים</span>&rlm;
+              </p>
+              
+                
+	</header>
+
+
+
+
+
+
+    
+<h1>שאלה 1 סעיף א עם 64 ביטים</h1>
+
+<ol style='direction: ltr;'>
+    <li style='padding-top: 2Em;'>
+    Address in CPU 0x0000000000000003
+    <hr/><hr/>
+    Address on bus: 0x0000000000000000 Index: 0 Tag: 000000000000000
+    miss
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td></tr><tr><td>2</td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td></tr><tr><td>6</td></tr><tr><td>7</td></tr><tr><td>8</td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    <hr/><hr/>
+    Address on bus: 0x0000000000000001 Index: 1 Tag: 000000000000000
+    miss
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td></tr><tr><td>6</td></tr><tr><td>7</td></tr><tr><td>8</td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    </li>
+    <li style='padding-top: 2Em;'>
+    Address in CPU 0x00000000000000B4
+    <hr/><hr/>
+    Address on bus: 0x0000000000000016 Index: 6 Tag: 000000000000001
+    miss
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td></tr><tr><td>6</td><td>
+                000000000000001
+                    </td></tr><tr><td>7</td></tr><tr><td>8</td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    <hr/><hr/>
+    Address on bus: 0x0000000000000017 Index: 7 Tag: 000000000000001
+    miss
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td></tr><tr><td>6</td><td>
+                000000000000001
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    </li>
+    <li style='padding-top: 2Em;'>
+    Address in CPU 0x000000000000002B
+    <hr/><hr/>
+    Address on bus: 0x0000000000000005 Index: 5 Tag: 000000000000000
+    miss
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000001
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    <hr/><hr/>
+    Address on bus: 0x0000000000000006 Index: 6 Tag: 000000000000000
+    miss
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000000
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    </li>
+    <li style='padding-top: 2Em;'>
+    Address in CPU 0x0000000000000002
+    <hr/><hr/>
+    Address on bus: 0x0000000000000000 Index: 0 Tag: 000000000000000
+    hit
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000000
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    <hr/><hr/>
+    Address on bus: 0x0000000000000001 Index: 1 Tag: 000000000000000
+    hit
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000000
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    </li>
+    <li style='padding-top: 2Em;'>
+    Address in CPU 0x00000000000000BF
+    <hr/><hr/>
+    Address on bus: 0x0000000000000017 Index: 7 Tag: 000000000000001
+    hit
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000000
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    <hr/><hr/>
+    Address on bus: 0x0000000000000018 Index: 8 Tag: 000000000000001
+    miss
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000000
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td><td>
+                000000000000001
+                    </td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    </li>
+    <li style='padding-top: 2Em;'>
+    Address in CPU 0x0000000000000058
+    <hr/><hr/>
+    Address on bus: 0x000000000000000B Index: B Tag: 000000000000000
+    miss
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000000
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td><td>
+                000000000000001
+                    </td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td><td>
+                000000000000000
+                    </td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    </li>
+    <li style='padding-top: 2Em;'>
+    Address in CPU 0x00000000000000BE
+    <hr/><hr/>
+    Address on bus: 0x0000000000000017 Index: 7 Tag: 000000000000001
+    hit
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000000
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td><td>
+                000000000000001
+                    </td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td><td>
+                000000000000000
+                    </td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    <hr/><hr/>
+    Address on bus: 0x0000000000000018 Index: 8 Tag: 000000000000001
+    hit
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000000
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td><td>
+                000000000000001
+                    </td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td><td>
+                000000000000000
+                    </td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    </li>
+    <li style='padding-top: 2Em;'>
+    Address in CPU 0x000000000000000E
+    <hr/><hr/>
+    Address on bus: 0x0000000000000001 Index: 1 Tag: 000000000000000
+    hit
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000000
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td><td>
+                000000000000001
+                    </td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td><td>
+                000000000000000
+                    </td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    <hr/><hr/>
+    Address on bus: 0x0000000000000002 Index: 2 Tag: 000000000000000
+    miss
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td><td>
+                000000000000000
+                    </td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000000
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td><td>
+                000000000000001
+                    </td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td><td>
+                000000000000000
+                    </td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    </li>
+    <li style='padding-top: 2Em;'>
+    Address in CPU 0x00000000000000B5
+    <hr/><hr/>
+    Address on bus: 0x0000000000000016 Index: 6 Tag: 000000000000001
+    miss
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td><td>
+                000000000000000
+                    </td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000001
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td><td>
+                000000000000001
+                    </td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td><td>
+                000000000000000
+                    </td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    <hr/><hr/>
+    Address on bus: 0x0000000000000017 Index: 7 Tag: 000000000000001
+    hit
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td><td>
+                000000000000000
+                    </td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000001
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td><td>
+                000000000000001
+                    </td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td><td>
+                000000000000000
+                    </td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    </li>
+    <li style='padding-top: 2Em;'>
+    Address in CPU 0x000000000000002C
+    <hr/><hr/>
+    Address on bus: 0x0000000000000005 Index: 5 Tag: 000000000000000
+    hit
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td><td>
+                000000000000000
+                    </td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000001
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td><td>
+                000000000000001
+                    </td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td><td>
+                000000000000000
+                    </td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    <hr/><hr/>
+    Address on bus: 0x0000000000000006 Index: 6 Tag: 000000000000000
+    miss
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td><td>
+                000000000000000
+                    </td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000000
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td><td>
+                000000000000001
+                    </td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td><td>
+                000000000000000
+                    </td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    </li>
+    <li style='padding-top: 2Em;'>
+    Address in CPU 0x00000000000000BA
+    <hr/><hr/>
+    Address on bus: 0x0000000000000017 Index: 7 Tag: 000000000000001
+    hit
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td><td>
+                000000000000000
+                    </td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000000
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td><td>
+                000000000000001
+                    </td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td><td>
+                000000000000000
+                    </td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    <hr/><hr/>
+    Address on bus: 0x0000000000000018 Index: 8 Tag: 000000000000001
+    hit
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td><td>
+                000000000000000
+                    </td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000000
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td><td>
+                000000000000001
+                    </td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td><td>
+                000000000000000
+                    </td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td></tr></table>
+    </li>
+    <li style='padding-top: 2Em;'>
+    Address in CPU 0x00000000000000FD
+    <hr/><hr/>
+    Address on bus: 0x000000000000001F Index: F Tag: 000000000000001
+    miss
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000000
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td><td>
+                000000000000000
+                    </td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000000
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td><td>
+                000000000000001
+                    </td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td><td>
+                000000000000000
+                    </td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td><td>
+                000000000000001
+                    </td></tr></table>
+    <hr/><hr/>
+    Address on bus: 0x0000000000000020 Index: 0 Tag: 000000000000002
+    miss
+    <table style="border: 1px solid;"><tr><th>Index</th><th>Tag</th></tr><tr><td>0</td><td>
+                000000000000002
+                    </td></tr><tr><td>1</td><td>
+                000000000000000
+                    </td></tr><tr><td>2</td><td>
+                000000000000000
+                    </td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td><td>
+                000000000000000
+                    </td></tr><tr><td>6</td><td>
+                000000000000000
+                    </td></tr><tr><td>7</td><td>
+                000000000000001
+                    </td></tr><tr><td>8</td><td>
+                000000000000001
+                    </td></tr><tr><td>9</td></tr><tr><td>10</td></tr><tr><td>11</td><td>
+                000000000000000
+                    </td></tr><tr><td>12</td></tr><tr><td>13</td></tr><tr><td>14</td></tr><tr><td>15</td><td>
+                000000000000001
+                    </td></tr></table>
+    </li>
+    </ol>
+    <p>Hits: 10, Misses: 13</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+ <ol >  </ol> 
+
+ </div>
+
+ 
+
+
+<footer style="border-top: 1px solid #d5d5d5; font-size: .8em;">
+    <ul style="font-family:'Helvetica', 'Arial', 'Sans-Serif';
+            padding: 0px;
+            list-style: none;
+            font-weight: bold;">
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="mailto:carmim@gmail.com">email</a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            <a style="color: #999;" 
+                href="https://www.linkedin.com/in/carmi-merimovich-21b59822a/"> לינקדאין </a>
+        </li>
+            <li style="display: inline; margin-right: 20px;">
+            
+                <a style="color: #999;"
+                href="/he/">
+                כרמי מרימוביץ
+            </a>
+            
+        </li>
+        <li style="display: inline; margin-right: 20px;">
+            <span style="color: #999;">
+            נושאים ארכיטקטורת מחשבים
+            </span>
+        </li>
+    </ul>
+</footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

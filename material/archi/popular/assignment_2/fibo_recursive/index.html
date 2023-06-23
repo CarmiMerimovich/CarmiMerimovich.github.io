@@ -4,7 +4,7 @@
 <html lang="he" 
         dir="rtl">
 <head>
-    <title>כרמי מרימוביץ, תוכניות rv64</title>
+    <title>נושאים בארכיטקטורת מחשבים</title>
     <link rel="icon" href="/me.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -80,7 +80,7 @@
         <div>
             
               <p style="font-size: xx-small">
-              <span><a href="../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../index.html">נושאים בארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../../index.html">תוכניות rv64<a></span>&rlm; >>> <span><a href="../index.html">לפי דרישת הקהל<a></span>&rlm; >>> <span>מימוש פונקצית C בשם M</span>&rlm;
+              <span><a href="../../../../../index.html">personal site<a></span>&rlm; >>> <span><a href="../../../../index.html">חומרים מכל מיני קורסים<a></span>&rlm; >>> <span><a href="../../../index.html">נושאים בארכיטקטורת מחשבים<a></span>&rlm; >>> <span><a href="../../index.html">לפי דרישת הקהל<a></span>&rlm; >>> <span><a href="../index.html">רוב עבודה 2<a></span>&rlm; >>> <span>סדרת פיבונצ'י רקורסיבי</span>&rlm;
               </p>
               
                 
@@ -91,41 +91,31 @@
 
 
 
-    <h1>מימוש פונקצית C בשם M</h1>
-<pre><code>long long M(long long a, long long b) {
-	if (b == 0)
-		return (0);
-	if (b &gt; 0)
-		return (M(a, b - 1) + a);
-	return (M(a, b + 1) - a);
-}
-</code></pre>
-<p>ושוב,</p>
-<pre><code>M::
-    bne     a1, x0, l1
-    add     a0, x0, x0
+    <h1>סדרת פיבונצ'י רקורסיבי</h1>
+<pre><code>fibo::
+    addi    t2, x0, 2
+    bge     a0, t2, work // n &gt; 1
+    addi    a0, x0, 1   // f(0) = f(1) = 1
     jalr    x0, 0(ra)
-l1:
 
-    addi    sp, sp, -16
+work:
+    addi    sp, sp, -24
     sd      ra, 0(sp)
-    sd      a0, 8(sp)
+    sd      a0, 8(sp)   // n
 
-    ble     a1, x0, l2
+    addi    a0, a0, -1  // n-1
+    jal     ra, fibo    // f(n-1)
+    sd      a0, 16(sp)  // f(n-1)
 
-    addi    a1, a1, -1
-    jal     ra, M
-    ld      t0, 8(sp)
-    add     a0, a0, t0
-    beq     x0, x0, done
-l2:
-    addi    a1, a1, 1
-    jal     ra, M
-    ld      t0, 8(sp)
-    sub     a0, a0, t0
-done:
+    ld      a0, 8(sp)   // n
+    addi    a0, a0, -2  // n-2
+    jal     ra, fibo    // f(n-2)
+
+    ld      t0, 16(sp)  // f(n-1)
+    add     a0, a0, t0  // f(n-2) + f(n-1)
+
     ld      ra, 0(sp)
-    add     sp, sp, 16
+    addi    sp, sp, 16
     jalr    x0, 0(ra)
 </code></pre>
 
@@ -170,7 +160,7 @@ done:
         </li>
         <li style="display: inline; margin-right: 20px;">
             <span style="color: #999;">
-            תוכניות rv64
+            נושאים ארכיטקטורת מחשבים
             </span>
         </li>
     </ul>
