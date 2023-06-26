@@ -119,22 +119,46 @@ MathJax = {
 <p>נפעיל $\pi \in \mathcal{G}$
 על $\mathbb{P}$
 על-ידי
-$\pi(p(n, m)) = p(\pi(n), m)$.
+$\pi(p)(\pi(n), m) = p(n, m)$.
 ברור שההפעלה נותנת אוטומורפיזם
 $\pi : \mathbb{P} \to \mathbb{P}$.</p>
 <p><strong>טענה</strong>
 יהי $\pi \in \mathcal{G}$.</p>
 <ol>
 <li>
-<p>אם
-$\pi(n) = n$
-אזי
-$\pi(\dot{a}_n) = \dot{a}_{\pi(n)}$.</p>
+<p>$\pi(\dot{a}_n) = \dot{a}_{\pi(n)}$.</p>
 </li>
 <li>
 <p>$\pi(\dot{A}) = \dot{A}$.</p>
 </li>
 </ol>
+<p><strong>הוכחה</strong>
+ידוע
+$\dot{a}_n = \set{\langle\check{m}, p\rangle
+\mid
+p \in \mathbb{P},\ 
+p(n,m)=1}$.
+נפעיל את
+$\pi$:
+\begin{align}
+\pi(\dot{a}_n) =&amp; \set{\langle\check{m}, \pi(p)\rangle
+\mid
+p \in \mathbb{P},\ 
+p(n,m)=1}
+\\
+=&amp;
+\set{\langle\check{m}, \pi(p)\rangle
+\mid
+p \in \mathbb{P},\ 
+\pi(p)(\pi(n),m)=1},
+\\
+=&amp;
+\set{\langle\check{m}, p\rangle
+\mid
+p \in \mathbb{P},\ 
+p(\pi(n),m)=1} =
+\dot{a}_{\pi(n)}.
+\end{align}</p>
 
 
 
