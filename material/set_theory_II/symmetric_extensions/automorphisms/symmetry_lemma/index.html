@@ -122,6 +122,58 @@ p \Vdash \varphi(\dot{x}_0, \dotsc, \dot{x}_{n-1})
 \pi(p) \Vdash \varphi(\pi(\dot{x}_0), \dotsc,
 \pi(\dot{x}_{n-1})).
 \end{align}</p>
+<p><strong>הוכחה</strong>
+ההוכחה היא באינדוקציה על מבנה הנוסחה
+$\varphi$.
+מדי פעם אוסיף פה עוד חלק עד שההוכחה תתמלא.</p>
+<ul>
+<li>נניח ש-$\varphi \equiv \dot{x}_0 \in \dot{x}_1$.
+נקבע
+\begin{align}
+D = \set {r \leq p \mid
+{\exists \langle \dot{y}, q\rangle \in \dot{x}_1,\ r \leq q,
+\ r \Vdash \dot{x}_0 = \dot{y}}
+}.
+\end{align}
+ידוע לנו
+\begin{align}
+p \Vdash \dot{x}_0 \in \dot{x}_1 \iff
+D \text{ is dense below }p.
+\end{align}
+יהי
+$E = \pi''D$.
+נזכר שמתקיים
+\begin{align}
+D \text{ is dense  below }p \iff
+E \text{ is dense below }\pi(p).
+\end{align}
+ננתח את $E$:
+\begin{align}
+E = &amp; \set{\pi(r) \mid r \in D} = \\
+= &amp; \set {\pi(r) \leq \pi(p) \mid
+{\exists \langle \dot{y}, q\rangle \in \dot{x}_1,\ 
+r \leq q,\ 
+\ r \Vdash \dot{x}_0 = \dot{y}}
+} = \\
+= &amp; \set {r \leq \pi(p) \mid
+{\exists \langle \dot{y}, q\rangle \in\pi(\dot{x}_1),\ 
+r \leq q,\ 
+\ r \Vdash \pi(\dot{x}_0) = \dot{y}}
+}.
+\end{align}
+ולכן מתקיים
+\begin{align}
+\pi(p) \Vdash \pi(\dot{x}_0) \in \pi(\dot{x}_1)
+\iff
+E \text{ is dense open below }\pi(p).
+\end{align}
+ולכן מתקיים
+\begin{align}
+p \vDash \dot{x}_0 \in \dot{x}_1 \iff
+\pi(p) \vDash
+\pi(\dot{x}_0) \in \pi(\dot{x}_1).
+\end{align}</li>
+</ul>
 
 
 
